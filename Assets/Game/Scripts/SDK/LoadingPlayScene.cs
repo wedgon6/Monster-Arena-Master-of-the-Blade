@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadindPlayScene : MonoBehaviour
+public class LoadingPlayScene : MonoBehaviour
 {
     private const string SceneName = "MenuScene";
 

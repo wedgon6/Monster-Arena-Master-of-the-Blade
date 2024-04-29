@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SDKInitialize : MonoBehaviour
 {
-    [SerializeField] private LoadindPlayScene _loadindScene;
+    [SerializeField] private LoadingPlayScene _loadindScene;
 
     private void Awake()
     {

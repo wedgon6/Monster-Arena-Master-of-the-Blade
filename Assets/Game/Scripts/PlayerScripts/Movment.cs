@@ -35,6 +35,7 @@ public class Movment : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        LookAt();
     }
 
     private void Move()
@@ -69,5 +70,16 @@ public class Movment : MonoBehaviour
         right.y = 0;
 
         return right.normalized;
+    }
+
+    private void LookAt()
+    {
+        Vector3 direction = _rigidbody.velocity;
+        direction.y = 0;
+
+        if (_move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+            _rigidbody.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        else
+            _rigidbody.angularVelocity = Vector3.zero;
     }
 }
