@@ -1,23 +1,36 @@
 using DG.Tweening;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Blade : MonoBehaviour
 {
-    [SerializeField] private Transform _position;
+    private Vector3 _endPoint;
+    private Tweener _tween;
+    private Tweener _start;
 
-    private void Awake()
+    public void Attac(Vector3 targetPoint)
     {
-        Attack();
+
+        transform.DORotate(new Vector3(0, 360f, 0), 2f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        Vector3 duration = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5);
+        _endPoint = targetPoint;
+        _start = transform.DOMove(duration, 3f).SetEase(Ease.Linear);
     }
 
-    private void Attack()
+    private void Update()
     {
-        transform.DOMove(Vector3.forward * 10, 3);
+
     }
 
-    private void BackToPoint()
+    private IEnumerator StartThrow()
     {
-        transform.DOMove(_position.position, 5);
+        yield return null;
+    }
+
+    private IEnumerator ReturnThrow()
+    {
+       
+        yield return null;
     }
 }
