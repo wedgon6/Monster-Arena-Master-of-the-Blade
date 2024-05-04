@@ -1,36 +1,44 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Blade : MonoBehaviour
 {
-    private Vector3 _endPoint;
-    private Tweener _tween;
-    private Tweener _start;
+    private BladeSpawner _bladeSpawner;
+    private int _countRebound;
+    private int _currentCountRebound;
+    private bool _isReturn;
 
-    public void Attac(Vector3 targetPoint)
+    public bool IsReturn => _isReturn;
+    public BladeSpawner BladeSpawner => _bladeSpawner;
+
+    public void Initialaze(Vector3 targetPoint, BladeSpawner bladeSpawner, int countRebound = 0)
     {
-
+        _bladeSpawner = bladeSpawner;
+        _countRebound = countRebound;
+        _currentCountRebound = _countRebound;
         transform.DORotate(new Vector3(0, 360f, 0), 2f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
-        Vector3 duration = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5);
-        _endPoint = targetPoint;
-        _start = transform.DOMove(duration, 3f).SetEase(Ease.Linear);
+    }
+
+    public bool TryRebound()
+    {
+        if(_currentCountRebound <= 0)
+        {
+            _isReturn = true;
+            return false;
+        }
+
+        if(_countRebound >= 1)
+        {
+            _currentCountRebound -= 1;
+            return true;
+        }
+
+        return false;
     }
 
     private void Update()
     {
 
-    }
-
-    private IEnumerator StartThrow()
-    {
-        yield return null;
-    }
-
-    private IEnumerator ReturnThrow()
-    {
-       
-        yield return null;
     }
 }

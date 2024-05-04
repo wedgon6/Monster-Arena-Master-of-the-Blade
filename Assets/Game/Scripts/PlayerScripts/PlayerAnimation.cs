@@ -8,12 +8,13 @@ public class PlayerAnimation : MonoBehaviour
 
     private Animator _animator;
     private Rigidbody _rigidbody;
-    private float _maxSpeed = 5f;
+    private float _maxSpeed;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
+        _maxSpeed = _playerMovment.MaxMoveSpeed;
     }
     private void Update()
     {

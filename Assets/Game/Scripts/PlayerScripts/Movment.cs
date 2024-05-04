@@ -14,6 +14,8 @@ public class Movment : MonoBehaviour
     private InputAction _move;
 
     public float MoveSpeed => _moveSpeed;
+    public float MaxMoveSpeed => _maxMoveSpeed;
+    public Rigidbody PlayerRigidbody => _rigidbody;
 
     private void Awake()
     {
