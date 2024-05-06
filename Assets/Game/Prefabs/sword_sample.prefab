@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 2423744195173696701}
   - component: {fileID: -4235555988815199860}
   - component: {fileID: 2218822590114931668}
+  - component: {fileID: -8588617010163319692}
+  - component: {fileID: -4866458911732010569}
   m_Layer: 0
   m_Name: sword_sample
   m_TagString: Untagged
@@ -124,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f508e1c031e674daf05fa4bcb729ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateMashine: {fileID: -8664818743158407721}
 --- !u!54 &7532966032600307966
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,7 +161,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081162296496890265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71cb3f7a9298ca445a09b53c366d6ed7, type: 3}
   m_Name: 
@@ -171,7 +174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081162296496890265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4efdba39180fb8346b5271af614fe4fb, type: 3}
   m_Name: 
@@ -185,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081162296496890265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26188544caecab2408544e8fad54c150, type: 3}
   m_Name: 
@@ -198,12 +201,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081162296496890265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c820b676b31014dacb70841b888441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions: []
+  _transitions:
+  - {fileID: -8588617010163319692}
 --- !u!136 &2218822590114931668
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -221,9 +225,35 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 4.2024713
   m_Height: 24.076477
   m_Direction: 1
   m_Center: {x: 0.0000009536743, y: 0, z: 0}
+--- !u!114 &-8588617010163319692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081162296496890265}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4550f600586824b841ca1b6f11b1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -4866458911732010569}
+--- !u!114 &-4866458911732010569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081162296496890265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9749666a3d8f2438bb96fb353f5c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []

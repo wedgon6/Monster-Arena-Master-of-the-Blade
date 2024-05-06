@@ -16,6 +16,8 @@ public class Movment : MonoBehaviour
     public float MoveSpeed => _moveSpeed;
     public float MaxMoveSpeed => _maxMoveSpeed;
     public Rigidbody PlayerRigidbody => _rigidbody;
+    public Vector3 Direction => _direction;
+    public Camera Camera => _camera;
 
     private void Awake()
     {

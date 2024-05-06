@@ -11,13 +11,13 @@ public class BacToPlayerState : BladeState
     {
         base.Enter();
         _target = _bladeSpawner.transform.position;
-        _throw = transform.DOMove(_target, 2f).SetEase(Ease.Linear);
+        _throw = transform.DOMove(_target, 1f).SetEase(Ease.Linear).SetAutoKill(false);
         _lastTargetPosition = _target;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(_lastTargetPosition != _bladeSpawner.transform.position)
+        if (_lastTargetPosition != _bladeSpawner.transform.position)
         {
             _target = _bladeSpawner.transform.position;
             _throw.ChangeEndValue(_target, true).Restart();

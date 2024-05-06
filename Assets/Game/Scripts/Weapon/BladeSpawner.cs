@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BladeSpawner : MonoBehaviour
@@ -7,17 +8,36 @@ public class BladeSpawner : MonoBehaviour
     [SerializeField] private Blade _bladePrefab;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Movment _playerMovment;
+    [SerializeField] private Pool _bladePool;
 
     private float _playerSpeed;
+    private Vector3 dir;
 
-    private void Awake()
+    private float _currentTime = 2f;
+    private float _time = 3f;
+
+    public bool TryThrowBlade()
     {
-        RotateBlades();
+        Blade blade;
+        Vector3 direction = _shootPoint.transform.position + Vector3.forward*2f;
+        
+        Debug.Log(direction);
+
+        blade = Instantiate(_bladePrefab, _shootPoint.transform.position, _bladePrefab.transform.rotation);
+        blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 4f, ForceMode.VelocityChange);
+        //_bladePool.InstantiatePoolObject(blade);
+        blade.Initialaze(this);
+        return true;
     }
 
-    private void RotateBlades()
+    private void OnEnable()
     {
-        transform.DORotate(new Vector3(0, 360f, 0), 2f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        _bladePool.GetPoolObject += GetBackBlade;
+    }
+
+    private void OnDisable()
+    {
+        _bladePool.GetPoolObject -= GetBackBlade;
     }
 
     private void Update()
@@ -25,22 +45,50 @@ public class BladeSpawner : MonoBehaviour
         _playerSpeed = _playerMovment.PlayerRigidbody.velocity.magnitude / _playerMovment.MaxMoveSpeed;
 
         if (_playerSpeed < 0.5f)
-            TryThrowBlade();
-    }
-
-    public bool TryThrowBlade()
-    {
-        foreach (var bladeViwe in _weaponPoints)
         {
-            if(bladeViwe.gameObject.activeSelf == true)
+            if(_currentTime <= 0f)
             {
-                bladeViwe.gameObject.SetActive(false);
-                Blade blade = Instantiate(_bladePrefab, _shootPoint.transform.localPosition, _bladePrefab.transform.rotation);
-                blade.Initialaze(_shootPoint.position,this);
-                return true;
+                TryThrowBlade();
+                _currentTime = _time;
             }
         }
 
-        return false;
+        _currentTime -= Time.deltaTime;
+    }
+
+    private void GetBackBlade()
+    {
+        foreach (var bladeViwe in _weaponPoints)
+        {
+            if (bladeViwe.gameObject.activeSelf == false)
+            {
+                bladeViwe.gameObject.SetActive(true);
+                return;
+            }
+        }
+    }
+
+    private Vector3 CalculateDirection()
+    {
+        dir += transform.position.x * GetCameraRight() * 2f;
+        dir += transform.position.y * GetCameraForward() * 2f;
+
+        return dir;
+    }
+
+    private Vector3 GetCameraRight()
+    {
+        Vector3 forward = _playerMovment.Camera.transform.right;
+        forward.y = 0;
+
+        return forward.normalized;
+    }
+
+    private Vector3 GetCameraForward()
+    {
+        Vector3 right = _playerMovment.Camera.transform.forward;
+        right.y = 0;
+
+        return right.normalized;
     }
 }
