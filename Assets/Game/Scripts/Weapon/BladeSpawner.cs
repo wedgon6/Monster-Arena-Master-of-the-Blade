@@ -1,5 +1,4 @@
-using DG.Tweening;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class BladeSpawner : MonoBehaviour
@@ -9,25 +8,46 @@ public class BladeSpawner : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Movment _playerMovment;
     [SerializeField] private Pool _bladePool;
+    [SerializeField] private BladeViwe _bladeViwe;
 
     private float _playerSpeed;
-    private Vector3 dir;
 
     private float _currentTime = 2f;
     private float _time = 3f;
 
-    public bool TryThrowBlade()
-    {
-        Blade blade;
-        Vector3 direction = _shootPoint.transform.position + Vector3.forward*2f;
-        
-        Debug.Log(direction);
+    public event Action ThrowingBlade;
 
-        blade = Instantiate(_bladePrefab, _shootPoint.transform.position, _bladePrefab.transform.rotation);
-        blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 4f, ForceMode.VelocityChange);
-        //_bladePool.InstantiatePoolObject(blade);
-        blade.Initialaze(this);
-        return true;
+    public void ThrowBlade()
+    {
+        if (_bladeViwe.ThryThrow() == false)
+            return;
+        else
+        {
+            Blade blade;
+            Vector3 direction = _shootPoint.transform.position + Vector3.forward * 2f;
+
+            if(_bladePool.TryPoolObject(out PoolObject pollBlade))
+            {
+                blade = pollBlade as Blade;
+                blade.transform.position = _shootPoint.transform.position;
+                blade.transform.rotation = _bladePrefab.transform.rotation;
+                blade.gameObject.SetActive(true);
+            }
+            else
+            {
+                blade = Instantiate(_bladePrefab, _shootPoint.transform.position, _bladePrefab.transform.rotation);
+                _bladePool.InstantiatePoolObject(blade);
+            }
+            
+            blade.Initialaze(this);
+            blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 4f, ForceMode.VelocityChange);
+            ThrowingBlade?.Invoke();
+        }
+    }
+
+    private void Start()
+    {
+        _bladeViwe.Initialize(3, _bladePrefab);
     }
 
     private void OnEnable()
@@ -48,7 +68,7 @@ public class BladeSpawner : MonoBehaviour
         {
             if(_currentTime <= 0f)
             {
-                TryThrowBlade();
+                ThrowBlade();
                 _currentTime = _time;
             }
         }
@@ -58,37 +78,6 @@ public class BladeSpawner : MonoBehaviour
 
     private void GetBackBlade()
     {
-        foreach (var bladeViwe in _weaponPoints)
-        {
-            if (bladeViwe.gameObject.activeSelf == false)
-            {
-                bladeViwe.gameObject.SetActive(true);
-                return;
-            }
-        }
-    }
-
-    private Vector3 CalculateDirection()
-    {
-        dir += transform.position.x * GetCameraRight() * 2f;
-        dir += transform.position.y * GetCameraForward() * 2f;
-
-        return dir;
-    }
-
-    private Vector3 GetCameraRight()
-    {
-        Vector3 forward = _playerMovment.Camera.transform.right;
-        forward.y = 0;
-
-        return forward.normalized;
-    }
-
-    private Vector3 GetCameraForward()
-    {
-        Vector3 right = _playerMovment.Camera.transform.forward;
-        right.y = 0;
-
-        return right.normalized;
+        _bladeViwe.GetBackBlade();
     }
 }

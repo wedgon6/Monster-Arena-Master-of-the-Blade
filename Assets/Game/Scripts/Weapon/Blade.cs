@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Blade : PoolObject
 {
-    [SerializeField] private BladeStateMashine _stateMashine;
+    [SerializeField] private BladeViwePrafab _bladeViwe;
 
     private BladeSpawner _bladeSpawner;
     private int _countRebound;
@@ -21,11 +21,12 @@ public class Blade : PoolObject
     public BladeSpawner BladeSpawner => _bladeSpawner;
     public Vector3 StartPoint => _startPoint;
 
-    public void ResetState() => _stateMashine.ResetStete();
+    public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
     public void Initialaze(BladeSpawner bladeSpawner)
     {
         _bladeSpawner = bladeSpawner;
+        _startPoint = _bladeSpawner.transform.position;
         CorountineStart(Throw());
     }
 
@@ -59,7 +60,7 @@ public class Blade : PoolObject
         {
             transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 1f * Time.fixedDeltaTime);
             _rigidbody.velocity = Vector3.zero;
-            _direction = new Vector3(_bladeSpawner.transform.position.x, 0, _bladeSpawner.transform.position.z);
+            _direction = new Vector3(_bladeSpawner.transform.position.x, transform.position.y, _bladeSpawner.transform.position.z);
             _rigidbody.AddForce(_direction * 1f);
             _direction = Vector3.zero;
         }
@@ -67,8 +68,9 @@ public class Blade : PoolObject
 
     private IEnumerator Throw()
     {
-        Debug.Log("Throw");
-        while(Vector3.Distance(_startPoint,transform.position) < 15f)
+        _isReturn = false;
+
+        while (Vector3.Distance(_startPoint,transform.position) < 15f)
         {
             yield return null;
         }
@@ -78,15 +80,19 @@ public class Blade : PoolObject
 
     private IEnumerator BackToPlayer()
     {
-        Debug.Log("back");
         _isReturn = true;
-        while ((int)transform.position.z != (int)_bladeSpawner.transform.position.z)
+
+        //while ((int)transform.position.z != (int)_bladeSpawner.transform.position.z)
+        //{
+        //    yield return null;
+        //}
+
+        while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) > 1f)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, _bladeSpawner.transform.position, 1f);
             yield return null;
         }
-
-        //ReturObjectPool();
+       
+        ReturObjectPool();
     }
 
     private void CorountineStart(IEnumerator corontine)
