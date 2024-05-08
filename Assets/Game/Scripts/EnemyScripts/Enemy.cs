@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : PoolObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _maxHealth;
 
-    // Update is called once per frame
-    void Update()
+    private float _health;
+    private bool _isDead;
+
+    public float Health => _health;
+    public bool IsDead => _isDead;
+
+    public void TakeDamage(float damage)
     {
-        
+        if (damage < 0)
+            return;
+
+        if (_health < 0)
+            return;
+
+        _health -= damage;
+
+        if (_health < 0)
+        {
+            _health = 0;
+            _isDead = true;
+        }
+        Debug.Log("Damage");
     }
 }

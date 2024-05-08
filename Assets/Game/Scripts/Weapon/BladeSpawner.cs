@@ -40,7 +40,7 @@ public class BladeSpawner : MonoBehaviour
             }
             
             blade.Initialaze(this);
-            blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 4f, ForceMode.VelocityChange);
+            blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 5f, ForceMode.VelocityChange);
             ThrowingBlade?.Invoke();
         }
     }

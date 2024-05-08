@@ -11,6 +11,7 @@ public class Blade : PoolObject
     private int _countRebound;
     private int _currentCountRebound;
     private bool _isReturn = false;
+    private float _damage;
 
     private Vector3 _startPoint;
     private Vector3 _direction;
@@ -20,7 +21,6 @@ public class Blade : PoolObject
     public bool IsReturn => _isReturn;
     public BladeSpawner BladeSpawner => _bladeSpawner;
     public Vector3 StartPoint => _startPoint;
-
     public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
     public void Initialaze(BladeSpawner bladeSpawner)
@@ -82,11 +82,6 @@ public class Blade : PoolObject
     {
         _isReturn = true;
 
-        //while ((int)transform.position.z != (int)_bladeSpawner.transform.position.z)
-        //{
-        //    yield return null;
-        //}
-
         while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) > 1f)
         {
             yield return null;
@@ -101,5 +96,13 @@ public class Blade : PoolObject
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(corontine);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.TryGetComponent(out Enemy enemy))
+        {
+            enemy.TakeDamage(_damage);
+        }
     }
 }
