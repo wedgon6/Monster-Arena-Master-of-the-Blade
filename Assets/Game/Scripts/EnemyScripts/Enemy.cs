@@ -3,12 +3,19 @@ using UnityEngine;
 public class Enemy : PoolObject
 {
     [SerializeField] private float _maxHealth;
+    [SerializeField] private Player _target;
 
     private float _health;
     private bool _isDead;
 
     public float Health => _health;
     public bool IsDead => _isDead;
+    public Player Target => _target;
+
+    private void Awake()
+    {
+        _health = _maxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
@@ -20,11 +27,10 @@ public class Enemy : PoolObject
 
         _health -= damage;
 
-        if (_health < 0)
+        if (_health <= 0)
         {
             _health = 0;
             _isDead = true;
         }
-        Debug.Log("Damage");
     }
 }
