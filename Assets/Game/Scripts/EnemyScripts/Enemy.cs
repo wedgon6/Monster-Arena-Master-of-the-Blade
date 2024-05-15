@@ -12,9 +12,9 @@ public class Enemy : PoolObject
     public bool IsDead => _isDead;
     public Player Target => _target;
 
-    private void Awake()
+    public void Initialize()
     {
-        _health = _maxHealth;
+
     }
 
     public void TakeDamage(float damage)
@@ -32,5 +32,10 @@ public class Enemy : PoolObject
             _health = 0;
             _isDead = true;
         }
+    }
+
+    private void Awake()
+    {
+        _health = _maxHealth;
     }
 }

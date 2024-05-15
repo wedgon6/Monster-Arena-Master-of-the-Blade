@@ -1,13 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
-public class AttackTransition : Transition
+public class MovmentTransition : Transition
 {
-    [SerializeField] private float _transitionRange = 3f;
+    [SerializeField] private float _distance = 3f;
 
     private Enemy _enemy;
 
-    private void Start()
+    private void Awake()
     {
         _enemy = GetComponent<Enemy>();
     }
@@ -16,8 +16,8 @@ public class AttackTransition : Transition
     {
         Vector3 directionToTarget = transform.position - _enemy.Target.transform.position;
         float distance = directionToTarget.magnitude;
-        Debug.Log(distance);
-        if (distance <= _transitionRange)
+
+        if (distance > _distance)
         {
             NeedTransit = true;
         }

@@ -8,7 +8,6 @@ public class EnemyAnimation : MonoBehaviour
     [SerializeField] private List<EnemyState> _enemyStates;
 
     private Animator _animator;
-    private Enemy _enemy;
 
     private void Awake()
     {
@@ -30,13 +29,7 @@ public class EnemyAnimation : MonoBehaviour
         }
     }
 
-    private void OnMove()
-    {
-        _animator.SetTrigger("Move");
-    }
+    private void OnMove() => _animator.SetTrigger("Move");
 
-    private void OnAttack()
-    {
-        _animator.SetTrigger("Attack");
-    }
+    private void OnAttack() => _animator.SetTrigger("Attack");
 }
