@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private PlayerWallet _wallet = new PlayerWallet();
 
-    // Update is called once per frame
-    void Update()
+    public void InitializePlayer(int gold, int daimond)
     {
-        
+        _wallet.Initialize(gold, daimond);
     }
 }
