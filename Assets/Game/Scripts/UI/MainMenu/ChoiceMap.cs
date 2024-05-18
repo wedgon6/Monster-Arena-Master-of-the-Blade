@@ -22,9 +22,9 @@ public class ChoiceMap : MonoBehaviour
     {
         _currentLevelIndex += change;
 
-        if(_currentLevelIndex < 0)
+        if (_currentLevelIndex < 0)
             _currentLevelIndex = _levels.Count - 1;
-        else if(_currentLevelIndex > _levels.Count - 1)
+        else if (_currentLevelIndex > _levels.Count - 1)
             _currentLevelIndex = 0;
 
         _levelIcon.sprite = _levels[_currentLevelIndex].LevelIcon;
@@ -41,6 +41,12 @@ public class ChoiceMap : MonoBehaviour
 
     private void OnClickPlayButton()
     {
-        SceneManager.LoadScene(_levels[_currentLevelIndex].LoadScene);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex].LoadScene);
+        asyncOperation.completed += _ => GameplayScene();
+    }
+
+    private void GameplayScene()
+    {
+        //Services.Init();
     }
 }

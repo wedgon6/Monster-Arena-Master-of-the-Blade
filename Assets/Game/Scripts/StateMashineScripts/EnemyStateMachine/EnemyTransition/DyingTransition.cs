@@ -11,7 +11,6 @@ public class DyingTransition : Transition
 
     private void Update()
     {
-        Debug.Log(_enemy.Health);
         if (_enemy.Health == 0)
             NeedTransit = true;
     }

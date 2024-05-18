@@ -11,7 +11,7 @@ public class Blade : PoolObject
     private int _countRebound;
     private int _currentCountRebound;
     private bool _isReturn = false;
-    private float _damage = 100f;
+    private float _damage = 20f;
 
     private Vector3 _startPoint;
     private Vector3 _direction;

@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerWallet _wallet = new PlayerWallet();
+    [SerializeField] private PlayerWallet _wallet;
 
-    public void InitializePlayer(int gold, int daimond)
+    private Gold _gold = new Gold(0);
+    private Daimond _daimond = new Daimond(0);
+
+    public PlayerWallet PlayerWallet => _wallet;
+
+    private void Awake()
     {
-        _wallet.Initialize(gold, daimond);
+        _wallet.Initialize(_gold.Value, _daimond.Value);
     }
 }

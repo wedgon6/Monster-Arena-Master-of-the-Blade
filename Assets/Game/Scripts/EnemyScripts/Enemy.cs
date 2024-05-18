@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : PoolObject
@@ -7,10 +8,14 @@ public class Enemy : PoolObject
 
     private float _health;
     private bool _isDead;
+    private Gold _gold = new Gold(5);
+    private Daimond _daimond = new Daimond(1);
 
     public float Health => _health;
     public bool IsDead => _isDead;
     public Player Target => _target;
+
+    public event Action ChengetHealt;
 
     public void Initialize()
     {
@@ -26,11 +31,13 @@ public class Enemy : PoolObject
             return;
 
         _health -= damage;
+        ChengetHealt?.Invoke();
 
         if (_health <= 0)
         {
             _health = 0;
             _isDead = true;
+            _target.PlayerWallet.AddMoney(_gold, _daimond);
         }
     }
 

@@ -16,7 +16,7 @@ public class AttackTransition : Transition
     {
         Vector3 directionToTarget = transform.position - _enemy.Target.transform.position;
         float distance = directionToTarget.magnitude;
-        Debug.Log(distance);
+
         if (distance <= _transitionRange)
         {
             NeedTransit = true;
