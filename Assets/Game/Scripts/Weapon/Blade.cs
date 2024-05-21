@@ -51,17 +51,17 @@ public class Blade : PoolObject
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        transform.DORotate(new Vector3(0, 360f, 0), 2f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
     }
 
     private void FixedUpdate()
     {
         if (_isReturn)
         {
-            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 1f * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 2f * Time.fixedDeltaTime);
             _rigidbody.velocity = Vector3.zero;
-            _direction = new Vector3(_bladeSpawner.transform.position.x, transform.position.y, _bladeSpawner.transform.position.z);
-            _rigidbody.AddForce(_direction * 1f);
+            _direction = new Vector3(_bladeSpawner.transform.position.x, _bladeSpawner.transform.position.y, _bladeSpawner.transform.position.z).normalized;
+            _rigidbody.AddForce(_direction * 5f);
             _direction = Vector3.zero;
         }
     }
@@ -69,9 +69,11 @@ public class Blade : PoolObject
     private IEnumerator Throw()
     {
         _isReturn = false;
-
-        while (Vector3.Distance(_startPoint,transform.position) < 15f)
+        float time = 1.5f;
+        //_startPoint - transform.position).magnitude <= 5f
+        while (time >= 0f)
         {
+            time -= Time.deltaTime;
             yield return null;
         }
 
@@ -82,7 +84,7 @@ public class Blade : PoolObject
     {
         _isReturn = true;
 
-        while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) > 1f)
+        while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) >= 1.5f)
         {
             yield return null;
         }
@@ -103,6 +105,7 @@ public class Blade : PoolObject
         if (collision.collider.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(_damage);
+            CorountineStart(BackToPlayer());
         }
     }
 }

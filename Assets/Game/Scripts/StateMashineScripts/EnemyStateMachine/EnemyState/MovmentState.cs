@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class MovmentState : EnemyState
 {
-    private NavMeshAgent _agent;
+    private float _moveSpeed = 0.5f;
+    private float _maxSpeed = 4f;
+    private Vector3 _direction;
 
     public override void Enter()
     {
@@ -13,13 +12,31 @@ public class MovmentState : EnemyState
         MoveEvent();
     }
 
-    private void Awake()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-    }
-
     private void FixedUpdate()
     {
-        _agent.SetDestination(Vector3.forward + Target.transform.position);
+        Move();
+    }
+
+    private void Move()
+    {
+        transform.LookAt(Target.transform.position);
+        transform.position = Vector3.Lerp(transform.position, Target.transform.position, _moveSpeed * Time.fixedDeltaTime);
+
+        _direction = new Vector3(Target.transform.position.x, 0, Target.transform.position.z);
+        RigidbodyEnemy.AddForce(_direction * _moveSpeed);
+        _direction = Vector3.zero;
+
+        if (RigidbodyEnemy.velocity.y < 0f)
+        {
+            RigidbodyEnemy.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
+        }
+
+        Vector3 horizontalVelocity = RigidbodyEnemy.velocity;
+        horizontalVelocity.y = 0;
+
+        if (horizontalVelocity.sqrMagnitude > _maxSpeed * _maxSpeed)
+        {
+            RigidbodyEnemy.velocity = horizontalVelocity.normalized * _maxSpeed + Vector3.up * RigidbodyEnemy.velocity.y;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class EnemyState : State
 {
@@ -10,6 +11,7 @@ public class EnemyState : State
     public Enemy Enemy => _enemy;
 
     protected Player Target { get; set; }
+    protected Rigidbody RigidbodyEnemy { get; set; }
     //protected PlayerScore PlayerScore { get; set; }
     //protected PlayerMoney PlayerMoney { get; set; }
 
@@ -17,6 +19,7 @@ public class EnemyState : State
     {
         _enemy = GetComponent<Enemy>();
         Target = _enemy.Target;
+        RigidbodyEnemy = _enemy.Rigidbody;
         //PlayerScore = _enemy.PlayerScore;
         //PlayerMoney = _enemy.PlayerMoney;
     }

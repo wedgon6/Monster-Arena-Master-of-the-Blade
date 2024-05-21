@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class DyingState : EnemyState
 {
     private void Update()

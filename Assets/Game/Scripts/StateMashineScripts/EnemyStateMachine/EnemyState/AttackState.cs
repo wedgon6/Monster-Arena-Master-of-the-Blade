@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackState : EnemyState
 {
-    [SerializeField] private int _damege;
+    [SerializeField] private int _damage;
     [SerializeField] private float _attackDelay;
     [SerializeField] private float _attackRange;
 
@@ -17,7 +17,7 @@ public class AttackState : EnemyState
         {
             if (_lastAttackTime <= 0)
             {
-                AttackPlayer(Target);
+                AttackEvent();
                 _lastAttackTime = _attackDelay;
             }
         }
@@ -25,8 +25,8 @@ public class AttackState : EnemyState
         _lastAttackTime -= Time.deltaTime;
     }
 
-    private void AttackPlayer(Player player)
+    private void ApplyDamage()
     {
-        AttackEvent();
+        Target.TakeDamage(_damage);
     }
 }
