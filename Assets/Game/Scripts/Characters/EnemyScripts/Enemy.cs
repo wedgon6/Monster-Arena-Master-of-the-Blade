@@ -8,20 +8,19 @@ public class Enemy : PoolObject, IDamageable
     [SerializeField] private Player _target;
 
     private float _health;
-    private bool _isDead;
     private Gold _gold = new Gold(5);
     private Daimond _daimond = new Daimond(1);
 
     private Rigidbody _rigidbody;
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _health;
-    public bool IsDead => _isDead;
     public Player Target => _target;
     public Rigidbody Rigidbody => _rigidbody;
 
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
+    public event Action Died;
 
     public float GetCurrentHealth()
     {
@@ -48,15 +47,14 @@ public class Enemy : PoolObject, IDamageable
 
         _health -= damage;
         TakedDamage?.Invoke(damage);
-        Vector3 direction = (transform.position - Target.transform.position).normalized;
-        _rigidbody.AddForce(direction * 100f, ForceMode.VelocityChange);
-        Debug.Log(direction);
+        //Vector3 direction = (transform.position - Target.transform.position).normalized;
+        //_rigidbody.AddForce(direction * 100f, ForceMode.VelocityChange);
         ChangeHealth?.Invoke(_health,_maxHealth);
 
         if (_health <= 0)
         {
             _health = 0;
-            _isDead = true;
+            Died?.Invoke();
             _target.PlayerWallet.AddMoney(_gold, _daimond);
         }
     }

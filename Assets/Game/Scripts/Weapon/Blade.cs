@@ -58,7 +58,7 @@ public class Blade : PoolObject
     {
         if (_isReturn)
         {
-            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 2f * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 7f * Time.fixedDeltaTime);
             _rigidbody.velocity = Vector3.zero;
             _direction = new Vector3(_bladeSpawner.transform.position.x, _bladeSpawner.transform.position.y, _bladeSpawner.transform.position.z).normalized;
             _rigidbody.AddForce(_direction * 5f);
@@ -84,7 +84,7 @@ public class Blade : PoolObject
     {
         _isReturn = true;
 
-        while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) >= 1.5f)
+        while (Vector3.Magnitude(transform.position - _bladeSpawner.transform.position) >= 1f)
         {
             yield return null;
         }
@@ -105,6 +105,11 @@ public class Blade : PoolObject
         if (collision.collider.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(_damage);
+            //Vector3 direction = (enemy.transform.forward * -1).normalized;
+            
+            Vector3 direction = (enemy.transform.position - transform.position).normalized;
+            enemy.Rigidbody.AddForce(direction * 50f, ForceMode.VelocityChange);
+            
             CorountineStart(BackToPlayer());
         }
     }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MovmentState : EnemyState
 {
-    private float _moveSpeed = 0.5f;
-    private float _maxSpeed = 4f;
+    [SerializeField] private float _moveSpeed = 0.5f;
+    [SerializeField] private float _maxSpeed = 4f;
     private Vector3 _direction;
 
     public override void Enter()

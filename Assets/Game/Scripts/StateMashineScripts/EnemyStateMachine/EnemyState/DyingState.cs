@@ -1,14 +1,16 @@
 public class DyingState : EnemyState
 {
-    private void Update()
+    private void OnEnable()
     {
-        if (Enemy.IsDead)
-        {
-            Die();
-        }
+        Enemy.Died += OnDied;
     }
 
-    private void Die()
+    private void OnDisable()
+    {
+        Enemy.Died -= OnDied;
+    }
+
+    private void OnDied()
     {
         Destroy(gameObject);
         //Enemy.Dead();

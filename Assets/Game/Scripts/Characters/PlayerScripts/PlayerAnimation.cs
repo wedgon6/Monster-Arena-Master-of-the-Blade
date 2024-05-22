@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -6,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Movment _playerMovment;
     [SerializeField] private BladeSpawner _bladeSpawner;
+    [SerializeField] private Player _player;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -20,11 +22,13 @@ public class PlayerAnimation : MonoBehaviour
     private void OnEnable()
     {
         _bladeSpawner.ThrowingBlade += OnThrowBladeAnimation;
+        _player.Died += OnDead;
     }
 
     private void OnDisable()
     {
         _bladeSpawner.ThrowingBlade -= OnThrowBladeAnimation;
+        _player.Died -= OnDead;
     }
 
     private void Update()
@@ -36,4 +40,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator.SetTrigger("OnThrow");
     }
+
+    private void OnDead()
+    {
+        _animator.SetTrigger("IsDead");
+    }
+
 }

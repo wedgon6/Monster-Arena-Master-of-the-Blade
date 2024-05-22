@@ -5,7 +5,7 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerWallet _wallet;
     
-    private float _maxHealth = 100;
+    private float _maxHealth = 1000;
     private float _health;
 
     private Gold _gold = new Gold(0);
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
+    public event Action Died;
 
     public float GetCurrentHealth()
     {
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             _health = 0;
+            Died?.Invoke();
         }
     }
 
