@@ -20,6 +20,7 @@ public class Enemy : PoolObject, IDamageable
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
+    public event Action GotHit;
     public event Action Died;
 
     public float GetCurrentHealth()
@@ -46,9 +47,8 @@ public class Enemy : PoolObject, IDamageable
             return;
 
         _health -= damage;
-        TakedDamage?.Invoke(damage);
-        //Vector3 direction = (transform.position - Target.transform.position).normalized;
-        //_rigidbody.AddForce(direction * 100f, ForceMode.VelocityChange);
+        GotHit?.Invoke();
+        TakedDamage?.Invoke(damage);;
         ChangeHealth?.Invoke(_health,_maxHealth);
 
         if (_health <= 0)

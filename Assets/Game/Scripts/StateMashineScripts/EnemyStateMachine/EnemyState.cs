@@ -7,6 +7,7 @@ public class EnemyState : State
 
     public event Action Attacking;
     public event Action Moving;
+    public event Action TakedDamage;
 
     public Enemy Enemy => _enemy;
 
@@ -32,5 +33,10 @@ public class EnemyState : State
     protected void MoveEvent()
     {
         Moving?.Invoke();
+    }
+
+    protected void TakeDamageEvent()
+    {
+        TakedDamage?.Invoke();
     }
 }

@@ -45,5 +45,4 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator.SetTrigger("IsDead");
     }
-
 }

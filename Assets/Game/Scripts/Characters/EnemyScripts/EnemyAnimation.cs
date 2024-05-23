@@ -17,6 +17,7 @@ public class EnemyAnimation : MonoBehaviour
         {
             events.Moving += OnMove;
             events.Attacking += OnAttack;
+            events.TakedDamage += OnTakeDamage;
         }
     }
 
@@ -26,10 +27,13 @@ public class EnemyAnimation : MonoBehaviour
         {
             events.Moving -= OnMove;
             events.Attacking -= OnAttack;
+            events.TakedDamage -= OnTakeDamage;
         }
     }
 
     private void OnMove() => _animator.SetTrigger("Move");
 
     private void OnAttack() => _animator.SetTrigger("Attack");
+
+    private void OnTakeDamage() => _animator.SetTrigger("TakeDamage");
 }
