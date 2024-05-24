@@ -624,6 +624,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.023223232
       objectReference: {fileID: 0}
+    - target: {fileID: 7593464423385394117, guid: 1258ad342f1611048b7e28cae02db76a, type: 3}
+      propertyPath: _enemyStates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593464423385394117, guid: 1258ad342f1611048b7e28cae02db76a, type: 3}
+      propertyPath: _enemyStates.Array.data[3]
+      value: 
+      objectReference: {fileID: 1410005509}
     - target: {fileID: 8001361329756216858, guid: 1258ad342f1611048b7e28cae02db76a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.58355
@@ -2105,6 +2113,18 @@ MonoBehaviour:
   _transitions:
   - {fileID: 1410005496}
   - {fileID: 1410005500}
+  - {fileID: 1410005514}
+--- !u!114 &1410005514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5929869830730180712, guid: 1258ad342f1611048b7e28cae02db76a, type: 3}
+  m_PrefabInstance: {fileID: 185050508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410005493}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acee9c4944b85434288882b6d137789b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1529153136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1315096219437756162, guid: a6655726923c97643826b87eeeedcd95, type: 3}
@@ -2568,11 +2588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1595966084832840294, guid: d9ed0c2037191f6469fb9fa254523a44, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.502
       objectReference: {fileID: 0}
     - target: {fileID: 1595966084832840294, guid: d9ed0c2037191f6469fb9fa254523a44, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1659182557850652622, guid: d9ed0c2037191f6469fb9fa254523a44, type: 3}
       propertyPath: m_Mass
@@ -2628,7 +2648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4492798069733816360, guid: d9ed0c2037191f6469fb9fa254523a44, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4891998135197618743, guid: d9ed0c2037191f6469fb9fa254523a44, type: 3}
       propertyPath: _distance

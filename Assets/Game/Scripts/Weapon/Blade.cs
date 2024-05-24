@@ -105,11 +105,8 @@ public class Blade : PoolObject
         if (collision.collider.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(_damage);
-            //Vector3 direction = (enemy.transform.forward * -1).normalized;
-            Vector3 direction = (enemy.transform.position - transform.position) * 5;
-            //Vector3 dir = -enemy.transform.forward * 4f;
+            Vector3 direction = (enemy.transform.position - transform.position) * 2;
             enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
-            //enemy.Rigidbody.DOMove(dir, 2f);
 
             CorountineStart(BackToPlayer());
         }

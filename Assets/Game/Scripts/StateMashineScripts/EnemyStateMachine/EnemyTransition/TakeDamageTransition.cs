@@ -13,6 +13,7 @@ public class TakeDamageTransition : Transition
 
     private void OnEnable()
     {
+        NeedTransit = false;
         _enemy.GotHit += OnTakeDamage;
     }
 

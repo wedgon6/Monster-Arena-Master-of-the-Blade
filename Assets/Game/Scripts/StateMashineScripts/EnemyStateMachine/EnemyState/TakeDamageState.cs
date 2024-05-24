@@ -1,21 +1,35 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class TakeDamageState : EnemyState
 {
     public override void Enter()
     {
-        base.Enter();
-        TakeDamage();
-    }
+        if (enabled == false)
+        {
+            enabled = true;
+            OnEnter();
+        }
 
-    public override void Exit()
-    {
-        base.Exit();
+        TakeDamage();
+        Debug.Log("TakeDamageEnter");
     }
 
     private void TakeDamage()
     {
         TakeDamageEvent();
+    }
+
+    private void EnebleTransition()
+    {
+        Debug.Log("EnebleTransition");
+        foreach (var transition in _transitions)
+        {
+            transition.enabled = true;
+        }
+    }
+
+    private void OnEnable()
+    {
+        
     }
 }

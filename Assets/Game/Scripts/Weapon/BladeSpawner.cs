@@ -62,7 +62,9 @@ public class BladeSpawner : MonoBehaviour
     private void ThrowBlade()
     {
         if (_bladeViwe.ThryThrow() == false)
+        {
             return;
+        }
         else
         {
             Blade blade;

@@ -8,12 +8,10 @@ public class AttackState : EnemyState
 
     private float _lastAttackTime = 0;
 
-    private void Update()
+    public override void Enter()
     {
-        if (Attack())
-        {
-            AttackEvent();
-        }
+        base.Enter();
+        Debug.Log("ENTERATTACK");
     }
 
     protected virtual bool Attack()
@@ -34,8 +32,20 @@ public class AttackState : EnemyState
         return false;
     }
 
+    private void Update()
+    {
+        if (Attack())
+        {
+            AttackEvent();
+        }
+    }
+
     private void ApplyDamage()
     {
-        Target.TakeDamage(_damage);
+        Vector3 directionToTarget = transform.position - Target.transform.position;
+        float distance = directionToTarget.magnitude;
+
+        if (distance <= _attackRange)
+            Target.TakeDamage(_damage);
     }
 }
