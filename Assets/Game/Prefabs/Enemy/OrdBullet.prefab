@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8000613035366998577}
   - component: {fileID: 5478627423998733747}
   - component: {fileID: 2911242013300939128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OrdBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

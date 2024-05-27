@@ -12,6 +12,12 @@ public class MovmentState : EnemyState
         MoveEvent();
     }
 
+    public override void Exit()
+    {
+        RigidbodyEnemy.velocity = Vector3.zero;
+        base.Exit();
+    }
+
     private void FixedUpdate()
     {
         Move();

@@ -14,6 +14,12 @@ public class TakeDamageState : EnemyState
         Debug.Log("TakeDamageEnter");
     }
 
+    public override void Exit()
+    {
+        RigidbodyEnemy.velocity = Vector3.zero;
+        base.Exit();
+    }
+
     private void TakeDamage()
     {
         TakeDamageEvent();
@@ -26,10 +32,5 @@ public class TakeDamageState : EnemyState
         {
             transition.enabled = true;
         }
-    }
-
-    private void OnEnable()
-    {
-        
     }
 }

@@ -11,7 +11,6 @@ public class AttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ENTERATTACK");
     }
 
     protected virtual bool Attack()
@@ -27,7 +26,7 @@ public class AttackState : EnemyState
                 return true;
             }
         }
-
+        Debug.Log($"attack - {distance}");
         _lastAttackTime -= Time.deltaTime;
         return false;
     }

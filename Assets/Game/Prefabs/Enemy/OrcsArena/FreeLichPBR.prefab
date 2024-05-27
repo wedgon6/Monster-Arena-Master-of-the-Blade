@@ -387,6 +387,8 @@ GameObject:
   - component: {fileID: 1070561404121599282}
   - component: {fileID: 6226405939945124866}
   - component: {fileID: 8276151115454569362}
+  - component: {fileID: 1157460293897525218}
+  - component: {fileID: 3362571910926088723}
   m_Layer: 7
   m_Name: FreeLichPBR
   m_TagString: Untagged
@@ -423,7 +425,7 @@ Animator:
   m_GameObject: {fileID: 4492798069733816360}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3dc717adf98c7b043a3e77ed0130d470, type: 3}
-  m_Controller: {fileID: 9100000, guid: 42b724a0854ea1941875827ab8ce0343, type: 2}
+  m_Controller: {fileID: 9100000, guid: 818186fe6985cef4a92e14239119e968, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -460,7 +462,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1463774479592269462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +505,9 @@ MonoBehaviour:
   _transitions:
   - {fileID: 7655904851062946429}
   - {fileID: 2235771325853129008}
+  - {fileID: 3362571910926088723}
   _moveSpeed: 0.5
-  _maxSpeed: 4
+  _maxSpeed: 2
 --- !u!114 &7655904851062946429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1070561404121599282}
-  _transitionRange: 3
+  _transitionRange: 10
 --- !u!114 &1017260147982459677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1592213275922094978}
-  _distance: 3
+  _distance: 15
 --- !u!114 &7851510804820169458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +578,7 @@ MonoBehaviour:
   - {fileID: 1017260147982459677}
   - {fileID: 1070561404121599282}
   - {fileID: 1592213275922094978}
+  - {fileID: 1157460293897525218}
 --- !u!114 &6798848205340037772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,12 +609,13 @@ MonoBehaviour:
   _transitions:
   - {fileID: 4891998135197618743}
   - {fileID: 7655904851062946429}
+  - {fileID: 3362571910926088723}
   _attackDelay: 5
   _attackRange: 10
   _damage: 15
   _bullet: {fileID: 2911242013300939128, guid: 6d433f2ca84dd9449a51982d3b76c8c2, type: 3}
   _pool: {fileID: 6226405939945124866}
-  _shootPoint: {fileID: 0}
+  _shootPoint: {fileID: 723423323438018510}
 --- !u!114 &6226405939945124866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +651,35 @@ CapsuleCollider:
   m_Height: 2.8186162
   m_Direction: 1
   m_Center: {x: 0, y: 1.409, z: 0}
+--- !u!114 &1157460293897525218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492798069733816360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721147156ac490d4c86a2c7e30855a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions:
+  - {fileID: 4891998135197618743}
+  - {fileID: 7655904851062946429}
+  - {fileID: 2235771325853129008}
+--- !u!114 &3362571910926088723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492798069733816360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e64adeaf9f7c84bb092b404da6d752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 1157460293897525218}
 --- !u!1 &5114466749882601420
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +832,7 @@ Transform:
   m_GameObject: {fileID: 6653060241347943465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0.87, z: 1.16}
+  m_LocalPosition: {x: -0.02, y: 1.32, z: 1.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

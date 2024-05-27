@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1565337928822342457}
   - component: {fileID: 3589183243058114092}
   - component: {fileID: 8084537970326758983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scythe1_3_2View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
