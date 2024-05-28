@@ -58,11 +58,24 @@ public class Blade : PoolObject
     {
         if (_isReturn)
         {
-            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 7f * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 5f * Time.fixedDeltaTime);
             _rigidbody.velocity = Vector3.zero;
             _direction = new Vector3(_bladeSpawner.transform.position.x, _bladeSpawner.transform.position.y, _bladeSpawner.transform.position.z).normalized;
-            _rigidbody.AddForce(_direction * 5f);
+            _rigidbody.AddForce(_direction * 2f);
             _direction = Vector3.zero;
+
+            if (_rigidbody.velocity.y < 0f)
+            {
+                _rigidbody.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
+            }
+
+            Vector3 horizontalVelocity = _rigidbody.velocity;
+            horizontalVelocity.y = 0;
+
+            if (horizontalVelocity.sqrMagnitude > 2 * 2)
+            {
+                _rigidbody.velocity = horizontalVelocity.normalized * 2 + Vector3.up * _rigidbody.velocity.y;
+            }
         }
     }
 

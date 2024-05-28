@@ -13,7 +13,7 @@ public class BladeSpawner : MonoBehaviour
     private float _playerSpeed;
     private bool _isActive = false;
     private float _currentTime = 0f;
-    private float _time = 1.5f;
+    private float _time = 1f;
 
     public event Action ThrowingBlade;
 
@@ -38,7 +38,7 @@ public class BladeSpawner : MonoBehaviour
 
         if (_isActive)
         {
-            if (_playerSpeed < 0.1f)
+            if (_playerSpeed <= 0.09f)
             {
                 if (_currentTime <= 0f)
                 {
