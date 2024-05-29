@@ -5,23 +5,30 @@ using UnityEngine;
 public class Enemy : PoolObject, IDamageable
 {
     [SerializeField] private float _maxHealth;
-    [SerializeField] private Player _target;
+    [SerializeField] private EnemyStateMachine _stateMachine;
+    [SerializeField] private TypeEnemy _typeEnemy;
 
+    private Player _target;
     private float _health;
     private Gold _gold = new Gold(5);
     private Daimond _daimond = new Daimond(1);
-
     private Rigidbody _rigidbody;
+    private EnemySpawner _spawner;
+
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _health;
     public Player Target => _target;
     public Rigidbody Rigidbody => _rigidbody;
+    public EnemySpawner Spawner => _spawner;
+    public string TypeEnemy => _typeEnemy.ToString();
 
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
     public event Action GotHit;
     public event Action Died;
+
+    public void ResetState() => _stateMachine.ResetStete();
 
     public float GetCurrentHealth()
     {
@@ -33,9 +40,10 @@ public class Enemy : PoolObject, IDamageable
         return _maxHealth;
     }
 
-    public void Initialize()
+    public void Initialize(Player player, EnemySpawner spawner)
     {
-
+        _target = player;
+        _spawner = spawner;
     }
 
     public void TakeDamage(float damage)
