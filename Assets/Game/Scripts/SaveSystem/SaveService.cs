@@ -37,9 +37,9 @@ public class SaveService : ISaveService
         }
     }
 
-    public void SaveData(PlayerWallet playerWallet)
+    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap)
     {
-        _gameInfo = new GameInfo(playerWallet);
+        _gameInfo = new GameInfo(playerWallet, choiceMap);
         _saveData = JsonUtility.ToJson(_gameInfo);
 
 #if UNITY_EDITOR
@@ -54,6 +54,6 @@ public class SaveService : ISaveService
     public void RelocateData(PlayerWallet playerWallet)
     {
         _gameInfo.AddEarnedMoney(playerWallet);
-        SaveData(playerWallet);
+        //SaveData(playerWallet, choiceMap);
     }
 }

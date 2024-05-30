@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +38,6 @@ public class ShoopTest : MonoBehaviour
 
     private void SaveData()
     {
-        Services.SaveService.SaveData(_playerWallet);
+        //Services.SaveService.SaveData(_playerWallet);
     }
 }

@@ -4442,6 +4442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerWallet: {fileID: 1962134351}
+  _choiceMap: {fileID: 1859678819}
 --- !u!1 &1534976922
 GameObject:
   m_ObjectHideFlags: 0

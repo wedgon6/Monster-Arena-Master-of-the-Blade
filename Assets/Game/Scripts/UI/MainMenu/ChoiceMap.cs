@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ChoiceMap : MonoBehaviour
 {
@@ -12,10 +13,19 @@ public class ChoiceMap : MonoBehaviour
     [SerializeField] private Button _playButton;
 
     private int _currentLevelIndex;
+    private Level _currentLevel;
 
-    private void Awake()
+    public int CurrentLevelIndex => _currentLevelIndex;
+
+    //private void Awake()
+    //{
+    //    ShowLevel(0);
+    //}
+
+    public void Initialize(int currentMapIndex, int currentCountStats)
     {
-        ShowLevel(0);
+        _currentLevel = _levels[currentMapIndex];
+        _currentLevel.Initialize(currentCountStats);
     }
 
     public void ShowLevel(int change)
