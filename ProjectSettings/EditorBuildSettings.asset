@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 62c973d386020d94a952138c5ab95961
+  - enabled: 1
+    path: Assets/Scenes/OrcArena.unity
+    guid: 41f6366f4766b1849af5a0a5ecc4a24f
   m_configObjects: {}

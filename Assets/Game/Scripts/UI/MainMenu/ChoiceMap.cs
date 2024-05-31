@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Unity.VisualScripting;
 
 public class ChoiceMap : MonoBehaviour
 {
@@ -16,11 +15,6 @@ public class ChoiceMap : MonoBehaviour
     private Level _currentLevel;
 
     public int CurrentLevelIndex => _currentLevelIndex;
-
-    //private void Awake()
-    //{
-    //    ShowLevel(0);
-    //}
 
     public void Initialize(int currentMapIndex, int currentCountStats)
     {
@@ -43,6 +37,11 @@ public class ChoiceMap : MonoBehaviour
         EneblePlayButton();
     }
 
+    private void OnEnable()
+    {
+        ShowLevel(_currentLevelIndex);
+    }
+
     private void EneblePlayButton()
     {
         _playButton.onClick.RemoveListener(OnClickPlayButton);
@@ -52,7 +51,7 @@ public class ChoiceMap : MonoBehaviour
     private void OnClickPlayButton()
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex].LoadScene);
-        asyncOperation.completed += _ => GameplayScene();
+        //asyncOperation.completed += _ => GameplayScene();
     }
 
     private void GameplayScene()

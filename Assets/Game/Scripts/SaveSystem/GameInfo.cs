@@ -22,10 +22,10 @@ public class GameInfo
         GetData();
     }
 
-    public void AddEarnedMoney(PlayerWallet playerWallet)
+    public void AddEarnedMoney(int relocateGold, int relocateDaimod)
     {
-        _earnedGaold += playerWallet.CurrentGold;
-        _earnedDaimond += playerWallet.CurrentDaimond;
+        PlayerGold += relocateGold;
+        PlayerDaimond += relocateDaimod;
     }
 
     public void GetData()

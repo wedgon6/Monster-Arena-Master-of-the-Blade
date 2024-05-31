@@ -12,8 +12,8 @@ public class DyingState : EnemyState
 
     private void OnDied()
     {
-        Destroy(gameObject);
         //Enemy.Dead();
+        Destroy(gameObject);
         //PlayerMoney.AddMoney(Enemy.Revard);
         //PlayerScore.AddScore(Enemy.CountScore);
         //Enemy.Spawner.EnemyDead();

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class ShoopTest : MonoBehaviour
 
     private Gold gold = new Gold(1);
     private Daimond daimond = new Daimond(1);
+
+    public event Action SavedData;
 
     private void OnEnable()
     {
@@ -38,6 +41,6 @@ public class ShoopTest : MonoBehaviour
 
     private void SaveData()
     {
-        //Services.SaveService.SaveData(_playerWallet);
+        SavedData?.Invoke();
     }
 }
