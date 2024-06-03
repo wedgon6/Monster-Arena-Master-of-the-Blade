@@ -6,13 +6,13 @@ using TMPro;
 
 public class ChoiceMap : MonoBehaviour
 {
-    [SerializeField] private List<Level> _levels;
+    [SerializeField] private List<MapScene> _levels;
     [SerializeField] private Image _levelIcon;
     [SerializeField] private TMP_Text _levelName;
     [SerializeField] private Button _playButton;
 
     private int _currentLevelIndex;
-    private Level _currentLevel;
+    private MapScene _currentLevel;
 
     public int CurrentLevelIndex => _currentLevelIndex;
 

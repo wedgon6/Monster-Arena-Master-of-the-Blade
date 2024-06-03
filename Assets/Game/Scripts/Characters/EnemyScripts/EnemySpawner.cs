@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     private List<EnemyWave> _enemyWaves = new List<EnemyWave>();
 
     public event Action EnemyDead;
-    public event Action SpawnerReset;
+    public event Action<int,int> SetedWaves;
 
     public void RestSpawner(int statsCount)
     {
@@ -198,12 +198,12 @@ public class EnemySpawner : MonoBehaviour
         }
 
         SetWave(_currentWaveNumber);
-        SpawnerReset?.Invoke();
+        SetedWaves?.Invoke(WaveLenght,_enemyWaves.Count);
     }
 
     private IEnumerator StartNextWave()
     {
-        int waitTime = 1;
+        int waitTime = 4;
         yield return new WaitForSeconds(waitTime);
         NextWave();
     }

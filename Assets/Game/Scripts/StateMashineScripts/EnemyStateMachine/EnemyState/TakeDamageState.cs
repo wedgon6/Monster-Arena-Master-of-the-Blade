@@ -11,7 +11,6 @@ public class TakeDamageState : EnemyState
         }
 
         TakeDamage();
-        Debug.Log("TakeDamageEnter");
     }
 
     public override void Exit()
@@ -27,7 +26,6 @@ public class TakeDamageState : EnemyState
 
     private void EnebleTransition()
     {
-        Debug.Log("EnebleTransition");
         foreach (var transition in _transitions)
         {
             transition.enabled = true;

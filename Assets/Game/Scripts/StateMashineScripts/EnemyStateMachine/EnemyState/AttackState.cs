@@ -26,7 +26,7 @@ public class AttackState : EnemyState
                 return true;
             }
         }
-        Debug.Log($"attack - {distance}");
+
         _lastAttackTime -= Time.deltaTime;
         return false;
     }

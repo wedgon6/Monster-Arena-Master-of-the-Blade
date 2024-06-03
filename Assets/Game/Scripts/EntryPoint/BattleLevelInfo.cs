@@ -6,6 +6,6 @@ public class BattleLevelInfo : MonoBehaviour
 
     private void Awake()
     {
-        _enemySpawner.RestSpawner(2);
+        _enemySpawner.RestSpawner(0);
     }
 }

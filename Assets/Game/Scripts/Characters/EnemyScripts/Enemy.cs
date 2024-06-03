@@ -14,9 +14,13 @@ public class Enemy : PoolObject, IDamageable
     private Daimond _daimond = new Daimond(1);
     private Rigidbody _rigidbody;
     private EnemySpawner _spawner;
+    private bool _isDead;
 
+    public Gold Gold => _gold;
+    public Daimond Daimond => _daimond;
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => _health;
+    public bool IsDead => _isDead;
     public Player Target => _target;
     public Rigidbody Rigidbody => _rigidbody;
     public EnemySpawner Spawner => _spawner;
@@ -42,8 +46,10 @@ public class Enemy : PoolObject, IDamageable
 
     public void Initialize(Player player, EnemySpawner spawner)
     {
+        _health = _maxHealth;
         _target = player;
         _spawner = spawner;
+        ChangeHealth?.Invoke(_health, _maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -62,15 +68,25 @@ public class Enemy : PoolObject, IDamageable
         if (_health <= 0)
         {
             _health = 0;
-            Died?.Invoke();
-            _target.PlayerWallet.AddMoney(_gold, _daimond);
+            _isDead = true;
         }
+    }
+
+    public void Dead()
+    {
+        ReturnToPool();
+        Died?.Invoke();
+    }
+
+    protected override void ReturnToPool()
+    {
+        base.ReturnToPool();
+        _isDead = false;
+        _health = _maxHealth;
     }
 
     private void Awake()
     {
-        _health = _maxHealth;
         _rigidbody = GetComponent<Rigidbody>();
-        ChangeHealth?.Invoke(_health, _maxHealth);
     }
 }

@@ -1,21 +1,16 @@
 public class DyingState : EnemyState
 {
-    private void OnEnable()
+    private void Update()
     {
-        Enemy.Died += OnDied;
+        if (Enemy.IsDead)
+        {
+            Die();
+        }
     }
 
-    private void OnDisable()
+    private void Die()
     {
-        Enemy.Died -= OnDied;
-    }
-
-    private void OnDied()
-    {
-        //Enemy.Dead();
-        Destroy(gameObject);
-        //PlayerMoney.AddMoney(Enemy.Revard);
-        //PlayerScore.AddScore(Enemy.CountScore);
-        //Enemy.Spawner.EnemyDead();
+        Enemy.Dead();
+        Target.PlayerWallet.AddMoney(Enemy.Gold, Enemy.Daimond);
     }
 }
