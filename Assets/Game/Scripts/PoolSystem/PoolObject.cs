@@ -12,7 +12,6 @@ public class PoolObject : MonoBehaviour
 
     protected virtual void ReturnToPool()
     {
-        Debug.Log("Return to pool");
         gameObject.SetActive(false);
         PoolReturned?.Invoke(this);
     }

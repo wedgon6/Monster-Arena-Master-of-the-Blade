@@ -2,19 +2,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BackMenu : MonoBehaviour
+public class WinPanel : MonoBehaviour
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private Player _player;
+    [SerializeField] private Button _backMenuButton;
+    [SerializeField] private Button _doubleRevardButton;
+
+    private Player _player;
+
+    public void Initialize(Player player)
+    {
+        _player = player;
+    }
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(BackMenuScene);
+        _backMenuButton.onClick.AddListener(BackMenuScene);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(BackMenuScene);
+        _backMenuButton.onClick.RemoveListener(BackMenuScene);
     }
 
     private void BackMenuScene()

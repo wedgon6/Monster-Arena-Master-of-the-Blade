@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private int _spawned;
     private int _countStats;
     private Coroutine _corontine;
-    private List<PoolObject> _createdEnemies = new List<PoolObject>();
+    private List<Enemy> _createdEnemies = new List<Enemy>();
     private List<EnemyWave> _enemyWaves = new List<EnemyWave>();
 
     public event Action EnemyDead;
@@ -40,6 +40,19 @@ public class EnemySpawner : MonoBehaviour
         SetWaveComplexity();
     }
 
+    public void PutEnemyToPool()
+    {
+        _currentWave = null;
+
+        if (_createdEnemies.Count > 0)
+        {
+            foreach (var enemy in _createdEnemies)
+            {
+                enemy.ReturObjectPool();
+            }
+        }
+    }
+
     public int GetEnemyCount()
     {
         int enemyCount = 0;
@@ -50,6 +63,14 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return enemyCount;
+    }
+
+    private void OnDisable()
+    {
+        foreach (var enemy in _createdEnemies)
+        {
+            enemy.Died -= OnEnemyDead;
+        }
     }
 
     private void Update()
@@ -97,6 +118,7 @@ public class EnemySpawner : MonoBehaviour
         {
             enemy = Instantiate(enemy, _spawnPoints[currentSpawnPont].position, _spawnPoints[currentSpawnPont].rotation, _spawnPoints[currentSpawnPont]).GetComponent<Enemy>();
             InitializeEnemy(enemy);
+            enemy.Died += OnEnemyDead;
             _createdEnemies.Add(enemy);
         }
     }
@@ -215,4 +237,10 @@ public class EnemySpawner : MonoBehaviour
 
         _corontine = StartCoroutine(corontine);
     }
+
+    private void OnEnemyDead()
+    {
+        EnemyDead?.Invoke();
+    }
+
 }

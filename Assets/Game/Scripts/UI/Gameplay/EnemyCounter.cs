@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,19 +7,31 @@ public class EnemyCounter : MonoBehaviour
     [SerializeField] private EnemySpawner _spawner;
     [SerializeField] private TMP_Text _countText;
 
-    private void OnEnable()
+    private int _currentCountEnemy;
+
+    public event Action AllEnemyDied;
+
+    private void Start()
     {
-        _spawner.SetedWaves += SetEnemyCount;
+        _spawner.EnemyDead += SetEnemyCount;
+        _currentCountEnemy = _spawner.GetEnemyCount();
+        _countText.text = _currentCountEnemy.ToString();
     }
 
     private void OnDisable()
     {
-        _spawner.SetedWaves -= SetEnemyCount;
+        _spawner.EnemyDead -= SetEnemyCount;
     }
 
-    private void SetEnemyCount(int waveLengh, int countWave)
+    private void SetEnemyCount()
     {
-        int countEnemy = waveLengh * countWave;
-        _countText.text = countEnemy.ToString();
+        if (_currentCountEnemy <= 0)
+            return;
+
+        _currentCountEnemy--;
+        _countText.text = _currentCountEnemy.ToString();
+
+        if (_currentCountEnemy <= 0)
+            AllEnemyDied?.Invoke();
     }
 }
