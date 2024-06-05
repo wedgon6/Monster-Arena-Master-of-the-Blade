@@ -14,6 +14,11 @@ public class MoneyView : MonoBehaviour
         _wallet.MoneyChanged += OnPlayerMoneyChenget;
     }
 
+    private void OnDisable()
+    {
+        _wallet.MoneyChanged -= OnPlayerMoneyChenget;
+    }
+
     private void OnPlayerMoneyChenget()
     {
         _goldView.text = _wallet.CurrentGold.ToString();

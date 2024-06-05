@@ -4,7 +4,9 @@ public class BattleLevelInfo : MonoBehaviour
 {
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private EnemyCounter _enemyCounter;
-    [SerializeField] private Player _palyer;
+    [SerializeField] private Player _player;
+    [SerializeField] private MoneyView _moneyView;
+    [SerializeField] private CameraController _camera;
 
     [SerializeField] private WinPanel _winPanel;
 
@@ -26,6 +28,7 @@ public class BattleLevelInfo : MonoBehaviour
     private void OnEnable()
     {
         _enemyCounter.AllEnemyDied += OnWinGame;
+        _moneyView.Initialize(0, 0);
     }
 
     private void OnDisable()
@@ -35,7 +38,8 @@ public class BattleLevelInfo : MonoBehaviour
 
     private void OnWinGame()
     {
-        _winPanel.Initialize(_palyer);
+        _winPanel.Initialize(_player);
         _winPanel.gameObject.SetActive(true);
+        //_camera.WinGameTransition();
     }
 }

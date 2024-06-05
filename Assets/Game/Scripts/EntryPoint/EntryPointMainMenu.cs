@@ -18,14 +18,19 @@ public class EntryPointMainMenu : MonoBehaviour
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
-            _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
-            _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
-            _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
+            InitializeScene(gameInfo);
 
         }
         else
         {
             _playerWallet.Initialize(0, 0);
         }
+    }
+
+    private void InitializeScene(GameInfo gameInfo)
+    {
+        _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
+        _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
+        _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
     }
 }

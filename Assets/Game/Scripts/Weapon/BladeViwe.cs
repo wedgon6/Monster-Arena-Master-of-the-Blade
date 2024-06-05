@@ -38,7 +38,9 @@ public class BladeViwe : MonoBehaviour
         BladeViwePrafab enebleBlade = _bladeViwePrafabs.FirstOrDefault(p => p.gameObject.activeSelf == true);
 
         if (enebleBlade == null)
+        {
             return false;
+        }
         else
         {
             enebleBlade.gameObject.SetActive(false);

@@ -22,10 +22,11 @@ public class GameInfo
         GetData();
     }
 
-    public void AddEarnedMoney(int relocateGold, int relocateDaimod)
+    public void AddEarnedMoney(int relocateGold, int relocateDaimod, int relocateStars)
     {
         PlayerGold += relocateGold;
         PlayerDaimond += relocateDaimod;
+        CurrentStatrsCount += relocateStars;
     }
 
     public void GetData()

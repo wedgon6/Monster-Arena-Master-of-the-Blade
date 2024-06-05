@@ -19,6 +19,12 @@ public class ChoiceMap : MonoBehaviour
     public void Initialize(int currentMapIndex, int currentCountStats)
     {
         _currentLevel = _levels[currentMapIndex];
+
+        if (currentCountStats >= 3)
+        {
+            ShowLevel(currentMapIndex + 1);
+        }
+
         _currentLevel.Initialize(currentCountStats);
     }
 
@@ -31,6 +37,7 @@ public class ChoiceMap : MonoBehaviour
         else if (_currentLevelIndex > _levels.Count - 1)
             _currentLevelIndex = 0;
 
+        _currentLevel = _levels[_currentLevelIndex];
         _levelIcon.sprite = _levels[_currentLevelIndex].LevelIcon;
         _levelName.text = _levels[_currentLevelIndex].LevelLable.ToString();
 

@@ -19,12 +19,4 @@ public class MapScene : ScriptableObject
     {
         _currentCountStars = currentCountStars;
     }
-
-    public void AddStars()
-    {
-        _currentCountStars++;
-
-        if (_currentCountStars == _maxCountStars)
-            _currentCountStars = 0;
-    }
 }
