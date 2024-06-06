@@ -33,6 +33,7 @@ public class GameInfo
     {
         PlayerGold = _playerWallet.CurrentGold;
         PlayerDaimond = _playerWallet.CurrentDaimond;
+        CurrentStatrsCount = _choiceMap.CurrentStars;
         CurrentMapIndex = _choiceMap.CurrentLevelIndex;
     }
 }

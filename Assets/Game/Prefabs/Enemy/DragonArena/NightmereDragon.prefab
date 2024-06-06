@@ -1378,7 +1378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _target: {fileID: 0}
+  _stateMachine: {fileID: 0}
+  _typeEnemy: 2
 --- !u!114 &3585806490751123448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,9 +1442,9 @@ MonoBehaviour:
   - {fileID: 4802756142758555838}
   - {fileID: 7925221337732661344}
   - {fileID: 8061290944466728122}
-  _attackDelay: 0
-  _attackRange: 0
-  _damage: 0
+  _attackDelay: 2
+  _attackRange: 3
+  _damage: 33
 --- !u!114 &3973043663809257852
 MonoBehaviour:
   m_ObjectHideFlags: 0

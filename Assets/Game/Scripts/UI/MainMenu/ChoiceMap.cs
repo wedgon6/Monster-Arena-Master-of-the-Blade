@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,25 +11,44 @@ public class ChoiceMap : MonoBehaviour
     [SerializeField] private Image _levelIcon;
     [SerializeField] private TMP_Text _levelName;
     [SerializeField] private Button _playButton;
+    [SerializeField] private GameObject _starsViewPrefab;
+    [SerializeField] private GameObject _starsConteiner;
 
     private int _currentLevelIndex;
+    private int _currentStars;
     private MapScene _currentLevel;
 
     public int CurrentLevelIndex => _currentLevelIndex;
+    public int CurrentStars => _currentStars;
+
+    public event Action CountStarsChenged;
 
     public void Initialize(int currentMapIndex, int currentCountStats)
     {
+        Debug.Log($"Полученные звезды - {currentCountStats}");
         _currentLevel = _levels[currentMapIndex];
+        _currentStars = currentCountStats;
 
-        if (currentCountStats >= 3)
+        if (_currentStars > 2)
         {
-            ShowLevel(currentMapIndex + 1);
+            _currentStars = 0;
+            Debug.Log($"Уменьшил звезды - {_currentStars}");
+            int nextLevelIndex = _currentStars + 1;
+            ShowLevel(nextLevelIndex);
+
         }
 
-        _currentLevel.Initialize(currentCountStats);
+        int countStarsView = _currentStars + 1;
+
+        for (int i = 0; i < countStarsView; i++)
+        {
+            Instantiate(_starsViewPrefab, _starsConteiner.transform);
+        }
+
+        CountStarsChenged?.Invoke();
     }
 
-    public void ShowLevel(int change)
+    private void ShowLevel(int change)
     {
         _currentLevelIndex += change;
 

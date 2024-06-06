@@ -10,16 +10,24 @@ public class SaveAndLoadSytem : MonoBehaviour
     {
         _shoopTest.SavedData += SaveGameData;
         _wallet.MoneyChanged += SaveGameData;
+        _choiceMap.CountStarsChenged += SaveGameStars;
     }
 
     private void OnDisable()
     {
         _shoopTest.SavedData -= SaveGameData;
         _wallet.MoneyChanged -= SaveGameData;
+        _choiceMap.CountStarsChenged -= SaveGameStars;
     }
 
     private void SaveGameData()
     {
         Services.SaveService.SaveData(_wallet, _choiceMap);
+    }
+
+    private void SaveGameStars()
+    {
+        Services.SaveService.SaveData(_wallet, _choiceMap);
+        Debug.Log($"{_choiceMap.CurrentStars} - звезд сохранено");
     }
 }

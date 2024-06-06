@@ -3764,7 +3764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 200
-  _target: {fileID: 0}
+  _stateMachine: {fileID: 2814953521407809957}
+  _typeEnemy: 0
 --- !u!114 &2814953521407809957
 MonoBehaviour:
   m_ObjectHideFlags: 0

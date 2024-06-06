@@ -15,7 +15,6 @@ public class PlayerWallet : MonoBehaviour
     {
         _currentGold = new Gold(gold);
         _currentDaimond = new Daimond(daimond);
-        Debug.Log("Деньги изменились!");
         MoneyChanged?.Invoke();
     }
 

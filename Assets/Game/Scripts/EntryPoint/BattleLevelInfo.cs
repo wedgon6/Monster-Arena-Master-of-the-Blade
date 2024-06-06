@@ -16,8 +16,10 @@ public class BattleLevelInfo : MonoBehaviour
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
+            Debug.Log($"Достал звезды для спавнеа {gameInfo.CurrentStatrsCount}");
             _currentCountStars = gameInfo.CurrentStatrsCount;
             _enemySpawner.RestSpawner(_currentCountStars);
+            Debug.Log($"Предал звезды для спавнеа {_currentCountStars}");
         }
         else
         {
