@@ -1,3 +1,5 @@
+using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 public class BattleLevelInfo : MonoBehaviour
@@ -6,7 +8,8 @@ public class BattleLevelInfo : MonoBehaviour
     [SerializeField] private EnemyCounter _enemyCounter;
     [SerializeField] private Player _player;
     [SerializeField] private MoneyView _moneyView;
-    [SerializeField] private CameraController _camera;
+    //[SerializeField] private CameraController _camera;
+    [SerializeField] private CinemachineVirtualCamera _camera;
 
     [SerializeField] private WinPanel _winPanel;
 
@@ -16,10 +19,8 @@ public class BattleLevelInfo : MonoBehaviour
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
-            Debug.Log($"Достал звезды для спавнеа {gameInfo.CurrentStatrsCount}");
             _currentCountStars = gameInfo.CurrentStatrsCount;
             _enemySpawner.RestSpawner(_currentCountStars);
-            Debug.Log($"Предал звезды для спавнеа {_currentCountStars}");
         }
         else
         {
@@ -40,8 +41,15 @@ public class BattleLevelInfo : MonoBehaviour
 
     private void OnWinGame()
     {
+        StartCoroutine(WinGame());
+    }
+
+    private IEnumerator WinGame()
+    {
+        CinemachineTransposer transposer = _camera.GetCinemachineComponent<CinemachineTransposer>();
+        transposer.m_FollowOffset = new Vector3(0, 2, 7);
+        yield return new WaitForSeconds(1f);
         _winPanel.Initialize(_player);
         _winPanel.gameObject.SetActive(true);
-        //_camera.WinGameTransition();
     }
 }

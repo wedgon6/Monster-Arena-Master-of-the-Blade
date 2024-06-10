@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private const int WaveLenght = 3;
+    private const int WaveLenght = 1;
 
     [SerializeField] private Transform[] _spawnPoints;
 

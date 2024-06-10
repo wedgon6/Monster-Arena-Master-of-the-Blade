@@ -25,18 +25,12 @@ public class ChoiceMap : MonoBehaviour
 
     public void Initialize(int currentMapIndex, int currentCountStats)
     {
-        Debug.Log($"Полученные звезды - {currentCountStats}");
+        _currentLevelIndex = currentMapIndex;
         _currentLevel = _levels[currentMapIndex];
         _currentStars = currentCountStats;
 
         if (_currentStars > 2)
-        {
-            _currentStars = 0;
-            Debug.Log($"Уменьшил звезды - {_currentStars}");
-            int nextLevelIndex = _currentStars + 1;
-            ShowLevel(nextLevelIndex);
-
-        }
+            SetNextMap();
 
         int countStarsView = _currentStars + 1;
 
@@ -48,25 +42,31 @@ public class ChoiceMap : MonoBehaviour
         CountStarsChenged?.Invoke();
     }
 
-    private void ShowLevel(int change)
+    private void SetNextMap()
     {
-        _currentLevelIndex += change;
+        _currentStars = 0;
+        _currentLevelIndex++;
 
         if (_currentLevelIndex < 0)
             _currentLevelIndex = _levels.Count - 1;
         else if (_currentLevelIndex > _levels.Count - 1)
             _currentLevelIndex = 0;
 
-        _currentLevel = _levels[_currentLevelIndex];
-        _levelIcon.sprite = _levels[_currentLevelIndex].LevelIcon;
-        _levelName.text = _levels[_currentLevelIndex].LevelLable.ToString();
+        ShowLevel(_levels[_currentLevelIndex]);
+    }
+
+    private void ShowLevel(MapScene map)
+    {
+        _currentLevel = map;
+        _levelIcon.sprite = map.LevelIcon;
+        _levelName.text = map.LevelLable.ToString();
 
         EneblePlayButton();
     }
 
     private void OnEnable()
     {
-        ShowLevel(_currentLevelIndex);
+        ShowLevel(_currentLevel);
     }
 
     private void EneblePlayButton()
