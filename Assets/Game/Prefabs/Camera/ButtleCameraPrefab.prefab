@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8723415524846182688}
   - component: {fileID: 1902927391022022822}
   - component: {fileID: 4671273118807922621}
+  - component: {fileID: 6677324042765650399}
   m_Layer: 0
   m_Name: ButtleCameraPrefab
   m_TagString: MainCamera
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
+    m_Style: 6
     m_Time: 2
     m_CustomCurve:
       serializedVersion: 2
@@ -145,7 +146,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -168,6 +169,19 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 9193617541008779073}
+--- !u!114 &6677324042765650399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324955686958866368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1e27e39ac51fa4eb7893ec7f1de03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 4671273118807922621}
 --- !u!1 &3541262753027690116
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class WinPanel : MonoBehaviour
     private void BackMenuScene()
     {
         RelocateEarnedMoney();
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("MenuScene");
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("1_MenuScene");
     }
 
     private void RelocateEarnedMoney()

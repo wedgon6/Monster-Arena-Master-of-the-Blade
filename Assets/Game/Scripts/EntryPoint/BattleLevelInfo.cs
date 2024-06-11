@@ -9,7 +9,8 @@ public class BattleLevelInfo : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private MoneyView _moneyView;
     //[SerializeField] private CameraController _camera;
-    [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private CinemachineVirtualCamera _mainCamera;
+    //[SerializeField] private CinemachineVirtualCamera _camera;
 
     [SerializeField] private WinPanel _winPanel;
 
@@ -46,9 +47,10 @@ public class BattleLevelInfo : MonoBehaviour
 
     private IEnumerator WinGame()
     {
-        CinemachineTransposer transposer = _camera.GetCinemachineComponent<CinemachineTransposer>();
-        transposer.m_FollowOffset = new Vector3(0, 2, 7);
-        yield return new WaitForSeconds(1f);
+        //CinemachineTransposer transposer = _mainCamera.GetCinemachineComponent<CinemachineTransposer>();
+        //transposer.m_FollowOffset = new Vector3(0, 2, 7);
+        _mainCamera.Priority = -1;
+        yield return new WaitForSeconds(2.2f);
         _winPanel.Initialize(_player);
         _winPanel.gameObject.SetActive(true);
     }
