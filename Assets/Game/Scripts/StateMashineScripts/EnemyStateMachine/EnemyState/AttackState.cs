@@ -36,6 +36,7 @@ public class AttackState : EnemyState
         if (Attack())
         {
             AttackEvent();
+            Debug.Log("Анимация атаки");
         }
     }
 
