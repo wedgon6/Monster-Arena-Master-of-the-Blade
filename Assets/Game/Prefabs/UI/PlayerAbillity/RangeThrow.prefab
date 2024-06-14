@@ -274,8 +274,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 784299478, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -349,7 +349,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Move Speed
+  m_text: 'Range Throw
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -429,9 +431,9 @@ GameObject:
   - component: {fileID: 2224113851201181434}
   - component: {fileID: 6924386950207754882}
   - component: {fileID: 8488082661784505072}
-  - component: {fileID: 7875075927070579099}
+  - component: {fileID: 2053416458423112464}
   m_Layer: 5
-  m_Name: AbilittyView
+  m_Name: RangeThrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,7 +499,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7875075927070579099
+--- !u!114 &2053416458423112464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,13 +508,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5729956872588680745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35cccfaed18612a4bb70e6772f82b51a, type: 3}
+  m_Script: {fileID: 11500000, guid: 69ebfbf43ec9eb84e88b95111046cd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _lable: {fileID: 557212168451418246}
-  _price: {fileID: 8861159471978763027}
-  _icon: {fileID: 6140946962544663954}
-  _sellButton: {fileID: 2856242448406108359}
+  _icon: {fileID: 784299478, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
+  _multiplier: 1.41
+  _startPrice: 1000
 --- !u!1 &8974450126472453202
 GameObject:
   m_ObjectHideFlags: 0
