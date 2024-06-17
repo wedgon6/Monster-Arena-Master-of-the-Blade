@@ -34,7 +34,7 @@ public class ShopItem : MonoBehaviour
         PriceChanged?.Invoke();
     }
 
-    public virtual void Buy(Player player)
+    public virtual void Buy(ParametersPlayer parametersPlayer)
     {
         _currentPrice = (int)Math.Round(CurrentPrice * Multiplier, 0);
         PriceChanged?.Invoke();

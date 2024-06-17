@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleButton : MonoBehaviour
+public class OpenButton : MonoBehaviour
 {
-    [SerializeField] private ChoiceMap _choiceMap;
+    [SerializeField] private GameObject _pabel;
     [SerializeField] private Button _openButton;
 
     private void OnEnable()
@@ -18,6 +18,6 @@ public class BattleButton : MonoBehaviour
 
     private void OpenPanel()
     {
-        _choiceMap.gameObject.SetActive(true);
+        _pabel.gameObject.SetActive(true);
     }
 }

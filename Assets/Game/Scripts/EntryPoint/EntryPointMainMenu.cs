@@ -5,6 +5,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private MoneyView _moneyView;
+    [SerializeField] private Shop _shop;
 
     private GameInfo _gameInfo;
 
@@ -23,7 +24,7 @@ public class EntryPointMainMenu : MonoBehaviour
         }
         else
         {
-            _playerWallet.Initialize(0, 0);
+            InitializeNewData();
         }
     }
 
@@ -32,5 +33,14 @@ public class EntryPointMainMenu : MonoBehaviour
         _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
+        _shop.InitializeShop();
+    }
+
+    private void InitializeNewData()
+    {
+        _playerWallet.Initialize(0, 0);
+        _moneyView.Initialize(0, 0);
+        _choiceMap.Initialize(0, 0);
+        _shop.InitializeShop();
     }
 }

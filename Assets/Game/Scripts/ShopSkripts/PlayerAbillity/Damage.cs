@@ -1,7 +1,8 @@
 public class Damage : ShopItem
 {
-    public override void Buy(Player player)
+    public override void Buy(ParametersPlayer parametersPlayer)
     {
-        base.Buy(player);
+        parametersPlayer.AddDamage();
+        base.Buy(parametersPlayer);
     }
 }

@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 2224113851201181434}
   - component: {fileID: 6924386950207754882}
   - component: {fileID: 8488082661784505072}
-  - component: {fileID: 2053416458423112464}
+  - component: {fileID: 6909424501876253450}
   m_Layer: 5
   m_Name: RangeThrow
   m_TagString: Untagged
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2053416458423112464
+--- !u!114 &6909424501876253450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5729956872588680745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ebfbf43ec9eb84e88b95111046cd20, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cdd2d7f2012ec4449accd6ae0c2c8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _lable: {fileID: 557212168451418246}
