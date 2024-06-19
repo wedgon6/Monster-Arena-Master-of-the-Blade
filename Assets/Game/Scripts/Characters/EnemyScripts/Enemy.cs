@@ -10,7 +10,7 @@ public class Enemy : PoolObject, IDamageable
 
     private Player _target;
     private float _health;
-    private Gold _gold = new Gold(5);
+    private Gold _gold = new Gold(5000);
     private Daimond _daimond = new Daimond(1);
     private Rigidbody _rigidbody;
     private EnemySpawner _spawner;

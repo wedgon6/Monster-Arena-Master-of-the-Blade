@@ -6,8 +6,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private MoneyView _moneyView;
     [SerializeField] private Shop _shop;
-
-    private GameInfo _gameInfo;
+    [SerializeField] private ParametersPlayer _parameters;
 
     private void Awake()
     {
@@ -20,7 +19,6 @@ public class EntryPointMainMenu : MonoBehaviour
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
             InitializeScene(gameInfo);
-
         }
         else
         {
@@ -33,7 +31,9 @@ public class EntryPointMainMenu : MonoBehaviour
         _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
-        _shop.InitializeShop();
+        _shop.InitializeShop(gameInfo);
+        _parameters.Initialize(gameInfo);
+        Debug.Log("Инициализация из облака");
     }
 
     private void InitializeNewData()
@@ -42,5 +42,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _moneyView.Initialize(0, 0);
         _choiceMap.Initialize(0, 0);
         _shop.InitializeShop();
+        _parameters.Initialize();
+        Debug.Log("Инициализация обычная");
     }
 }

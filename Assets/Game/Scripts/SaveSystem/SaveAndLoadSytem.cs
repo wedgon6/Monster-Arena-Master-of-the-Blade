@@ -6,6 +6,7 @@ public class SaveAndLoadSytem : MonoBehaviour
     [SerializeField] private PlayerWallet _wallet;
     [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private ParametersPlayer _parametersPlayer;
+    [SerializeField] private Shop _shop;
 
     private void OnEnable()
     {
@@ -25,11 +26,6 @@ public class SaveAndLoadSytem : MonoBehaviour
 
     private void SaveGameData()
     {
-        Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer);
-    }
-
-    private void SaveGameStars()
-    {
-        Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer);
+        Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer, _shop);
     }
 }

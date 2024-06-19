@@ -6,7 +6,8 @@ public class SaveService : ISaveService
 {
     private const string DataKeyCloud = "PlayerDataCloud";
     private const string DataKeyLocal = "PlayerDataLocalTest";
-    private const string DataKeyLocal1 = "PlayerDataLocalTest1";
+    //private const string DataKeyLocal1 = "PlayerDataLocalTest1";
+    private const string DataKeyLocal2 = "PlayerDataLocalTest7";
 
     private static GameInfo _gameInfo;
     private string _saveData;
@@ -18,9 +19,9 @@ public class SaveService : ISaveService
     {
         string data;
 #if UNITY_EDITOR
-        if (UnityEngine.PlayerPrefs.HasKey(DataKeyLocal1))
+        if (UnityEngine.PlayerPrefs.HasKey(DataKeyLocal2))
         {
-            data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal1);
+            data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal2);
             gameInfo = JsonUtility.FromJson<GameInfo>(data);
             gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars);
             _gameInfo = gameInfo;
@@ -45,13 +46,13 @@ public class SaveService : ISaveService
         }
     }
 
-    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer)
+    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, Shop shop)
     {
-        _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer);
+        _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop);
         _saveData = JsonUtility.ToJson(_gameInfo);
 
 #if UNITY_EDITOR
-        UnityEngine.PlayerPrefs.SetString(DataKeyLocal1, _saveData);
+        UnityEngine.PlayerPrefs.SetString(DataKeyLocal2, _saveData);
         UnityEngine.PlayerPrefs.Save();
 #else
         Agava.YandexGames.Utility.PlayerPrefs.SetString(DataKeyCloud, _saveData);
@@ -64,6 +65,5 @@ public class SaveService : ISaveService
         _relocateGold = playerWallet.CurrentGold;
         _relocateDaimond = playerWallet.CurrentDaimond;
         _relocateStars = countStars;
-        Debug.Log($"Перенесенные звезды {_relocateStars}");
     }
 }

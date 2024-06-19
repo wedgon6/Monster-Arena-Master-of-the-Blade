@@ -4,6 +4,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerWallet _wallet;
+    [SerializeField] private BladeSpawner _bladeSpawner;
+    [SerializeField] private Movment _movment;
     
     private float _maxHealth = 1000;
     private float _health;
@@ -18,6 +20,17 @@ public class Player : MonoBehaviour, IDamageable
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
     public event Action Died;
+
+    public void Initialize(GameInfo gameInfo)
+    {
+        _maxHealth = gameInfo.MaxPlayerHealth;
+        _health = _maxHealth;
+        ChangeHealth?.Invoke(_health, _maxHealth);
+
+        Debug.Log($"Игрок передал скорость - {gameInfo.PlayerMoveSpeed}");
+        _movment.Initialize(gameInfo.PlayerMoveSpeed);
+        _bladeSpawner.Initialize(gameInfo.Damage, gameInfo.RangeThrow);
+    }
 
     public float GetCurrentHealth()
     {
@@ -51,7 +64,5 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         _wallet.Initialize(_gold.Value, _daimond.Value);
-        _health = _maxHealth;
-        ChangeHealth?.Invoke(_health, _maxHealth);
     }
 }

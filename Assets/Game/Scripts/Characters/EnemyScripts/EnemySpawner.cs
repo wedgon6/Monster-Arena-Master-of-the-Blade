@@ -32,7 +32,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void RestSpawner(int statsCount)
     {
-        Debug.Log($"звезды полученные в спавнер {statsCount}");
         _enemyWaves.Clear();
         _countStats = statsCount;
         _timeAfterLastSpawn = 0;
@@ -243,5 +242,4 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyDead?.Invoke();
     }
-
 }

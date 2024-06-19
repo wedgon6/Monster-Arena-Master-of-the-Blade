@@ -1978,6 +1978,7 @@ MonoBehaviour:
   _wallet: {fileID: 1962134351}
   _choiceMap: {fileID: 1859678819}
   _parametersPlayer: {fileID: 696690437}
+  _shop: {fileID: 469411287}
 --- !u!4 &696690435
 Transform:
   m_ObjectHideFlags: 0
@@ -2009,6 +2010,7 @@ MonoBehaviour:
   _choiceMap: {fileID: 1859678819}
   _moneyView: {fileID: 980282903}
   _shop: {fileID: 469411287}
+  _parameters: {fileID: 696690437}
 --- !u!114 &696690437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,6 +2023,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de2197ec8c270c48a3c0764a7cac062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthStep: 20
+  _moveSpeedStep: 0.5
+  _damageStep: 5
+  _rangeThrowStep: 0.5
 --- !u!1 &738210017
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,10 +5874,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levels:
-  - {fileID: 11400000, guid: a3f06e0f2ca75d24d90714e264b28429, type: 2}
   - {fileID: 11400000, guid: 6f376dea4b4fccf479d6ebb2f7c6a545, type: 2}
   - {fileID: 11400000, guid: d614e36dc742cc3458f3e52a74e44851, type: 2}
   - {fileID: 11400000, guid: 718d227c18a30bf439535068202790ea, type: 2}
+  - {fileID: 11400000, guid: a3f06e0f2ca75d24d90714e264b28429, type: 2}
   _levelIcon: {fileID: 1548479647}
   _levelName: {fileID: 1802318240}
   _playButton: {fileID: 1250518546}

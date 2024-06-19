@@ -8,6 +8,11 @@ public class ParametersPlayer : MonoBehaviour
     private const float StandartDamage = 20f;
     private const float StandartRangeThrow = 3f;
 
+    [SerializeField] private float _healthStep = 20f;
+    [SerializeField] private float _moveSpeedStep = 0.5f;
+    [SerializeField] private float _damageStep = 5f;
+    [SerializeField] private float _rangeThrowStep = 0.5f;
+
     private float _maxPlayerHealth;
     private float _playerMoveSpeed;
     private float _damage;
@@ -20,23 +25,47 @@ public class ParametersPlayer : MonoBehaviour
     public float Damage => _damage;
     public float RangeThrow => _rangeThrow;
 
+    public void Initialize()
+    {
+        _maxPlayerHealth = StandartMaxHealth;
+        _playerMoveSpeed = StandartMoveSpeed;
+        _damage = StandartDamage;
+        _rangeThrow = StandartRangeThrow;
+        Debug.Log(_playerMoveSpeed);
+        SavedData?.Invoke();
+    }
+
+    public void Initialize(GameInfo data)
+    {
+        _maxPlayerHealth = data.MaxPlayerHealth;
+        _playerMoveSpeed = data.PlayerMoveSpeed;
+        _damage = data.Damage;
+        _rangeThrow = data.RangeThrow;
+        Debug.Log(_playerMoveSpeed);
+        SavedData?.Invoke();
+    }
+
     public void AddMaxHealth()
     {
+        _maxPlayerHealth += _healthStep;
         SavedData?.Invoke();
     }
 
     public void AddMoveSpeed()
     {
+        _playerMoveSpeed += _moveSpeedStep;
         SavedData?.Invoke();
     }
 
     public void AddDamage()
     {
+        _damage = _damageStep;
         SavedData?.Invoke();
     }
 
     public void AddRangeThrow()
     {
+        _rangeThrow = _rangeThrowStep;
         SavedData?.Invoke();
     }
 }

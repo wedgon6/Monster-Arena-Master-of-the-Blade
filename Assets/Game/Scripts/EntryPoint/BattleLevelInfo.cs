@@ -8,24 +8,22 @@ public class BattleLevelInfo : MonoBehaviour
     [SerializeField] private EnemyCounter _enemyCounter;
     [SerializeField] private Player _player;
     [SerializeField] private MoneyView _moneyView;
-    //[SerializeField] private CameraController _camera;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
-    //[SerializeField] private CinemachineVirtualCamera _camera;
 
     [SerializeField] private WinPanel _winPanel;
-
-    private int _currentCountStars;
 
     private void Awake()
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
-            _currentCountStars = gameInfo.CurrentStatrsCount;
-            _enemySpawner.RestSpawner(_currentCountStars);
+            _player.Initialize(gameInfo);
+            _enemySpawner.RestSpawner(gameInfo.CurrentStatrsCount);
+            Debug.Log("Загрузка из облака");
         }
         else
         {
             _enemySpawner.RestSpawner(0);
+            Debug.Log("Загрузка не из облака");
         }
     }
 
@@ -47,8 +45,6 @@ public class BattleLevelInfo : MonoBehaviour
 
     private IEnumerator WinGame()
     {
-        //CinemachineTransposer transposer = _mainCamera.GetCinemachineComponent<CinemachineTransposer>();
-        //transposer.m_FollowOffset = new Vector3(0, 2, 7);
         _mainCamera.Priority = -1;
         yield return new WaitForSeconds(2.2f);
         _winPanel.Initialize(_player);

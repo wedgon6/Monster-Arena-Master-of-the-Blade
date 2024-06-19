@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class GameInfo
@@ -14,17 +15,23 @@ public class GameInfo
     public int CurrentStatrsCount;
     public int CurrentMapIndex;
 
+    public List<int> AbilitiesPrise = new List<int>();
+
     private PlayerWallet _playerWallet;
     private ChoiceMap _choiceMap;
     private ParametersPlayer _parametersPlayer;
+    private Shop _shop;
+
     private static int _earnedGaold = 0;
     private static int _earnedDaimond = 0;
 
-    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters)
+    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, Shop shop)
     {
         _playerWallet = playerWallet;
         _choiceMap = choiceMap;
         _parametersPlayer = parameters;
+        _shop = shop;
+
         PlayerGold += _earnedGaold;
         PlayerDaimond += _earnedDaimond;
         GetData();
@@ -41,11 +48,18 @@ public class GameInfo
     {
         PlayerGold = _playerWallet.CurrentGold;
         PlayerDaimond = _playerWallet.CurrentDaimond;
+
         CurrentStatrsCount = _choiceMap.CurrentStars;
         CurrentMapIndex = _choiceMap.CurrentLevelIndex;
+
         MaxPlayerHealth = _parametersPlayer.MaxPlayerHealth;
         PlayerMoveSpeed = _parametersPlayer.PlayerMoveSpeed;
         Damage = _parametersPlayer.Damage;
         RangeThrow = _parametersPlayer.RangeThrow;
+
+        for (int i = 0; i < _shop.PlayerAbillities.Count; i++)
+        {
+            AbilitiesPrise.Add(_shop.PlayerAbillities[i].Price);
+        }
     }
 }

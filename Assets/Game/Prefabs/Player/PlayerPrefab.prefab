@@ -4257,6 +4257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wallet: {fileID: 4814508838021446733}
+  _bladeSpawner: {fileID: 8736774262028788217}
+  _movment: {fileID: 4054781239415726963}
 --- !u!114 &4814508838021446733
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class Movment : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _maxMoveSpeed;
     [SerializeField] private Camera _camera;
 
+    private float _moveSpeed;
+    private float _maxMoveSpeed;
     private PlayerInput _playerInputSystem;
     private Vector3 _direction;
     private Rigidbody _rigidbody;
@@ -18,6 +18,13 @@ public class Movment : MonoBehaviour
     public Rigidbody PlayerRigidbody => _rigidbody;
     public Vector3 Direction => _direction;
     public Camera Camera => _camera;
+
+    public void Initialize(float speed)
+    {
+        _moveSpeed = speed;
+        _maxMoveSpeed = speed * 2;
+        Debug.Log($"Мовмент принял скорость - {speed}");
+    }
 
     private void Awake()
     {

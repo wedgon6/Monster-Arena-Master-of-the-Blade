@@ -28,7 +28,7 @@ public class ShopItem : MonoBehaviour
         PriceChanged?.Invoke();
     }
 
-    public void GetCloudData(int currentLvl, int currentPrice)
+    public void GetCloudData(int currentPrice)
     {
         _currentPrice = currentPrice;
         PriceChanged?.Invoke();

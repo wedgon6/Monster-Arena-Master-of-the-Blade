@@ -19,6 +19,15 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public void InitializeShop(GameInfo gameInfo)
+    {
+        for (int i = 0; i < _playerAbillities.Count; i++)
+        {
+            AddItem(_playerAbillities[i]);
+            _playerAbillities[i].GetCloudData(gameInfo.AbilitiesPrise[i]);
+        }
+    }
+
     private void AddItem(ShopItem abillity)
     {
         var view = Instantiate(_shopView, _abillityConteiner.transform);

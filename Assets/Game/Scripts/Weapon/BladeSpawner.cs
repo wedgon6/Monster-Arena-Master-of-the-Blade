@@ -14,8 +14,16 @@ public class BladeSpawner : MonoBehaviour
     private bool _isActive = false;
     private float _currentTime = 0f;
     private float _time = 1f;
+    private float _rangeThrow;
+    private float _damage;
 
     public event Action ThrowingBlade;
+
+    public void Initialize(float damage, float rangeThrow)
+    {
+        _damage = damage;
+        _rangeThrow = rangeThrow;
+    }
 
     private void Start()
     {
@@ -38,7 +46,7 @@ public class BladeSpawner : MonoBehaviour
 
         if (_isActive)
         {
-            if (_playerSpeed <= 0.09f)
+            if (_playerSpeed <= 0.1f)
             {
                 if (_currentTime <= 0f)
                 {
@@ -83,8 +91,8 @@ public class BladeSpawner : MonoBehaviour
                 _bladePool.InstantiatePoolObject(blade);
             }
 
-            blade.Initialaze(this);
-            blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 5f, ForceMode.Impulse);
+            blade.Initialaze(this, _damage);
+            blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * _rangeThrow, ForceMode.Impulse);
             ThrowingBlade?.Invoke();
         }
     }

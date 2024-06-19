@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/1_MenuScene.unity
     guid: 2d16c167fe36f604d8dad2d3936a0923
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 62c973d386020d94a952138c5ab95961
+    path: Assets/Scenes/2_MagicalArena.unity
+    guid: 249c6d851a9ba404a858a5e72f6be078
   - enabled: 1
     path: Assets/Scenes/3_OrcArena.unity
     guid: 41f6366f4766b1849af5a0a5ecc4a24f
@@ -23,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/5_ElementalArena.unity
     guid: 49f0d63b4af77364a972c9e4fccbf4f4
-  - enabled: 1
-    path: Assets/Scenes/2_MagicalArena.unity
-    guid: 249c6d851a9ba404a858a5e72f6be078
   m_configObjects: {}

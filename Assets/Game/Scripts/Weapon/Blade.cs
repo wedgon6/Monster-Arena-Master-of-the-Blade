@@ -23,9 +23,10 @@ public class Blade : PoolObject
     public Vector3 StartPoint => _startPoint;
     public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
-    public void Initialaze(BladeSpawner bladeSpawner)
+    public void Initialaze(BladeSpawner bladeSpawner, float damage)
     {
         _bladeSpawner = bladeSpawner;
+        _damage = damage;
         _startPoint = _bladeSpawner.transform.position;
         CorountineStart(Throw());
     }
