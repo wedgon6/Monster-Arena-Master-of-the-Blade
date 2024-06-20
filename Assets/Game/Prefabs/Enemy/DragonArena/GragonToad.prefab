@@ -1815,7 +1815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 4165109532803160444}
-  _distance: 3
+  _distance: 10
 --- !u!114 &9160876918295108090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1888,9 +1888,9 @@ MonoBehaviour:
   - {fileID: 9160876918295108090}
   - {fileID: 5404936223847318786}
   _attackDelay: 2
-  _attackRange: 3
+  _attackRange: 10
   _damage: 10
-  _bullet: {fileID: 2911242013300939128, guid: 6d433f2ca84dd9449a51982d3b76c8c2, type: 3}
+  _bullet: {fileID: 1134366832853207006, guid: db808005d37333140b5e7ec9635d3728, type: 3}
   _pool: {fileID: 5804723865323397652}
   _shootPoint: {fileID: 4809823859504511897}
 --- !u!114 &8501800170713732139
@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 824486413507834279}
-  _transitionRange: 3
+  _transitionRange: 10
 --- !u!114 &5804723865323397652
 MonoBehaviour:
   m_ObjectHideFlags: 0

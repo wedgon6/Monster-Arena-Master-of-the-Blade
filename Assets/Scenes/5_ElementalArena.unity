@@ -469,11 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016246803
+      value: 0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005665764
+      value: -0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1052,6 +1052,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1119433334}
+    - target: {fileID: 6520185967972073564, guid: 7978b7d19050be8489c66edd877ea178, type: 3}
+      propertyPath: _deadParticle
+      value: 
+      objectReference: {fileID: 172590, guid: 93c383a7bb6b65547bc569e7d7f10507, type: 3}
     - target: {fileID: 6520185967972073564, guid: 7978b7d19050be8489c66edd877ea178, type: 3}
       propertyPath: _enemiesPrefab._bigEnemy
       value: 

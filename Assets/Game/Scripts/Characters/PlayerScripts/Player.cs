@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
-    public event Action Died;
+    public event Action<Transform> Died;
 
     public void Initialize(GameInfo gameInfo)
     {
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             _health = 0;
-            Died?.Invoke();
+            Died?.Invoke(transform);
         }
     }
 

@@ -30,7 +30,7 @@ public class Enemy : PoolObject, IDamageable
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
     public event Action GotHit;
-    public event Action Died;
+    public event Action<Transform> Died;
 
     public void ResetState() => _stateMachine.ResetStete();
 
@@ -75,7 +75,7 @@ public class Enemy : PoolObject, IDamageable
     public void Dead()
     {
         ReturnToPool();
-        Died?.Invoke();
+        Died?.Invoke(transform);
     }
 
     protected override void ReturnToPool()

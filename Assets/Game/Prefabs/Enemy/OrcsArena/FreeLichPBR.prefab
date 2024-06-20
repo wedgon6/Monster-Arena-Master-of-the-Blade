@@ -601,7 +601,7 @@ MonoBehaviour:
   _attackDelay: 5
   _attackRange: 10
   _damage: 15
-  _bullet: {fileID: 2911242013300939128, guid: 6d433f2ca84dd9449a51982d3b76c8c2, type: 3}
+  _bullet: {fileID: 8032264472661401937, guid: a040f1ab141efeb469bdc20a005887dc, type: 3}
   _pool: {fileID: 6226405939945124866}
   _shootPoint: {fileID: 723423323438018510}
 --- !u!114 &6226405939945124866

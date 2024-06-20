@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     private const int WaveLenght = 1;
 
     [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private GameObject _deadParticle;
 
     [SerializeField] private Player _player;
     [SerializeField] private EnemiesList _enemiesPrefab;
@@ -238,8 +239,9 @@ public class EnemySpawner : MonoBehaviour
         _corontine = StartCoroutine(corontine);
     }
 
-    private void OnEnemyDead()
+    private void OnEnemyDead(Transform enemyTransform)
     {
         EnemyDead?.Invoke();
+        Instantiate(_deadParticle, new Vector3(enemyTransform.position.x, enemyTransform.position.y, enemyTransform.position.z), Quaternion.identity);
     }
 }

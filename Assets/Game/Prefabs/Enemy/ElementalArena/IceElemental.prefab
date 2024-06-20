@@ -1446,7 +1446,7 @@ MonoBehaviour:
   _attackDelay: 1
   _attackRange: 10
   _damage: 10
-  _bullet: {fileID: 2911242013300939128, guid: 6d433f2ca84dd9449a51982d3b76c8c2, type: 3}
+  _bullet: {fileID: 730657505162015656, guid: 81a1d76bc2cd48e4d930d327208b0380, type: 3}
   _pool: {fileID: 6204102632434839071}
   _shootPoint: {fileID: 1740042507438760582}
 --- !u!114 &2757769662182704722

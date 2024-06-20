@@ -17,7 +17,6 @@ public class WinPanel : MonoBehaviour
         _player = player;
         _goldCount.text = _player.PlayerWallet.CurrentGold.ToString();
         _daimondCount.text = _player.PlayerWallet.CurrentDaimond.ToString();
-
     }
 
     private void OnEnable()

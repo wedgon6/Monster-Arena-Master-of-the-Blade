@@ -41,7 +41,7 @@ public class PlayerAnimation : MonoBehaviour
         _animator.SetTrigger("OnThrow");
     }
 
-    private void OnDead()
+    private void OnDead(Transform transform)
     {
         _animator.SetTrigger("IsDead");
     }
