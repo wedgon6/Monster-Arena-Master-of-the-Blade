@@ -9,7 +9,7 @@ public class ParametersPlayer : MonoBehaviour
     private const float StandartRangeThrow = 3f;
 
     [SerializeField] private float _healthStep = 20f;
-    [SerializeField] private float _moveSpeedStep = 0.5f;
+    [SerializeField] private float _moveSpeedStep = 0.2f;
     [SerializeField] private float _damageStep = 5f;
     [SerializeField] private float _rangeThrowStep = 0.5f;
 

@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamageable
         if (damage < 0)
             return;
 
-        if (_health < 0)
+        if (_health <= 0)
             return;
 
         _health -= damage;
@@ -57,12 +57,19 @@ public class Player : MonoBehaviour, IDamageable
         if (_health <= 0)
         {
             _health = 0;
-            Died?.Invoke(transform);
+            LoseGame();
         }
     }
 
     private void Awake()
     {
         _wallet.Initialize(_gold.Value, _daimond.Value);
+    }
+
+    private void LoseGame()
+    {
+        Died?.Invoke(transform);
+        _movment.Initialize(0);
+        _bladeSpawner.TurnOffActive();
     }
 }

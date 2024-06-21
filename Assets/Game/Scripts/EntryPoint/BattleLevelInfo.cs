@@ -12,6 +12,8 @@ public class BattleLevelInfo : MonoBehaviour
 
     [SerializeField] private WinPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
+    
+    private Coroutine _corontine;
 
     private void Awake()
     {
@@ -43,12 +45,20 @@ public class BattleLevelInfo : MonoBehaviour
 
     private void OnWinGame()
     {
-        StartCoroutine(WinGame());
+        CorountineStart(WinGame());
     }
 
     private void OnLooseGame(Transform transform)
     {
+        CorountineStart(LooseGame());
+    }
 
+    private void CorountineStart(IEnumerator corontine)
+    {
+        if (_corontine != null)
+            StopCoroutine(_corontine);
+
+        _corontine = StartCoroutine(corontine);
     }
 
     private IEnumerator WinGame()
@@ -61,6 +71,9 @@ public class BattleLevelInfo : MonoBehaviour
 
     private IEnumerator LooseGame()
     {
-        yield return null;
+        _mainCamera.Priority = -1;
+        yield return new WaitForSeconds(2.2f);
+        _losePanel.Initialize(_player);
+        _losePanel.gameObject.SetActive(true);
     }
 }

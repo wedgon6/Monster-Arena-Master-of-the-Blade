@@ -78,12 +78,11 @@ public class ChoiceMap : MonoBehaviour
     private void OnClickPlayButton()
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_levels[_currentLevelIndex].LoadScene);
-        //asyncOperation.completed += _ => GameplayScene();
+        asyncOperation.completed += _ => GameplayScene();
     }
 
     private void GameplayScene()
     {
-        //Services.Init();
-        
+        Services.AdvertisemintServise.ShowInterstitialAd();
     }
 }

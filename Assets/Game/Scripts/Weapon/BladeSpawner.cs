@@ -25,6 +25,11 @@ public class BladeSpawner : MonoBehaviour
         _rangeThrow = rangeThrow;
     }
 
+    public void TurnOffActive()
+    {
+        _isActive = false;
+    }
+
     private void Start()
     {
         _bladeViwe.Initialize(3, _bladePrefab);
