@@ -11,6 +11,7 @@ public class GameInfo
     public float PlayerMoveSpeed;
     public float Damage;
     public float RangeThrow;
+    public int PlayerScore;
 
     public int CurrentStatrsCount;
     public int CurrentMapIndex;
@@ -56,6 +57,7 @@ public class GameInfo
         PlayerMoveSpeed = _parametersPlayer.PlayerMoveSpeed;
         Damage = _parametersPlayer.Damage;
         RangeThrow = _parametersPlayer.RangeThrow;
+        PlayerScore = _parametersPlayer.Score;
 
         for (int i = 0; i < _shop.PlayerAbillities.Count; i++)
         {

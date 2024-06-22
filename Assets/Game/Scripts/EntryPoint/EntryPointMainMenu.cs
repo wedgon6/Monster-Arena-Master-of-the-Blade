@@ -7,6 +7,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private MoneyView _moneyView;
     [SerializeField] private Shop _shop;
     [SerializeField] private ParametersPlayer _parameters;
+    [SerializeField] private Leaderboard _leaderboard;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class EntryPointMainMenu : MonoBehaviour
         {
             InitializeNewData();
         }
+
+        _leaderboard.SetPlayer(_parameters.Score);
     }
 
     private void InitializeScene(GameInfo gameInfo)

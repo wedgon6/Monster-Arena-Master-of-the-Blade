@@ -7,6 +7,7 @@ public class ParametersPlayer : MonoBehaviour
     private const float StandartMoveSpeed = 1f;
     private const float StandartDamage = 20f;
     private const float StandartRangeThrow = 3f;
+    private const int StandartScore = 0;
 
     [SerializeField] private float _healthStep = 20f;
     [SerializeField] private float _moveSpeedStep = 0.2f;
@@ -17,6 +18,7 @@ public class ParametersPlayer : MonoBehaviour
     private float _playerMoveSpeed;
     private float _damage;
     private float _rangeThrow;
+    private int _score;
 
     public event Action SavedData;
 
@@ -24,6 +26,7 @@ public class ParametersPlayer : MonoBehaviour
     public float PlayerMoveSpeed => _playerMoveSpeed;
     public float Damage => _damage;
     public float RangeThrow => _rangeThrow;
+    public int Score => _score;
 
     public void Initialize()
     {
@@ -31,6 +34,7 @@ public class ParametersPlayer : MonoBehaviour
         _playerMoveSpeed = StandartMoveSpeed;
         _damage = StandartDamage;
         _rangeThrow = StandartRangeThrow;
+        _score = StandartScore;
         Debug.Log(_playerMoveSpeed);
         SavedData?.Invoke();
     }
@@ -41,6 +45,7 @@ public class ParametersPlayer : MonoBehaviour
         _playerMoveSpeed = data.PlayerMoveSpeed;
         _damage = data.Damage;
         _rangeThrow = data.RangeThrow;
+        _score = data.PlayerScore;
         Debug.Log(_playerMoveSpeed);
         SavedData?.Invoke();
     }

@@ -21,12 +21,20 @@ public class WinPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        _doubleRevardButton.onClick.AddListener(DoubleReward);
         _backMenuButton.onClick.AddListener(BackMenuScene);
     }
 
     private void OnDisable()
     {
+        _doubleRevardButton.onClick.RemoveListener(DoubleReward);
         _backMenuButton.onClick.RemoveListener(BackMenuScene);
+    }
+
+    private void DoubleReward()
+    {
+        Services.AdvertisemintServise.ShowMultiplayAd(_player.PlayerWallet);
+        _doubleRevardButton.gameObject.SetActive(false);
     }
 
     private void BackMenuScene()

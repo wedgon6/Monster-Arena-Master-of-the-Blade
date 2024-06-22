@@ -7,12 +7,14 @@ public class AdvertisemintServise : IAdvertisemintServise
     private Daimond _revardDaimond = new Daimond(10);
     private PlayerWallet _playerWallet;
 
+    public int GoldRevard { get => _revardGold.Value; set => throw new System.NotImplementedException(); }
+    public int DaimondRevard { get => _revardDaimond.Value; set => throw new System.NotImplementedException(); }
+
     public void ShowInterstitialAd()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
 #endif
-        Debug.Log("Показ видео");
     }
 
     public void ShowMultiplayAd(PlayerWallet playerWallet)
@@ -47,6 +49,7 @@ public class AdvertisemintServise : IAdvertisemintServise
         AudioListener.volume = 0f;
         Time.timeScale = 0f;
     }
+
     private void OnCloseCallBack(bool canShow)
     {
         OnCloseCallBack();

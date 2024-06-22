@@ -21,12 +21,20 @@ public class LosePanel : MonoBehaviour
 
     private void OnEnable()
     {
+        _reviveButton.onClick.AddListener(RevivePlayer);
         _backMenuButton.onClick.AddListener(BackMenuScene);
     }
 
     private void OnDisable()
     {
+        _reviveButton.onClick.RemoveListener(RevivePlayer);
         _backMenuButton.onClick.RemoveListener(BackMenuScene);
+    }
+
+    private void RevivePlayer()
+    {
+        Services.AdvertisemintServise.ShowResurrectAd();
+        _reviveButton.gameObject.SetActive(false);
     }
 
     private void BackMenuScene()
@@ -37,6 +45,6 @@ public class LosePanel : MonoBehaviour
 
     private void RelocateEarnedMoney()
     {
-        Services.SaveService.RelocateData(_player.PlayerWallet, 1);
+        Services.SaveService.RelocateData(_player.PlayerWallet, 0);
     }
 }
