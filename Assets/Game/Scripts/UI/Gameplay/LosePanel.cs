@@ -45,6 +45,6 @@ public class LosePanel : MonoBehaviour
 
     private void RelocateEarnedMoney()
     {
-        Services.SaveService.RelocateData(_player.PlayerWallet, 0);
+        Services.SaveService.RelocateData(_player.PlayerWallet, 0, _player.EarnedScore);
     }
 }

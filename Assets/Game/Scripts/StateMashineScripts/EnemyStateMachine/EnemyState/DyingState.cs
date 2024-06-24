@@ -12,5 +12,6 @@ public class DyingState : EnemyState
     {
         Enemy.Dead();
         Target.PlayerWallet.AddMoney(Enemy.Gold, Enemy.Daimond);
+        Target.AddScore();
     }
 }

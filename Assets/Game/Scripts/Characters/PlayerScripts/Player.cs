@@ -9,13 +9,13 @@ public class Player : MonoBehaviour, IDamageable
     
     private float _maxHealth = 1000;
     private float _health;
+    private int _earnedScore = 0;
 
     private Gold _gold = new Gold(0);
     private Daimond _daimond = new Daimond(0);
 
     public PlayerWallet PlayerWallet => _wallet;
-    public float MaxHealth => _maxHealth;
-    public float CurrentHealth => _health;
+    public int EarnedScore => _earnedScore;
 
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
@@ -32,15 +32,11 @@ public class Player : MonoBehaviour, IDamageable
         _bladeSpawner.Initialize(gameInfo.Damage, gameInfo.RangeThrow);
     }
 
-    public float GetCurrentHealth()
-    {
-        return _health;
-    }
+    public void AddScore() => _earnedScore++;
 
-    public float GetMaxHealth()
-    {
-        return _maxHealth;
-    }
+    public float GetCurrentHealth() => _health;
+
+    public float GetMaxHealth() => _maxHealth;
 
     public void TakeDamage(float damage)
     {

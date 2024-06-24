@@ -14,6 +14,7 @@ public class SaveService : ISaveService
     private static int _relocateGold = 0;
     private static int _relocateDaimond = 0;
     private static int _relocateStars = 0;
+    private static int _relocateScore = 0;
 
     public bool TryGetData(out GameInfo gameInfo)
     {
@@ -23,11 +24,12 @@ public class SaveService : ISaveService
         {
             data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal2);
             gameInfo = JsonUtility.FromJson<GameInfo>(data);
-            gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars);
+            gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
             _gameInfo = gameInfo;
             _relocateGold = 0;
             _relocateDaimond = 0;
             _relocateStars = 0;
+            _relocateScore = 0;
             return _gameInfo != null;
         }
 
@@ -60,10 +62,11 @@ public class SaveService : ISaveService
 #endif
     }
 
-    public void RelocateData(PlayerWallet playerWallet, int countStars)
+    public void RelocateData(PlayerWallet playerWallet, int countStars, int relocateScore)
     {
         _relocateGold = playerWallet.CurrentGold;
         _relocateDaimond = playerWallet.CurrentDaimond;
         _relocateStars = countStars;
+        _relocateScore = relocateScore;
     }
 }

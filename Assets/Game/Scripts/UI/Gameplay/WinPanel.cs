@@ -45,6 +45,6 @@ public class WinPanel : MonoBehaviour
 
     private void RelocateEarnedMoney()
     {
-        Services.SaveService.RelocateData(_player.PlayerWallet, 1);
+        Services.SaveService.RelocateData(_player.PlayerWallet, 1, _player.EarnedScore);
     }
 }

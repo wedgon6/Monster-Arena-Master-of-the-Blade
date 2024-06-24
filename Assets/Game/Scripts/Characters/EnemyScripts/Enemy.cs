@@ -23,7 +23,6 @@ public class Enemy : PoolObject, IDamageable
     public bool IsDead => _isDead;
     public Player Target => _target;
     public Rigidbody Rigidbody => _rigidbody;
-    public EnemySpawner Spawner => _spawner;
     public string TypeEnemy => _typeEnemy.ToString();
 
 
