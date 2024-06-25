@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     public event Action EnemyDead;
     public event Action<int,int> SetedWaves;
+    public event Action PlayerLose;
 
     public void RestSpawner(int statsCount)
     {
@@ -66,8 +67,15 @@ public class EnemySpawner : MonoBehaviour
         return enemyCount;
     }
 
+    private void OnEnable()
+    {
+        _player.Died += OnPlayerDead;
+    }
+
     private void OnDisable()
     {
+        _player.Died -= OnPlayerDead;
+
         foreach (var enemy in _createdEnemies)
         {
             enemy.Died -= OnEnemyDead;
@@ -243,5 +251,10 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyDead?.Invoke();
         Instantiate(_deadParticle, new Vector3(enemyTransform.position.x, enemyTransform.position.y, enemyTransform.position.z), Quaternion.identity);
+    }
+
+    private void OnPlayerDead(Transform transform)
+    {
+        PlayerLose?.Invoke();
     }
 }

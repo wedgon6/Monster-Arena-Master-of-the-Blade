@@ -285,6 +285,8 @@ GameObject:
   - component: {fileID: 7175383574024836375}
   - component: {fileID: -76926004727678494}
   - component: {fileID: 4354104201031391401}
+  - component: {fileID: -2025591495956997617}
+  - component: {fileID: -4249571727812795649}
   m_Layer: 7
   m_Name: ChestMonste
   m_TagString: Untagged
@@ -425,6 +427,7 @@ MonoBehaviour:
   - {fileID: -727209550928658153}
   - {fileID: 6028294675861225883}
   - {fileID: 7175383574024836375}
+  - {fileID: -4249571727812795649}
   _moveSpeed: 0.5
   _maxSpeed: 4
 --- !u!114 &-4459079234271366695
@@ -457,6 +460,7 @@ MonoBehaviour:
   - {fileID: -4459079234271366695}
   - {fileID: 6028294675861225883}
   - {fileID: 7175383574024836375}
+  - {fileID: -4249571727812795649}
   _attackDelay: 1
   _attackRange: 3
   _damage: 10
@@ -490,6 +494,7 @@ MonoBehaviour:
   - {fileID: -4459079234271366695}
   - {fileID: -727209550928658153}
   - {fileID: 7175383574024836375}
+  - {fileID: -4249571727812795649}
 --- !u!114 &6028294675861225883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095467763884355805}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a544ffa02935ad44a2dd1e6ff1b9b12, type: 3}
   m_Name: 
@@ -546,6 +551,7 @@ MonoBehaviour:
   - {fileID: 1391723424745975014}
   - {fileID: -5071073316219620066}
   - {fileID: 5681841492718924811}
+  - {fileID: -2025591495956997617}
 --- !u!114 &4354104201031391401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +567,32 @@ MonoBehaviour:
   _bar: {fileID: 5569377348309631139}
   _damagePopupText: {fileID: 9156430263757911350}
   _objectHelth: {fileID: 3095467763884355805}
+--- !u!114 &-2025591495956997617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095467763884355805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &-4249571727812795649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095467763884355805}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -2025591495956997617}
 --- !u!1 &3264372619940040201
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,15 +16,22 @@ public class MoneyView : MonoBehaviour
         _goldView.text = countGold.ToString();
         _daimondView.text = countDaimond.ToString();
         _wallet.MoneyChanged += OnPlayerMoneyChenget;
-        _revardVideoButton.onClick.AddListener(ShowRevardVideo);
-        _condGoldRevardLable.text = Services.AdvertisemintServise.GoldRevard.ToString();
-        _condDaimondRevardLable.text = Services.AdvertisemintServise.DaimondRevard.ToString();
+
+        if (_revardVideoButton != null)
+        {
+            _revardVideoButton.onClick.AddListener(ShowRevardVideo);
+
+            _condGoldRevardLable.text = Services.AdvertisemintServise.GoldRevard.ToString();
+            _condDaimondRevardLable.text = Services.AdvertisemintServise.DaimondRevard.ToString();
+        }
     }
 
     private void OnDisable()
     {
         _wallet.MoneyChanged -= OnPlayerMoneyChenget;
-        _revardVideoButton.onClick.RemoveListener(ShowRevardVideo);
+
+        if(_revardVideoButton != null)
+            _revardVideoButton.onClick.RemoveListener(ShowRevardVideo);
     }
 
     private void OnPlayerMoneyChenget()

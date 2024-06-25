@@ -18,6 +18,7 @@ public class EnemyAnimation : MonoBehaviour
             events.Moving += OnMove;
             events.Attacking += OnAttack;
             events.TakedDamage += OnTakeDamage;
+            events.PlayerLose += OnWinGame;
         }
     }
 
@@ -28,6 +29,7 @@ public class EnemyAnimation : MonoBehaviour
             events.Moving -= OnMove;
             events.Attacking -= OnAttack;
             events.TakedDamage -= OnTakeDamage;
+            events.PlayerLose -= OnWinGame;
         }
     }
 
@@ -36,4 +38,6 @@ public class EnemyAnimation : MonoBehaviour
     private void OnAttack() => _animator.SetTrigger("Attack");
 
     private void OnTakeDamage() => _animator.SetTrigger("TakeDamage");
+
+    private void OnWinGame() => _animator.SetTrigger("Win");
 }

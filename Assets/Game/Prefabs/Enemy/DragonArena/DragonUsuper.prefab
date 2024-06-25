@@ -3655,6 +3655,8 @@ GameObject:
   - component: {fileID: 2506369293863790008}
   - component: {fileID: 6762237014934924091}
   - component: {fileID: 667571764525870834}
+  - component: {fileID: 9197886773461433823}
+  - component: {fileID: 5427675012936504643}
   m_Layer: 7
   m_Name: DragonUsuper
   m_TagString: Untagged
@@ -3795,6 +3797,7 @@ MonoBehaviour:
   - {fileID: 6555057291415423122}
   - {fileID: 8698584443620356642}
   - {fileID: 2506369293863790008}
+  - {fileID: 5427675012936504643}
   _moveSpeed: 0.5
   _maxSpeed: 4
 --- !u!114 &6827890748401213129
@@ -3827,6 +3830,7 @@ MonoBehaviour:
   - {fileID: 6827890748401213129}
   - {fileID: 8698584443620356642}
   - {fileID: 2506369293863790008}
+  - {fileID: 5427675012936504643}
   _attackDelay: 2
   _attackRange: 4
   _damage: 20
@@ -3860,6 +3864,7 @@ MonoBehaviour:
   - {fileID: 6555057291415423122}
   - {fileID: 6827890748401213129}
   - {fileID: 2506369293863790008}
+  - {fileID: 5427675012936504643}
 --- !u!114 &8698584443620356642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,6 +3921,7 @@ MonoBehaviour:
   - {fileID: 7529345901036077640}
   - {fileID: 4205962496307604959}
   - {fileID: 2575897792232764588}
+  - {fileID: 9197886773461433823}
 --- !u!114 &667571764525870834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3931,6 +3937,32 @@ MonoBehaviour:
   _bar: {fileID: 3351944637753678372}
   _damagePopupText: {fileID: 2079594425551564721}
   _objectHelth: {fileID: 8645132490072153304}
+--- !u!114 &9197886773461433823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645132490072153304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &5427675012936504643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645132490072153304}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 9197886773461433823}
 --- !u!1 &8692075475778892371
 GameObject:
   m_ObjectHideFlags: 0

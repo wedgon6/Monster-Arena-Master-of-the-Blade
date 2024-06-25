@@ -30,6 +30,7 @@ public class Enemy : PoolObject, IDamageable
     public event Action<float> TakedDamage;
     public event Action GotHit;
     public event Action<Transform> Died;
+    public event Action ÑelebratedWin;
 
     public void ResetState() => _stateMachine.ResetStete();
 
@@ -49,6 +50,7 @@ public class Enemy : PoolObject, IDamageable
         _target = player;
         _spawner = spawner;
         ChangeHealth?.Invoke(_health, _maxHealth);
+        _spawner.PlayerLose += WinGameState;
     }
 
     public void TakeDamage(float damage)
@@ -87,5 +89,15 @@ public class Enemy : PoolObject, IDamageable
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void OnDisable()
+    {
+        _spawner.PlayerLose -= WinGameState;
+    }
+
+    private void WinGameState()
+    {
+        ÑelebratedWin?.Invoke();
     }
 }

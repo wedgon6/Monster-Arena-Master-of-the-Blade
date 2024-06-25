@@ -878,6 +878,8 @@ GameObject:
   - component: {fileID: 8156200349050556587}
   - component: {fileID: 3788492313550173783}
   - component: {fileID: 8231715584899577546}
+  - component: {fileID: -4321098818147674487}
+  - component: {fileID: -1021530196098254943}
   m_Layer: 7
   m_Name: FireElemental
   m_TagString: Untagged
@@ -1017,6 +1019,7 @@ MonoBehaviour:
   - {fileID: 9057425057195069335}
   - {fileID: 7698961682305242157}
   - {fileID: 8156200349050556587}
+  - {fileID: -1021530196098254943}
   _moveSpeed: 0.5
   _maxSpeed: 4
 --- !u!114 &7143662764771383436
@@ -1049,6 +1052,7 @@ MonoBehaviour:
   - {fileID: 7143662764771383436}
   - {fileID: 7698961682305242157}
   - {fileID: 8156200349050556587}
+  - {fileID: -1021530196098254943}
   _attackDelay: 1
   _attackRange: 3
   _damage: 40
@@ -1095,6 +1099,7 @@ MonoBehaviour:
   - {fileID: 7143662764771383436}
   - {fileID: 9057425057195069335}
   - {fileID: 8156200349050556587}
+  - {fileID: -1021530196098254943}
 --- !u!114 &3721221954942649221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,6 +1158,33 @@ MonoBehaviour:
   - {fileID: 32572620560732365}
   - {fileID: 4670093116889627355}
   - {fileID: 8029455215867635936}
+  - {fileID: -4321098818147674487}
+--- !u!114 &-4321098818147674487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119640838315190035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &-1021530196098254943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119640838315190035}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -4321098818147674487}
 --- !u!1 &4250670758502273635
 GameObject:
   m_ObjectHideFlags: 0

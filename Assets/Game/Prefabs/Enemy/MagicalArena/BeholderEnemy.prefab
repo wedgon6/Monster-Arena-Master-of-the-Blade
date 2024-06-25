@@ -1574,6 +1574,8 @@ GameObject:
   - component: {fileID: 3125755867943639310}
   - component: {fileID: 8584673808832079161}
   - component: {fileID: 3377033692866500363}
+  - component: {fileID: -1356885727013120870}
+  - component: {fileID: 6422779180231762087}
   m_Layer: 7
   m_Name: BeholderEnemy
   m_TagString: Untagged
@@ -1715,6 +1717,7 @@ MonoBehaviour:
   - {fileID: 8840089874065309651}
   - {fileID: 1694152489445424801}
   - {fileID: 3125755867943639310}
+  - {fileID: 6422779180231762087}
   _moveSpeed: 0.5
   _maxSpeed: 4
 --- !u!114 &1011523140680221419
@@ -1747,6 +1750,7 @@ MonoBehaviour:
   - {fileID: 1011523140680221419}
   - {fileID: 1694152489445424801}
   - {fileID: 3125755867943639310}
+  - {fileID: 6422779180231762087}
   _attackDelay: 2
   _attackRange: 10
   _damage: 10
@@ -1783,6 +1787,7 @@ MonoBehaviour:
   - {fileID: 8840089874065309651}
   - {fileID: 1011523140680221419}
   - {fileID: 3125755867943639310}
+  - {fileID: 6422779180231762087}
 --- !u!114 &1694152489445424801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,6 +1844,7 @@ MonoBehaviour:
   - {fileID: 5906516471359185698}
   - {fileID: 6334424318340744156}
   - {fileID: 2020479660510712311}
+  - {fileID: -1356885727013120870}
 --- !u!114 &3377033692866500363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,6 +1860,32 @@ MonoBehaviour:
   _bar: {fileID: 6105966611722693963}
   _damagePopupText: {fileID: 7414204506630985950}
   _objectHelth: {fileID: 8875888545847509913}
+--- !u!114 &-1356885727013120870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8875888545847509913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &6422779180231762087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8875888545847509913}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -1356885727013120870}
 --- !u!1 &8896297479275516036
 GameObject:
   m_ObjectHideFlags: 0

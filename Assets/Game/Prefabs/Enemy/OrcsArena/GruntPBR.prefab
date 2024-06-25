@@ -1198,6 +1198,8 @@ GameObject:
   - component: {fileID: 385625445026097024}
   - component: {fileID: 4813615374864409487}
   - component: {fileID: 3789177926566435640}
+  - component: {fileID: -1536002564662946760}
+  - component: {fileID: 3534286219836428764}
   m_Layer: 7
   m_Name: GruntPBR
   m_TagString: Untagged
@@ -1315,6 +1317,7 @@ MonoBehaviour:
   - {fileID: 8567317135612975575}
   - {fileID: 5929869830730180712}
   - {fileID: 3789177926566435640}
+  - {fileID: 3534286219836428764}
   _moveSpeed: 0.5
   _maxSpeed: 1
 --- !u!114 &8531650297518784914
@@ -1373,6 +1376,7 @@ MonoBehaviour:
   - {fileID: 8567317135612975575}
   - {fileID: 2187599249080213858}
   - {fileID: 3789177926566435640}
+  - {fileID: 3534286219836428764}
   _attackDelay: 2
   _attackRange: 2
   _damage: 10
@@ -1393,6 +1397,7 @@ MonoBehaviour:
   - {fileID: 6184023516468884459}
   - {fileID: 8531650297518784914}
   - {fileID: 4813615374864409487}
+  - {fileID: -1536002564662946760}
 --- !u!114 &2187599249080213858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1466,7 @@ MonoBehaviour:
   - {fileID: 2187599249080213858}
   - {fileID: 8567317135612975575}
   - {fileID: 5929869830730180712}
+  - {fileID: 3534286219836428764}
 --- !u!114 &3789177926566435640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1474,6 +1480,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 4813615374864409487}
+--- !u!114 &-1536002564662946760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659573161195983018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &3534286219836428764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659573161195983018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -1536002564662946760}
 --- !u!1 &7033820306497351186
 GameObject:
   m_ObjectHideFlags: 0

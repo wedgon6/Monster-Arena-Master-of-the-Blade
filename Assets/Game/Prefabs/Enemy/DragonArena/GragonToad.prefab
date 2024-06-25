@@ -1659,6 +1659,8 @@ GameObject:
   - component: {fileID: 5804723865323397652}
   - component: {fileID: 6320161695852884273}
   - component: {fileID: 8689815191749791380}
+  - component: {fileID: -3236423496344027155}
+  - component: {fileID: -4725530570372874346}
   m_Layer: 7
   m_Name: GragonToad
   m_TagString: Untagged
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   - {fileID: 8501800170713732139}
   - {fileID: 9160876918295108090}
   - {fileID: 2821878572552745762}
+  - {fileID: -4725530570372874346}
   _moveSpeed: 0.5
   _maxSpeed: 4
 --- !u!114 &5404936223847318786
@@ -1845,6 +1848,7 @@ MonoBehaviour:
   - {fileID: 8501800170713732139}
   - {fileID: 5404936223847318786}
   - {fileID: 2821878572552745762}
+  - {fileID: -4725530570372874346}
 --- !u!114 &2821878572552745762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,6 +1891,7 @@ MonoBehaviour:
   - {fileID: 2821878572552745762}
   - {fileID: 9160876918295108090}
   - {fileID: 5404936223847318786}
+  - {fileID: -4725530570372874346}
   _attackDelay: 2
   _attackRange: 10
   _damage: 10
@@ -1936,6 +1941,7 @@ MonoBehaviour:
   - {fileID: 6828569982249487134}
   - {fileID: 824486413507834279}
   - {fileID: 6602995132503198371}
+  - {fileID: -3236423496344027155}
 --- !u!114 &8689815191749791380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,6 +1957,32 @@ MonoBehaviour:
   _bar: {fileID: 5418637727704255272}
   _damagePopupText: {fileID: 8748969822112513725}
   _objectHelth: {fileID: 8252793901119758182}
+--- !u!114 &-3236423496344027155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252793901119758182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f7713639399304798c1b03bb10e40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions: []
+--- !u!114 &-4725530570372874346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252793901119758182}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c09417d2297ef24ba8ea290326f01c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: -3236423496344027155}
 --- !u!1 &8265424417054276197
 GameObject:
   m_ObjectHideFlags: 0
