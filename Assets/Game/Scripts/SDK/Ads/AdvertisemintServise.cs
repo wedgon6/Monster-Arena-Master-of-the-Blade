@@ -46,7 +46,7 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     private void OnOpenCallBack()
     {
-        AudioListener.volume = 0f;
+        Services.AudioService.MuteSound();
         Time.timeScale = 0f;
     }
 
@@ -57,10 +57,8 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     private void OnCloseCallBack()
     {
-        //if (_volumeChange.IsAudioPlay)
-        //    AudioListener.volume = 1f;
-
-        //Time.timeScale = 1f;
+        Services.AudioService.TurnSound();
+        Time.timeScale = 1f;
     }
 
     private void OnRewardedCallback()

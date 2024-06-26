@@ -19,4 +19,20 @@ public class AudioServise : IAudioServise
         if(_canPlayAudio)
             AudioListener.volume = 1f;
     }
+
+    public void MuteSound()
+    {
+        if (_canPlayAudio == false)
+            return;
+
+        AudioListener.volume = 0f;
+    }
+
+    public void TurnSound()
+    {
+        if (_canPlayAudio == false)
+            return;
+
+        AudioListener.volume = 1f;
+    }
 }

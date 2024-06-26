@@ -83,6 +83,6 @@ public class ChoiceMap : MonoBehaviour
 
     private void GameplayScene()
     {
-        Services.AdvertisemintServise.ShowInterstitialAd();
+        Services.AdvertisemintService.ShowInterstitialAd();
     }
 }

@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 138880851}
   - component: {fileID: 138880850}
   - component: {fileID: 138880853}
+  - component: {fileID: 138880854}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -641,6 +642,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &138880854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138880849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905cbd1739ab26c478278e9f87d53ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &165568459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,6 +2970,7 @@ GameObject:
   - component: {fileID: 961150543}
   - component: {fileID: 961150545}
   - component: {fileID: 961150544}
+  - component: {fileID: 961150546}
   m_Layer: 5
   m_Name: BattleLable
   m_TagString: Untagged
@@ -3003,7 +3017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Battle
+  m_text: "\u0411\u043E\u0439"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3080,6 +3094,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961150542}
   m_CullTransparentMesh: 1
+--- !u!114 &961150546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961150542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Battle
+  FallbackText: Battle
 --- !u!1 &980282899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,6 +5782,7 @@ GameObject:
   - component: {fileID: 1665288501}
   - component: {fileID: 1665288503}
   - component: {fileID: 1665288502}
+  - component: {fileID: 1665288504}
   m_Layer: 5
   m_Name: ShoopLable
   m_TagString: Untagged
@@ -5800,9 +5829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Shoop
-
-'
+  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5879,6 +5906,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665288500}
   m_CullTransparentMesh: 1
+--- !u!114 &1665288504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665288500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Shop
+  FallbackText: 'Shop
+
+'
 --- !u!1 &1675439244
 GameObject:
   m_ObjectHideFlags: 0
@@ -7039,6 +7082,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134937746}
   m_CullTransparentMesh: 1
+--- !u!1001 &805893438831780141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3292983082003675968, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_Name
+      value: Localization
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 682.8587
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 195.44699
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.524824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
 --- !u!1001 &1238758826458909181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7442,3 +7542,4 @@ SceneRoots:
   - {fileID: 1461224820}
   - {fileID: 573657625}
   - {fileID: 696690435}
+  - {fileID: 805893438831780141}

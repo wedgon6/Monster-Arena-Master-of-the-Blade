@@ -21,8 +21,8 @@ public class MoneyView : MonoBehaviour
         {
             _revardVideoButton.onClick.AddListener(ShowRevardVideo);
 
-            _condGoldRevardLable.text = Services.AdvertisemintServise.GoldRevard.ToString();
-            _condDaimondRevardLable.text = Services.AdvertisemintServise.DaimondRevard.ToString();
+            _condGoldRevardLable.text = Services.AdvertisemintService.GoldRevard.ToString();
+            _condDaimondRevardLable.text = Services.AdvertisemintService.DaimondRevard.ToString();
         }
     }
 
@@ -42,6 +42,6 @@ public class MoneyView : MonoBehaviour
 
     private void ShowRevardVideo()
     {
-        Services.AdvertisemintServise.ShowRewardAd(_wallet);
+        Services.AdvertisemintService.ShowRewardAd(_wallet);
     }
 }

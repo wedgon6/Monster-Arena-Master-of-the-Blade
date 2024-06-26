@@ -33,7 +33,7 @@ public class LosePanel : MonoBehaviour
 
     private void RevivePlayer()
     {
-        Services.AdvertisemintServise.ShowResurrectAd();
+        Services.AdvertisemintService.ShowResurrectAd();
         _reviveButton.gameObject.SetActive(false);
     }
 

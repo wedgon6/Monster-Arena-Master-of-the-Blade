@@ -11,6 +11,23 @@ public class SoundButton : MonoBehaviour
     private Button _button;
     private bool _isAudioPlay = true;
 
+    private void Start()
+    {
+        _isAudioPlay = Services.AudioService.GetAudioModStatus();
+
+        if (_isAudioPlay == true)
+        {
+            AudioListener.volume = 1f;
+            _controlButton.sprite = _onAudioIcon;
+        }
+
+        if (_isAudioPlay == false)
+        {
+            AudioListener.volume = 0f;
+            _controlButton.sprite = _offAudioIcon;
+        }
+    }
+
     private void OnEnable()
     {
         _button = GetComponent<Button>();
@@ -24,8 +41,8 @@ public class SoundButton : MonoBehaviour
 
     private void ChangeSoundMode()
     {
-        Services.AudioServise.ChengeAudioStatus();
-        _isAudioPlay = Services.AudioServise.GetAudioModStatus();
+        Services.AudioService.ChengeAudioStatus();
+        _isAudioPlay = Services.AudioService.GetAudioModStatus();
 
         if (_isAudioPlay == true)
         {

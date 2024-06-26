@@ -33,7 +33,7 @@ public class WinPanel : MonoBehaviour
 
     private void DoubleReward()
     {
-        Services.AdvertisemintServise.ShowMultiplayAd(_player.PlayerWallet);
+        Services.AdvertisemintService.ShowMultiplayAd(_player.PlayerWallet);
         _doubleRevardButton.gameObject.SetActive(false);
     }
 
