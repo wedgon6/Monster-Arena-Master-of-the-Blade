@@ -37,7 +37,14 @@ public class SaveService : ISaveService
         if (Agava.YandexGames.Utility.PlayerPrefs.HasKey(DataKeyCloud))
         {
             data = Agava.YandexGames.Utility.PlayerPrefs.GetString(DataKeyCloud);
-            return data != null;
+            gameInfo = JsonUtility.FromJson<GameInfo>(data);
+            gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
+            _gameInfo = gameInfo;
+            _relocateGold = 0;
+            _relocateDaimond = 0;
+            _relocateStars = 0;
+            _relocateScore = 0;
+            return _gameInfo != null;
         }
 #endif
         else

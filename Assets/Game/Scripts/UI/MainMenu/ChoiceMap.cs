@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Lean.Localization;
 
 public class ChoiceMap : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ChoiceMap : MonoBehaviour
     [SerializeField] private Button _playButton;
     [SerializeField] private GameObject _starsViewPrefab;
     [SerializeField] private GameObject _starsConteiner;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _proUGUI;
 
     private int _currentLevelIndex;
     private int _currentStars;
@@ -60,6 +62,9 @@ public class ChoiceMap : MonoBehaviour
         _currentLevel = map;
         _levelIcon.sprite = map.LevelIcon;
         _levelName.text = map.LevelLable.ToString();
+        _proUGUI.TranslationName = _currentLevel.LocalizationKey;
+        _proUGUI.UpdateTranslation(LeanLocalization.GetTranslation(_proUGUI.TranslationName));
+
 
         EneblePlayButton();
     }
