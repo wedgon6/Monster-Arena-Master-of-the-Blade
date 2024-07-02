@@ -7,7 +7,7 @@ public class SaveService : ISaveService
     private const string DataKeyCloud = "PlayerDataCloud";
     private const string DataKeyLocal = "PlayerDataLocalTest";
     //private const string DataKeyLocal1 = "PlayerDataLocalTest1";
-    private const string DataKeyLocal2 = "PlayerDataLocalTest7";
+    private const string DataKeyLocal2 = "PlayerDataLocalTest8";
 
     private static GameInfo _gameInfo;
     private string _saveData;

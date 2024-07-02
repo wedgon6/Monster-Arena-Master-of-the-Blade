@@ -24,8 +24,5 @@ public class SaveAndLoadSytem : MonoBehaviour
         _parametersPlayer.SavedData -= SaveGameData;
     }
 
-    private void SaveGameData()
-    {
-        Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer, _shop);
-    }
+    private void SaveGameData() => Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer, _shop);
 }

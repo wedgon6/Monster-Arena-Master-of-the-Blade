@@ -6,15 +6,16 @@ public class ShopItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private float _multiplier;
+    [SerializeField] private float _multiplier; //для скила
     [SerializeField] private int _startPrice;
     //[SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
     private int _currentPrice;
 
     public event Action PriceChanged;
+    public event Action<ShopItem> ButtonCliked;
 
-    protected float Multiplier => _multiplier;
+    protected float Multiplier => _multiplier; //для скила
     protected int CurrentPrice => _currentPrice;
 
     public string Lable => _lable.text;
@@ -36,6 +37,7 @@ public class ShopItem : MonoBehaviour
 
     public virtual void Buy(ParametersPlayer parametersPlayer)
     {
+        ButtonCliked?.Invoke(this);
         _currentPrice = (int)Math.Round(CurrentPrice * Multiplier, 0);
         PriceChanged?.Invoke();
     }
