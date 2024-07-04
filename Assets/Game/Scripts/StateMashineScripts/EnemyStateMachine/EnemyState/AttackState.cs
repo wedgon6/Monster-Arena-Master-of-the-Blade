@@ -13,6 +13,12 @@ public class AttackState : EnemyState
         base.Enter();
     }
 
+    public override void Exit()
+    {
+        _lastAttackTime = 0f;
+        base.Exit();
+    }
+
     protected virtual bool Attack()
     {
         Vector3 directionToTarget = transform.position - Target.transform.position;
