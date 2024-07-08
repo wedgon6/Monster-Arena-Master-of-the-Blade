@@ -3832,8 +3832,8 @@ MonoBehaviour:
   - {fileID: 2506369293863790008}
   - {fileID: 5427675012936504643}
   _attackDelay: 2
-  _attackRange: 4
-  _damage: 20
+  _attackRange: 5
+  _damage: 100
 --- !u!114 &6555057291415423122
 MonoBehaviour:
   m_ObjectHideFlags: 0

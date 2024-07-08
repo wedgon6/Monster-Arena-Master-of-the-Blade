@@ -42,6 +42,14 @@ public class EnemySpawner : MonoBehaviour
         SetWaveComplexity();
     }
 
+    public void ResetEnemyesState()
+    {
+        foreach (var enemy in _createdEnemies)
+        {
+            enemy.ResetState();
+        }
+    }
+
     public void PutEnemyToPool()
     {
         _currentWave = null;

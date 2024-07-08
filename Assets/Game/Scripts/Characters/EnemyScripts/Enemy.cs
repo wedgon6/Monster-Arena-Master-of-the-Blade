@@ -31,8 +31,13 @@ public class Enemy : PoolObject, IDamageable
     public event Action GotHit;
     public event Action<Transform> Died;
     public event Action ÑelebratedWin;
+    public event Action ResetStateMashine;
 
-    public void ResetState() => _stateMachine.ResetStete();
+    public void ResetState()
+    {
+        _stateMachine.ResetStete();
+        ResetStateMashine?.Invoke();
+    }
 
     public float GetCurrentHealth()
     {

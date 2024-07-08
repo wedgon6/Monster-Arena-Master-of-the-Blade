@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,13 @@ public class EnemyAnimation : MonoBehaviour
     [SerializeField] private List<EnemyState> _enemyStates;
 
     private Animator _animator;
+    private Enemy _enemy;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _enemy = GetComponent<Enemy>();
+        _enemy.ResetStateMashine += OnMove;
 
         foreach (var events in _enemyStates)
         {
@@ -24,6 +28,8 @@ public class EnemyAnimation : MonoBehaviour
 
     private void OnDisable()
     {
+        _enemy.ResetStateMashine -= OnMove;
+
         foreach (var events in _enemyStates)
         {
             events.Moving -= OnMove;

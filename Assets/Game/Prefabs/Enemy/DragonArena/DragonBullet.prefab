@@ -54,8 +54,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.7170192
+  m_Center: {x: 0, y: 0.21701945, z: 0}
 --- !u!54 &4357585272478858212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,9 +103,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4908604730460454642}
     m_Modifications:
+    - target: {fileID: 112572, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 126572, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 147436, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
       propertyPath: m_Name
       value: FireballMissileFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 147436, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 166048, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 460430, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
       propertyPath: m_LocalScale.x

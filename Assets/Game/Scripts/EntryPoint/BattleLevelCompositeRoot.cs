@@ -37,6 +37,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
+        _losePanel.ShowRevardAd += PlayerResurrected;
         _moneyView.Initialize(0, 0);
     }
 
@@ -44,6 +45,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         _enemyCounter.AllEnemyDied -= OnWinGame;
         _player.Died -= OnLooseGame;
+        _losePanel.ShowRevardAd -= PlayerResurrected;
     }
 
     private void OnWinGame()
@@ -54,6 +56,12 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     private void OnLooseGame(Transform transform)
     {
         CorountineStart(LooseGame());
+    }
+
+    private void PlayerResurrected()
+    {
+        _mainCamera.Priority = 1;
+        _enemySpawner.ResetEnemyesState();
     }
 
     private void CorountineStart(IEnumerator corontine)
