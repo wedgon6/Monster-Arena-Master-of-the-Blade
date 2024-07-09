@@ -1,4 +1,4 @@
-public class RangeThrow : ShopItem
+public class RangeThrow : TrainingItem
 {
     public override void Buy(ParametersPlayer parametersPlayer)
     {

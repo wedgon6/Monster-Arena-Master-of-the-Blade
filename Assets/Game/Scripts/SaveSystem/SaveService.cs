@@ -55,7 +55,7 @@ public class SaveService : ISaveService
         }
     }
 
-    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, Shop shop)
+    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, TrainingShop shop)
     {
         _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop);
         _saveData = JsonUtility.ToJson(_gameInfo);

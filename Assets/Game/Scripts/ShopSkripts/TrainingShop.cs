@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+public class TrainingShop : MonoBehaviour
 {
-    [SerializeField] private List<ShopItem> _playerAbillities;
+    [SerializeField] private List<TrainingItem> _playerAbillities;
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ShopView _shopView;
     [SerializeField] private GameObject _abillityConteiner;
     [SerializeField] private ParametersPlayer _parametersPlayer;
 
-    public List<ShopItem> PlayerAbillities => _playerAbillities;
+    public List<TrainingItem> PlayerAbillities => _playerAbillities;
 
     public void InitializeShop()
     {
@@ -28,19 +28,19 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void AddItem(ShopItem abillity)
+    private void AddItem(TrainingItem abillity)
     {
         var view = Instantiate(_shopView, _abillityConteiner.transform);
         view.SellButtonClicked += OnSellButtonClick;
         view.Render(abillity);
     }
 
-    private void OnSellButtonClick(ShopItem abillity, ShopView view)
+    private void OnSellButtonClick(TrainingItem abillity, ShopView view)
     {
         TrySellAbillity(abillity, view);
     }
 
-    private void TrySellAbillity(ShopItem abillity, ShopView view)
+    private void TrySellAbillity(TrainingItem abillity, ShopView view)
     {
         if (abillity.Price > _playerWallet.CurrentGold)
             return;

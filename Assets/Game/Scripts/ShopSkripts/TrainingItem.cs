@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class ShopItem : MonoBehaviour
+public class TrainingItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private Sprite _icon;
@@ -11,9 +11,10 @@ public class ShopItem : MonoBehaviour
     //[SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
     private int _currentPrice;
+    private int _currentLvl = 0;
 
     public event Action PriceChanged;
-    public event Action<ShopItem> ButtonCliked;
+    public event Action<TrainingItem> ButtonCliked;
 
     protected float Multiplier => _multiplier; //для скила
     protected int CurrentPrice => _currentPrice;

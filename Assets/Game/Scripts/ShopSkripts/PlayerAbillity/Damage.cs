@@ -1,4 +1,4 @@
-public class Damage : ShopItem
+public class Damage : TrainingItem
 {
     public override void Buy(ParametersPlayer parametersPlayer)
     {

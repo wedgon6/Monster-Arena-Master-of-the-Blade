@@ -1,4 +1,4 @@
-public class MaxHealth : ShopItem
+public class MaxHealth : TrainingItem
 {
     public override void Buy(ParametersPlayer parametersPlayer)
     {

@@ -10,11 +10,11 @@ public class ShopView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
 
-    private ShopItem _abillity;
+    private TrainingItem _abillity;
 
-    public event Action<ShopItem, ShopView> SellButtonClicked;
+    public event Action<TrainingItem, ShopView> SellButtonClicked;
 
-    public void Render(ShopItem item)
+    public void Render(TrainingItem item)
     {
         _abillity = item;
         _abillity.Initialize();
