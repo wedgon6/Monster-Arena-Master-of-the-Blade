@@ -12,15 +12,26 @@ public class Worckshop : MonoBehaviour
 
     public void Initialize()
     {
+        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
+
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
             AddItem(_weaponSkeens[i]);
         }
+
+        _parametersPlayer.SelectWeaponSkeen(_weaponSkeens[0].Blade);
+        _weaponSkeens[0].GetData(true, true);
+        _skeenViewConteiner.RenderChoiceSkeen(_weaponSkeens[0]);
     }
 
     public void Initialize(GameInfo gameInfo)
     {
 
+    }
+
+    private void OnDisable()
+    {
+        _skeenViewConteiner.ClickBuyButton -= TrySellSkeen;
     }
 
     private void AddItem(WorckshopItem weapon)
@@ -33,5 +44,18 @@ public class Worckshop : MonoBehaviour
     private void OnButtonClick(WorckshopItem weapon)
     {
         _skeenViewConteiner.RenderChoiceSkeen(weapon);
+    }
+
+    private void TrySellSkeen(WorckshopItem item)
+    {
+        Debug.Log("Check");
+        if (item.Price > _playerWallet.CurrentDaimond)
+            return;
+
+        if (item.Price <= _playerWallet.CurrentDaimond)
+        {
+            _playerWallet.ReduceMoney(null, new Daimond(item.Price));
+            item.BuySkeen();
+        }
     }
 }

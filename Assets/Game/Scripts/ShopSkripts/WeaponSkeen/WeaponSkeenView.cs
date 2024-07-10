@@ -22,9 +22,14 @@ public class WeaponSkeenView : MonoBehaviour
         _item = item;
         _item.Initialize();
     
-        if (item.IsUnlock)
+        if (_item.IsUnlock)
         {
             _unlockStatus.sprite = _unlockImage;
+
+            if (_item.IsSelect)
+            {
+                _unlockStatus.sprite = _selectImage;
+            }
         }
         else
         {
@@ -35,15 +40,30 @@ public class WeaponSkeenView : MonoBehaviour
         _icon.sprite = item.Icon;
 
         _actionButton.onClick.AddListener(ClickButton);
+        _item.PurchasedSkeen += OnBuySkeen;
+        _item.SelectedSkeen += OnSelectedSkeen;
     }
 
     private void OnDisable()
     {
         _actionButton.onClick.RemoveListener(ClickButton);
+        _item.PurchasedSkeen -= OnBuySkeen;
+        _item.SelectedSkeen -= OnSelectedSkeen;
     }
 
     private void ClickButton()
     {
         ActionButtonClick?.Invoke(_item);
+    }
+
+    private void OnBuySkeen()
+    {
+        _unlockStatus.sprite = _unlockImage;
+    }
+
+    private void OnSelectedSkeen()
+    {
+        _unlockStatus.sprite = _selectImage;
+        Debug.Log("Поставил галочку");
     }
 }

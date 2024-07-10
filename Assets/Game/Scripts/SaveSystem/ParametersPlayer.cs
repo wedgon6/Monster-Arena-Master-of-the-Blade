@@ -19,6 +19,7 @@ public class ParametersPlayer : MonoBehaviour
     private float _damage;
     private float _rangeThrow;
     private int _score;
+    private Blade _blade;
 
     public event Action SavedData;
 
@@ -71,6 +72,12 @@ public class ParametersPlayer : MonoBehaviour
     public void AddRangeThrow()
     {
         _rangeThrow = _rangeThrowStep;
+        SavedData?.Invoke();
+    }
+
+    public void SelectWeaponSkeen(Blade blade)
+    {
+        _blade = blade;
         SavedData?.Invoke();
     }
 }
