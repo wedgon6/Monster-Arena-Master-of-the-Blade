@@ -6,8 +6,7 @@ public class SaveService : ISaveService
 {
     private const string DataKeyCloud = "PlayerDataCloud";
     private const string DataKeyLocal = "PlayerDataLocalTest";
-    //private const string DataKeyLocal1 = "PlayerDataLocalTest1";
-    private const string DataKeyLocal2 = "PlayerDataLocalTest8";
+    private const string DataTest = "LOL6";
 
     private static GameInfo _gameInfo;
     private string _saveData;
@@ -20,9 +19,9 @@ public class SaveService : ISaveService
     {
         string data;
 #if UNITY_EDITOR
-        if (UnityEngine.PlayerPrefs.HasKey(DataKeyLocal2))
+        if (UnityEngine.PlayerPrefs.HasKey(DataTest))
         {
-            data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal2);
+            data = UnityEngine.PlayerPrefs.GetString(DataTest);
             gameInfo = JsonUtility.FromJson<GameInfo>(data);
             gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
             _gameInfo = gameInfo;
@@ -55,13 +54,13 @@ public class SaveService : ISaveService
         }
     }
 
-    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, TrainingShop shop)
+    public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, TrainingShop shop, Worckshop skeenShop)
     {
-        _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop);
+        _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop, skeenShop);
         _saveData = JsonUtility.ToJson(_gameInfo);
 
 #if UNITY_EDITOR
-        UnityEngine.PlayerPrefs.SetString(DataKeyLocal2, _saveData);
+        UnityEngine.PlayerPrefs.SetString(DataTest, _saveData);
         UnityEngine.PlayerPrefs.Save();
 #else
         Agava.YandexGames.Utility.PlayerPrefs.SetString(DataKeyCloud, _saveData);

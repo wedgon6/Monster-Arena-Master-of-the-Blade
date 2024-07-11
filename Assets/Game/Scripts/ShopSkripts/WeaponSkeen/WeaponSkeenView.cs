@@ -40,14 +40,14 @@ public class WeaponSkeenView : MonoBehaviour
         _icon.sprite = item.Icon;
 
         _actionButton.onClick.AddListener(ClickButton);
-        _item.PurchasedSkeen += OnBuySkeen;
+        _item.UnlockedSkeen += OnBuySkeen;
         _item.SelectedSkeen += OnSelectedSkeen;
     }
 
     private void OnDisable()
     {
         _actionButton.onClick.RemoveListener(ClickButton);
-        _item.PurchasedSkeen -= OnBuySkeen;
+        _item.UnlockedSkeen -= OnBuySkeen;
         _item.SelectedSkeen -= OnSelectedSkeen;
     }
 

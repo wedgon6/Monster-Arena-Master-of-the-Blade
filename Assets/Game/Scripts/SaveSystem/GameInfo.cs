@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class GameInfo
@@ -18,20 +19,25 @@ public class GameInfo
 
     public List<int> AbilitiesPrise = new List<int>();
 
+    public List<bool> UnloocedSkeens = new List<bool>();
+    public List<bool> SelectedSkeens = new List<bool>();
+
     private PlayerWallet _playerWallet;
     private ChoiceMap _choiceMap;
     private ParametersPlayer _parametersPlayer;
-    private TrainingShop _shop;
+    private TrainingShop _adbillityShop;
+    private Worckshop _skeensShop;
 
     private static int _earnedGaold = 0;
     private static int _earnedDaimond = 0;
 
-    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop)
+    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop, Worckshop worckshop)
     {
         _playerWallet = playerWallet;
         _choiceMap = choiceMap;
         _parametersPlayer = parameters;
-        _shop = shop;
+        _adbillityShop = shop;
+        _skeensShop = worckshop;
 
         PlayerGold += _earnedGaold;
         PlayerDaimond += _earnedDaimond;
@@ -60,9 +66,21 @@ public class GameInfo
         RangeThrow = _parametersPlayer.RangeThrow;
         PlayerScore = _parametersPlayer.Score;
 
-        for (int i = 0; i < _shop.PlayerAbillities.Count; i++)
+        for (int i = 0; i < _adbillityShop.PlayerAbillities.Count; i++)
         {
-            AbilitiesPrise.Add(_shop.PlayerAbillities[i].Price);
+            AbilitiesPrise.Add(_adbillityShop.PlayerAbillities[i].Price);
+        }
+
+        for (int i = 0; i < _skeensShop.WeaponSkeens.Count; i++)
+        {
+            UnloocedSkeens.Add(_skeensShop.WeaponSkeens[i].IsUnlock);
+            Debug.Log($"{_skeensShop.WeaponSkeens[i].IsUnlock} - unlock");
+        }
+
+        for (int i = 0; i < _skeensShop.WeaponSkeens.Count; i++)
+        {
+            SelectedSkeens.Add(_skeensShop.WeaponSkeens[i].IsSelect);
+            Debug.Log($"{_skeensShop.WeaponSkeens[i].IsSelect} - select");
         }
     }
 }

@@ -37,12 +37,12 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
         _trainingShop.InitializeShop(gameInfo);
         _parameters.Initialize(gameInfo);
-        _worckshop.Initialize();
+        _worckshop.Initialize(gameInfo);
     }
 
     private void InitializeNewData()
     {
-        _playerWallet.Initialize(0, 0);
+        _playerWallet.Initialize(0, 1000);
         _moneyView.Initialize(0, 0);
         _choiceMap.Initialize(0, 0);
         _trainingShop.InitializeShop();

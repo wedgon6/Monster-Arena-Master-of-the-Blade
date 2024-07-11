@@ -10,11 +10,11 @@ public class WorckshopItem : MonoBehaviour
     [SerializeField] private Blade _blade;
     //[SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
-    private bool _isUnlock;
-    private bool _isSelect;
+    private bool _isUnlock = false;
+    private bool _isSelect = false;
     private int _price;
 
-    public event Action PurchasedSkeen;
+    public event Action UnlockedSkeen;
     public event Action SelectedSkeen;
     public event Action PriceChanged;
     public event Action<TrainingItem> ButtonCliked;
@@ -33,12 +33,12 @@ public class WorckshopItem : MonoBehaviour
         PriceChanged?.Invoke();
     }
 
-    public void GetData(bool isUnlock, bool isSelect)
+    public void SetData(bool isUnlock, bool isSelect)
     {
         if(isUnlock)
         {
             _isUnlock = true;
-            PurchasedSkeen?.Invoke();
+            UnlockedSkeen?.Invoke();
         }
 
         if (isSelect)
@@ -46,13 +46,23 @@ public class WorckshopItem : MonoBehaviour
             _isSelect = true;
             SelectedSkeen?.Invoke();
         }
-
-        Debug.Log("GetData");
     }
 
     public void BuySkeen()
     {
         _isUnlock = true;
-        PurchasedSkeen?.Invoke();
+        UnlockedSkeen?.Invoke();
+    }
+
+    public void SetSkeen()
+    {
+        _isSelect = true;
+        SelectedSkeen?.Invoke();
+    }
+
+    public void RemoveSkeen()
+    {
+        _isSelect = false;
+        UnlockedSkeen?.Invoke();
     }
 }
