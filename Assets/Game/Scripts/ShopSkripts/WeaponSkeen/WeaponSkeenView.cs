@@ -44,6 +44,16 @@ public class WeaponSkeenView : MonoBehaviour
         _item.SelectedSkeen += OnSelectedSkeen;
     }
 
+    private void OnEnable()
+    {
+        if(_item != null)
+        {
+            _actionButton.onClick.AddListener(ClickButton);
+            _item.UnlockedSkeen += OnBuySkeen;
+            _item.SelectedSkeen += OnSelectedSkeen;
+        }
+    }
+
     private void OnDisable()
     {
         _actionButton.onClick.RemoveListener(ClickButton);

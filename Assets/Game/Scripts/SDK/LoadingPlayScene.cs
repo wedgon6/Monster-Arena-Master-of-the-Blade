@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LoadingPlayScene : MonoBehaviour
 {
-    private const string SceneName = "MenuScene";
+    private const string SceneName = "1_MenuScene";
 
     [SerializeField] private Image _loadingImage;
     [SerializeField] private TMP_Text _loadingProgress;

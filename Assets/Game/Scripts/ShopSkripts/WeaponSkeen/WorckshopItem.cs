@@ -31,10 +31,12 @@ public class WorckshopItem : MonoBehaviour
         //_localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
         _price = _startPrice;
         PriceChanged?.Invoke();
+        Debug.Log("Инициализация скина");
     }
 
     public void SetData(bool isUnlock, bool isSelect)
     {
+        Debug.Log($"Получил анлок - {isUnlock} ----- получил сет {isSelect}");
         if(isUnlock)
         {
             _isUnlock = true;
@@ -56,13 +58,23 @@ public class WorckshopItem : MonoBehaviour
 
     public void SetSkeen()
     {
+        if (_isUnlock == false)
+            return;
+
         _isSelect = true;
         SelectedSkeen?.Invoke();
+        Debug.Log("Set Skeen");
     }
 
     public void RemoveSkeen()
     {
         _isSelect = false;
         UnlockedSkeen?.Invoke();
+    }
+
+    private void Awake()
+    {
+        _isUnlock = false;
+        _isSelect = false;
     }
 }

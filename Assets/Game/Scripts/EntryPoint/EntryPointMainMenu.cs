@@ -38,6 +38,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _trainingShop.InitializeShop(gameInfo);
         _parameters.Initialize(gameInfo);
         _worckshop.Initialize(gameInfo);
+        Debug.Log("Загрузка сейвово");
     }
 
     private void InitializeNewData()
@@ -48,5 +49,6 @@ public class EntryPointMainMenu : MonoBehaviour
         _trainingShop.InitializeShop();
         _parameters.Initialize();
         _worckshop.Initialize();
+        Debug.Log("новый запуаск");
     }
 }

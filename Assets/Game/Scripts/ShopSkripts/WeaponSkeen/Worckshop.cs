@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,42 +15,48 @@ public class Worckshop : MonoBehaviour
 
     public List<WorckshopItem> WeaponSkeens => _weaponSkeens;
 
+    public event Action SaveGameData;
+
     public void Initialize()
     {
-        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
-        _skeenViewConteiner.ClickSelectSkeenButton += SetSkeen;
-
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
             AddItem(_weaponSkeens[i]);
         }
 
-        _currentSkeen = _weaponSkeens[0];
-        _currentSkeen.SetData(true, true);
-        _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
-        _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
+        if(_currentSkeen == null)
+        {
+            _currentSkeen = _weaponSkeens[0];
+            _currentSkeen.SetData(true, true);
+            _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
+            _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
+        }
     }
 
     public void Initialize(GameInfo gameInfo)
     {
-        if (gameInfo.UnloocedSkeens.Count <= 0 || gameInfo.SelectedSkeens.Count <= 0)
-            Initialize();
-
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
             AddItem(_weaponSkeens[i]);
             _weaponSkeens[i].SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
-        }
 
-        for (int i = 0; i < _weaponSkeens.Count; i++)
-        {
-            if (_weaponSkeens[i].IsSelect)
+            if(_currentSkeen == null)
             {
-                _currentSkeen = _weaponSkeens[i];
-                _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
-                _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
+                if (_weaponSkeens[i].IsSelect)
+                {
+                    _currentSkeen = _weaponSkeens[i];
+                    _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
+                    _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
+                    Debug.Log("Нашел выброный");
+                }
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
+        _skeenViewConteiner.ClickSelectSkeenButton += SetSkeen;
     }
 
     private void OnDisable()
@@ -80,6 +87,7 @@ public class Worckshop : MonoBehaviour
         {
             _playerWallet.ReduceMoney(null, new Daimond(item.Price));
             item.BuySkeen();
+            SaveGameData?.Invoke();
         }
     }
 
@@ -91,5 +99,6 @@ public class Worckshop : MonoBehaviour
         _currentSkeen.RemoveSkeen();
         _currentSkeen = item;
         _currentSkeen.SetSkeen();
+        SaveGameData?.Invoke();
     }
 }

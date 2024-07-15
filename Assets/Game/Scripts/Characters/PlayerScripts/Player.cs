@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
     public event Action<Transform> Died;
+    public event Action Wined;
 
     public void Initialize(GameInfo gameInfo)
     {
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public void AddScore() => _earnedScore++;
+
+    public void VictoryDance() => Wined?.Invoke();
 
     public float GetCurrentHealth() => _health;
 

@@ -23,11 +23,13 @@ public class PlayerAnimation : MonoBehaviour
     {
         _bladeSpawner.ThrowingBlade += OnThrowBladeAnimation;
         _player.Died += OnDead;
+        _player.Wined += OnDance;
     }
 
     private void OnDisable()
     {
         _bladeSpawner.ThrowingBlade -= OnThrowBladeAnimation;
+        _player.Wined -= OnDance;
         _player.Died -= OnDead;
     }
 
@@ -44,5 +46,10 @@ public class PlayerAnimation : MonoBehaviour
     private void OnDead(Transform transform)
     {
         _animator.SetTrigger("IsDead");
+    }
+
+    private void OnDance()
+    {
+        _animator.SetTrigger("Win");
     }
 }
