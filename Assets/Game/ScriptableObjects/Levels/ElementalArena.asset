@@ -16,3 +16,4 @@ MonoBehaviour:
   _levelIcon: {fileID: 21300000, guid: 05dca594d6aa67b4c855a28bd68eea77, type: 3}
   _loadScene: {fileID: 102900000, guid: 49f0d63b4af77364a972c9e4fccbf4f4, type: 3}
   _localizationKey: ElementalArena
+  _levelName: 5_ElementalArena

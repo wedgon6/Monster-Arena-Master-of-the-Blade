@@ -16,3 +16,4 @@ MonoBehaviour:
   _levelIcon: {fileID: 21300000, guid: 2690427b025a0454084809b003d7c921, type: 3}
   _loadScene: {fileID: 102900000, guid: fe8e02a35a42619428ea05dc4c3db7ec, type: 3}
   _localizationKey: DragonArena
+  _levelName: 4_DragonArena

@@ -36,9 +36,7 @@ public class LosePanel : MonoBehaviour
 
     private void RevivePlayerButton()
     {
-#if !UNITY_EDITOR
         Services.AdvertisemintService.ShowResurrectAd();
-#endif
         RevivePlayer();
         ShowRevardAd?.Invoke();
         _reviveButton.gameObject.SetActive(false);

@@ -16,3 +16,4 @@ MonoBehaviour:
   _levelIcon: {fileID: 21300000, guid: 26fd1dae077d6144c958d256697fff08, type: 3}
   _loadScene: {fileID: 102900000, guid: 41f6366f4766b1849af5a0a5ecc4a24f, type: 3}
   _localizationKey: OrcArena
+  _levelName: 3_OrcArena

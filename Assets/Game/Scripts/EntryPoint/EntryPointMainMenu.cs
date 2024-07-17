@@ -12,7 +12,7 @@ public class EntryPointMainMenu : MonoBehaviour
 
     private void Awake()
     {
-        Services.Init();
+        //Services.Init();
         LoadData();
     }
 

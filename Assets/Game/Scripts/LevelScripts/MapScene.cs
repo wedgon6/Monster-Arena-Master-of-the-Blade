@@ -7,9 +7,10 @@ public class MapScene : ScriptableObject
     [SerializeField] private Sprite _levelIcon;
     [SerializeField] private Object _loadScene;
     [SerializeField] private string _localizationKey;
+    [SerializeField] private string _levelName;
 
     public string LevelLable => _levelLable;
     public Sprite LevelIcon => _levelIcon;
-    public string LoadScene => _loadScene.name;
+    public string LoadScene => _levelName;
     public string LocalizationKey => _localizationKey;
 }

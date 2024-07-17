@@ -28,7 +28,15 @@ public class SDKInitialize : MonoBehaviour
         }
     }
 
-    private void OnSuccessColback() => _loadindScene.StartLoadScene();
+    private void OnSuccessColback()
+    {
+        Services.Init();
+        _loadindScene.StartLoadScene();
+    }
 
-    private void OnErrorColbak(string error) => _loadindScene.StartLoadScene();
+    private void OnErrorColbak(string error)
+    {
+        Services.Init();
+        _loadindScene.StartLoadScene();
+    }
 }

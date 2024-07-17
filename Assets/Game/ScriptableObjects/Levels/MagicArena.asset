@@ -16,3 +16,4 @@ MonoBehaviour:
   _levelIcon: {fileID: 21300000, guid: b1ce82f0e90debd438f580118003e459, type: 3}
   _loadScene: {fileID: 102900000, guid: 249c6d851a9ba404a858a5e72f6be078, type: 3}
   _localizationKey: MagicalArena
+  _levelName: 2_MagicalArena
