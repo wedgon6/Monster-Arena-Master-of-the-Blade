@@ -15,6 +15,7 @@ public class ChoiceMap : MonoBehaviour
     [SerializeField] private GameObject _starsViewPrefab;
     [SerializeField] private GameObject _starsConteiner;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _proUGUI;
+    [SerializeField] private LoadPanel _loadPanel;
 
     private int _currentLevelIndex;
     private int _currentStars;
@@ -72,7 +73,6 @@ public class ChoiceMap : MonoBehaviour
         _proUGUI.UpdateTranslation(LeanLocalization.GetTranslation(_proUGUI.TranslationName));
         Debug.Log($"{_currentLevel.LoadScene} - scene name /n {_levels[_currentLevelIndex].LoadScene}");
 
-
         EneblePlayButton();
     }
 
@@ -95,8 +95,9 @@ public class ChoiceMap : MonoBehaviour
     private void OnClickPlayButton()
     {
         Debug.Log("CLICK BUTTON");
-        _asyncOperation = SceneManager.LoadSceneAsync(_currentLevel.LoadScene);
-        _asyncOperation.completed += _ => GameplayScene();
+        _loadPanel.OpenLoadPanel(_currentLevel.LoadScene);
+        //_asyncOperation = SceneManager.LoadSceneAsync(_currentLevel.LoadScene);
+        //_asyncOperation.completed += _ => GameplayScene();
     }
 
     private void GameplayScene()

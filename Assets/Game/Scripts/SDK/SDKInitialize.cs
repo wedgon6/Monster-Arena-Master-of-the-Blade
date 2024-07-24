@@ -5,7 +5,15 @@ using UnityEngine;
 public class SDKInitialize : MonoBehaviour
 {
     [SerializeField] private LoadingPlayScene _loadindScene;
+#if UNITY_EDITOR
 
+    private void Start()
+    {
+        Services.Init();
+        _loadindScene.StartLoadScene();
+    }
+
+#else
     private void Awake()
     {
         YandexGamesSdk.CallbackLogging = true;
@@ -39,4 +47,5 @@ public class SDKInitialize : MonoBehaviour
         Services.Init();
         _loadindScene.StartLoadScene();
     }
+#endif
 }

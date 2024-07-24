@@ -16,16 +16,22 @@ public class LoadingPlayScene : MonoBehaviour
 
     public void StartLoadScene()
     {
+        _asyncOperation = SceneManager.LoadSceneAsync(SceneName);
         _asyncOperation.allowSceneActivation = true;
-    }
 
-    private void Start()
-    {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(LoadScene());
     }
+
+    //private void Awake()
+    //{
+    //    if (_coroutine != null)
+    //        StopCoroutine(_coroutine);
+
+    //    _coroutine = StartCoroutine(LoadScene());
+    //}
 
     private IEnumerator LoadScene()
     {

@@ -14,6 +14,7 @@ public class EntryPointMainMenu : MonoBehaviour
     {
         //Services.Init();
         LoadData();
+        Services.GameReadyService.GameReady();
     }
 
     private void LoadData()

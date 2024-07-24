@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveService : ISaveService
 {
-    private const string DataKeyCloud = "PlayerDataCloud1";
+    private const string DataKeyCloud = "PlayerDataCloud2";
     private const string DataKeyLocal = "PlayerDataLocalTest";
     private const string DataTest = "LOL21";
 

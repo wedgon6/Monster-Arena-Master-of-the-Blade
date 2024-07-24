@@ -6,6 +6,7 @@ public class AdvertisemintServise : IAdvertisemintServise
     private Gold _revardGold = new Gold(2000);
     private Daimond _revardDaimond = new Daimond(10);
     private PlayerWallet _playerWallet;
+    private Player _player;
 
     public int GoldRevard { get => _revardGold.Value; set => throw new System.NotImplementedException(); }
     public int DaimondRevard { get => _revardDaimond.Value; set => throw new System.NotImplementedException(); }
@@ -29,9 +30,15 @@ public class AdvertisemintServise : IAdvertisemintServise
         OpenRewardAd();
     }
 
-    public void ShowResurrectAd()
+    public void ShowResurrectAd(Player player)
     {
-        throw new System.NotImplementedException();
+        _player = player;
+        OnResurrectAd();
+    }
+
+    private void OnResurrectAd()
+    {
+        VideoAd.Show(OnOpenCallBack, OnResurrectCallBack, OnCloseCallBack);
     }
 
     private void OpenRewardAd()
@@ -59,6 +66,22 @@ public class AdvertisemintServise : IAdvertisemintServise
     {
         Services.AudioService.TurnSound();
         Time.timeScale = 1f;
+    }
+
+    private void OnResurrectCallBack()
+    {
+        var colliders = Physics.OverlapSphere(_player.transform.position, 15f);
+        Debug.Log(colliders.Length);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].TryGetComponent(out Enemy enemy))
+            {
+                Vector3 direction = (enemy.transform.position - _player.transform.position) * 15f;
+                enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
+            }
+        }
+
+        _player.Resurrect();
     }
 
     private void OnRewardedCallback()

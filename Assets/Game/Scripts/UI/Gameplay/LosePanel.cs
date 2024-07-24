@@ -36,8 +36,7 @@ public class LosePanel : MonoBehaviour
 
     private void RevivePlayerButton()
     {
-        Services.AdvertisemintService.ShowResurrectAd();
-        RevivePlayer();
+        Services.AdvertisemintService.ShowResurrectAd(_player);
         ShowRevardAd?.Invoke();
         _reviveButton.gameObject.SetActive(false);
         gameObject.SetActive(false);
@@ -52,22 +51,5 @@ public class LosePanel : MonoBehaviour
     private void RelocateEarnedMoney()
     {
         Services.SaveService.RelocateData(_player.PlayerWallet, 0, _player.EarnedScore);
-    }
-
-    private void RevivePlayer()
-    {
-        var colliders = Physics.OverlapSphere(_player.transform.position, 15f);
-        Debug.Log(colliders.Length);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].TryGetComponent(out Enemy enemy))
-            {
-                Vector3 direction = (enemy.transform.position - _player.transform.position) * 15f;
-                enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
-            }
-        }
-
-        _player.Resurrect();
-
     }
 }

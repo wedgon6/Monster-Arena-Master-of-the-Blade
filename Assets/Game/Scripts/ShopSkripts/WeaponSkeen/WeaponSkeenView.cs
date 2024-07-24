@@ -56,9 +56,12 @@ public class WeaponSkeenView : MonoBehaviour
 
     private void OnDisable()
     {
-        _actionButton.onClick.RemoveListener(ClickButton);
-        _item.UnlockedSkeen -= OnBuySkeen;
-        _item.SelectedSkeen -= OnSelectedSkeen;
+        if (_item != null)
+        {
+            _actionButton.onClick.RemoveListener(ClickButton);
+            _item.UnlockedSkeen -= OnBuySkeen;
+            _item.SelectedSkeen -= OnSelectedSkeen;
+        }
     }
 
     private void ClickButton()
@@ -68,7 +71,10 @@ public class WeaponSkeenView : MonoBehaviour
 
     private void OnBuySkeen()
     {
-        _unlockStatus.sprite = _unlockImage;
+        if(_unlockStatus.sprite != null && _unlockImage != null)
+        {
+            _unlockStatus.sprite = _unlockImage;
+        }
     }
 
     private void OnSelectedSkeen()
