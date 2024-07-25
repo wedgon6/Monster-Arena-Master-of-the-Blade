@@ -17,7 +17,7 @@ public class LoadingPlayScene : MonoBehaviour
     public void StartLoadScene()
     {
         _asyncOperation = SceneManager.LoadSceneAsync(SceneName);
-        _asyncOperation.allowSceneActivation = true;
+        //_asyncOperation.allowSceneActivation = false;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -35,9 +35,6 @@ public class LoadingPlayScene : MonoBehaviour
 
     private IEnumerator LoadScene()
     {
-        _asyncOperation = SceneManager.LoadSceneAsync(SceneName);
-        _asyncOperation.allowSceneActivation = false;
-
         while (!_asyncOperation.isDone)
         {
             float progress = _asyncOperation.progress / 0.9f;
@@ -45,5 +42,7 @@ public class LoadingPlayScene : MonoBehaviour
             _loadingProgress.text = string.Format("{0:0}%", progress * 100);
             yield return null;
         }
+
+        //_asyncOperation.allowSceneActivation = true;
     }
 }

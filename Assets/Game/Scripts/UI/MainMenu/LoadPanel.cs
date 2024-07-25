@@ -36,6 +36,6 @@ public class LoadPanel : MonoBehaviour
             yield return null;
         }
 
-       // Services.AdvertisemintService.ShowInterstitialAd();
+       Services.AdvertisemintService.ShowInterstitialAd();
     }
 }
