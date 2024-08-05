@@ -28,6 +28,7 @@ public class ParametersPlayer : MonoBehaviour
     public float Damage => _damage;
     public float RangeThrow => _rangeThrow;
     public int Score => _score;
+    public Blade Blade => _blade;
 
     public void Initialize()
     {

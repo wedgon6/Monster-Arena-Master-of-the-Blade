@@ -4,12 +4,12 @@ using UnityEngine;
 public class BladeSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _weaponPoints;
-    [SerializeField] private Blade _bladePrefab;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Movment _playerMovment;
     [SerializeField] private Pool _bladePool;
     [SerializeField] private BladeViwe _bladeViwe;
 
+    private Blade _bladePrefab;
     private float _playerSpeed;
     private bool _isActive = false;
     private float _currentTime = 0f;
@@ -19,20 +19,20 @@ public class BladeSpawner : MonoBehaviour
 
     public event Action ThrowingBlade;
 
-    public void Initialize(float damage, float rangeThrow)
+    public void Initialize(Blade blade, float damage, float rangeThrow)
     {
+        _bladePrefab = blade;
+        if (blade == null)
+            Debug.Log("NULLL");
+
         _damage = damage;
         _rangeThrow = rangeThrow;
+        _bladeViwe.Initialize(3, _bladePrefab);
     }
 
     public void TurnOffActive()
     {
         _isActive = false;
-    }
-
-    private void Start()
-    {
-        _bladeViwe.Initialize(3, _bladePrefab);
     }
 
     private void OnEnable()

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IDamageable
 
         Debug.Log($"Игрок передал скорость - {_gameInfo.PlayerMoveSpeed}");
         _movment.Initialize(_gameInfo.PlayerMoveSpeed);
-        _bladeSpawner.Initialize(_gameInfo.Damage, _gameInfo.RangeThrow);
+        _bladeSpawner.Initialize(_gameInfo.GetCurrentBlade(), _gameInfo.Damage, _gameInfo.RangeThrow);
     }
 
     public void AddScore() => _earnedScore++;

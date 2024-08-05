@@ -17,21 +17,12 @@ public class LoadingPlayScene : MonoBehaviour
     public void StartLoadScene()
     {
         _asyncOperation = SceneManager.LoadSceneAsync(SceneName);
-        //_asyncOperation.allowSceneActivation = false;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(LoadScene());
     }
-
-    //private void Awake()
-    //{
-    //    if (_coroutine != null)
-    //        StopCoroutine(_coroutine);
-
-    //    _coroutine = StartCoroutine(LoadScene());
-    //}
 
     private IEnumerator LoadScene()
     {
@@ -42,7 +33,5 @@ public class LoadingPlayScene : MonoBehaviour
             _loadingProgress.text = string.Format("{0:0}%", progress * 100);
             yield return null;
         }
-
-        //_asyncOperation.allowSceneActivation = true;
     }
 }

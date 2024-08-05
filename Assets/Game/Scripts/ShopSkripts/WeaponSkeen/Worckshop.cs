@@ -99,6 +99,7 @@ public class Worckshop : MonoBehaviour
         _currentSkeen.RemoveSkeen();
         _currentSkeen = item;
         _currentSkeen.SetSkeen();
+        _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);//
         SaveGameData?.Invoke();
     }
 }

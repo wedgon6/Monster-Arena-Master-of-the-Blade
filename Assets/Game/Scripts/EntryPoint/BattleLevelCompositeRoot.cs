@@ -53,6 +53,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     private void OnWinGame()
     {
         CorountineStart(WinGame());
+        _player.VictoryDance();
     }
 
     private void OnLooseGame(Transform transform)

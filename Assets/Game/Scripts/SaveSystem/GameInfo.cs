@@ -30,6 +30,7 @@ public class GameInfo
 
     private static int _earnedGaold = 0;
     private static int _earnedDaimond = 0;
+    private static Blade _currentBlade;
 
     public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop, Worckshop worckshop)
     {
@@ -39,6 +40,7 @@ public class GameInfo
         _adbillityShop = shop;
         _skeensShop = worckshop;
 
+        _currentBlade = _parametersPlayer.Blade;
         PlayerGold += _earnedGaold;
         PlayerDaimond += _earnedDaimond;
         GetData();
@@ -82,5 +84,10 @@ public class GameInfo
             SelectedSkeens.Add(_skeensShop.WeaponSkeens[i].IsSelect);
             Debug.Log($"{_skeensShop.WeaponSkeens[i].IsSelect} - select");
         }
+    }
+
+    public Blade GetCurrentBlade()
+    {
+        return _currentBlade;
     }
 }
