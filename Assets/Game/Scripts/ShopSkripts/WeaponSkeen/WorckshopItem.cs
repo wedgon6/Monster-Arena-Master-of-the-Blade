@@ -13,6 +13,7 @@ public class WorckshopItem : MonoBehaviour
     private bool _isUnlock = false;
     private bool _isSelect = false;
     private int _price;
+    private int _index;
 
     public event Action UnlockedSkeen;
     public event Action SelectedSkeen;
@@ -25,11 +26,13 @@ public class WorckshopItem : MonoBehaviour
     public string Lable => _lable.text;
     public Sprite Icon => _icon;
     public int Price => _price;
+    public int Index => _index;
 
-    public void Initialize()
+    public void Initialize(int index)
     {
         //_localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
         _price = _startPrice;
+        _index = index;
         PriceChanged?.Invoke();
         Debug.Log("Инициализация скина");
     }

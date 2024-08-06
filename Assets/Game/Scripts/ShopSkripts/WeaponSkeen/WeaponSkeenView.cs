@@ -14,13 +14,14 @@ public class WeaponSkeenView : MonoBehaviour
     [SerializeField] private Button _actionButton;
 
     private WorckshopItem _item;
+    private int _indexBlade;
 
-    public event Action<WorckshopItem> ActionButtonClick;
+    public event Action<WorckshopItem, int> ActionButtonClick;
 
-    public void Render(WorckshopItem item)
+    public void Render(WorckshopItem item, int index)
     {
         _item = item;
-        _item.Initialize();
+        _item.Initialize(index);
     
         if (_item.IsUnlock)
         {
@@ -66,7 +67,7 @@ public class WeaponSkeenView : MonoBehaviour
 
     private void ClickButton()
     {
-        ActionButtonClick?.Invoke(_item);
+        ActionButtonClick?.Invoke(_item, _indexBlade);
     }
 
     private void OnBuySkeen()

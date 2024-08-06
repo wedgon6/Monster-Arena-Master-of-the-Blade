@@ -4172,8 +4172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5ec6e9cae89ee49b2c69f926884952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
-  _maxMoveSpeed: 4
   _camera: {fileID: 0}
 --- !u!136 &6648169380706887109
 CapsuleCollider:
@@ -4239,11 +4237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponPoints:
   - {fileID: 2260963263401755905}
-  _bladePrefab: {fileID: 2086324237923614446, guid: e4f7d720a63290b47abe327b7d5962e6, type: 3}
   _shootPoint: {fileID: 8156829100489340456}
   _playerMovment: {fileID: 4054781239415726963}
   _bladePool: {fileID: 6818914390581753630}
   _bladeViwe: {fileID: 8393379929183746587}
+  _blades:
+  - {fileID: 2086324237923614446, guid: e4f7d720a63290b47abe327b7d5962e6, type: 3}
+  - {fileID: 503622531140604687, guid: fa642bf26c66fe64fa79ace4b4124d44, type: 3}
 --- !u!114 &3478571862557182972
 MonoBehaviour:
   m_ObjectHideFlags: 0

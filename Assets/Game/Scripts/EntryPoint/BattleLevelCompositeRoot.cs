@@ -18,8 +18,6 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void Awake()
     {
-        //Services.AdvertisemintService.ShowInterstitialAd();
-
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
             _player.Initialize(gameInfo);

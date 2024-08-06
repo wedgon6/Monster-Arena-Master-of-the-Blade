@@ -94,14 +94,15 @@ public class ChoiceMap : MonoBehaviour
 
     private void OnClickPlayButton()
     {
+        Services.AdvertisemintService.ShowInterstitialAd();
         Debug.Log("CLICK BUTTON");
         _loadPanel.OpenLoadPanel(_currentLevel.LoadScene);
         //_asyncOperation = SceneManager.LoadSceneAsync(_currentLevel.LoadScene);
         //_asyncOperation.completed += _ => GameplayScene();
     }
 
-    private void GameplayScene()
-    {
-        Services.AdvertisemintService.ShowInterstitialAd();
-    }
+    //private void GameplayScene()
+    //{
+    //    Services.AdvertisemintService.ShowInterstitialAd();
+    //}
 }

@@ -12,8 +12,10 @@ public class Worckshop : MonoBehaviour
     [SerializeField] private SkeenViewConteiner _skeenViewConteiner;
 
     private WorckshopItem _currentSkeen;
+    private int _currentSkeenIndex;
 
     public List<WorckshopItem> WeaponSkeens => _weaponSkeens;
+    public int CurrentSkeenIndex => _currentSkeenIndex;
 
     public event Action SaveGameData;
 
@@ -21,15 +23,15 @@ public class Worckshop : MonoBehaviour
     {
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
-            AddItem(_weaponSkeens[i]);
+            AddItem(_weaponSkeens[i], i);
         }
 
         if(_currentSkeen == null)
         {
             _currentSkeen = _weaponSkeens[0];
             _currentSkeen.SetData(true, true);
+            _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, 0);
             _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
-            _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
         }
     }
 
@@ -37,7 +39,7 @@ public class Worckshop : MonoBehaviour
     {
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
-            AddItem(_weaponSkeens[i]);
+            AddItem(_weaponSkeens[i], i);
             _weaponSkeens[i].SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
 
             if(_currentSkeen == null)
@@ -45,8 +47,8 @@ public class Worckshop : MonoBehaviour
                 if (_weaponSkeens[i].IsSelect)
                 {
                     _currentSkeen = _weaponSkeens[i];
+                    _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, i);
                     _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
-                    _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
                     Debug.Log("Нашел выброный");
                 }
             }
@@ -65,16 +67,16 @@ public class Worckshop : MonoBehaviour
         _skeenViewConteiner.ClickSelectSkeenButton -= SetSkeen;
     }
 
-    private void AddItem(WorckshopItem weapon)
+    private void AddItem(WorckshopItem weapon, int index)
     {
         var view = Instantiate(_shopView, _worckshopConteiner.transform);
         view.ActionButtonClick += OnButtonClick;
-        view.Render(weapon);
+        view.Render(weapon, index);
     }
 
-    private void OnButtonClick(WorckshopItem weapon)
+    private void OnButtonClick(WorckshopItem weapon, int indexSkeen)
     {
-        _skeenViewConteiner.RenderChoiceSkeen(weapon);
+        _skeenViewConteiner.RenderChoiceSkeen(weapon, indexSkeen);
     }
 
     private void TrySellSkeen(WorckshopItem item)
@@ -91,15 +93,16 @@ public class Worckshop : MonoBehaviour
         }
     }
 
-    private void SetSkeen(WorckshopItem item)
+    private void SetSkeen(WorckshopItem item, int currentIndex)
     {
         if (_currentSkeen == null)
             return;
         
         _currentSkeen.RemoveSkeen();
         _currentSkeen = item;
+        _currentSkeenIndex = currentIndex;
+        Debug.Log($"current blade in shoop {currentIndex}");
         _currentSkeen.SetSkeen();
-        _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);//
         SaveGameData?.Invoke();
     }
 }

@@ -14,11 +14,12 @@ public class SkeenViewConteiner : MonoBehaviour
     [SerializeField] private GameObject _selectedContent;
 
     private WorckshopItem _item;
+    private int _indexCurrentSkeen;
 
     public event Action<WorckshopItem> ClickBuyButton;
-    public event Action<WorckshopItem> ClickSelectSkeenButton;
+    public event Action<WorckshopItem, int> ClickSelectSkeenButton;
 
-    public void RenderChoiceSkeen(WorckshopItem item)
+    public void RenderChoiceSkeen(WorckshopItem item, int indexSkeen)
     {
         SetNewItem();
 
@@ -29,6 +30,8 @@ public class SkeenViewConteiner : MonoBehaviour
         }
 
         _item = item;
+        _indexCurrentSkeen = _item.Index;
+        Debug.Log($"Index skeen int Conteiner {indexSkeen}");
         _lable.text = _item.Lable;
         _price.text = _item.Price.ToString();
         _icon.sprite = _item.Icon;
@@ -87,7 +90,7 @@ public class SkeenViewConteiner : MonoBehaviour
 
     private void OnClickSelectSkeen()
     {
-        ClickSelectSkeenButton?.Invoke(_item);
+        ClickSelectSkeenButton?.Invoke(_item, _indexCurrentSkeen);
     }
 
     private void OnSkeenBuy()

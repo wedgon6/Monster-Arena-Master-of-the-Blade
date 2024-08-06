@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BladeSpawner : MonoBehaviour
@@ -8,6 +9,7 @@ public class BladeSpawner : MonoBehaviour
     [SerializeField] private Movment _playerMovment;
     [SerializeField] private Pool _bladePool;
     [SerializeField] private BladeViwe _bladeViwe;
+    [SerializeField] private List<Blade> _blades;
 
     private Blade _bladePrefab;
     private float _playerSpeed;
@@ -19,11 +21,10 @@ public class BladeSpawner : MonoBehaviour
 
     public event Action ThrowingBlade;
 
-    public void Initialize(Blade blade, float damage, float rangeThrow)
+    public void Initialize(int indexBlade, float damage, float rangeThrow)
     {
-        _bladePrefab = blade;
-        if (blade == null)
-            Debug.Log("NULLL");
+        _bladePrefab = _blades[indexBlade];
+        Debug.Log($"index blade in battle {indexBlade}");
 
         _damage = damage;
         _rangeThrow = rangeThrow;

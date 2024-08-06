@@ -37,7 +37,6 @@ public class ParametersPlayer : MonoBehaviour
         _damage = StandartDamage;
         _rangeThrow = StandartRangeThrow;
         _score = StandartScore;
-        Debug.Log(_playerMoveSpeed);
         SavedData?.Invoke();
     }
 
@@ -48,7 +47,6 @@ public class ParametersPlayer : MonoBehaviour
         _damage = data.Damage;
         _rangeThrow = data.RangeThrow;
         _score = data.PlayerScore;
-        Debug.Log(_playerMoveSpeed);
         SavedData?.Invoke();
     }
 

@@ -35,7 +35,5 @@ public class LoadPanel : MonoBehaviour
             _loadingProgress.text = string.Format("{0:0}%", progress * 100);
             yield return null;
         }
-
-       Services.AdvertisemintService.ShowInterstitialAd();
     }
 }
