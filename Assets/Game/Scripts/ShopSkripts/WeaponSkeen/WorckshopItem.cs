@@ -34,12 +34,10 @@ public class WorckshopItem : MonoBehaviour
         _price = _startPrice;
         _index = index;
         PriceChanged?.Invoke();
-        Debug.Log("Инициализация скина");
     }
 
     public void SetData(bool isUnlock, bool isSelect)
     {
-        Debug.Log($"Получил анлок - {isUnlock} ----- получил сет {isSelect}");
         if(isUnlock)
         {
             _isUnlock = true;
@@ -66,7 +64,6 @@ public class WorckshopItem : MonoBehaviour
 
         _isSelect = true;
         SelectedSkeen?.Invoke();
-        Debug.Log("Set Skeen");
     }
 
     public void RemoveSkeen()

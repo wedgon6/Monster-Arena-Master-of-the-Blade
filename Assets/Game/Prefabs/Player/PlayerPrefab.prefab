@@ -4244,6 +4244,9 @@ MonoBehaviour:
   _blades:
   - {fileID: 2086324237923614446, guid: e4f7d720a63290b47abe327b7d5962e6, type: 3}
   - {fileID: 503622531140604687, guid: fa642bf26c66fe64fa79ace4b4124d44, type: 3}
+  - {fileID: 8412514096768999583, guid: d246b50b24779e343ade3519fff1c5ef, type: 3}
+  - {fileID: 1871981333032077493, guid: 83d74b57ffd424f47b5597404fc1d105, type: 3}
+  - {fileID: 646602673151420045, guid: 45f8c9bd71551784ca28ee8a32c16af4, type: 3}
 --- !u!114 &3478571862557182972
 MonoBehaviour:
   m_ObjectHideFlags: 0

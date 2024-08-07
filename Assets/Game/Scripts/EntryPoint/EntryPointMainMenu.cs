@@ -12,7 +12,6 @@ public class EntryPointMainMenu : MonoBehaviour
 
     private void Awake()
     {
-        //Services.Init();
         LoadData();
         Services.GameReadyService.GameReady();
     }

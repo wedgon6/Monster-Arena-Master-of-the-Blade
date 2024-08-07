@@ -4,6 +4,13 @@ public class AudioServise : IAudioServise
 {
     private static bool _canPlayAudio = true;
 
+    private bool _isCloseAds = true;
+
+    public void ChengeAdsAudio(bool isClose)
+    {
+        _isCloseAds = isClose;
+    }
+
     public bool GetAudioModStatus()
     {
         return _canPlayAudio;
@@ -26,13 +33,23 @@ public class AudioServise : IAudioServise
             return;
 
         AudioListener.volume = 0f;
+        _canPlayAudio = false;
     }
 
     public void TurnSound()
     {
-        if (_canPlayAudio == false)
+        if (_canPlayAudio == true)
             return;
 
         AudioListener.volume = 1f;
+        _canPlayAudio = true;
+    }
+
+    public bool TryTurnSound()
+    {
+        if (_isCloseAds == false)
+            return false;
+        else
+            return true;
     }
 }

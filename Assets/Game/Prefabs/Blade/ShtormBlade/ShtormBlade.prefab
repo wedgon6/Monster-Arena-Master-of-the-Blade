@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1493265555444372580
+--- !u!1 &4549238450637599143
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7837099037229512064}
-  - component: {fileID: 7697399062608755488}
-  - component: {fileID: 5638980737042702759}
-  - component: {fileID: 5506917864439754265}
-  - component: {fileID: -6097012751112267137}
+  - component: {fileID: 363990712420362055}
+  - component: {fileID: 8499832279236247356}
+  - component: {fileID: 7645847406419550959}
+  - component: {fileID: 1087881353296821092}
+  - component: {fileID: 8412514096768999583}
+  - component: {fileID: -8217785230312308227}
   m_Layer: 6
-  m_Name: CritDamageBladeView
+  m_Name: ShtormBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7837099037229512064
+--- !u!4 &363990712420362055
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493265555444372580}
+  m_GameObject: {fileID: 4549238450637599143}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.52, y: 0.802, z: -2.736}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.747, y: 1.064, z: -2.834}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &7697399062608755488
+--- !u!33 &8499832279236247356
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493265555444372580}
-  m_Mesh: {fileID: 440216276554306183, guid: 7e4df362e9f4f124fb14463dea761d62, type: 3}
---- !u!23 &5638980737042702759
+  m_GameObject: {fileID: 4549238450637599143}
+  m_Mesh: {fileID: 3786726686612456252, guid: 089fee205c12de840b19b6353d444fa9, type: 3}
+--- !u!23 &7645847406419550959
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493265555444372580}
+  m_GameObject: {fileID: 4549238450637599143}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7079b12afa28dad499421807632947cd, type: 2}
+  - {fileID: 2100000, guid: 02a49e5f62e2c9844bd074bb7d1ae2ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5506917864439754265
+--- !u!54 &1087881353296821092
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493265555444372580}
+  m_GameObject: {fileID: 4549238450637599143}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -107,20 +108,44 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &-6097012751112267137
+--- !u!114 &8412514096768999583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493265555444372580}
+  m_GameObject: {fileID: 4549238450637599143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb049f24fdf8e2244a6669d93079d56d, type: 3}
+  m_Script: {fileID: 11500000, guid: 34f508e1c031e674daf05fa4bcb729ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bladeViwe: {fileID: 4997383807490688586, guid: 029b1d1d84a24b941ba4897f7e6223d5, type: 3}
+--- !u!136 &-8217785230312308227
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549238450637599143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.19568299
+  m_Height: 1.158382
+  m_Direction: 1
+  m_Center: {x: -0.051041495, y: 0.032458995, z: -0.000005368144}

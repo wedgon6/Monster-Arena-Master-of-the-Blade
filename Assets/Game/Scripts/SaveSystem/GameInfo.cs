@@ -77,13 +77,11 @@ public class GameInfo
         for (int i = 0; i < _skeensShop.WeaponSkeens.Count; i++)
         {
             UnloocedSkeens.Add(_skeensShop.WeaponSkeens[i].IsUnlock);
-            Debug.Log($"{_skeensShop.WeaponSkeens[i].IsUnlock} - unlock");
         }
 
         for (int i = 0; i < _skeensShop.WeaponSkeens.Count; i++)
         {
             SelectedSkeens.Add(_skeensShop.WeaponSkeens[i].IsSelect);
-            Debug.Log($"{_skeensShop.WeaponSkeens[i].IsSelect} - select");
         }
     }
 }

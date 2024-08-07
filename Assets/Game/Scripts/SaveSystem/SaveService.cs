@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SaveService : ISaveService
 {
-    private const string DataKeyCloud = "PlayerDataCloud3";
+    private const string DataKeyCloud = "PlayerDataCloud5";
     private const string DataKeyLocal = "PlayerDataLocalTest";
-    private const string DataTest = "LOL22";
+    private const string DataTest = "LOL23";
 
     private static GameInfo _gameInfo;
     private string _saveData;
@@ -58,6 +58,19 @@ public class SaveService : ISaveService
     {
         _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop, skeenShop);
         _saveData = JsonUtility.ToJson(_gameInfo);
+
+        foreach (var item in _gameInfo.UnloocedSkeens)
+        {
+            Debug.Log($"{item} - UNLOCED");
+        }
+        foreach (var item in _gameInfo.SelectedSkeens)
+        {
+            Debug.Log($"{item} - Selected");
+        }
+        foreach (var item in _gameInfo.UnloocedSkeens)
+        {
+            Debug.Log($"{item} - PRICE");
+        }
 
 #if UNITY_EDITOR
         UnityEngine.PlayerPrefs.SetString(DataTest, _saveData);

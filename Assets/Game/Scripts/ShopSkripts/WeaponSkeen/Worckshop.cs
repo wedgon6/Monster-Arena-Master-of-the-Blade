@@ -47,6 +47,7 @@ public class Worckshop : MonoBehaviour
                 if (_weaponSkeens[i].IsSelect)
                 {
                     _currentSkeen = _weaponSkeens[i];
+                    _currentSkeenIndex = i;
                     _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, i);
                     _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
                     Debug.Log("Нашел выброный");

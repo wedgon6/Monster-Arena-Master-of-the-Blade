@@ -54,7 +54,9 @@ public class AdvertisemintServise : IAdvertisemintServise
     private void OnOpenCallBack()
     {
         Services.AudioService.MuteSound();
+        Services.AudioService.ChengeAdsAudio(false);
         Time.timeScale = 0f;
+        Debug.Log("PAUSE GAME");
     }
 
     private void OnCloseCallBack(bool canShow)
@@ -65,7 +67,9 @@ public class AdvertisemintServise : IAdvertisemintServise
     private void OnCloseCallBack()
     {
         Services.AudioService.TurnSound();
+        Services.AudioService.ChengeAdsAudio(true);
         Time.timeScale = 1f;
+        Debug.Log("Start GAME");
     }
 
     private void OnResurrectCallBack()
