@@ -64,13 +64,13 @@ public class ParametersPlayer : MonoBehaviour
 
     public void AddDamage()
     {
-        _damage = _damageStep;
+        _damage += _damageStep;
         SavedData?.Invoke();
     }
 
     public void AddRangeThrow()
     {
-        _rangeThrow = _rangeThrowStep;
+        _rangeThrow += _rangeThrowStep;
         SavedData?.Invoke();
     }
 

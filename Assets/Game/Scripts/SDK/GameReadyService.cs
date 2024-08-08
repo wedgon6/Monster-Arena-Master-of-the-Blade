@@ -5,9 +5,7 @@ public class GameReadyService : IGameReadyService
 {
     public void GameReady()
     {
-#if UNITY_EDITOR
-        Debug.Log("GAME READY");
-#else
+#if !UNITY_EDITOR
         YandexGamesSdk.GameReady();
         Debug.Log("GAME READY");
 #endif

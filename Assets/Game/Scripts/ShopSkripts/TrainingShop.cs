@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class TrainingShop : MonoBehaviour
     [SerializeField] private ParametersPlayer _parametersPlayer;
 
     public List<TrainingItem> PlayerAbillities => _playerAbillities;
+    public event Action SaveGameData;
 
     public void InitializeShop()
     {
@@ -49,6 +51,7 @@ public class TrainingShop : MonoBehaviour
         {
             _playerWallet.ReduceMoney(new Gold(abillity.Price));
             abillity.Buy(_parametersPlayer);
+            SaveGameData?.Invoke();
         }
     }
 }

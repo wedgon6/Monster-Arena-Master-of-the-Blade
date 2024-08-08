@@ -31,7 +31,6 @@ public class SkeenViewConteiner : MonoBehaviour
 
         _item = item;
         _indexCurrentSkeen = _item.Index;
-        Debug.Log($"Index skeen int Conteiner {indexSkeen}");
         _lable.text = _item.Lable;
         _price.text = _item.Price.ToString();
         _icon.sprite = _item.Icon;

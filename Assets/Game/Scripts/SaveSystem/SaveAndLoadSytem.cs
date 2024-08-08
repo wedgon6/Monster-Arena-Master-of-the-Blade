@@ -13,6 +13,7 @@ public class SaveAndLoadSytem : MonoBehaviour
         _wallet.MoneyChanged += SaveGameData;
         _choiceMap.CountStarsChenged += SaveGameData;
         _parametersPlayer.SavedData += SaveGameData;
+        _abillityShop.SaveGameData += SaveGameData;
         _skeenShop.SaveGameData += SaveGameData;
     }
 
@@ -21,6 +22,7 @@ public class SaveAndLoadSytem : MonoBehaviour
         _wallet.MoneyChanged -= SaveGameData;
         _choiceMap.CountStarsChenged -= SaveGameData;
         _parametersPlayer.SavedData -= SaveGameData;
+        _abillityShop.SaveGameData -= SaveGameData;
         _skeenShop.SaveGameData -= SaveGameData;
     }
 

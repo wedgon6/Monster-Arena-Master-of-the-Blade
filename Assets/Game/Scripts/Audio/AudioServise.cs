@@ -5,6 +5,7 @@ public class AudioServise : IAudioServise
     private static bool _canPlayAudio = true;
 
     private bool _isCloseAds = true;
+    private bool _isUnMuteAudio = true;//
 
     public void ChengeAdsAudio(bool isClose)
     {
@@ -21,10 +22,16 @@ public class AudioServise : IAudioServise
         _canPlayAudio = !_canPlayAudio;
 
         if (_canPlayAudio == false)
+        {
             AudioListener.volume = 0f;
+            _isUnMuteAudio = false;
+        }
 
-        if(_canPlayAudio)
+        if (_canPlayAudio)
+        {
             AudioListener.volume = 1f;
+            _isUnMuteAudio = true;
+        }
     }
 
     public void MuteSound()
@@ -47,7 +54,7 @@ public class AudioServise : IAudioServise
 
     public bool TryTurnSound()
     {
-        if (_isCloseAds == false)
+        if (_isCloseAds == false || _isUnMuteAudio == false)
             return false;
         else
             return true;

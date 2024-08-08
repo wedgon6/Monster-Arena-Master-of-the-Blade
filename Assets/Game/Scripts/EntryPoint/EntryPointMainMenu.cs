@@ -38,17 +38,15 @@ public class EntryPointMainMenu : MonoBehaviour
         _trainingShop.InitializeShop(gameInfo);
         _parameters.Initialize(gameInfo);
         _worckshop.Initialize(gameInfo);
-        Debug.Log("Загрузка сейвово");
     }
 
     private void InitializeNewData()
     {
-        _playerWallet.Initialize(0, 1000);
+        _playerWallet.Initialize(10000, 1000);
         _moneyView.Initialize(0, 0);
         _choiceMap.Initialize(0, 0);
         _trainingShop.InitializeShop();
         _parameters.Initialize();
         _worckshop.Initialize();
-        Debug.Log("новый запуаск");
     }
 }

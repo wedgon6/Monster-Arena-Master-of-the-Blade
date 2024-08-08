@@ -50,7 +50,6 @@ public class Worckshop : MonoBehaviour
                     _currentSkeenIndex = i;
                     _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, i);
                     _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
-                    Debug.Log("Нашел выброный");
                 }
             }
         }
@@ -82,7 +81,6 @@ public class Worckshop : MonoBehaviour
 
     private void TrySellSkeen(WorckshopItem item)
     {
-        Debug.Log("Check");
         if (item.Price > _playerWallet.CurrentDaimond)
             return;
 
@@ -102,7 +100,6 @@ public class Worckshop : MonoBehaviour
         _currentSkeen.RemoveSkeen();
         _currentSkeen = item;
         _currentSkeenIndex = currentIndex;
-        Debug.Log($"current blade in shoop {currentIndex}");
         _currentSkeen.SetSkeen();
         SaveGameData?.Invoke();
     }

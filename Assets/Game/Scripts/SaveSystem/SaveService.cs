@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SaveService : ISaveService
 {
-    private const string DataKeyCloud = "PlayerDataCloud5";
+    private const string DataKeyCloud = "PlayerDataCloud";
     private const string DataKeyLocal = "PlayerDataLocalTest";
-    private const string DataTest = "LOL23";
 
     private static GameInfo _gameInfo;
     private string _saveData;
@@ -19,9 +18,9 @@ public class SaveService : ISaveService
     {
         string data;
 #if UNITY_EDITOR
-        if (UnityEngine.PlayerPrefs.HasKey(DataTest))
+        if (UnityEngine.PlayerPrefs.HasKey(DataKeyLocal))
         {
-            data = UnityEngine.PlayerPrefs.GetString(DataTest);
+            data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal);
             gameInfo = JsonUtility.FromJson<GameInfo>(data);
             gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
             _gameInfo = gameInfo;
@@ -31,7 +30,6 @@ public class SaveService : ISaveService
             _relocateScore = 0;
             return _gameInfo != null;
         }
-
 #else
         if (Agava.YandexGames.Utility.PlayerPrefs.HasKey(DataKeyCloud))
         {
@@ -59,21 +57,8 @@ public class SaveService : ISaveService
         _gameInfo = new GameInfo(playerWallet, choiceMap, parametersPlayer, shop, skeenShop);
         _saveData = JsonUtility.ToJson(_gameInfo);
 
-        foreach (var item in _gameInfo.UnloocedSkeens)
-        {
-            Debug.Log($"{item} - UNLOCED");
-        }
-        foreach (var item in _gameInfo.SelectedSkeens)
-        {
-            Debug.Log($"{item} - Selected");
-        }
-        foreach (var item in _gameInfo.UnloocedSkeens)
-        {
-            Debug.Log($"{item} - PRICE");
-        }
-
 #if UNITY_EDITOR
-        UnityEngine.PlayerPrefs.SetString(DataTest, _saveData);
+        UnityEngine.PlayerPrefs.SetString(DataKeyLocal, _saveData);
         UnityEngine.PlayerPrefs.Save();
 #else
         Agava.YandexGames.Utility.PlayerPrefs.SetString(DataKeyCloud, _saveData);
@@ -87,5 +72,14 @@ public class SaveService : ISaveService
         _relocateDaimond = playerWallet.CurrentDaimond;
         _relocateStars = countStars;
         _relocateScore = relocateScore;
+    }
+
+    public void RemoveData()
+    {
+#if UNITY_EDITOR
+        UnityEngine.PlayerPrefs.DeleteKey(DataKeyLocal);
+#else
+        Agava.YandexGames.Utility.PlayerPrefs.DeleteKey(DataKeyCloud);
+#endif
     }
 }

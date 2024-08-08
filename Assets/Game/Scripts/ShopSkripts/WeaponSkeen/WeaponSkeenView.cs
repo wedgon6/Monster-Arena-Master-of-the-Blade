@@ -81,6 +81,5 @@ public class WeaponSkeenView : MonoBehaviour
     private void OnSelectedSkeen()
     {
         _unlockStatus.sprite = _selectImage;
-        Debug.Log("Поставил галочку");
     }
 }

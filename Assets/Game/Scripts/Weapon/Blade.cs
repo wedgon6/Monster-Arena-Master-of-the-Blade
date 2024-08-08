@@ -18,9 +18,6 @@ public class Blade : PoolObject
     private Coroutine _coroutine;
     private Rigidbody _rigidbody;
 
-    public bool IsReturn => _isReturn;
-    public BladeSpawner BladeSpawner => _bladeSpawner;
-    public Vector3 StartPoint => _startPoint;
     public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
     public void Initialaze(BladeSpawner bladeSpawner, float damage)
