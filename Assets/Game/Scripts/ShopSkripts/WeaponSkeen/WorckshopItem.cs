@@ -21,16 +21,18 @@ public class WorckshopItem : MonoBehaviour
     public event Action<TrainingItem> ButtonCliked;
 
     public Blade Blade => _blade;
-    public bool IsUnlock => _isUnlock;
-    public bool IsSelect => _isSelect;
     public string Lable => _lable.text;
     public Sprite Icon => _icon;
     public int Price => _price;
     public int Index => _index;
+    public bool IsUnlock => _isUnlock;
+    public bool IsSelect => _isSelect;
 
     public void Initialize(int index)
     {
         //_localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
+        _isUnlock = false;
+        _isSelect = false;
         _price = _startPrice;
         _index = index;
         PriceChanged?.Invoke();

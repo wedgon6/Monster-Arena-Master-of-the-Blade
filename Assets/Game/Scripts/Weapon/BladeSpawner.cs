@@ -24,7 +24,6 @@ public class BladeSpawner : MonoBehaviour
     public void Initialize(int indexBlade, float damage, float rangeThrow)
     {
         _bladePrefab = _blades[indexBlade];
-        Debug.Log($"index blade in battle {indexBlade}");
 
         _damage = damage;
         _rangeThrow = rangeThrow;

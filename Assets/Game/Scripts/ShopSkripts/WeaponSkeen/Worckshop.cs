@@ -23,10 +23,11 @@ public class Worckshop : MonoBehaviour
     {
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
+            _weaponSkeens[i].SetData(false, false);
             AddItem(_weaponSkeens[i], i);
         }
 
-        if(_currentSkeen == null)
+        if (_currentSkeen == null)
         {
             _currentSkeen = _weaponSkeens[0];
             _currentSkeen.SetData(true, true);

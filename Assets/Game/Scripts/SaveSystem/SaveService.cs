@@ -77,9 +77,11 @@ public class SaveService : ISaveService
     public void RemoveData()
     {
 #if UNITY_EDITOR
-        UnityEngine.PlayerPrefs.DeleteKey(DataKeyLocal);
+        UnityEngine.PlayerPrefs.DeleteAll();
+        UnityEngine.PlayerPrefs.Save();
 #else
-        Agava.YandexGames.Utility.PlayerPrefs.DeleteKey(DataKeyCloud);
+        Agava.YandexGames.Utility.PlayerPrefs.DeleteAll();
+        Agava.YandexGames.Utility.PlayerPrefs.Save();
 #endif
     }
 }
