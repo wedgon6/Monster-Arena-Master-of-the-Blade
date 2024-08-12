@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class LoadingPlayScene : MonoBehaviour
 {
-    private const string SceneName = "1_MenuScene";
+    private const string MenuScene = "1_MenuScene";
+    private const string TutorialScene = "Tutorial";
 
     [SerializeField] private Image _loadingImage;
     [SerializeField] private TMP_Text _loadingProgress;
@@ -16,7 +17,10 @@ public class LoadingPlayScene : MonoBehaviour
 
     public void StartLoadScene()
     {
-        _asyncOperation = SceneManager.LoadSceneAsync(SceneName);
+        if(Services.SaveService.TryGetData(out GameInfo data))
+            _asyncOperation = SceneManager.LoadSceneAsync(MenuScene);
+        else
+            _asyncOperation = SceneManager.LoadSceneAsync(TutorialScene);
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);

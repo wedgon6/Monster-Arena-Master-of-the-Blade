@@ -23,6 +23,17 @@ public class Player : MonoBehaviour, IDamageable
     public event Action<Transform> Died;
     public event Action Wined;
 
+    public void Initialize()
+    {
+        PlayerStandartParametrs standartParametrs = new PlayerStandartParametrs();
+        
+        _maxHealth = standartParametrs.StartHealth;
+        _health = _maxHealth;
+        ChangeHealth?.Invoke(_health, _maxHealth);
+        _movment.Initialize(standartParametrs.StartMoveSpeed);
+        _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow);
+    }
+
     public void Initialize(GameInfo gameInfo)
     {
         _gameInfo = gameInfo;
@@ -30,14 +41,17 @@ public class Player : MonoBehaviour, IDamageable
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
 
-        Debug.Log($"Игрок передал скорость - {_gameInfo.PlayerMoveSpeed}");
         _movment.Initialize(_gameInfo.PlayerMoveSpeed);
         _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow);
     }
 
+    public void VictoryDance()
+    {
+        Wined?.Invoke();
+        _movment.Initialize(0);
+        _bladeSpawner.TurnOffActive();
+    }
     public void AddScore() => _earnedScore++;
-
-    public void VictoryDance() => Wined?.Invoke();
 
     public float GetCurrentHealth() => _health;
 

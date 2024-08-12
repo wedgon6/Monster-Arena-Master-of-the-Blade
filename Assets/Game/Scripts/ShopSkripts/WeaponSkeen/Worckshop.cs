@@ -34,6 +34,8 @@ public class Worckshop : MonoBehaviour
             _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, 0);
             _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
         }
+
+        SaveGameData?.Invoke();
     }
 
     public void Initialize(GameInfo gameInfo)
@@ -54,6 +56,8 @@ public class Worckshop : MonoBehaviour
                 }
             }
         }
+
+        SaveGameData?.Invoke();
     }
 
     private void OnEnable()

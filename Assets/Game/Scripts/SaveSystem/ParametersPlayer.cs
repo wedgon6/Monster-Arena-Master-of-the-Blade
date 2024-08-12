@@ -77,6 +77,5 @@ public class ParametersPlayer : MonoBehaviour
     public void SelectWeaponSkeen(Blade blade)
     {
         _blade = blade;
-        SavedData?.Invoke();
     }
 }

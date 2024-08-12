@@ -5,7 +5,7 @@ public class AudioServise : IAudioServise
     private static bool _canPlayAudio = true;
 
     private bool _isCloseAds = true;
-    private bool _isUnMuteAudio = true;//
+    private bool _isUnMuteAudio = true;
 
     public void ChengeAdsAudio(bool isClose)
     {

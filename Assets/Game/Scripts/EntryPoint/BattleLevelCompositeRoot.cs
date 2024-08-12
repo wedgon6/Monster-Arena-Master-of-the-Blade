@@ -23,13 +23,12 @@ public class BattleLevelCompositeRoot : MonoBehaviour
             _player.Initialize(gameInfo);
             _enemySpawner.RestSpawner(gameInfo.CurrentStatrsCount);
             _trapSpawner.Initialize(gameInfo.CurrentStatrsCount);
-            Debug.Log("Загрузка из облака");
         }
         else
         {
+            _player.Initialize();
             _enemySpawner.RestSpawner(0);
             _trapSpawner.Initialize(1);
-            Debug.Log("Загрузка не из облака");
         }
     }
 
