@@ -27,9 +27,11 @@ public class ChoiceMap : MonoBehaviour
 
     public void Initialize(int currentMapIndex, int currentCountStats)
     {
+        Debug.Log($"Enter start - {currentCountStats}");
         _currentLevelIndex = currentMapIndex;
         _currentLevel = _levels[currentMapIndex];
         _currentStars = currentCountStats;
+        Debug.Log($"Current count stars start initialize - {_currentStars}");
 
         if (_currentStars > 2)
             SetNextMap();
@@ -42,6 +44,7 @@ public class ChoiceMap : MonoBehaviour
         }
 
         CountStarsChenged?.Invoke();
+        Debug.Log($"Current count stars after initialize - {_currentStars}");
     }
 
     private void SetNextMap()

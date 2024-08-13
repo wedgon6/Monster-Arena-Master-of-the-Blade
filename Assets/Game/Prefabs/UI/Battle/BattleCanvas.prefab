@@ -551,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ana men\xFC"
+  m_text: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backMenuButton: {fileID: 159403642824064970}
-  _doubleRevardButton: {fileID: 3461461742300709135}
+  _adsActionButton: {fileID: 3461461742300709135}
   _goldCount: {fileID: 5013188582184848745}
   _daimondCount: {fileID: 3948738893931199709}
 --- !u!1 &1973171448787201264
@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backMenuButton: {fileID: 1327982955935997773}
-  _reviveButton: {fileID: 2978516749964075909}
+  _adsActionButton: {fileID: 2978516749964075909}
   _goldCount: {fileID: 8174468507125108447}
   _daimondCount: {fileID: 4366053776275165907}
 --- !u!1 &4715470276872229549
@@ -4215,7 +4215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xC7ifte \xD6d\xFCl"
+  m_text: "\u0414\u0432\u043E\u0439\u043D\u0430\u044F \u043D\u0430\u0433\u0440\u0430\u0434\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4364,7 +4364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zafer!
+  m_text: "\u041F\u043E\u0431\u0435\u0434\u0430!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4761,6 +4761,10 @@ PrefabInstance:
     - target: {fileID: 3292983082003675968, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
       propertyPath: m_Name
       value: Localization
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893851455625931262, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
       objectReference: {fileID: 0}
     - target: {fileID: 8444603127006080463, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -42,6 +42,7 @@ public class EntryPointMainMenu : MonoBehaviour
 
     private void InitializeNewData()
     {
+        Debug.Log("First Initialize");
         _moneyView.Initialize(0, 0);
         _playerWallet.Initialize(0, 0);
         _choiceMap.Initialize(0, 0);
