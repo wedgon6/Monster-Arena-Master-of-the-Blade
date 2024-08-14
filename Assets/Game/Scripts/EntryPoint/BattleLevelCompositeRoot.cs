@@ -11,7 +11,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     [SerializeField] private TrapSpawner _trapSpawner;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
 
-    [SerializeField] private WinPanel _winPanel;
+    [SerializeField] private ResultsPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
     
     private Coroutine _corontine;

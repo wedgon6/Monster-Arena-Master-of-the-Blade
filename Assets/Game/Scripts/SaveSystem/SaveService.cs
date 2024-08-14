@@ -14,6 +14,9 @@ public class SaveService : ISaveService
     private static int _relocateStars = 0;
     private static int _relocateScore = 0;
 
+    int ISaveService.RelocateGold { get => _relocateGold; set => throw new NotImplementedException(); }
+    int ISaveService.RelocateDaimond { get => _relocateDaimond; set => throw new NotImplementedException(); }
+
     public bool TryGetData(out GameInfo gameInfo)
     {
         string data;
