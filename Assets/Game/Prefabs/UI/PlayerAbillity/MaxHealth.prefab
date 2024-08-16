@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 3977467798196088444}
   - component: {fileID: 3157124593291301229}
   - component: {fileID: 557212168451418246}
+  - component: {fileID: 6488942810543213993}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -349,9 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Max Health
-
-'
+  m_text: Max Health
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -420,6 +419,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6488942810543213993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058509331579847250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: MaxHealth
+  FallbackText: 'Max Health
+
+'
 --- !u!1 &5729956872588680745
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +530,7 @@ MonoBehaviour:
   _icon: {fileID: 894501080, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
   _multiplier: 1.25
   _startPrice: 1000
+  _localized: {fileID: 6488942810543213993}
 --- !u!1 &8974450126472453202
 GameObject:
   m_ObjectHideFlags: 0

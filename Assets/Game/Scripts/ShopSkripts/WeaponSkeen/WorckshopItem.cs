@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class WorckshopItem : MonoBehaviour
     [SerializeField] private Sprite _icon;
     [SerializeField] private int _startPrice;
     [SerializeField] private Blade _blade;
-    //[SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
     private bool _isUnlock = false;
     private bool _isSelect = false;
@@ -30,7 +31,7 @@ public class WorckshopItem : MonoBehaviour
 
     public void Initialize(int index)
     {
-        //_localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
+        _localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
         _isUnlock = false;
         _isSelect = false;
         _price = _startPrice;
