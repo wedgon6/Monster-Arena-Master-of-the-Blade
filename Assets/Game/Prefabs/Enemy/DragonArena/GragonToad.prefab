@@ -1804,7 +1804,7 @@ MonoBehaviour:
   - {fileID: 2821878572552745762}
   - {fileID: -4725530570372874346}
   _moveSpeed: 0.5
-  _maxSpeed: 4
+  _maxSpeed: 2
 --- !u!114 &5404936223847318786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   - {fileID: -4725530570372874346}
   _attackDelay: 2
   _attackRange: 10
-  _damage: 100
+  _damage: 23
   _bullet: {fileID: 1134366832853207006, guid: db808005d37333140b5e7ec9635d3728, type: 3}
   _pool: {fileID: 5804723865323397652}
   _shootPoint: {fileID: 4809823859504511897}

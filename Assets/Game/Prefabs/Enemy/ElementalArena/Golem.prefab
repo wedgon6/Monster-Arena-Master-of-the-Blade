@@ -295,7 +295,7 @@ MonoBehaviour:
   - {fileID: 6054275165019086107}
   - {fileID: -1009028775211699705}
   _moveSpeed: 0.5
-  _maxSpeed: 4
+  _maxSpeed: 1
 --- !u!114 &4450833272762773800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   - {fileID: -1009028775211699705}
   _attackDelay: 2
   _attackRange: 3
-  _damage: 20
+  _damage: 25
 --- !u!114 &3812259647396219870
 MonoBehaviour:
   m_ObjectHideFlags: 0

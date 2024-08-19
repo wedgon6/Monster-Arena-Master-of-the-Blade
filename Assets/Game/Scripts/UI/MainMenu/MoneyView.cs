@@ -16,7 +16,6 @@ public class MoneyView : MonoBehaviour
         _wallet.MoneyChanged += OnPlayerMoneyChenget;
         _goldView.text = countGold.ToString();
         _daimondView.text = countDaimond.ToString();
-        Debug.Log(countDaimond.ToString());
 
         if (_revardVideoButton != null)
         {

@@ -6,7 +6,9 @@ public class LosePanel : ResultsPanel
 
     protected override void OnAdsButtonClick()
     {
-        Services.AdvertisemintService.ShowResurrectAd(_player);
+#if !UNITY_EDITOR
+        Services.AdvertisemintService.ShowResurrectAd(_player, this);
+#endif
         ShowRevardAd?.Invoke();
         _adsActionButton.gameObject.SetActive(false);
         gameObject.SetActive(false);

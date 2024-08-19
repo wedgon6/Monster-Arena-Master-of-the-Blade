@@ -29,6 +29,8 @@ public class Tutorial : MonoBehaviour
 
     private void Start()
     {
+        Services.GameReadyService.GameReady();
+
         _enemySpawner.PutEnemyToPool();
 
         if (_corontine != null)

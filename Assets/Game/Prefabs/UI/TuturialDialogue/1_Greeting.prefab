@@ -167,6 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42069d0985969243a34205999bcd5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1989343992, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
+  _icon: {fileID: 21300000, guid: 5ff53bacc32bf39488c1f352833df968, type: 3}
   _phease: {fileID: 5334958955123716174}
   _localized: {fileID: 6264588134693652373}

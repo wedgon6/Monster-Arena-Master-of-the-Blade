@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IAdvertisemintServise
 {
     public int GoldRevard { get; set; }
@@ -6,5 +8,5 @@ public interface IAdvertisemintServise
     public void ShowRewardAd(PlayerWallet playerWallet);
     public void ShowInterstitialAd();
     public void ShowMultiplayAd(PlayerWallet playerWallet);
-    public void ShowResurrectAd(Player player);
+    public void ShowResurrectAd(Player player, LosePanel losePanel);
 }
