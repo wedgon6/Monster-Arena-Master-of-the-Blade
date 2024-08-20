@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: -1536002564662946760}
   - component: {fileID: 3534286219836428764}
   m_Layer: 7
-  m_Name: GruntPBR
+  m_Name: GruntPBRTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ec4292dd4bf342b40349922a296de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 80
+  _maxHealth: 40
   _stateMachine: {fileID: 3613257250760567071}
   _typeEnemy: 2
 --- !u!114 &3613257250760567071

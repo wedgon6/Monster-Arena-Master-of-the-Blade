@@ -16,5 +16,10 @@ public class EnemyBullet : PoolObject
             player.TakeDamage(_damage);
             ReturObjectPool();
         }
+
+        if (collision.collider.TryGetComponent(out Wall wall))
+        {
+            ReturObjectPool();
+        }
     }
 }

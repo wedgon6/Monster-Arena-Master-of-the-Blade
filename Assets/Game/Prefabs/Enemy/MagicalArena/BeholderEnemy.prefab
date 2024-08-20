@@ -1685,7 +1685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ec4292dd4bf342b40349922a296de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 80
   _stateMachine: {fileID: 3374486591414083847}
   _typeEnemy: 1
 --- !u!114 &3374486591414083847
@@ -1719,7 +1719,7 @@ MonoBehaviour:
   - {fileID: 3125755867943639310}
   - {fileID: 6422779180231762087}
   _moveSpeed: 0.5
-  _maxSpeed: 4
+  _maxSpeed: 3
 --- !u!114 &1011523140680221419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,7 +1753,7 @@ MonoBehaviour:
   - {fileID: 6422779180231762087}
   _attackDelay: 2
   _attackRange: 10
-  _damage: 15
+  _damage: 10
   _bullet: {fileID: 7253747031574604597, guid: 5fc7d88ff96c29b439edcba9b9f061e1, type: 3}
   _pool: {fileID: 3908747235634954475}
   _shootPoint: {fileID: 8191011232326034316}

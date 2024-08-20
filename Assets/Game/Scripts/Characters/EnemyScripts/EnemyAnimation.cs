@@ -13,7 +13,11 @@ public class EnemyAnimation : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _enemy = GetComponent<Enemy>();
+        _enemy = GetComponent<Enemy>();      
+    }
+
+    private void OnEnable()
+    {
         _enemy.ResetStateMashine += OnMove;
 
         foreach (var events in _enemyStates)

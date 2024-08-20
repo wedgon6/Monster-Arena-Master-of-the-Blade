@@ -25,7 +25,6 @@ public class Enemy : PoolObject, IDamageable
     public Rigidbody Rigidbody => _rigidbody;
     public string TypeEnemy => _typeEnemy.ToString();
 
-
     public event Action<float, float> ChangeHealth;
     public event Action<float> TakedDamage;
     public event Action GotHit;

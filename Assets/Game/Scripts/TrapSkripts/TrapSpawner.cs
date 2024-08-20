@@ -20,6 +20,7 @@ public class TrapSpawner : MonoBehaviour
             trapIndex = Random.Range(0, _traps.Count);
             GameObject trap = _traps[trapIndex];
             Instantiate(trap, _spawnPoints[currentSpawnPont].position, _spawnPoints[currentSpawnPont].rotation, _spawnPoints[currentSpawnPont]);
+            _spawnPoints.RemoveAt(currentSpawnPont);
         }
     }
 }
