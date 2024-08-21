@@ -6,15 +6,15 @@ public class TrapSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> _traps;
     [SerializeField] private List<Transform> _spawnPoints;
 
-    public void Initialize(int starsCount)
-    {
-        if (starsCount == 0)
-            starsCount = 1;
+    private int _equalizationCoefficient = 1;
 
+    public void Initialize(int starsCount, int countCircle)
+    {
+        int countTrap = starsCount + countCircle + _equalizationCoefficient;
         int currentSpawnPont;
         int trapIndex;
 
-        for (int i = 0; i < starsCount; i++)
+        for (int i = 0; i < countTrap; i++)
         {
             currentSpawnPont = Random.Range(0, _spawnPoints.Count);
             trapIndex = Random.Range(0, _traps.Count);

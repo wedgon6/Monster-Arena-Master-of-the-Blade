@@ -526,8 +526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lable: {fileID: 557212168451418246}
   _icon: {fileID: -385636788, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
-  _multiplier: 1.12
-  _startPrice: 1000
+  _multiplier: 1.4
+  _startPrice: 2500
   _localized: {fileID: 8386990118635415931}
 --- !u!1 &8974450126472453202
 GameObject:

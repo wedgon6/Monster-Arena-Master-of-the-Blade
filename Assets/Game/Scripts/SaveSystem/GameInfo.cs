@@ -14,6 +14,7 @@ public class GameInfo
     public int PlayerScore;
 
     public int CurrentStatrsCount;
+    public int CurrentCircle;
     public int CurrentMapIndex;
 
     public List<int> AbilitiesPrise = new List<int>();
@@ -58,6 +59,7 @@ public class GameInfo
         PlayerDaimond = _playerWallet.CurrentDaimond;
 
         CurrentStatrsCount = _choiceMap.CurrentStars;
+        CurrentCircle = _choiceMap.CountCircle;
         CurrentMapIndex = _choiceMap.CurrentLevelIndex;
 
         MaxPlayerHealth = _parametersPlayer.MaxPlayerHealth;

@@ -1288,6 +1288,8 @@ MonoBehaviour:
   _maxHealth: 40
   _stateMachine: {fileID: 3613257250760567071}
   _typeEnemy: 2
+  _goldRewardCount: 5000
+  _daimondRewardCount: 5
 --- !u!114 &3613257250760567071
 MonoBehaviour:
   m_ObjectHideFlags: 0

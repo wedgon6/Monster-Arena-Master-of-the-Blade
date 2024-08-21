@@ -967,6 +967,8 @@ MonoBehaviour:
   _maxHealth: 200
   _stateMachine: {fileID: 397333890453645363}
   _typeEnemy: 0
+  _goldRewardCount: 2500
+  _daimondRewardCount: 1
 --- !u!136 &-7780118861952108548
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1055,7 +1057,7 @@ MonoBehaviour:
   - {fileID: -1021530196098254943}
   _attackDelay: 1
   _attackRange: 3
-  _damage: 20
+  _damage: 35
 --- !u!114 &9057425057195069335
 MonoBehaviour:
   m_ObjectHideFlags: 0

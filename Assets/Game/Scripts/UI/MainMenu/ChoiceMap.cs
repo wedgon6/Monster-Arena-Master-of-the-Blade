@@ -1,9 +1,9 @@
+using Lean.Localization;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Lean.Localization;
 
 public class ChoiceMap : MonoBehaviour
 {
@@ -18,18 +18,21 @@ public class ChoiceMap : MonoBehaviour
 
     private int _currentLevelIndex;
     private int _currentStars;
+    private int _countCircle = 0;
     private MapScene _currentLevel;
 
     public int CurrentLevelIndex => _currentLevelIndex;
     public int CurrentStars => _currentStars;
+    public int CountCircle => _countCircle;
 
     public event Action CountStarsChenged;
 
-    public void Initialize(int currentMapIndex, int currentCountStats)
+    public void Initialize(int currentMapIndex, int currentCountStats, int countCircle)
     {
         _currentLevelIndex = currentMapIndex;
         _currentLevel = _levels[currentMapIndex];
         _currentStars = currentCountStats;
+        _countCircle = countCircle;
 
         if (_currentStars > 2)
             SetNextMap();
@@ -50,9 +53,14 @@ public class ChoiceMap : MonoBehaviour
         _currentLevelIndex++;
 
         if (_currentLevelIndex < 0)
+        {
             _currentLevelIndex = _levels.Count - 1;
+        }
         else if (_currentLevelIndex > _levels.Count - 1)
+        {
             _currentLevelIndex = 0;
+            _countCircle++;
+        }
 
         ShowLevel(_levels[_currentLevelIndex]);
     }

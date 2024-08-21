@@ -34,7 +34,7 @@ public class EntryPointMainMenu : MonoBehaviour
     {
         _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
-        _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount);
+        _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         _trainingShop.InitializeShop(gameInfo);
         _parameters.Initialize(gameInfo);
         _worckshop.Initialize(gameInfo);
@@ -44,7 +44,7 @@ public class EntryPointMainMenu : MonoBehaviour
     {
         _moneyView.Initialize(0, 0);
         _playerWallet.Initialize(Services.SaveService.RelocateGold, Services.SaveService.RelocateDaimond);
-        _choiceMap.Initialize(0, 0);
+        _choiceMap.Initialize(0, 0, 0);
         _trainingShop.InitializeShop();
         _parameters.Initialize();
         _worckshop.Initialize();

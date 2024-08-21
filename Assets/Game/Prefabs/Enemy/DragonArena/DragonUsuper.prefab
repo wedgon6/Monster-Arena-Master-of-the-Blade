@@ -3765,9 +3765,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ec4292dd4bf342b40349922a296de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 200
+  _maxHealth: 150
   _stateMachine: {fileID: 2814953521407809957}
   _typeEnemy: 0
+  _goldRewardCount: 3000
+  _daimondRewardCount: 1
 --- !u!114 &2814953521407809957
 MonoBehaviour:
   m_ObjectHideFlags: 0

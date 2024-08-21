@@ -350,7 +350,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Damage
+  m_text: 'Damage
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -448,7 +450,7 @@ GameObject:
   - component: {fileID: 8488082661784505072}
   - component: {fileID: 897030590331333460}
   m_Layer: 5
-  m_Name: Danage
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +531,7 @@ MonoBehaviour:
   _lable: {fileID: 557212168451418246}
   _icon: {fileID: 1651445179, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
   _multiplier: 1.2
-  _startPrice: 1000
+  _startPrice: 2000
   _localized: {fileID: 5627795343679403637}
 --- !u!1 &8974450126472453202
 GameObject:

@@ -21,14 +21,14 @@ public class BattleLevelCompositeRoot : MonoBehaviour
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
             _player.Initialize(gameInfo);
-            _enemySpawner.RestSpawner(gameInfo.CurrentStatrsCount);
-            _trapSpawner.Initialize(gameInfo.CurrentStatrsCount);
+            _enemySpawner.RestSpawner(gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
+            _trapSpawner.Initialize(gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         }
         else
         {
             _player.Initialize();
-            _enemySpawner.RestSpawner(0);
-            _trapSpawner.Initialize(1);
+            _enemySpawner.RestSpawner(0, 0);
+            _trapSpawner.Initialize(0, 0);
         }
     }
 

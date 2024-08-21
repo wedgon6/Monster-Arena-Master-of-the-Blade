@@ -7,11 +7,13 @@ public class Enemy : PoolObject, IDamageable
     [SerializeField] private float _maxHealth;
     [SerializeField] private EnemyStateMachine _stateMachine;
     [SerializeField] private TypeEnemy _typeEnemy;
+    [SerializeField] private int _goldRewardCount = 2500;
+    [SerializeField] private int _daimondRewardCount = 1;
 
     private Player _target;
     private float _health;
-    private Gold _gold = new Gold(5000);
-    private Daimond _daimond = new Daimond(1);
+    private Gold _gold;
+    private Daimond _daimond;
     private Rigidbody _rigidbody;
     private EnemySpawner _spawner;
     private bool _isDead;
@@ -50,6 +52,8 @@ public class Enemy : PoolObject, IDamageable
 
     public void Initialize(Player player, EnemySpawner spawner)
     {
+        _gold = new Gold(_goldRewardCount);
+        _daimond = new Daimond(_daimondRewardCount);
         _health = _maxHealth;
         _target = player;
         _spawner = spawner;

@@ -56,7 +56,7 @@ public class Tutorial : MonoBehaviour
 
     private void EndDialogue()
     {
-        _enemySpawner.RestSpawner(0);
+        _enemySpawner.RestSpawner(0, 0);
         gameObject.SetActive(false);
     }
 }

@@ -188,6 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 2
+  _xAxisRotation: 0
+  _yAxisRotation: 360
+  _zAxisRotation: 0
 --- !u!114 &5110732194743116406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7898f2923bca8d3498f9337702f0f7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 5
+  _damage: 30
 --- !u!65 &931619194543871684
 BoxCollider:
   m_ObjectHideFlags: 0

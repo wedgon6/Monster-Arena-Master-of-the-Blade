@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private const int WaveLenght = 1;
-
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private GameObject _deadParticle;
 
@@ -22,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
     private int _countWaves;
     private float _timeAfterLastSpawn;
     private float _delay = 2f;
+    private int _waveLenght = 1;
     private int _spawned;
     private int _countStats;
     private Coroutine _corontine;
@@ -32,10 +31,11 @@ public class EnemySpawner : MonoBehaviour
     public event Action<int,int> SetedWaves;
     public event Action PlayerLose;
 
-    public void RestSpawner(int statsCount)
+    public void RestSpawner(int statsCount, int coutnCircle)
     {
         _enemyWaves.Clear();
         _countStats = statsCount;
+        _waveLenght += coutnCircle;
         _timeAfterLastSpawn = 0;
         _currentWaveNumber = 0;
         _spawned = 0;
@@ -228,7 +228,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < countWave; i++)
         {
-            for (int j = 0; j < WaveLenght; j++)
+            for (int j = 0; j < _waveLenght; j++)
             {
                 enemies.Add(_enemiesPrefab.GetEnemy());
             }
@@ -237,12 +237,12 @@ public class EnemySpawner : MonoBehaviour
         }
 
         SetWave(_currentWaveNumber);
-        SetedWaves?.Invoke(WaveLenght,_enemyWaves.Count);
+        SetedWaves?.Invoke(_waveLenght,_enemyWaves.Count);
     }
 
     private IEnumerator StartNextWave()
     {
-        int waitTime = 4;
+        int waitTime = 5;
         yield return new WaitForSeconds(waitTime);
         NextWave();
     }

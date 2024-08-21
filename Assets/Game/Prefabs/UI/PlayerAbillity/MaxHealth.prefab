@@ -350,7 +350,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Max Health
+  m_text: 'Max Health
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -529,7 +531,7 @@ MonoBehaviour:
   _lable: {fileID: 557212168451418246}
   _icon: {fileID: 894501080, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
   _multiplier: 1.25
-  _startPrice: 1000
+  _startPrice: 2000
   _localized: {fileID: 6488942810543213993}
 --- !u!1 &8974450126472453202
 GameObject:

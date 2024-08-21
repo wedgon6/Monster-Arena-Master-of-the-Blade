@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AdvertisemintServise : IAdvertisemintServise
 {
-    private Gold _revardGold = new Gold(2000);
+    private Gold _revardGold = new Gold(3000);
     private Daimond _revardDaimond = new Daimond(10);
     private PlayerWallet _playerWallet;
     private Player _player;

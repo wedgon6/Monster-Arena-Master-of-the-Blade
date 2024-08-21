@@ -20,7 +20,6 @@ public class MoneyView : MonoBehaviour
         if (_revardVideoButton != null)
         {
             _revardVideoButton.onClick.AddListener(ShowRevardVideo);
-
             _condGoldRevardLable.text = "+" + Services.AdvertisemintService.GoldRevard.ToString();
             _condDaimondRevardLable.text = "+" + Services.AdvertisemintService.DaimondRevard.ToString();
         }
