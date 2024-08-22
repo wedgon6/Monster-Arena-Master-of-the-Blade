@@ -15,6 +15,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     [SerializeField] private LosePanel _losePanel;
     
     private Coroutine _corontine;
+    private HealthBarView _barView;
 
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class BattleLevelCompositeRoot : MonoBehaviour
             _enemySpawner.RestSpawner(0, 0);
             _trapSpawner.Initialize(0, 0);
         }
+
+        _barView = _player.GetComponent<HealthBarView>();
     }
 
     private void OnEnable()
@@ -66,6 +69,8 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void CorountineStart(IEnumerator corontine)
     {
+        _barView.enabled = false;
+
         if (_corontine != null)
             StopCoroutine(_corontine);
 

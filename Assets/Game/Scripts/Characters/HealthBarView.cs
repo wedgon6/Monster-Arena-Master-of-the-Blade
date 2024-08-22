@@ -12,6 +12,7 @@ public class HealthBarView : MonoBehaviour
     [SerializeField] private GameObject _objectHelth;
 
     private IDamageable _helth;
+    //private Player _player;
 
     #region MonoBehaviour
 
@@ -26,6 +27,12 @@ public class HealthBarView : MonoBehaviour
     private void Start()
     {
         _helth = GetComponent<IDamageable>();
+
+        //if( TryGetComponent<Player>(out Player player))
+        //{
+        //    _player = player;
+
+        //}
     }
 
     private void OnEnable()
