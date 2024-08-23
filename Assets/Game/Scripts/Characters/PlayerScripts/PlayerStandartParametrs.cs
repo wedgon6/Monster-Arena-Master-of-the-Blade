@@ -13,5 +13,5 @@ public class PlayerStandartParametrs
     public float StartMoveSpeed => StandartMoveSpeed;
     public float StartDamage => StandartDamage;
     public float StartRangeThrow => StandartRangeThrow;
-    public float StartScore=> StandartScore;
+    public int StartScore=> StandartScore;
 }

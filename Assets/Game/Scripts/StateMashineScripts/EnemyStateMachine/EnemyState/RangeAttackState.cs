@@ -6,6 +6,25 @@ public class RangeAttackState : AttackState
     [SerializeField] private Pool _pool;
     [SerializeField] protected Transform _shootPoint;
 
+    public override void Enter()
+    {
+        //base.Enter();
+        //OnEnter();
+        //SetEnemyMove(false);
+        //if (enabled == false)
+        //{
+        //    enabled = true;
+        //    OnEnter();
+        //}
+        base.Enter();
+    }
+
+    //public override void Exit()
+    //{
+    //    base.Exit();
+    //    SetEnemyMove(true);
+    //}
+
     private void Update()
     {
         transform.LookAt(Target.transform.position);
@@ -18,6 +37,10 @@ public class RangeAttackState : AttackState
 
     private void LaunchBullet()
     {
+        foreach (var transition in _transitions)
+        {
+            transition.enabled = false;
+        }
         EnemyBullet bullet;
 
         if (_pool.TryPoolObject(out PoolObject pollBullet))
@@ -35,5 +58,15 @@ public class RangeAttackState : AttackState
 
         bullet.Initialaze(_damage);
         bullet.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 5f, ForceMode.Impulse);
+        
+        TransitionEneble();
+    }
+
+    private void TransitionEneble()
+    {
+        foreach (var transition in _transitions)
+        {
+            transition.enabled = true;
+        }
     }
 }

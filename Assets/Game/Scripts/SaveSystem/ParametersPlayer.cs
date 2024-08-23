@@ -3,14 +3,8 @@ using UnityEngine;
 
 public class ParametersPlayer : MonoBehaviour
 {
-    private const float StandartMaxHealth = 100f;
-    private const float StandartMoveSpeed = 1f;
-    private const float StandartDamage = 20f;
-    private const float StandartRangeThrow = 3f;
-    private const int StandartScore = 0;
-
     [SerializeField] private float _healthStep = 20f;
-    [SerializeField] private float _moveSpeedStep = 0.1f;
+    [SerializeField] private float _moveSpeedStep = 0.03f;
     [SerializeField] private float _damageStep = 5f;
     [SerializeField] private float _rangeThrowStep = 0.3f;
 
@@ -20,6 +14,7 @@ public class ParametersPlayer : MonoBehaviour
     private float _rangeThrow;
     private int _score;
     private Blade _blade;
+    private PlayerStandartParametrs _standartParametrs = new PlayerStandartParametrs();
 
     public event Action SavedData;
 
@@ -32,11 +27,11 @@ public class ParametersPlayer : MonoBehaviour
 
     public void Initialize()
     {
-        _maxPlayerHealth = StandartMaxHealth;
-        _playerMoveSpeed = StandartMoveSpeed;
-        _damage = StandartDamage;
-        _rangeThrow = StandartRangeThrow;
-        _score = StandartScore;
+        _maxPlayerHealth = _standartParametrs.StartHealth;
+        _playerMoveSpeed = _standartParametrs.StartMoveSpeed;
+        _damage = _standartParametrs.StartDamage;
+        _rangeThrow = _standartParametrs.StartRangeThrow;
+        _score = _standartParametrs.StartScore;
         SavedData?.Invoke();
     }
 
