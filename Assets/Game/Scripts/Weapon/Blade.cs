@@ -10,21 +10,22 @@ public class Blade : PoolObject
     private BladeSpawner _bladeSpawner;
     private int _countRebound;
     private int _currentCountRebound;
+    private float _moveSpeedBoost;
     private bool _isReturn = false;
     private float _damage = 20f;
+    private float _bladeMoveSpeed = 2f;
 
-    private Vector3 _startPoint;
     private Vector3 _direction;
     private Coroutine _coroutine;
     private Rigidbody _rigidbody;
 
     public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
-    public void Initialaze(BladeSpawner bladeSpawner, float damage)
+    public void Initialaze(BladeSpawner bladeSpawner, float damage, float moveSpeedBoost)
     {
         _bladeSpawner = bladeSpawner;
         _damage = damage;
-        _startPoint = _bladeSpawner.transform.position;
+        _moveSpeedBoost = moveSpeedBoost;
         CorountineStart(Throw());
     }
 
@@ -56,10 +57,10 @@ public class Blade : PoolObject
     {
         if (_isReturn)
         {
-            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 5f * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, _bladeSpawner.transform.position, 5f * _moveSpeedBoost * Time.fixedDeltaTime);
             _rigidbody.velocity = Vector3.zero;
             _direction = new Vector3(_bladeSpawner.transform.position.x, _bladeSpawner.transform.position.y, _bladeSpawner.transform.position.z).normalized;
-            _rigidbody.AddForce(_direction * 2f);
+            _rigidbody.AddForce(_direction * _bladeMoveSpeed * _moveSpeedBoost);
             _direction = Vector3.zero;
 
             if (_rigidbody.velocity.y < 0f)
@@ -70,9 +71,9 @@ public class Blade : PoolObject
             Vector3 horizontalVelocity = _rigidbody.velocity;
             horizontalVelocity.y = 0;
 
-            if (horizontalVelocity.sqrMagnitude > 2 * 2)
+            if (horizontalVelocity.sqrMagnitude > _bladeMoveSpeed * _bladeMoveSpeed)
             {
-                _rigidbody.velocity = horizontalVelocity.normalized * 2 + Vector3.up * _rigidbody.velocity.y;
+                _rigidbody.velocity = horizontalVelocity.normalized * _bladeMoveSpeed + Vector3.up * _rigidbody.velocity.y;
             }
         }
     }
@@ -81,7 +82,7 @@ public class Blade : PoolObject
     {
         _isReturn = false;
         float time = 1.5f;
-        //_startPoint - transform.position).magnitude <= 5f
+
         while (time >= 0f)
         {
             time -= Time.deltaTime;

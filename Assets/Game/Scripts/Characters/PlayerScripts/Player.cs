@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IDamageable
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
         _movment.Initialize(standartParametrs.StartMoveSpeed);
-        _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow);
+        _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
     }
 
     public void Initialize(GameInfo gameInfo)
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, IDamageable
         ChangeHealth?.Invoke(_health, _maxHealth);
 
         _movment.Initialize(_gameInfo.PlayerMoveSpeed);
-        _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow);
+        _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
     }
 
     public void VictoryDance()

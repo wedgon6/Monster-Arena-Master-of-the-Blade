@@ -54,6 +54,7 @@ public class ParametersPlayer : MonoBehaviour
     public void AddMoveSpeed()
     {
         _playerMoveSpeed += _moveSpeedStep;
+        Debug.Log($"Current moveSpeed - {_playerMoveSpeed}");
         SavedData?.Invoke();
     }
 

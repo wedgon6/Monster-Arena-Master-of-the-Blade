@@ -23,7 +23,8 @@ public class Movment : MonoBehaviour
     {
         _moveSpeed = speed;
         _maxMoveSpeed = speed * 2;
-        Debug.Log($"Мовмент принял скорость - {speed}");
+        Debug.Log($"Мовмент принял скорость - {_moveSpeed}");
+        Debug.Log($"Current MaxmoveSpeed - {_maxMoveSpeed}");
     }
 
     private void Awake()

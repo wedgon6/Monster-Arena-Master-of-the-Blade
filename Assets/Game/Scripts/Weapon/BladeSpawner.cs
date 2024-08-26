@@ -18,15 +18,17 @@ public class BladeSpawner : MonoBehaviour
     private float _time = 1f;
     private float _rangeThrow;
     private float _damage;
+    private float _bladeMoveSpeedBoost;
 
     public event Action ThrowingBlade;
 
-    public void Initialize(int indexBlade, float damage, float rangeThrow)
+    public void Initialize(int indexBlade, float damage, float rangeThrow, float bladeMoveSpeedBoost)
     {
         _bladePrefab = _blades[indexBlade];
 
         _damage = damage;
         _rangeThrow = rangeThrow;
+        _bladeMoveSpeedBoost = bladeMoveSpeedBoost;
         _bladeViwe.Initialize(3, _bladePrefab);
     }
 
@@ -96,7 +98,7 @@ public class BladeSpawner : MonoBehaviour
                 _bladePool.InstantiatePoolObject(blade);
             }
 
-            blade.Initialaze(this, _damage);
+            blade.Initialaze(this, _damage, _bladeMoveSpeedBoost);
             blade.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * _rangeThrow, ForceMode.Impulse);
             ThrowingBlade?.Invoke();
         }
