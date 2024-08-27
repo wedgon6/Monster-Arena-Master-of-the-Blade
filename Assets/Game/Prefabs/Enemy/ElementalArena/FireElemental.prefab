@@ -968,7 +968,7 @@ MonoBehaviour:
   _maxHealth: 200
   _stateMachine: {fileID: 397333890453645363}
   _typeEnemy: 0
-  _goldRewardCount: 2500
+  _goldRewardCount: 25000
   _daimondRewardCount: 1
 --- !u!136 &-7780118861952108548
 CapsuleCollider:
@@ -990,9 +990,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.8541942
-  m_Height: 4.236985
+  m_Height: 7.4
   m_Direction: 1
-  m_Center: {x: 0, y: 1.409, z: 0}
+  m_Center: {x: 0, y: 3.3, z: 0}
 --- !u!114 &397333890453645363
 MonoBehaviour:
   m_ObjectHideFlags: 0

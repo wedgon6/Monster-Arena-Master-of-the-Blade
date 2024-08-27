@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthBarLootAt : MonoBehaviour
+public class HealthBarLookAt : MonoBehaviour
 {
     private Camera _camera;
 
@@ -9,6 +9,10 @@ public class HealthBarLootAt : MonoBehaviour
         _camera = Camera.main;
     }
 
+    //private void FixedUpdate()
+    //{
+    //    transform.LookAt(_camera.transform);
+    //}
     private void Update()
     {
         transform.LookAt(_camera.transform);

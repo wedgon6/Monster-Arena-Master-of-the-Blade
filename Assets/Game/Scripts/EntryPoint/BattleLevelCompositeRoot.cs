@@ -7,6 +7,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private EnemyCounter _enemyCounter;
     [SerializeField] private Player _player;
+    [SerializeField] private HealthBarView _playerBar; 
     [SerializeField] private MoneyView _moneyView;
     [SerializeField] private TrapSpawner _trapSpawner;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
@@ -52,17 +53,20 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void OnWinGame()
     {
+        //_playerBar.gameObject.SetActive(false);
         CorountineStart(WinGame());
         _player.VictoryDance();
     }
 
     private void OnLooseGame(Transform transform)
     {
+        //_playerBar.gameObject.SetActive(false);
         CorountineStart(LooseGame());
     }
 
     private void PlayerResurrected()
     {
+        //_playerBar.gameObject.SetActive(true);
         _mainCamera.Priority = 1;
         _enemySpawner.ResetEnemyesState();
     }

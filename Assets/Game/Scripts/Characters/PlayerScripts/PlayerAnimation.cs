@@ -17,7 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
-        _maxSpeed = _playerMovment.MaxMoveSpeed;
+        _maxSpeed = _playerMovment.MoveSpeed;
         Debug.Log($"{_maxSpeed}");
     }
     private void OnEnable()
@@ -36,7 +36,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat("Speed", _rigidbody.velocity.magnitude / _maxSpeed + 0.1f);
+        _animator.SetFloat("Speed", _rigidbody.velocity.magnitude / (_maxSpeed * 2f) + 0.1f);
     }
 
     private void OnThrowBladeAnimation()

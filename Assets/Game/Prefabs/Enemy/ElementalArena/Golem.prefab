@@ -220,9 +220,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.8541942
-  m_Height: 4.236985
+  m_Height: 7.4
   m_Direction: 1
-  m_Center: {x: -0.08416605, y: 1.28, z: 0}
+  m_Center: {x: -0.08416605, y: 3.3, z: 0}
 --- !u!54 &7753119470318052927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   _maxHealth: 250
   _stateMachine: {fileID: 5865786568740200499}
   _typeEnemy: 2
-  _goldRewardCount: 3000
+  _goldRewardCount: 30000
   _daimondRewardCount: 1
 --- !u!114 &5865786568740200499
 MonoBehaviour:

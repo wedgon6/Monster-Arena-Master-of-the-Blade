@@ -3734,7 +3734,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8645132490072153304}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3768,7 +3768,7 @@ MonoBehaviour:
   _maxHealth: 150
   _stateMachine: {fileID: 2814953521407809957}
   _typeEnemy: 0
-  _goldRewardCount: 3000
+  _goldRewardCount: 30000
   _daimondRewardCount: 1
 --- !u!114 &2814953521407809957
 MonoBehaviour:

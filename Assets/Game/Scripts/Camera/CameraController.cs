@@ -1,6 +1,5 @@
 using Cinemachine;
-using UnityEngine;
-using DG.Tweening; 
+using UnityEngine; 
 
 public class CameraController : MonoBehaviour
 {

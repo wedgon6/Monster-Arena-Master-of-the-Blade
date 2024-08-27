@@ -11,6 +11,8 @@ public class LeaderBoardButton : MonoBehaviour
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         OpenLeaderboard();
+#else
+        _leaderboardPanel.SetActive(true);
 #endif
     }
 
