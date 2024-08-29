@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5732563462415389331}
   - component: {fileID: 2086324237923614446}
   - component: {fileID: 6831013791039350571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StandaetBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,9 +162,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordWhirlwindWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 1342876954156012, guid: 8243470e37cffc541978addf2dccb436, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667505488445160, guid: 8243470e37cffc541978addf2dccb436, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1667505488445160, guid: 8243470e37cffc541978addf2dccb436, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714379383834290, guid: 8243470e37cffc541978addf2dccb436, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4875316052795858, guid: 8243470e37cffc541978addf2dccb436, type: 3}
       propertyPath: m_LocalScale.x

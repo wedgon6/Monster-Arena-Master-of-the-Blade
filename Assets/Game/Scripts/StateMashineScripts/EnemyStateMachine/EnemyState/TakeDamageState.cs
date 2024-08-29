@@ -15,7 +15,7 @@ public class TakeDamageState : EnemyState
 
     public override void Exit()
     {
-        RigidbodyEnemy.velocity = Vector3.zero;
+        //RigidbodyEnemy.velocity = Vector3.zero;
         base.Exit();
     }
 

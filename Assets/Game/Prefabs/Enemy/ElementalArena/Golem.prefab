@@ -232,7 +232,7 @@ Rigidbody:
   m_GameObject: {fileID: 2906525424671895561}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 100
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -245,7 +245,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -297,7 +297,7 @@ MonoBehaviour:
   - {fileID: 1276067386879255836}
   - {fileID: 6054275165019086107}
   - {fileID: -1009028775211699705}
-  _moveSpeed: 0.5
+  _moveSpeed: 4
   _maxSpeed: 1
 --- !u!114 &4450833272762773800
 MonoBehaviour:

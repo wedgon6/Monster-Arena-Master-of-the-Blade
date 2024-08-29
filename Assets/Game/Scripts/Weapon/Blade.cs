@@ -118,7 +118,7 @@ public class Blade : PoolObject
         {
             enemy.TakeDamage(_damage);
             Vector3 direction = (enemy.transform.position - transform.position) * 5;
-            enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
+            //enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
 
             CorountineStart(BackToPlayer());
         }

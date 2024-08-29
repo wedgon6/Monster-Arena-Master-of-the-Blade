@@ -1200,6 +1200,7 @@ GameObject:
   - component: {fileID: 3789177926566435640}
   - component: {fileID: -1536002564662946760}
   - component: {fileID: 3534286219836428764}
+  - component: {fileID: 9022738432311547031}
   m_Layer: 7
   m_Name: GruntPBRTutorial
   m_TagString: Untagged
@@ -1268,7 +1269,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 0
   m_ImplicitTensor: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -1288,7 +1289,7 @@ MonoBehaviour:
   _maxHealth: 40
   _stateMachine: {fileID: 3613257250760567071}
   _typeEnemy: 2
-  _goldRewardCount: 5000
+  _goldRewardCount: 5000000
   _daimondRewardCount: 5
 --- !u!114 &3613257250760567071
 MonoBehaviour:
@@ -1320,7 +1321,7 @@ MonoBehaviour:
   - {fileID: 5929869830730180712}
   - {fileID: 3789177926566435640}
   - {fileID: 3534286219836428764}
-  _moveSpeed: 0.5
+  _moveSpeed: 5
   _maxSpeed: 1
 --- !u!114 &8531650297518784914
 MonoBehaviour:
@@ -1508,6 +1509,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: -1536002564662946760}
+--- !u!195 &9022738432311547031
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659573161195983018}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7033820306497351186
 GameObject:
   m_ObjectHideFlags: 0

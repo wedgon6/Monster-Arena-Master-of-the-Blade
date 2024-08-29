@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 public class Enemy : PoolObject, IDamageable
 {
     [SerializeField] private float _maxHealth;
@@ -96,7 +96,7 @@ public class Enemy : PoolObject, IDamageable
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        //_rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnDisable()
