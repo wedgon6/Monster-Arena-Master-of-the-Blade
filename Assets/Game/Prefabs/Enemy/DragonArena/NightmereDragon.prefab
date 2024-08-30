@@ -1383,7 +1383,7 @@ MonoBehaviour:
   _maxHealth: 250
   _stateMachine: {fileID: 4880705493998160918}
   _typeEnemy: 2
-  _goldRewardCount: 25000
+  _goldRewardCount: 2500
   _daimondRewardCount: 1
 --- !u!114 &3585806490751123448
 MonoBehaviour:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   - {fileID: 7925221337732661344}
   - {fileID: 8061290944466728122}
   - {fileID: -7784591979133943980}
-  _moveSpeed: 6
+  _moveSpeed: 4
   _maxSpeed: 1
 --- !u!114 &4802756142758555838
 MonoBehaviour:

@@ -9,10 +9,6 @@ public class HealthBarLookAt : MonoBehaviour
         _camera = Camera.main;
     }
 
-    //private void FixedUpdate()
-    //{
-    //    transform.LookAt(_camera.transform);
-    //}
     private void Update()
     {
         transform.LookAt(_camera.transform);

@@ -8,7 +8,6 @@ public abstract class Trap : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.name);
         if (collision.collider.TryGetComponent(out IDamageable damageable))
         {
            ApplyDamage(damageable);

@@ -1,22 +1,22 @@
 using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.OnScreen;
 
 public class BattleLevelCompositeRoot : MonoBehaviour
 {
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private EnemyCounter _enemyCounter;
     [SerializeField] private Player _player;
-    [SerializeField] private HealthBarView _playerBar; 
     [SerializeField] private MoneyView _moneyView;
     [SerializeField] private TrapSpawner _trapSpawner;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
 
     [SerializeField] private ResultsPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
+    [SerializeField] private OnScreenStick _screenStick;
     
     private Coroutine _corontine;
-    private HealthBarView _barView;
 
     private void Awake()
     {
@@ -32,15 +32,22 @@ public class BattleLevelCompositeRoot : MonoBehaviour
             _enemySpawner.RestSpawner(0, 0);
             _trapSpawner.Initialize(0, 0);
         }
-
-        _barView = _player.GetComponent<HealthBarView>();
     }
 
     private void OnEnable()
     {
+        if (Agava.WebUtility.Device.IsMobile)
+        {
+            _screenStick.gameObject.SetActive(true);
+        }
+        else
+        {
+            _screenStick.gameObject.SetActive(false);
+        }
+
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
-        _losePanel.ShowRevardAd += PlayerResurrected;
+        _losePanel.ShowRevardAd += OnPlayerResurrected;
         _moneyView.Initialize(0, 0);
     }
 
@@ -48,33 +55,28 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         _enemyCounter.AllEnemyDied -= OnWinGame;
         _player.Died -= OnLooseGame;
-        _losePanel.ShowRevardAd -= PlayerResurrected;
+        _losePanel.ShowRevardAd -= OnPlayerResurrected;
     }
 
     private void OnWinGame()
     {
-        //_playerBar.gameObject.SetActive(false);
         CorountineStart(WinGame());
         _player.VictoryDance();
     }
 
     private void OnLooseGame(Transform transform)
     {
-        //_playerBar.gameObject.SetActive(false);
         CorountineStart(LooseGame());
     }
 
-    private void PlayerResurrected()
+    private void OnPlayerResurrected()
     {
-        //_playerBar.gameObject.SetActive(true);
         _mainCamera.Priority = 1;
         _enemySpawner.ResetEnemyesState();
     }
 
     private void CorountineStart(IEnumerator corontine)
     {
-        _barView.enabled = false;
-
         if (_corontine != null)
             StopCoroutine(_corontine);
 

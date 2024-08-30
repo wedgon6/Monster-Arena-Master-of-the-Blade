@@ -968,7 +968,7 @@ MonoBehaviour:
   _maxHealth: 200
   _stateMachine: {fileID: 397333890453645363}
   _typeEnemy: 0
-  _goldRewardCount: 25000
+  _goldRewardCount: 2500
   _daimondRewardCount: 1
 --- !u!136 &-7780118861952108548
 CapsuleCollider:
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   - {fileID: 7698961682305242157}
   - {fileID: 8156200349050556587}
   - {fileID: -1021530196098254943}
-  _moveSpeed: 6
+  _moveSpeed: 4
   _maxSpeed: 2
 --- !u!114 &7143662764771383436
 MonoBehaviour:
@@ -1200,7 +1200,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 99
+  avoidancePriority: 70
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

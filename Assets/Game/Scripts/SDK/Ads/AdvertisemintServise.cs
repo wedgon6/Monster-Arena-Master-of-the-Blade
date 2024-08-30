@@ -80,17 +80,18 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     private void OnResurrectCallBack()
     {
-        var colliders = Physics.OverlapSphere(_player.transform.position, 15f);
+        //var colliders = Physics.OverlapSphere(_player.transform.position, 15f);
 
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].TryGetComponent(out Enemy enemy))
-            {
-                Vector3 direction = (enemy.transform.position - _player.transform.position) * 15f;
-                enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
-            }
-        }
-
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        //    if (colliders[i].TryGetComponent(out Enemy enemy))
+        //    {
+        //        Vector3 direction = (enemy.transform.position - _player.transform.position) * 15f;
+        //        enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
+        //    }
+        //}
+        Debug.Log("Show rescore ADS");
+        _losePanel.gameObject.SetActive(false);
         _player.Resurrect();
     }
 

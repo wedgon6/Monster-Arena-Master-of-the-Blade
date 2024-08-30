@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public void WinGameTransition()
     {
         CinemachineTransposer transposer = _camera.GetCinemachineComponent<CinemachineTransposer>();
-        transposer.m_FollowOffset = new Vector3(0, 0, 5);
+        transposer.m_FollowOffset = new Vector3(0, 0, 0);
+        //transposer.m_FollowOffset = new Vector3(0, 3.86f, -5.1f);
     }
 }
