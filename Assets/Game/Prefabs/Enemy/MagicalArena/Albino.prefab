@@ -1355,7 +1355,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.053494874, z: 0, w: 0.9985682}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1276304109890154753}
@@ -1446,10 +1446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ec4292dd4bf342b40349922a296de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 80
+  _maxHealth: 70
   _stateMachine: {fileID: 8072325896568870690}
   _typeEnemy: 0
-  _goldRewardCount: 5000
+  _goldRewardCount: 500
   _daimondRewardCount: 0
 --- !u!114 &8072325896568870690
 MonoBehaviour:

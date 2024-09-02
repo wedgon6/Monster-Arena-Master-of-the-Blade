@@ -68,6 +68,8 @@ public class Movment : MonoBehaviour
 
         if (horizontalVelocity.sqrMagnitude > _maxMoveSpeed * _maxMoveSpeed)
             _rigidbody.velocity = horizontalVelocity.normalized * _maxMoveSpeed + Vector3.up * _rigidbody.velocity.y;
+
+        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
     }
 
     private Vector3 GetCameraRight(Camera camera)
