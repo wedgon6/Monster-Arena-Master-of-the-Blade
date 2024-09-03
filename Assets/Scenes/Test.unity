@@ -4719,7 +4719,7 @@ PrefabInstance:
       objectReference: {fileID: 6078262024716213601}
     - target: {fileID: 7388190819158733416, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
       propertyPath: currentLanguage
-      value: Russian
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 8685292902828042362, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4742,6 +4742,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1054372228866792680, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
   m_PrefabInstance: {fileID: 3705225695884180829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3705225695884180831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4841310086483373277, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
+  m_PrefabInstance: {fileID: 3705225695884180829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4648913760156616053
 Transform:
   m_ObjectHideFlags: 0
@@ -5889,6 +5900,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 445279740}
+    - target: {fileID: 4054781239415726963, guid: f00ff96fe669ab74c9f54bef34601a4c, type: 3}
+      propertyPath: _variableJoystick
+      value: 
+      objectReference: {fileID: 3705225695884180831}
     - target: {fileID: 5656979154672845164, guid: f00ff96fe669ab74c9f54bef34601a4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.009397367
@@ -5948,11 +5963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016246803
+      value: 0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005665764
+      value: -0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

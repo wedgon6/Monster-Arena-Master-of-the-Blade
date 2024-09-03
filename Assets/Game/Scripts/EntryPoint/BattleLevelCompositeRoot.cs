@@ -14,7 +14,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     [SerializeField] private ResultsPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
-    [SerializeField] private OnScreenStick _screenStick;
+    [SerializeField] private VariableJoystick _screenStick;
     
     private Coroutine _corontine;
 

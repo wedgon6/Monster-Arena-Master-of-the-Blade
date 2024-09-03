@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4ec4292dd4bf342b40349922a296de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
+  _maxHealth: 400000000
   _stateMachine: {fileID: 3613257250760567071}
   _typeEnemy: 2
   _goldRewardCount: 5000
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   - {fileID: 3534286219836428764}
   _attackDelay: 2
   _attackRange: 3
-  _damage: 20
+  _damage: 0
 --- !u!114 &7593464423385394117
 MonoBehaviour:
   m_ObjectHideFlags: 0
