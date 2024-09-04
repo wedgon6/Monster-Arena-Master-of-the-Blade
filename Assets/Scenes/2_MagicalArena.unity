@@ -123,22 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 219fc2f3943750147b934322e17304c4, type: 2}
---- !u!114 &200676749 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5897020425240272423, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
-  m_PrefabInstance: {fileID: 836684635}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &205081615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8945521380756689383, guid: b41290c3b720d6047b4e165ed1b5f3a3, type: 3}
   m_PrefabInstance: {fileID: 5283405499667501653}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &222038317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2146824248218491144, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
+  m_PrefabInstance: {fileID: 836684635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &396023262
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +230,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1653940713}
+    - target: {fileID: 4054781239415726963, guid: f00ff96fe669ab74c9f54bef34601a4c, type: 3}
+      propertyPath: _variableJoystick
+      value: 
+      objectReference: {fileID: 222038317}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1017,7 +1021,7 @@ PrefabInstance:
     - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
       propertyPath: _screenStick
       value: 
-      objectReference: {fileID: 200676749}
+      objectReference: {fileID: 222038317}
     - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
       propertyPath: _trapSpawner
       value: 

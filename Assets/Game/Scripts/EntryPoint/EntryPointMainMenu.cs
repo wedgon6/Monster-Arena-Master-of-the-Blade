@@ -3,15 +3,30 @@ using UnityEngine;
 public class EntryPointMainMenu : MonoBehaviour
 {
     [SerializeField] private PlayerWallet _playerWallet;
-    [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private MoneyView _moneyView;
-    [SerializeField] private TrainingShop _trainingShop;
     [SerializeField] private ParametersPlayer _parameters;
+    [SerializeField] private CanvasManager _canvasManager;
     [SerializeField] private Leaderboard _leaderboard;
+
+    [SerializeField] private ChoiceMap _choiceMap;
+    [SerializeField] private TrainingShop _trainingShop;
     [SerializeField] private Worckshop _worckshop;
 
     private void Awake()
     {
+        if (Agava.WebUtility.Device.IsMobile)
+        {
+            _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
+            _trainingShop = _canvasManager.ModileCanvas.TrainingShop;
+            _worckshop = _canvasManager.ModileCanvas.Worckshop;
+        }
+        else
+        {
+            _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
+            _trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
+            _worckshop = _canvasManager.DekstopCanvas.Worckshop;
+        }
+
         LoadData();
         Services.GameReadyService.GameReady();
     }

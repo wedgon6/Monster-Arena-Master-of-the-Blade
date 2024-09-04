@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.OnScreen;
 
 public class BattleLevelCompositeRoot : MonoBehaviour
 {
@@ -22,13 +21,13 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
-            _player.Initialize(gameInfo);
+            _player.Initialize(gameInfo, Agava.WebUtility.Device.IsMobile);
             _enemySpawner.RestSpawner(gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
             _trapSpawner.Initialize(gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         }
         else
         {
-            _player.Initialize();
+            _player.Initialize(Agava.WebUtility.Device.IsMobile);
             _enemySpawner.RestSpawner(0, 0);
             _trapSpawner.Initialize(0, 0);
         }
@@ -36,18 +35,19 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void OnEnable()
     {
-        if (Agava.WebUtility.Device.IsMobile)
-        {
-            _screenStick.gameObject.SetActive(true);
-        }
-        else
-        {
-            _screenStick.gameObject.SetActive(false);
-        }
+        //if (Agava.WebUtility.Device.IsMobile)
+        //{
+        //    _screenStick.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    _screenStick.gameObject.SetActive(false);
+        //}
 
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
-        _losePanel.ShowRevardAd += OnPlayerResurrected;
+        _player.Resurred += OnPlayerResurrected;
+        //_losePanel.ShowRevardAd += OnPlayerResurrected;
         _moneyView.Initialize(0, 0);
     }
 
@@ -55,7 +55,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         _enemyCounter.AllEnemyDied -= OnWinGame;
         _player.Died -= OnLooseGame;
-        _losePanel.ShowRevardAd -= OnPlayerResurrected;
+        _player.Resurred -= OnPlayerResurrected;
     }
 
     private void OnWinGame()
@@ -73,6 +73,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     {
         _mainCamera.Priority = 1;
         _enemySpawner.ResetEnemyesState();
+        _losePanel.gameObject.SetActive(false);
     }
 
     private void CorountineStart(IEnumerator corontine)

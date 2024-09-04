@@ -1081,6 +1081,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673053011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2146824248218491144, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
+  m_PrefabInstance: {fileID: 1954134027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1696639309 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5013188582184848745, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
@@ -1122,11 +1133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016246803
+      value: -0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005665764
+      value: 0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1585,17 +1596,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2839649405728765621, guid: 9f484a179b3135e47b0d8d3a8870ebb6, type: 3}
   m_PrefabInstance: {fileID: 2064369657}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2082750591 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5897020425240272423, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
-  m_PrefabInstance: {fileID: 1954134027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4203256700950022373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1914,7 +1914,7 @@ PrefabInstance:
     - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
       propertyPath: _screenStick
       value: 
-      objectReference: {fileID: 2082750591}
+      objectReference: {fileID: 1673053011}
     - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
       propertyPath: _trapSpawner
       value: 
@@ -1962,11 +1962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015135702
+      value: 0.000000015906028
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000000630761
+      value: -0.0000000066286336
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

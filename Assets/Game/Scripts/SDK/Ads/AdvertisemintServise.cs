@@ -91,7 +91,7 @@ public class AdvertisemintServise : IAdvertisemintServise
         //    }
         //}
         Debug.Log("Show rescore ADS");
-        _losePanel.gameObject.SetActive(false);
+        //_losePanel.gameObject.SetActive(false);
         _player.Resurrect();
     }
 

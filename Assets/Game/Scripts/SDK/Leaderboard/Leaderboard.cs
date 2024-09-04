@@ -12,13 +12,19 @@ public class Leaderboard : MonoBehaviour
     private const string AnonymousTr = "Anonim";
     private const string LeaderboardName = "Leaderboard";
 
-    [SerializeField] private ViewLeaderboard _leaderboardView;
+    [SerializeField] private CanvasManager _canvasManager;
 
+    private ViewLeaderboard _leaderboardView;
     private List<DataPlayer> _leaderboardPlayers = new List<DataPlayer>();
     private string AnonymousName;
 
     private void Awake()
     {
+        if (Agava.WebUtility.Device.IsMobile)
+            _leaderboardView = _canvasManager.ModileCanvas.LeaderboardView;
+        else
+            _leaderboardView = _canvasManager.DekstopCanvas.LeaderboardView;
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         string languageCode = YandexGamesSdk.Environment.i18n.lang;
 

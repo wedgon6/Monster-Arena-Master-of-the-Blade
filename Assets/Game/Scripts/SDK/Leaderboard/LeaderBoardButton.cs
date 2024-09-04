@@ -4,8 +4,14 @@ using UnityEngine;
 public class LeaderBoardButton : MonoBehaviour
 {
     [SerializeField] private Leaderboard _leaderboard;
-    [SerializeField] private GameObject _leaderboardPanel;
     [SerializeField] private AuthorizationPanel _authorizationPanel;
+
+    private GameObject _leaderboardPanel;
+
+    public void Initialize(GameObject panel)
+    {
+        _leaderboardPanel = panel;
+    }
 
     public void OpenLeaderboardView()
     {

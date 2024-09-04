@@ -2,14 +2,29 @@ using UnityEngine;
 
 public class SaveAndLoadSytem : MonoBehaviour
 {
+    [SerializeField] private CanvasManager _canvasManager;
     [SerializeField] private PlayerWallet _wallet;
-    [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private ParametersPlayer _parametersPlayer;
-    [SerializeField] private TrainingShop _abillityShop;
-    [SerializeField] private Worckshop _skeenShop;
+    
+    private ChoiceMap _choiceMap;
+    private TrainingShop _abillityShop;
+    private Worckshop _skeenShop;
 
     private void OnEnable()
     {
+        if (Agava.WebUtility.Device.IsMobile)
+        {
+            _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
+            _abillityShop = _canvasManager.ModileCanvas.TrainingShop;
+            _skeenShop = _canvasManager.ModileCanvas.Worckshop;
+        }
+        else
+        {
+            _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
+            _abillityShop = _canvasManager.DekstopCanvas.TrainingShop;
+            _skeenShop = _canvasManager.DekstopCanvas.Worckshop;
+        }
+
         _wallet.MoneyChanged += SaveGameData;
         _choiceMap.CountStarsChenged += SaveGameData;
         _parametersPlayer.SavedData += SaveGameData;
