@@ -23,13 +23,14 @@ public class Movment : MonoBehaviour
 
     public void Initialize(float speed, bool isMoving)
     {
-        //if (isMoving)
-        //    _moveSpeed = speed * 12.7f;
-        //else
-        //    _moveSpeed = speed;
+        _isModile = isMoving;
 
-        _moveSpeed = speed * 12.7f;
-        _maxMoveSpeed = _moveSpeed * 2;
+        if (isMoving)
+            _moveSpeed = speed * 12.7f;
+        else
+            _moveSpeed = speed;
+
+        _maxMoveSpeed = speed * 2;
     }
 
     private void Awake()
@@ -62,20 +63,17 @@ public class Movment : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (_isModile)
-        //{
-        //    MobileMove();
-        //    MobileLookAt();
-        //}
-        //else
-        //{
-        //    DekstopMove();
-        //    DekstopLookAt();
-        //    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
-        //}
-
-        MobileMove();
-        MobileLookAt();
+        if (_isModile)
+        {
+            MobileMove();
+            MobileLookAt();
+        }
+        else
+        {
+            DekstopMove();
+            DekstopLookAt();
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+        }
     }
 
     private void DekstopMove()

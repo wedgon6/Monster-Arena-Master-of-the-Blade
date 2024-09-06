@@ -74,7 +74,7 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     private void OnCloseResurrecrAd()
     {
-        _losePanel.gameObject.SetActive(true);
+        //_losePanel.gameObject.SetActive(true);
         OnCloseCallBack();
     }
 
@@ -93,6 +93,7 @@ public class AdvertisemintServise : IAdvertisemintServise
         Debug.Log("Show rescore ADS");
         //_losePanel.gameObject.SetActive(false);
         _player.Resurrect();
+        _losePanel.gameObject.SetActive(false);
     }
 
     private void OnRewardedCallback()

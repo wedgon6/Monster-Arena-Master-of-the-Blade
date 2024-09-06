@@ -35,14 +35,14 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void OnEnable()
     {
-        //if (Agava.WebUtility.Device.IsMobile)
-        //{
-        //    _screenStick.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    _screenStick.gameObject.SetActive(false);
-        //}
+        if (Agava.WebUtility.Device.IsMobile)
+        {
+            _screenStick.gameObject.SetActive(true);
+        }
+        else
+        {
+            _screenStick.gameObject.SetActive(false);
+        }
 
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
@@ -74,6 +74,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
         _mainCamera.Priority = 1;
         _enemySpawner.ResetEnemyesState();
         _losePanel.gameObject.SetActive(false);
+        Debug.Log("Œ“ Àﬁ◊»À À”« œ¿Õ≈À");
     }
 
     private void CorountineStart(IEnumerator corontine)
