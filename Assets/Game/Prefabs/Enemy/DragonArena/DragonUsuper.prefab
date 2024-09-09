@@ -3801,7 +3801,7 @@ MonoBehaviour:
   - {fileID: 8698584443620356642}
   - {fileID: 2506369293863790008}
   - {fileID: 5427675012936504643}
-  _moveSpeed: 5
+  _moveSpeed: 4
   _maxSpeed: 2
 --- !u!114 &6827890748401213129
 MonoBehaviour:
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   - {fileID: 8698584443620356642}
   - {fileID: 2506369293863790008}
   - {fileID: 5427675012936504643}
-  _attackDelay: 2
+  _attackDelay: 3
   _attackRange: 5
   _damage: 20
 --- !u!114 &6555057291415423122

@@ -66,12 +66,10 @@ public class Movment : MonoBehaviour
         if (_isModile)
         {
             MobileMove();
-            MobileLookAt();
         }
         else
         {
             DekstopMove();
-            DekstopLookAt();
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
         }
     }
@@ -94,12 +92,14 @@ public class Movment : MonoBehaviour
             _rigidbody.velocity = horizontalVelocity.normalized * _maxMoveSpeed + Vector3.up * _rigidbody.velocity.y;
 
         _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+        DekstopLookAt();
     }
 
     private void MobileMove()
     {
         _direction = Vector3.forward * _variableJoystick.Vertical + Vector3.right * _variableJoystick.Horizontal;
         _rigidbody.AddForce(_direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        MobileLookAt();
     }
 
     private Vector3 GetCameraRight(Camera camera)

@@ -1402,7 +1402,7 @@ MonoBehaviour:
   - {fileID: 7925221337732661344}
   - {fileID: 8061290944466728122}
   - {fileID: -7784591979133943980}
-  _moveSpeed: 4
+  _moveSpeed: 3
   _maxSpeed: 1
 --- !u!114 &4802756142758555838
 MonoBehaviour:
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   - {fileID: 7925221337732661344}
   - {fileID: 8061290944466728122}
   - {fileID: -7784591979133943980}
-  _attackDelay: 2
+  _attackDelay: 3
   _attackRange: 3
   _damage: 30
 --- !u!114 &3973043663809257852
@@ -1592,7 +1592,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 99
+  avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

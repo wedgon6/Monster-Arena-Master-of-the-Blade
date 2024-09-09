@@ -1895,7 +1895,7 @@ MonoBehaviour:
   - {fileID: 9160876918295108090}
   - {fileID: 5404936223847318786}
   - {fileID: -4725530570372874346}
-  _attackDelay: 2
+  _attackDelay: 4
   _attackRange: 10
   _damage: 40
   _bullet: {fileID: 1134366832853207006, guid: db808005d37333140b5e7ec9635d3728, type: 3}

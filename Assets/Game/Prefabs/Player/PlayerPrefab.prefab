@@ -4158,7 +4158,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &4054781239415726963
 MonoBehaviour:
@@ -4173,6 +4173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
+  _variableJoystick: {fileID: 0}
+  _moveSpeed: 0
 --- !u!136 &6648169380706887109
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -989,10 +989,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8541942
-  m_Height: 7.4
+  m_Radius: 0.95
+  m_Height: 2.818616
   m_Direction: 1
-  m_Center: {x: 0, y: 3.3, z: 0}
+  m_Center: {x: 0, y: 1.409, z: 0}
 --- !u!114 &397333890453645363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   - {fileID: 7698961682305242157}
   - {fileID: 8156200349050556587}
   - {fileID: -1021530196098254943}
-  _moveSpeed: 4
+  _moveSpeed: 3
   _maxSpeed: 2
 --- !u!114 &7143662764771383436
 MonoBehaviour:

@@ -1481,7 +1481,7 @@ MonoBehaviour:
   - {fileID: 3521773592178611123}
   - {fileID: 6016853535560502023}
   - {fileID: -4882674980458115386}
-  _moveSpeed: 6
+  _moveSpeed: 4
   _maxSpeed: 2
 --- !u!114 &226230608037816840
 MonoBehaviour:
