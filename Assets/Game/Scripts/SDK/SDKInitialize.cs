@@ -32,6 +32,7 @@ public class SDKInitialize : MonoBehaviour
         }
         else
         {
+            Services.Init();
             _loadindScene.StartLoadScene();
         }
     }

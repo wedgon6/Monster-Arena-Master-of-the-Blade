@@ -36,7 +36,9 @@ public class Movment : MonoBehaviour
     private void Awake()
     {
         if (Agava.WebUtility.Device.IsMobile)
+        {
             _isModile = true;
+        }
         else
         {
             _isModile = false;
@@ -48,7 +50,7 @@ public class Movment : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_isModile == false)
+        if (_isModile == false)
         {
             _playerInputSystem.Enable();
             _move = _playerInputSystem.Player.Move;
@@ -57,7 +59,7 @@ public class Movment : MonoBehaviour
 
     private void OnDisable()
     {
-        if(_playerInputSystem != null)
+        if (_playerInputSystem != null)
             _playerInputSystem.Disable();
     }
 

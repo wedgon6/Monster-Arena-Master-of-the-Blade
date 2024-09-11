@@ -47,7 +47,7 @@ public class WeaponSkeenView : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_item != null)
+        if (_item != null)
         {
             _actionButton.onClick.AddListener(ClickButton);
             _item.UnlockedSkeen += OnBuySkeen;
@@ -72,7 +72,7 @@ public class WeaponSkeenView : MonoBehaviour
 
     private void OnBuySkeen()
     {
-        if(_unlockStatus.sprite != null && _unlockImage != null)
+        if (_unlockStatus.sprite != null && _unlockImage != null)
         {
             _unlockStatus.sprite = _unlockImage;
         }

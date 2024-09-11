@@ -8,22 +8,8 @@ public class RangeAttackState : AttackState
 
     public override void Enter()
     {
-        //base.Enter();
-        //OnEnter();
-        //SetEnemyMove(false);
-        //if (enabled == false)
-        //{
-        //    enabled = true;
-        //    OnEnter();
-        //}
         base.Enter();
     }
-
-    //public override void Exit()
-    //{
-    //    base.Exit();
-    //    SetEnemyMove(true);
-    //}
 
     private void Update()
     {
@@ -41,6 +27,7 @@ public class RangeAttackState : AttackState
         {
             transition.enabled = false;
         }
+
         EnemyBullet bullet;
 
         if (_pool.TryPoolObject(out PoolObject pollBullet))

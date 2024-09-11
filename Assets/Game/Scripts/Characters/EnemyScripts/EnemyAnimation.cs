@@ -9,6 +9,7 @@ public class EnemyAnimation : MonoBehaviour
 
     private Animator _animator;
     private Enemy _enemy;
+    private HashAnimationEnemy _animationEnemy = new HashAnimationEnemy();
 
     private void Awake()
     {
@@ -42,11 +43,11 @@ public class EnemyAnimation : MonoBehaviour
         }
     }
 
-    private void OnMove() => _animator.SetTrigger("Move");
+    private void OnMove() => _animator.SetTrigger(_animationEnemy.MoveAnimation);
 
-    private void OnAttack() => _animator.SetTrigger("Attack");
+    private void OnAttack() => _animator.SetTrigger(_animationEnemy.AttackAnimation);
 
-    private void OnTakeDamage() => _animator.SetTrigger("TakeDamage");
+    private void OnTakeDamage() => _animator.SetTrigger(_animationEnemy.TakeDamageAnimation);
 
-    private void OnWinGame() => _animator.SetTrigger("Win");
+    private void OnWinGame() => _animator.SetTrigger(_animationEnemy.WinDanceAnimation);
 }

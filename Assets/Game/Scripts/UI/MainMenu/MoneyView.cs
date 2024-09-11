@@ -29,7 +29,7 @@ public class MoneyView : MonoBehaviour
     {
         _wallet.MoneyChanged -= OnPlayerMoneyChenget;
 
-        if(_revardVideoButton != null)
+        if (_revardVideoButton != null)
             _revardVideoButton.onClick.RemoveListener(ShowRevardVideo);
     }
 

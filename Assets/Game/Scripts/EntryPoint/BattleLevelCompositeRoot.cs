@@ -10,6 +10,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     [SerializeField] private MoneyView _moneyView;
     [SerializeField] private TrapSpawner _trapSpawner;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
+    [SerializeField] private SoundButton _soundButton;
 
     [SerializeField] private ResultsPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
@@ -31,6 +32,8 @@ public class BattleLevelCompositeRoot : MonoBehaviour
             _enemySpawner.RestSpawner(0, 0);
             _trapSpawner.Initialize(0, 0);
         }
+
+        _soundButton.Initialize();
     }
 
     private void OnEnable()
@@ -47,7 +50,6 @@ public class BattleLevelCompositeRoot : MonoBehaviour
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
         _player.Resurred += OnPlayerResurrected;
-        //_losePanel.ShowRevardAd += OnPlayerResurrected;
         _moneyView.Initialize(0, 0);
     }
 
@@ -74,7 +76,6 @@ public class BattleLevelCompositeRoot : MonoBehaviour
         _mainCamera.Priority = 1;
         _enemySpawner.ResetEnemyesState();
         _losePanel.gameObject.SetActive(false);
-        Debug.Log("Œ“ Àﬁ◊»À À”« œ¿Õ≈À");
     }
 
     private void CorountineStart(IEnumerator corontine)

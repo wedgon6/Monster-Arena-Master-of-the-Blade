@@ -12,13 +12,13 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _animator;
     private Rigidbody _rigidbody;
     private float _maxSpeed;
+    private HashAnimationPlayer _animationPlayer = new HashAnimationPlayer();
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _maxSpeed = _playerMovment.MaxMoveSpeed;
-        Debug.Log($"{_maxSpeed}");
     }
     private void OnEnable()
     {
@@ -36,21 +36,21 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat("Speed", _rigidbody.velocity.magnitude / _maxSpeed);
+        _animator.SetFloat(_animationPlayer.MoveAnimation, _rigidbody.velocity.magnitude / _maxSpeed);
     }
 
     private void OnThrowBladeAnimation()
     {
-        _animator.SetTrigger("OnThrow");
+        _animator.SetTrigger(_animationPlayer.ThrowAnimation);
     }
 
     private void OnDead(Transform transform)
     {
-        _animator.SetTrigger("IsDead");
+        _animator.SetTrigger(_animationPlayer.DeadAnimation);
     }
 
     private void OnDance()
     {
-        _animator.SetTrigger("Win");
+        _animator.SetTrigger(_animationPlayer.WinDanceAnimation);
     }
 }

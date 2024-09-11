@@ -29,9 +29,4 @@ public class EnemyState : State
     protected void TakeDamageEvent() => TakedDamage?.Invoke();
 
     protected void EnemyWinEvent() => PlayerLose?.Invoke();
-
-    protected void SetEnemyMove(bool canMove)//
-    {
-
-    }
 }

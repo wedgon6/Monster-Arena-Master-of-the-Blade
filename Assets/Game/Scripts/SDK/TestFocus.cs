@@ -18,13 +18,11 @@ public class TestFocus : MonoBehaviour
     private void OnInBackgroundChangeApp(bool inApp)
     {
         MuteAudio(!inApp);
-        //PauseGame(!inApp);
     }
 
     private void OnInBackgroundChangeWed(bool isBackground)
     {
         MuteAudio(isBackground);
-        //PauseGame(isBackground);
     }
 
     private void MuteAudio(bool value)

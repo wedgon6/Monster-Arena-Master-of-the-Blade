@@ -14,7 +14,7 @@ public class LoadingPlayScene : MonoBehaviour
 
     public void StartLoadScene()
     {
-        if(Services.SaveService.TryGetData(out GameInfo data))
+        if (Services.SaveService.TryGetData(out GameInfo data))
             _asyncOperation = SceneManager.LoadSceneAsync(MenuScene);
         else
             _asyncOperation = SceneManager.LoadSceneAsync(TutorialScene);

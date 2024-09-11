@@ -16,7 +16,7 @@ public class HealthBarView : MonoBehaviour
 
     private void OnValidate()
     {
-        if( _objectHelth.TryGetComponent(out IDamageable health) == false)
+        if (_objectHelth.TryGetComponent(out IDamageable health) == false)
             _objectHelth = null;
     }
 

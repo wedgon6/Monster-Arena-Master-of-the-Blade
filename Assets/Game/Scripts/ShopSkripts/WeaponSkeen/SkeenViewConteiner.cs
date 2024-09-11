@@ -23,7 +23,7 @@ public class SkeenViewConteiner : MonoBehaviour
     {
         SetNewItem();
 
-        if(_item != null)
+        if (_item != null)
         {
             _item.UnlockedSkeen -= OnSkeenBuy;
             _item.SelectedSkeen -= OnSkeenSelect;
@@ -59,7 +59,7 @@ public class SkeenViewConteiner : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_item != null)
+        if (_item != null)
         {
             _item.UnlockedSkeen += OnSkeenBuy;
             _item.SelectedSkeen += OnSkeenSelect;
@@ -104,7 +104,6 @@ public class SkeenViewConteiner : MonoBehaviour
     {
         _selecteContent.SetActive(false);
         _selectedContent.SetActive(true);
-        //_actionButton.onClick.RemoveListener(OnClickSelectSkeen);
         _actionButton.onClick.RemoveAllListeners();
     }
 }

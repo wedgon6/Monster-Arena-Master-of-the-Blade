@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class DyingTransition : Transition
 {
     private Enemy _enemy;

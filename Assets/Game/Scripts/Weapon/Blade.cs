@@ -31,13 +31,13 @@ public class Blade : PoolObject
 
     public bool TryRebound()
     {
-        if(_currentCountRebound <= 0)
+        if (_currentCountRebound <= 0)
         {
             _isReturn = true;
             return false;
         }
 
-        if(_countRebound >= 1)
+        if (_countRebound >= 1)
         {
             _currentCountRebound -= 1;
             _isReturn = false;
@@ -118,7 +118,6 @@ public class Blade : PoolObject
         {
             enemy.TakeDamage(_damage);
             Vector3 direction = (enemy.transform.position - transform.position) * 5;
-            //enemy.Rigidbody.AddForce(direction, ForceMode.VelocityChange);
 
             CorountineStart(BackToPlayer());
         }

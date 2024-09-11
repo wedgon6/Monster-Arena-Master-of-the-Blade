@@ -4,4 +4,10 @@ public class TutorialWinPanel : ResultsPanel
     {
         Services.SaveService.RelocateData(_player.PlayerWallet, 0, _player.EarnedScore);
     }
+
+    protected override void OnAdsButtonClick()
+    {
+        Services.AdvertisemintService.ShowMultiplayAd(_player.PlayerWallet);
+        _adsActionButton.gameObject.SetActive(false);
+    }
 }

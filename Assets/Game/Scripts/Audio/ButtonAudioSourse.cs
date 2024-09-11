@@ -13,7 +13,7 @@ public class ButtonAudioSourse : MonoBehaviour
     {
         foreach (var button in _buttons)
         {
-            if(button != null)
+            if (button != null)
                 button.onClick.AddListener(OnPlayClickSound);
         }
     }
@@ -22,7 +22,7 @@ public class ButtonAudioSourse : MonoBehaviour
     {
         foreach (var button in _buttons)
         {
-            if(button != null)
+            if (button != null)
                 button.onClick.RemoveListener(OnPlayClickSound);
         }
     }

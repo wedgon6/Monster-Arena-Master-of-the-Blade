@@ -10,11 +10,11 @@ public class Player : MonoBehaviour, IDamageable
     private float _maxHealth = 1000;
     private float _health;
     private int _earnedScore = 0;
+    private bool _isMobile;
 
     private Gold _gold = new Gold(0);
     private Daimond _daimond = new Daimond(0);
     private GameInfo _gameInfo;
-    private bool _isMobile;
 
     public PlayerWallet PlayerWallet => _wallet;
     public int EarnedScore => _earnedScore;

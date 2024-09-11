@@ -27,7 +27,7 @@ public class ResultsPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_adsActionButton != null)
+        if (_adsActionButton != null)
             _adsActionButton.onClick.AddListener(OnAdsButtonClick);
 
         _backMenuButton.onClick.AddListener(BackMenuScene);

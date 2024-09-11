@@ -11,7 +11,7 @@ public class SoundButton : MonoBehaviour
     private Button _button;
     private bool _isAudioPlay = true;
 
-    private void Start()
+    public void Initialize()
     {
         _isAudioPlay = Services.AudioService.GetAudioModStatus();
 

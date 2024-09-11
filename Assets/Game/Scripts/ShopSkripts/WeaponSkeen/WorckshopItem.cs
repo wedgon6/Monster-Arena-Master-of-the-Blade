@@ -41,7 +41,7 @@ public class WorckshopItem : MonoBehaviour
 
     public void SetData(bool isUnlock, bool isSelect)
     {
-        if(isUnlock)
+        if (isUnlock)
         {
             _isUnlock = true;
             UnlockedSkeen?.Invoke();

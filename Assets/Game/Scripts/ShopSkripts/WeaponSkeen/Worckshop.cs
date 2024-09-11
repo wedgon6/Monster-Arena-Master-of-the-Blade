@@ -45,7 +45,7 @@ public class Worckshop : MonoBehaviour
             AddItem(_weaponSkeens[i], i);
             _weaponSkeens[i].SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
 
-            if(_currentSkeen == null)
+            if (_currentSkeen == null)
             {
                 if (_weaponSkeens[i].IsSelect)
                 {

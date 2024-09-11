@@ -154,6 +154,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4203256700950022374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &238743853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9152741792270071024, guid: 4f1fb7138d1bc3646a8c1f7f6bf456ae, type: 3}
+  m_PrefabInstance: {fileID: 1954134027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cd11c14cc04dc44bff2ddb37f288f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &498522664 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6683517777973127253, guid: 508c19f21338a0045852f42ff5edcbfc, type: 3}
@@ -1049,11 +1060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016246803
+      value: 0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005665764
+      value: -0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1616,6 +1627,10 @@ PrefabInstance:
       propertyPath: _deadParticle
       value: 
       objectReference: {fileID: 133150, guid: 76ea784c73256a744b24cba813a687e3, type: 3}
+    - target: {fileID: 6520185967972073564, guid: 7978b7d19050be8489c66edd877ea178, type: 3}
+      propertyPath: _enemiesPrefab._smallEnemy
+      value: 
+      objectReference: {fileID: 3215528591120545339, guid: fa4b5f1b2f8084148872cdf11f73ae18, type: 3}
     - target: {fileID: 7703324937324899862, guid: 7978b7d19050be8489c66edd877ea178, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1789,6 +1804,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1673053011}
     - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
+      propertyPath: _soundButton
+      value: 
+      objectReference: {fileID: 238743853}
+    - target: {fileID: 9219977427698337851, guid: 1ba7242cb9cd3ee41861a5542ee9dbdd, type: 3}
       propertyPath: _trapSpawner
       value: 
       objectReference: {fileID: 498522664}
@@ -1835,11 +1854,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001588242
+      value: -0.000000015882412
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000066187953
+      value: 0.0000000066187917
       objectReference: {fileID: 0}
     - target: {fileID: 742893938536502532, guid: b9035cdc4cd71bd41ab7e3d60ec86ee8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
