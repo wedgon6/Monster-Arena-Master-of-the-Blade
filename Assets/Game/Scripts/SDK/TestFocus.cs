@@ -18,11 +18,13 @@ public class TestFocus : MonoBehaviour
     private void OnInBackgroundChangeApp(bool inApp)
     {
         MuteAudio(!inApp);
+        PauseGame(!inApp);
     }
 
     private void OnInBackgroundChangeWed(bool isBackground)
     {
         MuteAudio(isBackground);
+        PauseGame(isBackground);
     }
 
     private void MuteAudio(bool value)
@@ -32,18 +34,26 @@ public class TestFocus : MonoBehaviour
             if (Services.AudioService.TryTurnSound())
             {
                 Services.AudioService.TurnSound();
-                PauseGame(value);
             }
         }
         else
         {
             Services.AudioService.MuteSound();
-            PauseGame(value);
         }
     }
 
     private void PauseGame(bool value)
     {
-        Time.timeScale = value ? 0 : 1;
+        if (!value)
+        {
+            if (Services.GameStopControl.TryChangetGameStop() == true && Services.AdvertisemintService.IsCloseAds == true)
+            {
+                Services.GameStopControl.ChangetGameStop(false);
+            }
+        }
+        else
+        {
+            Services.GameStopControl.ChangetGameStop(true);
+        }
     }
 }

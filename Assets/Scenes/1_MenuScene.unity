@@ -6046,6 +6046,7 @@ MonoBehaviour:
   _parameters: {fileID: 696690437}
   _canvasManager: {fileID: 1461224822}
   _leaderboard: {fileID: 1461224821}
+  _soundButton: {fileID: 6808271781638107593}
   _choiceMap: {fileID: 1859678819}
   _trainingShop: {fileID: 469411287}
   _worckshop: {fileID: 225809076}
@@ -15968,6 +15969,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6808271781638107593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7612371860301671807, guid: aeba356da8b8fca46bccd835d648d76e, type: 3}
+  m_PrefabInstance: {fileID: 6808271781638107591}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cd11c14cc04dc44bff2ddb37f288f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6911863558481638238

@@ -7,6 +7,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private ParametersPlayer _parameters;
     [SerializeField] private CanvasManager _canvasManager;
     [SerializeField] private Leaderboard _leaderboard;
+    [SerializeField] private SoundButton _soundButton;
 
     [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _trainingShop;
@@ -29,6 +30,7 @@ public class EntryPointMainMenu : MonoBehaviour
 
         LoadData();
         Services.GameReadyService.GameReady();
+        _soundButton.Initialize();
     }
 
     private void LoadData()

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AdvertisemintServise : IAdvertisemintServise
 {
+    private static bool _isCloseAds = true;
+
     private Gold _revardGold = new Gold(3000);
     private Daimond _revardDaimond = new Daimond(10);
     private PlayerWallet _playerWallet;
@@ -11,6 +13,7 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     public int GoldRevard { get => _revardGold.Value; set => throw new System.NotImplementedException(); }
     public int DaimondRevard { get => _revardDaimond.Value; set => throw new System.NotImplementedException(); }
+    public bool IsCloseAds { get => _isCloseAds; set => throw new System.NotImplementedException(); }
 
     public void ShowInterstitialAd()
     {
@@ -57,7 +60,8 @@ public class AdvertisemintServise : IAdvertisemintServise
     {
         Services.AudioService.MuteSound();
         Services.AudioService.ChengeAdsAudio(false);
-        Time.timeScale = 0f;
+        Services.GameStopControl.ChangetGameStop(true);
+        _isCloseAds = false;
     }
 
     private void OnCloseCallBack(bool canShow)
@@ -69,7 +73,8 @@ public class AdvertisemintServise : IAdvertisemintServise
     {
         Services.AudioService.TurnSound();
         Services.AudioService.ChengeAdsAudio(true);
-        Time.timeScale = 1f;
+        Services.GameStopControl.ChangetGameStop(false);
+        _isCloseAds = true;
     }
 
     private void OnCloseResurrecrAd()

@@ -7,6 +7,7 @@ public static class Services
     public static IAudioServise AudioService { get; private set; }
     public static ILocalizationServise LocalizationService { get; private set; }
     public static IGameReadyService GameReadyService { get; private set; }
+    public static IGamePhauseControl GameStopControl { get; private set; }
 
     public static void Init()
     {
@@ -15,6 +16,7 @@ public static class Services
         RegisterAudio();
         RegisterLocalization();
         RegisterGameReady();
+        RegisterGameStopControl();
     }
 
     private static void RegisterSaveAndLoad()
@@ -46,5 +48,10 @@ public static class Services
     private static void RegisterGameReady()
     {
         GameReadyService = new GameReadyService();
+    }
+
+    private static void RegisterGameStopControl()
+    {
+        GameStopControl = new GamePhauseControl();
     }
 }
