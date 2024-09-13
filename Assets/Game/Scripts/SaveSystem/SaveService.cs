@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using Agava.YandexGames.Utility;
 using System;
 using UnityEngine;
@@ -33,26 +34,56 @@ public class SaveService : ISaveService
             _relocateScore = 0;
             return _gameInfo != null;
         }
-#else
-        if (Agava.YandexGames.Utility.PlayerPrefs.HasKey(DataKeyCloud))
-        {
-            data = Agava.YandexGames.Utility.PlayerPrefs.GetString(DataKeyCloud);
-            gameInfo = JsonUtility.FromJson<GameInfo>(data);
-            gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
-            _gameInfo = gameInfo;
-            _relocateGold = 0;
-            _relocateDaimond = 0;
-            _relocateStars = 0;
-            _relocateScore = 0;
-            return _gameInfo != null;
-        }
-#endif
         else
         {
             data = String.Empty;
             gameInfo = null;
             return false;
         }
+#else
+        if (PlayerAccount.IsAuthorized)
+        {
+            if (Agava.YandexGames.Utility.PlayerPrefs.HasKey(DataKeyCloud))
+            {
+                data = Agava.YandexGames.Utility.PlayerPrefs.GetString(DataKeyCloud);
+                gameInfo = JsonUtility.FromJson<GameInfo>(data);
+                gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
+                _gameInfo = gameInfo;
+                _relocateGold = 0;
+                _relocateDaimond = 0;
+                _relocateStars = 0;
+                _relocateScore = 0;
+                return _gameInfo != null;
+            }
+            else
+            {
+                data = String.Empty;
+                gameInfo = null;
+                return false;
+            }
+        }
+        else
+        {
+            if (UnityEngine.PlayerPrefs.HasKey(DataKeyLocal))
+            {
+                data = UnityEngine.PlayerPrefs.GetString(DataKeyLocal);
+                gameInfo = JsonUtility.FromJson<GameInfo>(data);
+                gameInfo.AddEarnedMoney(_relocateGold, _relocateDaimond, _relocateStars, _relocateScore);
+                _gameInfo = gameInfo;
+                _relocateGold = 0;
+                _relocateDaimond = 0;
+                _relocateStars = 0;
+                _relocateScore = 0;
+                return _gameInfo != null;
+            }
+            else
+            {
+                data = String.Empty;
+                gameInfo = null;
+                return false;
+            }
+        }
+#endif
     }
 
     public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, TrainingShop shop, Worckshop skeenShop)
@@ -64,8 +95,16 @@ public class SaveService : ISaveService
         UnityEngine.PlayerPrefs.SetString(DataKeyLocal, _saveData);
         UnityEngine.PlayerPrefs.Save();
 #else
-        Agava.YandexGames.Utility.PlayerPrefs.SetString(DataKeyCloud, _saveData);
-        Agava.YandexGames.Utility.PlayerPrefs.Save();
+        if (PlayerAccount.IsAuthorized)
+        {
+            Agava.YandexGames.Utility.PlayerPrefs.SetString(DataKeyCloud, _saveData);
+            Agava.YandexGames.Utility.PlayerPrefs.Save();
+        }
+        else
+        {
+            UnityEngine.PlayerPrefs.SetString(DataKeyLocal, _saveData);
+            UnityEngine.PlayerPrefs.Save();
+        }
 #endif
     }
 

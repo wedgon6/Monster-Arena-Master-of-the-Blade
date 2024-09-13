@@ -1,4 +1,5 @@
 using Cinemachine;
+using Lean.Localization;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     [SerializeField] private TrapSpawner _trapSpawner;
     [SerializeField] private CinemachineVirtualCamera _mainCamera;
     [SerializeField] private SoundButton _soundButton;
+    [SerializeField] private LeanLocalization _localizate;
 
     [SerializeField] private ResultsPanel _winPanel;
     [SerializeField] private LosePanel _losePanel;
@@ -20,6 +22,12 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Services.LocalizationService.ChangeLanguage("en", _localizate);
+#else
+        Services.LocalizationService.ChangeLanguage(Agava.YandexGames.YandexGamesSdk.Environment.i18n.lang, _localizate);
+#endif
+
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
             _player.Initialize(gameInfo, Agava.WebUtility.Device.IsMobile);

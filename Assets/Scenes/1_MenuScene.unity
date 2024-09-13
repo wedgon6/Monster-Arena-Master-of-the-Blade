@@ -6047,6 +6047,7 @@ MonoBehaviour:
   _canvasManager: {fileID: 1461224822}
   _leaderboard: {fileID: 1461224821}
   _soundButton: {fileID: 6808271781638107593}
+  _localizate: {fileID: 805893438831780142}
   _choiceMap: {fileID: 1859678819}
   _trainingShop: {fileID: 469411287}
   _worckshop: {fileID: 225809076}
@@ -15341,6 +15342,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+--- !u!114 &805893438831780142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4893851455625931262, guid: ff87ddb9d581cb543934a4b06c15ceb0, type: 3}
+  m_PrefabInstance: {fileID: 805893438831780141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1238758826458909181
 PrefabInstance:
   m_ObjectHideFlags: 0

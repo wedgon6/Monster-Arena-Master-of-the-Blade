@@ -1,3 +1,6 @@
+using Lean.Localization;
+using UnityEngine;
+
 public class LocalizationServise : ILocalizationServise
 {
     private const string English = "English";
@@ -8,7 +11,7 @@ public class LocalizationServise : ILocalizationServise
     private const string RussianCode = "ru";
     private const string TurkishCode = "tr";
 
-    public void ChangeLanguage(string languageCode)
+    public void ChangeLanguage(string languageCode, LeanLocalization leanLocalization)
     {
         string language = null;
 
@@ -25,6 +28,7 @@ public class LocalizationServise : ILocalizationServise
                 break;
         }
 
-        Lean.Localization.LeanLocalization.SetCurrentLanguageAll(language);
+        leanLocalization.SetCurrentLanguage(language);
+        Debug.Log(language);
     }
 }

@@ -1,3 +1,4 @@
+using Lean.Localization;
 using UnityEngine;
 
 public class EntryPointMainMenu : MonoBehaviour
@@ -8,6 +9,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private CanvasManager _canvasManager;
     [SerializeField] private Leaderboard _leaderboard;
     [SerializeField] private SoundButton _soundButton;
+    [SerializeField] private LeanLocalization _localizate;
 
     [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _trainingShop;
@@ -15,6 +17,11 @@ public class EntryPointMainMenu : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Services.LocalizationService.ChangeLanguage("en", _localizate);
+#else
+        Services.LocalizationService.ChangeLanguage(Agava.YandexGames.YandexGamesSdk.Environment.i18n.lang, _localizate);
+#endif
         if (Agava.WebUtility.Device.IsMobile)
         {
             _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;

@@ -7,7 +7,6 @@ public class GamePhauseControl : IGamePhauseControl
     public void ChangetGameStop(bool value)
     {
         _canGame = value;
-        Debug.Log(_canGame);
         Time.timeScale = value ? 0 : 1;
     }
 
