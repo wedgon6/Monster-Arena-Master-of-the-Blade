@@ -11,28 +11,27 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private SoundButton _soundButton;
     [SerializeField] private LeanLocalization _localizate;
 
-    [SerializeField] private ChoiceMap _choiceMap;
-    [SerializeField] private TrainingShop _trainingShop;
-    [SerializeField] private Worckshop _worckshop;
+    private ChoiceMap _choiceMap;
+    private TrainingShop _trainingShop;
+    private Worckshop _worckshop;
 
     private void Awake()
     {
-#if UNITY_EDITOR
-        Services.LocalizationService.ChangeLanguage("en", _localizate);
-#else
-        Services.LocalizationService.ChangeLanguage(Agava.YandexGames.YandexGamesSdk.Environment.i18n.lang, _localizate);
-#endif
+        _canvasManager.Init();
+
         if (Agava.WebUtility.Device.IsMobile)
         {
             _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
             _trainingShop = _canvasManager.ModileCanvas.TrainingShop;
             _worckshop = _canvasManager.ModileCanvas.Worckshop;
+            Debug.Log("MOBILE");
         }
         else
         {
             _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
             _trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
             _worckshop = _canvasManager.DekstopCanvas.Worckshop;
+            Debug.Log("DECSTOP");
         }
 
         LoadData();

@@ -12,7 +12,6 @@ public class TrainingItem : MonoBehaviour
     [SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
     private int _currentPrice;
-    private int _currentLvl = 0;
 
     public event Action PriceChanged;
     public event Action<TrainingItem> ButtonCliked;
@@ -20,13 +19,13 @@ public class TrainingItem : MonoBehaviour
     protected float Multiplier => _multiplier;
     protected int CurrentPrice => _currentPrice;
 
-    public string Lable => _lable.text;
+    public TMP_Text Lable => _lable;
     public Sprite Icon => _icon;
     public int Price => _currentPrice;
+    public LeanLocalizedTextMeshProUGUI Localizate => _localized;
 
     public void Initialize()
     {
-        _localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
         _currentPrice = _startPrice;
         PriceChanged?.Invoke();
     }

@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class ShopView : MonoBehaviour
     [SerializeField] private TMP_Text _price;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
 
     private TrainingItem _abillity;
 
@@ -18,9 +20,10 @@ public class ShopView : MonoBehaviour
     {
         _abillity = item;
         _abillity.Initialize();
-        _lable.text = item.Lable;
-        _price.text = item.Price.ToString();
-        _icon.sprite = item.Icon;
+        _price.text = _abillity.Price.ToString();
+        _icon.sprite = _abillity.Icon;
+        _lable.text = _abillity.Lable.text;
+        _leanLocalizedTextMeshPro.TranslationName = _abillity.Localizate.TranslationName;
         _abillity.PriceChanged += OnPriceChenged;
     }
 

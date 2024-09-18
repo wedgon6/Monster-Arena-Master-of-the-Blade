@@ -9,11 +9,15 @@ public class LoadingPlayScene : MonoBehaviour
     private const string TutorialScene = "Tutorial";
 
     [SerializeField] private Image _loadingImage;
+    [SerializeField] private LocalizationRoot _localization;
 
     private AsyncOperation _asyncOperation;
 
     public void StartLoadScene()
     {
+        //_localization.Init();
+        //Services.LocalizationService.ChangeLanguage();
+
         if (Services.SaveService.TryGetData(out GameInfo data))
             _asyncOperation = SceneManager.LoadSceneAsync(MenuScene);
         else

@@ -28,10 +28,10 @@ public class WorckshopItem : MonoBehaviour
     public int Index => _index;
     public bool IsUnlock => _isUnlock;
     public bool IsSelect => _isSelect;
+    public LeanLocalizedTextMeshProUGUI Localizate => _localized;
 
     public void Initialize(int index)
     {
-        _localized.UpdateTranslation(LeanLocalization.GetTranslation(_localized.TranslationName));
         _isUnlock = false;
         _isSelect = false;
         _price = _startPrice;

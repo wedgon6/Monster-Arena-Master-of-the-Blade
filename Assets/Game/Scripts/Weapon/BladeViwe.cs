@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BladeViwe : MonoBehaviour
 {
+    private const float Fullangle = 360f;
+
     [SerializeField] private Movment _player;
     [SerializeField] private float _insideRadius = 1;
 
@@ -18,7 +20,7 @@ public class BladeViwe : MonoBehaviour
     {
         _countBlade = countBlade;
         _viwePrafab = blade.BladeViwePrafab;
-        _stepSize = 360 / _countBlade;
+        _stepSize = Fullangle / _countBlade;
 
         for (int i = 0; i < _countBlade; i++)
         {

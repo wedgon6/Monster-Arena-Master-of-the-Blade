@@ -37,12 +37,6 @@ public static class Services
     private static void RegisterLocalization()
     {
         LocalizationService = new LocalizationServise();
-
-//#if UNITY_EDITOR
-//        LocalizationService.ChangeLanguage("tr");
-//#else
-//        LocalizationService.ChangeLanguage(Agava.YandexGames.YandexGamesSdk.Environment.i18n.lang);
-//#endif
     }
 
     private static void RegisterGameReady()

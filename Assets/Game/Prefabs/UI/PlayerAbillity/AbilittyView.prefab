@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 3977467798196088444}
   - component: {fileID: 3157124593291301229}
   - component: {fileID: 557212168451418246}
+  - component: {fileID: 553928215076811084}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -418,6 +419,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &553928215076811084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058509331579847250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackText: 
 --- !u!1 &5729956872588680745
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +529,7 @@ MonoBehaviour:
   _price: {fileID: 8861159471978763027}
   _icon: {fileID: 6140946962544663954}
   _sellButton: {fileID: 2856242448406108359}
+  _leanLocalizedTextMeshPro: {fileID: 553928215076811084}
 --- !u!1 &5996408675228314268
 GameObject:
   m_ObjectHideFlags: 0

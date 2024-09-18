@@ -22,12 +22,6 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void Awake()
     {
-#if UNITY_EDITOR
-        Services.LocalizationService.ChangeLanguage("en", _localizate);
-#else
-        Services.LocalizationService.ChangeLanguage(Agava.YandexGames.YandexGamesSdk.Environment.i18n.lang, _localizate);
-#endif
-
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
         {
             _player.Initialize(gameInfo, Agava.WebUtility.Device.IsMobile);

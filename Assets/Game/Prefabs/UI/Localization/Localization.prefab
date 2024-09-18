@@ -1118,9 +1118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLanguage: Russian
-  detectLanguage: 0
+  detectLanguage: 1
   defaultLanguage: Russian
-  saveLoad: 0
+  saveLoad: 1
   prefabs: []
 --- !u!1 &3383944942956505792
 GameObject:

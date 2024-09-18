@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class WeaponSkeenView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private Button _actionButton;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
 
     private WorckshopItem _item;
     private int _indexBlade;
@@ -37,8 +39,9 @@ public class WeaponSkeenView : MonoBehaviour
             _unlockStatus.sprite = _lockImage;
         }
 
-        _lable.text = item.Lable;
-        _icon.sprite = item.Icon;
+        _lable.text = _item.Lable;
+        _icon.sprite = _item.Icon;
+        _leanLocalizedTextMeshPro.TranslationName = _item.Localizate.TranslationName;
 
         _actionButton.onClick.AddListener(ClickButton);
         _item.UnlockedSkeen += OnBuySkeen;

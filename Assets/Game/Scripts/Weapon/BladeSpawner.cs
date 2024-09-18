@@ -19,6 +19,9 @@ public class BladeSpawner : MonoBehaviour
     private float _rangeThrow;
     private float _damage;
     private float _bladeMoveSpeedBoost;
+    private float _minPlayerSpeed = 0.1f;
+    private float _activeSpeed = 0.5f;
+    private int _bladeCount = 3;
 
     public event Action ThrowingBlade;
 
@@ -29,7 +32,7 @@ public class BladeSpawner : MonoBehaviour
         _damage = damage;
         _rangeThrow = rangeThrow;
         _bladeMoveSpeedBoost = bladeMoveSpeedBoost;
-        _bladeViwe.Initialize(3, _bladePrefab);
+        _bladeViwe.Initialize(_bladeCount, _bladePrefab);
     }
 
     public void TurnOffActive()
@@ -53,7 +56,7 @@ public class BladeSpawner : MonoBehaviour
 
         if (_isActive)
         {
-            if (_playerSpeed <= 0.1f)
+            if (_playerSpeed <= _minPlayerSpeed)
             {
                 if (_currentTime <= 0f)
                 {
@@ -63,7 +66,7 @@ public class BladeSpawner : MonoBehaviour
             }
         }
 
-        if (_playerSpeed > 0.5f)
+        if (_playerSpeed > _activeSpeed)
             _isActive = true;
 
         _currentTime -= Time.deltaTime;
@@ -83,7 +86,6 @@ public class BladeSpawner : MonoBehaviour
         else
         {
             Blade blade;
-            Vector3 direction = _shootPoint.transform.position + Vector3.forward * 2f;
 
             if (_bladePool.TryPoolObject(out PoolObject pollBlade))
             {

@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class SkeenViewConteiner : MonoBehaviour
     [SerializeField] private GameObject _priceContent;
     [SerializeField] private GameObject _selecteContent;
     [SerializeField] private GameObject _selectedContent;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
     private WorckshopItem _item;
     private int _indexCurrentSkeen;
@@ -31,7 +33,7 @@ public class SkeenViewConteiner : MonoBehaviour
 
         _item = item;
         _indexCurrentSkeen = _item.Index;
-        _lable.text = _item.Lable;
+        _localized.TranslationName = _item.Localizate.TranslationName;
         _price.text = _item.Price.ToString();
         _icon.sprite = _item.Icon;
         _item.UnlockedSkeen += OnSkeenBuy;
