@@ -33,7 +33,6 @@ public class LocalizationServise : ILocalizationServise
                 break;
         }
 
-        //leanLocalization.SetCurrentLanguage(language);
         LeanLocalization.SetCurrentLanguageAll(language);
     }
 }

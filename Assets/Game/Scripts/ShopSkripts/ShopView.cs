@@ -14,7 +14,7 @@ public class ShopView : MonoBehaviour
 
     private TrainingItem _abillity;
 
-    public event Action<TrainingItem, ShopView> SellButtonClicked;
+    public event Action<TrainingItem> SellButtonClicked;
 
     public void Render(TrainingItem item)
     {
@@ -44,6 +44,6 @@ public class ShopView : MonoBehaviour
 
     private void OnButtonClick()
     {
-        SellButtonClicked?.Invoke(_abillity, this);
+        SellButtonClicked?.Invoke(_abillity);
     }
 }

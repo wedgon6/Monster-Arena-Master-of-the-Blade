@@ -10,26 +10,26 @@ public class SaveAndLoadSytem : MonoBehaviour
     private TrainingShop _abillityShop;
     private Worckshop _skeenShop;
 
-    private void OnEnable()
+    public void Init(ChoiceMap choiceMap, TrainingShop trainingShop, Worckshop worckshop)
     {
-        if (Agava.WebUtility.Device.IsMobile)
-        {
-            _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
-            _abillityShop = _canvasManager.ModileCanvas.TrainingShop;
-            _skeenShop = _canvasManager.ModileCanvas.Worckshop;
-        }
-        else
-        {
-            _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
-            _abillityShop = _canvasManager.DekstopCanvas.TrainingShop;
-            _skeenShop = _canvasManager.DekstopCanvas.Worckshop;
-        }
+        _choiceMap = choiceMap;
+        _abillityShop = trainingShop;
+        _skeenShop = worckshop;
 
         _wallet.MoneyChanged += SaveGameData;
         _choiceMap.CountStarsChenged += SaveGameData;
         _parametersPlayer.SavedData += SaveGameData;
         _abillityShop.SaveGameData += SaveGameData;
         _skeenShop.SaveGameData += SaveGameData;
+    }
+
+    private void OnEnable()
+    {
+        //_wallet.MoneyChanged += SaveGameData;
+        //_choiceMap.CountStarsChenged += SaveGameData;
+        //_parametersPlayer.SavedData += SaveGameData;
+        //_abillityShop.SaveGameData += SaveGameData;
+        //_skeenShop.SaveGameData += SaveGameData;
     }
 
     private void OnDisable()

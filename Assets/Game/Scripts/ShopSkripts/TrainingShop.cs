@@ -37,12 +37,12 @@ public class TrainingShop : MonoBehaviour
         view.Render(abillity);
     }
 
-    private void OnSellButtonClick(TrainingItem abillity, ShopView view)
+    private void OnSellButtonClick(TrainingItem abillity)
     {
-        TrySellAbillity(abillity, view);
+        TrySellAbillity(abillity);
     }
 
-    private void TrySellAbillity(TrainingItem abillity, ShopView view)
+    private void TrySellAbillity(TrainingItem abillity)
     {
         if (abillity.Price > _playerWallet.CurrentGold)
             return;

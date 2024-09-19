@@ -35,6 +35,7 @@ public class SDKInitialize : MonoBehaviour
         else
         {
             Services.Init();
+            Services.LocalizationService.ChangeLanguage();
             _loadindScene.StartLoadScene();
         }
     }
@@ -42,12 +43,14 @@ public class SDKInitialize : MonoBehaviour
     private void OnSuccessColback()
     {
         Services.Init();
+        Services.LocalizationService.ChangeLanguage();
         _loadindScene.StartLoadScene();
     }
 
     private void OnErrorColbak(string error)
     {
         Services.Init();
+        Services.LocalizationService.ChangeLanguage();
         _loadindScene.StartLoadScene();
     }
 #endif

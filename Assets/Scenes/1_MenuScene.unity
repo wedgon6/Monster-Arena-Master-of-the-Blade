@@ -6064,9 +6064,7 @@ MonoBehaviour:
   _leaderboard: {fileID: 1461224821}
   _soundButton: {fileID: 6808271781638107593}
   _localizate: {fileID: 2013699752}
-  _choiceMap: {fileID: 1859678819}
-  _trainingShop: {fileID: 469411287}
-  _worckshop: {fileID: 225809076}
+  _saveAndLoad: {fileID: 696690433}
 --- !u!114 &696690437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7247,7 +7245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAbillities:
-  - {fileID: 897030590331333460, guid: 1ffcd34b6ea92234cb694f91c225f1f3, type: 3}
+  - {fileID: 8897466652604659755, guid: 1ffcd34b6ea92234cb694f91c225f1f3, type: 3}
   - {fileID: 3417493059306935447, guid: 53faae0d7ad655544a6914cf3307764d, type: 3}
   - {fileID: 2445032492221520840, guid: a10b3f94d01e87c40a8941ebd6717973, type: 3}
   - {fileID: 6909424501876253450, guid: 496ead0e2f292d0459ebf3f5e869b270, type: 3}
@@ -11295,7 +11293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1530092012
 RectTransform:
   m_ObjectHideFlags: 0

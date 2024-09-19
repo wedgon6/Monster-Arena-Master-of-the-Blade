@@ -7,7 +7,7 @@ public class Leaderboard : MonoBehaviour
     private const string EnglishCode = "en";
     private const string RussianCode = "ru";
     private const string TurkishCode = "tr";
-    private const string AnonymousRu = "Àíîíèì";
+    private const string AnonymousRu = "Анонимный";
     private const string AnonymousEn = "Anonymous";
     private const string AnonymousTr = "Anonim";
     private const string LeaderboardName = "Leaderboard";

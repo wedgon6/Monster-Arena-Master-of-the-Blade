@@ -10,6 +10,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private Leaderboard _leaderboard;
     [SerializeField] private SoundButton _soundButton;
     [SerializeField] private LeanLocalization _localizate;
+    [SerializeField] private SaveAndLoadSytem _saveAndLoad;
 
     private ChoiceMap _choiceMap;
     private TrainingShop _trainingShop;
@@ -24,16 +25,15 @@ public class EntryPointMainMenu : MonoBehaviour
             _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
             _trainingShop = _canvasManager.ModileCanvas.TrainingShop;
             _worckshop = _canvasManager.ModileCanvas.Worckshop;
-            Debug.Log("MOBILE");
         }
         else
         {
             _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
             _trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
             _worckshop = _canvasManager.DekstopCanvas.Worckshop;
-            Debug.Log("DECSTOP");
         }
 
+        _saveAndLoad.Init(_choiceMap, _trainingShop, _worckshop);
         LoadData();
         Services.GameReadyService.GameReady();
         _soundButton.Initialize();
