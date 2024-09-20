@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IDamageable
     private float _health;
     private int _earnedScore = 0;
     private bool _isMobile;
+    private float _moveSpeed;
 
     private Gold _gold = new Gold(0);
     private Daimond _daimond = new Daimond(0);
@@ -33,7 +34,8 @@ public class Player : MonoBehaviour, IDamageable
         _maxHealth = standartParametrs.StartHealth;
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
-        _movment.Initialize(standartParametrs.StartMoveSpeed, _isMobile);
+        _moveSpeed = standartParametrs.StartMoveSpeed;
+        _movment.Initialize(_moveSpeed, _isMobile);
         _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
     }
 
@@ -44,8 +46,8 @@ public class Player : MonoBehaviour, IDamageable
         _maxHealth = _gameInfo.MaxPlayerHealth;
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
-
-        _movment.Initialize(_gameInfo.PlayerMoveSpeed, _isMobile);
+        _moveSpeed = _gameInfo.PlayerMoveSpeed;
+        _movment.Initialize(_moveSpeed, _isMobile);
         _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
     }
 
@@ -65,7 +67,8 @@ public class Player : MonoBehaviour, IDamageable
     public void Resurrect()
     {
         _health = _maxHealth;
-        _movment.Initialize(_gameInfo.PlayerMoveSpeed, _isMobile);
+        _movment.Initialize(_moveSpeed, _isMobile);
+        Debug.Log("Воскресил игрока");
         ChangeHealth?.Invoke(_health, _maxHealth);
         Resurred?.Invoke();
     }

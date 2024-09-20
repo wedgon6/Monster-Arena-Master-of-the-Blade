@@ -7,13 +7,12 @@ public class SaveAndLoadSytem : MonoBehaviour
     [SerializeField] private ParametersPlayer _parametersPlayer;
     
     private ChoiceMap _choiceMap;
-    private TrainingShop _abillityShop;
+    [SerializeField] private TrainingShop _abillityShop;
     private Worckshop _skeenShop;
 
-    public void Init(ChoiceMap choiceMap, TrainingShop trainingShop, Worckshop worckshop)
+    public void Init(ChoiceMap choiceMap, Worckshop worckshop)
     {
         _choiceMap = choiceMap;
-        _abillityShop = trainingShop;
         _skeenShop = worckshop;
 
         _wallet.MoneyChanged += SaveGameData;

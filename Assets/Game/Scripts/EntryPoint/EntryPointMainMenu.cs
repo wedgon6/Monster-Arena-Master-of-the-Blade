@@ -13,7 +13,7 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private SaveAndLoadSytem _saveAndLoad;
 
     private ChoiceMap _choiceMap;
-    private TrainingShop _trainingShop;
+    [SerializeField] private TrainingShop _trainingShop;
     private Worckshop _worckshop;
 
     private void Awake()
@@ -23,17 +23,17 @@ public class EntryPointMainMenu : MonoBehaviour
         if (Agava.WebUtility.Device.IsMobile)
         {
             _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
-            _trainingShop = _canvasManager.ModileCanvas.TrainingShop;
+            //_trainingShop = _canvasManager.ModileCanvas.TrainingShop;
             _worckshop = _canvasManager.ModileCanvas.Worckshop;
         }
         else
         {
             _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
-            _trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
+            //_trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
             _worckshop = _canvasManager.DekstopCanvas.Worckshop;
         }
 
-        _saveAndLoad.Init(_choiceMap, _trainingShop, _worckshop);
+        _saveAndLoad.Init(_choiceMap, _worckshop);
         LoadData();
         Services.GameReadyService.GameReady();
         _soundButton.Initialize();
@@ -58,7 +58,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _moneyView.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _playerWallet.Initialize(gameInfo.PlayerGold, gameInfo.PlayerDaimond);
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
-        _trainingShop.InitializeShop(gameInfo);
+        _trainingShop.InitializeShop(gameInfo, _canvasManager.TrainingShopConteiner);
         _parameters.Initialize(gameInfo);
         _worckshop.Initialize(gameInfo);
     }
@@ -68,7 +68,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _moneyView.Initialize(0, 0);
         _playerWallet.Initialize(Services.SaveService.RelocateGold, Services.SaveService.RelocateDaimond);
         _choiceMap.Initialize(0, 0, 0);
-        _trainingShop.InitializeShop();
+        _trainingShop.InitializeShop(_canvasManager.TrainingShopConteiner);
         _parameters.Initialize();
         _worckshop.Initialize();
     }

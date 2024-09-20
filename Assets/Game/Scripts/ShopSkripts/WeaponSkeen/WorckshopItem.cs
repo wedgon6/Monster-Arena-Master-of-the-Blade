@@ -19,7 +19,6 @@ public class WorckshopItem : MonoBehaviour
     public event Action UnlockedSkeen;
     public event Action SelectedSkeen;
     public event Action PriceChanged;
-    public event Action<TrainingItem> ButtonCliked;
 
     public Blade Blade => _blade;
     public string Lable => _lable.text;

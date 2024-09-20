@@ -72,7 +72,7 @@ public class GameInfo
 
         for (int i = 0; i < _adbillityShop.PlayerAbillities.Count; i++)
         {
-            AbilitiesPrise.Add(_adbillityShop.PlayerAbillities[i].Price);
+            AbilitiesPrise.Add(_adbillityShop.PlayerAbillities[i].CurrentPrice);
         }
 
         for (int i = 0; i < _skeensShop.WeaponSkeens.Count; i++)

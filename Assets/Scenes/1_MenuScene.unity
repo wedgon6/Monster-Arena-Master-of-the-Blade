@@ -1003,8 +1003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbc04225233ef44a8e8b07c1d3420ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trainingShopPanel: {fileID: 836257891}
+  _trainingShopConteiner: {fileID: 1682724622}
   _choiceMap: {fileID: 1036452376}
-  _trainingShop: {fileID: 836257893}
   _leaderboardView: {fileID: 1059103327}
   _worckshop: {fileID: 229772407}
   _leaderboardPanel: {fileID: 379673712}
@@ -2181,6 +2182,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192062077}
   m_CullTransparentMesh: 0
+--- !u!1 &214188047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214188048}
+  - component: {fileID: 214188049}
+  m_Layer: 5
+  m_Name: Shops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &214188048
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214188047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1461224820}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &214188049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214188047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941382401cc3a324ba805104b2af3de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAbillities:
+  - {fileID: 11400000, guid: e128f3774341f4d4995069e86ffd854d, type: 2}
+  - {fileID: 11400000, guid: 9f3060a0d5b186340a2f5b0b167721bf, type: 2}
+  - {fileID: 11400000, guid: 3d2abb03ef2fdd743923c2c8118b67ec, type: 2}
+  - {fileID: 11400000, guid: 90d18126c0f52804c8fbc827f12fb64d, type: 2}
+  _playerWallet: {fileID: 1962134351}
+  _shopView: {fileID: 7875075927070579099, guid: ac4542295278c334e9e2fc704d20729e, type: 3}
+  _parametersPlayer: {fileID: 696690437}
 --- !u!1 &214615831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,7 +3979,6 @@ GameObject:
   - component: {fileID: 469411284}
   - component: {fileID: 469411286}
   - component: {fileID: 469411285}
-  - component: {fileID: 469411287}
   m_Layer: 5
   m_Name: Training
   m_TagString: Untagged
@@ -3990,27 +4046,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469411283}
   m_CullTransparentMesh: 1
---- !u!114 &469411287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469411283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941382401cc3a324ba805104b2af3de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerAbillities:
-  - {fileID: 8897466652604659755, guid: 1ffcd34b6ea92234cb694f91c225f1f3, type: 3}
-  - {fileID: 3417493059306935447, guid: 53faae0d7ad655544a6914cf3307764d, type: 3}
-  - {fileID: 2445032492221520840, guid: a10b3f94d01e87c40a8941ebd6717973, type: 3}
-  - {fileID: 6909424501876253450, guid: 496ead0e2f292d0459ebf3f5e869b270, type: 3}
-  _playerWallet: {fileID: 1962134351}
-  _shopView: {fileID: 7875075927070579099, guid: ac4542295278c334e9e2fc704d20729e, type: 3}
-  _abillityConteiner: {fileID: 113748716}
-  _parametersPlayer: {fileID: 696690437}
 --- !u!1 &473366572
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,6 +6065,7 @@ MonoBehaviour:
   _canvasManager: {fileID: 1461224822}
   _wallet: {fileID: 1962134351}
   _parametersPlayer: {fileID: 696690437}
+  _abillityShop: {fileID: 214188049}
 --- !u!4 &696690435
 Transform:
   m_ObjectHideFlags: 0
@@ -6065,6 +6101,7 @@ MonoBehaviour:
   _soundButton: {fileID: 6808271781638107593}
   _localizate: {fileID: 2013699752}
   _saveAndLoad: {fileID: 696690433}
+  _trainingShop: {fileID: 214188049}
 --- !u!114 &696690437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7202,7 +7239,6 @@ GameObject:
   - component: {fileID: 836257892}
   - component: {fileID: 836257895}
   - component: {fileID: 836257894}
-  - component: {fileID: 836257893}
   m_Layer: 5
   m_Name: Training
   m_TagString: Untagged
@@ -7232,27 +7268,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.5, y: 102.5}
   m_SizeDelta: {x: 459.859, y: 198.91199}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &836257893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836257891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941382401cc3a324ba805104b2af3de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerAbillities:
-  - {fileID: 8897466652604659755, guid: 1ffcd34b6ea92234cb694f91c225f1f3, type: 3}
-  - {fileID: 3417493059306935447, guid: 53faae0d7ad655544a6914cf3307764d, type: 3}
-  - {fileID: 2445032492221520840, guid: a10b3f94d01e87c40a8941ebd6717973, type: 3}
-  - {fileID: 6909424501876253450, guid: 496ead0e2f292d0459ebf3f5e869b270, type: 3}
-  _playerWallet: {fileID: 1962134351}
-  _shopView: {fileID: 7875075927070579099, guid: ac4542295278c334e9e2fc704d20729e, type: 3}
-  _abillityConteiner: {fileID: 1682724622}
-  _parametersPlayer: {fileID: 696690437}
 --- !u!114 &836257894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10785,6 +10800,7 @@ RectTransform:
   - {fileID: 738210018}
   - {fileID: 2078389000}
   - {fileID: 1530092012}
+  - {fileID: 214188048}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11293,7 +11309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1530092012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14468,8 +14484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17b2f8e40434824aab896af5fe56379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trainingShopPanel: {fileID: 469411283}
+  _trainingShopConteiner: {fileID: 113748716}
   _choiceMap: {fileID: 1859678819}
-  _trainingShop: {fileID: 469411287}
   _leaderboardView: {fileID: 1675439248}
   _worckshop: {fileID: 225809076}
   _leaderboardPanel: {fileID: 807889562}

@@ -4,53 +4,57 @@ using UnityEngine;
 
 public class TrainingShop : MonoBehaviour
 {
-    [SerializeField] private List<TrainingItem> _playerAbillities;
+    [SerializeField] private List<TrainingItemData> _playerAbillities;
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ShopView _shopView;
-    [SerializeField] private GameObject _abillityConteiner;
     [SerializeField] private ParametersPlayer _parametersPlayer;
 
-    public List<TrainingItem> PlayerAbillities => _playerAbillities;
+    private List<ShopView> _itemsShop = new List<ShopView>();
+    private GameObject _abillityConteiner;
+
+    public List<ShopView> PlayerAbillities => _itemsShop;
     public event Action SaveGameData;
 
-    public void InitializeShop()
+    public void InitializeShop(GameObject conteinr)
     {
+        _abillityConteiner = conteinr;
+
         for (int i = 0; i < _playerAbillities.Count; i++)
         {
-            AddItem(_playerAbillities[i]);
+            AddItem(_playerAbillities[i], out ShopView view);
+            _itemsShop.Add(view);
         }
     }
 
-    public void InitializeShop(GameInfo gameInfo)
+    public void InitializeShop(GameInfo gameInfo, GameObject conteinr)
     {
+        _abillityConteiner = conteinr;
+
         for (int i = 0; i < _playerAbillities.Count; i++)
         {
-            AddItem(_playerAbillities[i]);
-            _playerAbillities[i].GetCloudData(gameInfo.AbilitiesPrise[i]);
+            AddItem(_playerAbillities[i], out ShopView view);
+            view.GetCloudData(gameInfo.AbilitiesPrise[i]);
+            _itemsShop.Add(view);
         }
     }
 
-    private void AddItem(TrainingItem abillity)
+    private void AddItem(TrainingItemData abillity, out ShopView view)
     {
-        var view = Instantiate(_shopView, _abillityConteiner.transform);
+        view = Instantiate(_shopView, _abillityConteiner.transform);
         view.SellButtonClicked += OnSellButtonClick;
         view.Render(abillity);
     }
 
-    private void OnSellButtonClick(TrainingItem abillity)
+    private void OnSellButtonClick(TrainingItemData abillity, ShopView shopView)
     {
-        TrySellAbillity(abillity);
-    }
-
-    private void TrySellAbillity(TrainingItem abillity)
-    {
-        if (abillity.Price > _playerWallet.CurrentGold)
+        if (shopView.CurrentPrice > _playerWallet.CurrentGold)
             return;
 
-        if (abillity.Price <= _playerWallet.CurrentGold)
+        if (shopView.CurrentPrice <= _playerWallet.CurrentGold)
         {
-            _playerWallet.ReduceMoney(new Gold(abillity.Price));
-            abillity.Buy(_parametersPlayer);
+            _playerWallet.ReduceMoney(new Gold(shopView.CurrentPrice));
+            abillity.DuffPlayer(_parametersPlayer);
+            shopView.Buy();
             SaveGameData?.Invoke();
         }
     }

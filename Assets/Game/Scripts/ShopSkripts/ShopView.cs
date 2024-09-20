@@ -12,19 +12,29 @@ public class ShopView : MonoBehaviour
     [SerializeField] private Button _sellButton;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
 
-    private TrainingItem _abillity;
+    private int _currentPrice;
+    private TrainingItemData _abillity;
 
-    public event Action<TrainingItem> SellButtonClicked;
+    public int CurrentPrice => _currentPrice;
 
-    public void Render(TrainingItem item)
+    public event Action<TrainingItemData, ShopView> SellButtonClicked;
+
+    public void Render(TrainingItemData item)
     {
         _abillity = item;
-        _abillity.Initialize();
-        _price.text = _abillity.Price.ToString();
+        _currentPrice = _abillity.StartPrice;
+        _price.text = _abillity.StartPrice.ToString();
         _icon.sprite = _abillity.Icon;
-        _lable.text = _abillity.Lable.text;
-        _leanLocalizedTextMeshPro.TranslationName = _abillity.Localizate.TranslationName;
-        _abillity.PriceChanged += OnPriceChenged;
+        //_lable.text = _abillity.Lable;
+        _leanLocalizedTextMeshPro.TranslationName = _abillity.LocalizateKey;
+        //_abillity.PriceChanged += OnPriceChenged;
+    }
+
+    public void GetCloudData(int currentPrice)
+    {
+        _currentPrice = currentPrice;
+        _price.text = currentPrice.ToString();
+        //PriceChanged?.Invoke();
     }
 
     private void OnEnable()
@@ -37,13 +47,14 @@ public class ShopView : MonoBehaviour
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void OnPriceChenged()
+    public void Buy()
     {
-        _price.text = _abillity.Price.ToString();
+        _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
+        _price.text = _currentPrice.ToString();
     }
 
     private void OnButtonClick()
     {
-        SellButtonClicked?.Invoke(_abillity);
+        SellButtonClicked?.Invoke(_abillity, this);
     }
 }
