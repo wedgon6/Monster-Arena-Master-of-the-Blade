@@ -11,8 +11,10 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private OpenButton _weaponWorshopButton;
 
     private GameObject _trainingShopConteiner;
+    private GameObject _weaponShopConteiner;
 
     public GameObject TrainingShopConteiner => _trainingShopConteiner;
+    public GameObject WeaponShopConteiner => _weaponShopConteiner;
     public DekstopCanvas DekstopCanvas => _dekstopCanvas;
     public ModileCanvas ModileCanvas => _modileCanvas;
 
@@ -20,6 +22,8 @@ public class CanvasManager : MonoBehaviour
     {
         if (Agava.WebUtility.Device.IsMobile)
         {
+            _trainingShopConteiner = _modileCanvas.TrainingShopConteiner;
+            _weaponShopConteiner = _modileCanvas.WeaponShopConteiner;
             _boardButton.Initialize(_modileCanvas.LeaderboardPanel);
             _battleButton.Initialaize(_modileCanvas.ChoiceMap.gameObject);
             _trainingButton.Initialaize(_modileCanvas.TrainingShopConteiner.gameObject);
@@ -28,8 +32,7 @@ public class CanvasManager : MonoBehaviour
         else
         {
             _trainingShopConteiner = _dekstopCanvas.TrainingShopConteiner;
-            Debug.Log(_trainingShopConteiner == null);
-
+            _weaponShopConteiner = _dekstopCanvas.WeaponShopConteiner;
             _boardButton.Initialize(_dekstopCanvas.LeaderboardPanel);
             _battleButton.Initialaize(_dekstopCanvas.ChoiceMap.gameObject);
             _trainingButton.Initialaize(_dekstopCanvas.TrainingShopPanel.gameObject);

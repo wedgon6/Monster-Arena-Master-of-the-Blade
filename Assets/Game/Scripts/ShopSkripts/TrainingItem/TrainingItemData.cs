@@ -1,5 +1,3 @@
-using Lean.Localization;
-using TMPro;
 using UnityEngine;
 
 public abstract class TrainingItemData : ScriptableObject
@@ -16,5 +14,5 @@ public abstract class TrainingItemData : ScriptableObject
     public int StartPrice => _startPrice;
     public string LocalizateKey => _localizedKey;
 
-    public abstract void DuffPlayer(ParametersPlayer parametersPlayer);
+    public abstract void BuffPlayer(ParametersPlayer parametersPlayer);
 }

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopView : MonoBehaviour
+public class TrainingShopView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private TMP_Text _price;
@@ -17,7 +17,7 @@ public class ShopView : MonoBehaviour
 
     public int CurrentPrice => _currentPrice;
 
-    public event Action<TrainingItemData, ShopView> SellButtonClicked;
+    public event Action<TrainingItemData, TrainingShopView> SellButtonClicked;
 
     public void Render(TrainingItemData item)
     {
@@ -25,16 +25,13 @@ public class ShopView : MonoBehaviour
         _currentPrice = _abillity.StartPrice;
         _price.text = _abillity.StartPrice.ToString();
         _icon.sprite = _abillity.Icon;
-        //_lable.text = _abillity.Lable;
         _leanLocalizedTextMeshPro.TranslationName = _abillity.LocalizateKey;
-        //_abillity.PriceChanged += OnPriceChenged;
     }
 
     public void GetCloudData(int currentPrice)
     {
         _currentPrice = currentPrice;
         _price.text = currentPrice.ToString();
-        //PriceChanged?.Invoke();
     }
 
     private void OnEnable()

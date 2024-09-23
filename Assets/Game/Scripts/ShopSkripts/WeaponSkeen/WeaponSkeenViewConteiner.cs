@@ -3,8 +3,9 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
-public class SkeenViewConteiner : MonoBehaviour
+public class WeaponSkeenViewConteiner : MonoBehaviour
 {
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private TMP_Text _price;
@@ -15,13 +16,13 @@ public class SkeenViewConteiner : MonoBehaviour
     [SerializeField] private GameObject _selectedContent;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _localized;
 
-    private WorckshopItem _item;
+    private WeaponSkeenView _item;
     private int _indexCurrentSkeen;
 
-    public event Action<WorckshopItem> ClickBuyButton;
-    public event Action<WorckshopItem, int> ClickSelectSkeenButton;
+    public event Action<WeaponSkeenView> ClickBuyButton;
+    public event Action<WeaponSkeenView, int> ClickSelectSkeenButton;
 
-    public void RenderChoiceSkeen(WorckshopItem item, int indexSkeen)
+    public void RenderChoiceSkeen(int indexSkeen, WeaponSkeenView item)
     {
         SetNewItem();
 
@@ -33,7 +34,7 @@ public class SkeenViewConteiner : MonoBehaviour
 
         _item = item;
         _indexCurrentSkeen = _item.Index;
-        _localized.TranslationName = _item.Localizate.TranslationName;
+        _localized.TranslationName = _item.LocalizationKey;
         _price.text = _item.Price.ToString();
         _icon.sprite = _item.Icon;
         _item.UnlockedSkeen += OnSkeenBuy;

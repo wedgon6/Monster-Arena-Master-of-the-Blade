@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4674aabf5dccbe4487730107a593313, type: 3}
+  m_Name: StormBlade
+  m_EditorClassIdentifier: 
+  _lable: Storm Blade
+  _icon: {fileID: 21300000, guid: 16ff9b9e8e943744987c3b6d5c246169, type: 3}
+  _startPrice: 20
+  _blade: {fileID: 8412514096768999583, guid: d246b50b24779e343ade3519fff1c5ef, type: 3}
+  _localizedKey: ShtormBlade

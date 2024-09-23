@@ -27,12 +27,12 @@ public class GameInfo
     private ChoiceMap _choiceMap;
     private ParametersPlayer _parametersPlayer;
     private TrainingShop _adbillityShop;
-    private Worckshop _skeensShop;
+    private WeaponSkeenShop _skeensShop;
 
     private static int _earnedGaold = 0;
     private static int _earnedDaimond = 0;
 
-    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop, Worckshop worckshop)
+    public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop, WeaponSkeenShop worckshop)
     {
         _playerWallet = playerWallet;
         _choiceMap = choiceMap;

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RangeThrow", menuName = "ScriptableObjects/TrainigItem/RangeThrow")]
 public class RangeThrowTraining : TrainingItemData
 {
-    public override void DuffPlayer(ParametersPlayer parametersPlayer)
+    public override void BuffPlayer(ParametersPlayer parametersPlayer)
     {
         parametersPlayer.AddRangeThrow();
     }

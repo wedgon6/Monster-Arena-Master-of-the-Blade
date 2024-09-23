@@ -2,48 +2,56 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Worckshop : MonoBehaviour
+public class WeaponSkeenShop : MonoBehaviour
 {
-    [SerializeField] private List<WorckshopItem> _weaponSkeens;
+    [SerializeField] private List<WeaponSkeenData> _weaponSkeensData;
     [SerializeField] private WeaponSkeenView _shopView;
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ParametersPlayer _parametersPlayer;
-    [SerializeField] private GameObject _worckshopConteiner;
-    [SerializeField] private SkeenViewConteiner _skeenViewConteiner;
+    [SerializeField] private WeaponSkeenViewConteiner _skeenViewConteiner;
 
-    private WorckshopItem _currentSkeen;
+    private List<WeaponSkeenView> _weaponSkeens = new List<WeaponSkeenView>();
+    private WeaponSkeenView _currentSkeen;
+    private GameObject _worckshopConteiner;
     private int _currentSkeenIndex;
 
-    public List<WorckshopItem> WeaponSkeens => _weaponSkeens;
+    public List<WeaponSkeenData> WeaponSkeensData => _weaponSkeensData;
+    public List<WeaponSkeenView> WeaponSkeens => _weaponSkeens;
     public int CurrentSkeenIndex => _currentSkeenIndex;
 
     public event Action SaveGameData;
 
-    public void Initialize()
+    public void Initialize(GameObject conteiner)
     {
-        for (int i = 0; i < _weaponSkeens.Count; i++)
+        _worckshopConteiner = conteiner;
+
+        for (int i = 0; i < _weaponSkeensData.Count; i++)
         {
-            _weaponSkeens[i].SetData(false, false);
-            AddItem(_weaponSkeens[i], i);
+            AddItem(_weaponSkeensData[i], i, out WeaponSkeenView view);
+            view.SetData(false, false);
+            _weaponSkeens.Add(view);
         }
 
         if (_currentSkeen == null)
         {
             _currentSkeen = _weaponSkeens[0];
             _currentSkeen.SetData(true, true);
-            _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, 0);
+            _skeenViewConteiner.RenderChoiceSkeen(0, _currentSkeen);
             _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
         }
 
         SaveGameData?.Invoke();
     }
 
-    public void Initialize(GameInfo gameInfo)
+    public void Initialize(GameObject conteiner, GameInfo gameInfo)
     {
+        _worckshopConteiner = conteiner;
+
         for (int i = 0; i < _weaponSkeens.Count; i++)
         {
-            AddItem(_weaponSkeens[i], i);
-            _weaponSkeens[i].SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
+            AddItem(_weaponSkeensData[i], i, out WeaponSkeenView view);
+            view.SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
+            _weaponSkeens.Add(view);
 
             if (_currentSkeen == null)
             {
@@ -51,7 +59,7 @@ public class Worckshop : MonoBehaviour
                 {
                     _currentSkeen = _weaponSkeens[i];
                     _currentSkeenIndex = i;
-                    _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen, i);
+                    _skeenViewConteiner.RenderChoiceSkeen(i, _currentSkeen);
                     _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
                 }
             }
@@ -72,19 +80,19 @@ public class Worckshop : MonoBehaviour
         _skeenViewConteiner.ClickSelectSkeenButton -= SetSkeen;
     }
 
-    private void AddItem(WorckshopItem weapon, int index)
+    private void AddItem(WeaponSkeenData weapon, int index, out WeaponSkeenView view)
     {
-        var view = Instantiate(_shopView, _worckshopConteiner.transform);
+        view = Instantiate(_shopView, _worckshopConteiner.transform);
         view.ActionButtonClick += OnButtonClick;
         view.Render(weapon, index);
     }
 
-    private void OnButtonClick(WorckshopItem weapon, int indexSkeen)
+    private void OnButtonClick(WeaponSkeenData weapon, int indexSkeen, WeaponSkeenView weaponSkeenView)
     {
-        _skeenViewConteiner.RenderChoiceSkeen(weapon, indexSkeen);
+        _skeenViewConteiner.RenderChoiceSkeen(indexSkeen, weaponSkeenView);
     }
 
-    private void TrySellSkeen(WorckshopItem item)
+    private void TrySellSkeen(WeaponSkeenView item)
     {
         if (item.Price > _playerWallet.CurrentDaimond)
             return;
@@ -97,7 +105,7 @@ public class Worckshop : MonoBehaviour
         }
     }
 
-    private void SetSkeen(WorckshopItem item, int currentIndex)
+    private void SetSkeen(WeaponSkeenView item, int currentIndex)
     {
         if (_currentSkeen == null)
             return;

@@ -14,7 +14,7 @@ public class EntryPointMainMenu : MonoBehaviour
 
     private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _trainingShop;
-    private Worckshop _worckshop;
+    [SerializeField] private WeaponSkeenShop _worckshop;
 
     private void Awake()
     {
@@ -23,14 +23,10 @@ public class EntryPointMainMenu : MonoBehaviour
         if (Agava.WebUtility.Device.IsMobile)
         {
             _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
-            //_trainingShop = _canvasManager.ModileCanvas.TrainingShop;
-            _worckshop = _canvasManager.ModileCanvas.Worckshop;
         }
         else
         {
             _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
-            //_trainingShop = _canvasManager.DekstopCanvas.TrainingShop;
-            _worckshop = _canvasManager.DekstopCanvas.Worckshop;
         }
 
         _saveAndLoad.Init(_choiceMap, _worckshop);
@@ -60,7 +56,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         _trainingShop.InitializeShop(gameInfo, _canvasManager.TrainingShopConteiner);
         _parameters.Initialize(gameInfo);
-        _worckshop.Initialize(gameInfo);
+        _worckshop.Initialize(_canvasManager.WeaponShopConteiner);
     }
 
     private void InitializeNewData()
@@ -70,6 +66,6 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(0, 0, 0);
         _trainingShop.InitializeShop(_canvasManager.TrainingShopConteiner);
         _parameters.Initialize();
-        _worckshop.Initialize();
+        _worckshop.Initialize(_canvasManager.WeaponShopConteiner);
     }
 }

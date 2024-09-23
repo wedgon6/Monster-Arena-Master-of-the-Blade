@@ -15,21 +15,46 @@ public class WeaponSkeenView : MonoBehaviour
     [SerializeField] private Button _actionButton;
     [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
 
-    private WorckshopItem _item;
+    private WeaponSkeenData _item;
     private int _indexBlade;
+    private bool _isUnlock = false;
+    private bool _isSelect = false;
+    private int _price;
 
-    public event Action<WorckshopItem, int> ActionButtonClick;
+    public event Action<WeaponSkeenData, int, WeaponSkeenView> ActionButtonClick;
+    public event Action UnlockedSkeen;
+    public event Action SelectedSkeen;
 
-    public void Render(WorckshopItem item, int index)
+    public bool IsUnlock => _isUnlock;
+    public bool IsSelect => _isSelect;
+    public int Price => _price;
+    public int Index => _indexBlade;
+    public string LocalizationKey => _item.LocalizedKey;
+    public Sprite Icon => _item.Icon;
+    public Blade Blade => _item.Blade;
+
+    public void Render(WeaponSkeenData item, int index)
     {
         _item = item;
-        _item.Initialize(index);
-    
-        if (_item.IsUnlock)
+        _isUnlock = false;
+        _isSelect = false;
+        _price = item.Price;
+        _indexBlade = index;
+
+        _lable.text = _item.Lable;
+        _icon.sprite = _item.Icon;
+        _leanLocalizedTextMeshPro.TranslationName = _item.LocalizedKey;
+
+        _actionButton.onClick.AddListener(ClickButton);
+    }
+
+    public void SetData(bool isUnlock, bool isSelect)
+    {
+        if (isUnlock)
         {
             _unlockStatus.sprite = _unlockImage;
 
-            if (_item.IsSelect)
+            if (isSelect)
             {
                 _unlockStatus.sprite = _selectImage;
             }
@@ -38,14 +63,29 @@ public class WeaponSkeenView : MonoBehaviour
         {
             _unlockStatus.sprite = _lockImage;
         }
+    }
 
-        _lable.text = _item.Lable;
-        _icon.sprite = _item.Icon;
-        _leanLocalizedTextMeshPro.TranslationName = _item.Localizate.TranslationName;
+    public void BuySkeen()
+    {
+        _isUnlock = true;
+        SetUnlockImage();
+        UnlockedSkeen?.Invoke();
+    }
 
-        _actionButton.onClick.AddListener(ClickButton);
-        _item.UnlockedSkeen += OnBuySkeen;
-        _item.SelectedSkeen += OnSelectedSkeen;
+    public void RemoveSkeen()
+    {
+        _isSelect = false;
+        SetUnlockImage();
+    }
+
+    public void SetSkeen()
+    {
+        if (_isUnlock == false)
+            return;
+
+        _isSelect = true;
+        _unlockStatus.sprite = _selectImage;
+        SelectedSkeen?.Invoke();
     }
 
     private void OnEnable()
@@ -53,8 +93,8 @@ public class WeaponSkeenView : MonoBehaviour
         if (_item != null)
         {
             _actionButton.onClick.AddListener(ClickButton);
-            _item.UnlockedSkeen += OnBuySkeen;
-            _item.SelectedSkeen += OnSelectedSkeen;
+            //_item.UnlockedSkeen += OnBuySkeen;
+            //_item.SelectedSkeen += OnSelectedSkeen;
         }
     }
 
@@ -63,17 +103,17 @@ public class WeaponSkeenView : MonoBehaviour
         if (_item != null)
         {
             _actionButton.onClick.RemoveListener(ClickButton);
-            _item.UnlockedSkeen -= OnBuySkeen;
-            _item.SelectedSkeen -= OnSelectedSkeen;
+            //_item.UnlockedSkeen -= OnBuySkeen;
+            //_item.SelectedSkeen -= OnSelectedSkeen;
         }
     }
 
     private void ClickButton()
     {
-        ActionButtonClick?.Invoke(_item, _indexBlade);
+        ActionButtonClick?.Invoke(_item, _indexBlade, this);
     }
 
-    private void OnBuySkeen()
+    private void SetUnlockImage()
     {
         if (_unlockStatus.sprite != null && _unlockImage != null)
         {
@@ -81,8 +121,16 @@ public class WeaponSkeenView : MonoBehaviour
         }
     }
 
-    private void OnSelectedSkeen()
-    {
-        _unlockStatus.sprite = _selectImage;
-    }
+    //private void OnBuySkeen()
+    //{
+    //    if (_unlockStatus.sprite != null && _unlockImage != null)
+    //    {
+    //        _unlockStatus.sprite = _unlockImage;
+    //    }
+    //}
+
+    //private void OnSelectedSkeen()
+    //{
+    //    _unlockStatus.sprite = _selectImage;
+    //}
 }

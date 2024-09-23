@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4674aabf5dccbe4487730107a593313, type: 3}
+  m_Name: PoisonBlade
+  m_EditorClassIdentifier: 
+  _lable: Poison Blade
+  _icon: {fileID: 21300000, guid: 4653324504ec2714d8be1597af5c39ae, type: 3}
+  _startPrice: 20
+  _blade: {fileID: 1871981333032077493, guid: 83d74b57ffd424f47b5597404fc1d105, type: 3}
+  _localizedKey: PoisonBlade

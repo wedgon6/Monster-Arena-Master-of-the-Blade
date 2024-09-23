@@ -8,9 +8,9 @@ public class SaveAndLoadSytem : MonoBehaviour
     
     private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _abillityShop;
-    private Worckshop _skeenShop;
+    private WeaponSkeenShop _skeenShop;
 
-    public void Init(ChoiceMap choiceMap, Worckshop worckshop)
+    public void Init(ChoiceMap choiceMap, WeaponSkeenShop worckshop)
     {
         _choiceMap = choiceMap;
         _skeenShop = worckshop;
@@ -20,15 +20,6 @@ public class SaveAndLoadSytem : MonoBehaviour
         _parametersPlayer.SavedData += SaveGameData;
         _abillityShop.SaveGameData += SaveGameData;
         _skeenShop.SaveGameData += SaveGameData;
-    }
-
-    private void OnEnable()
-    {
-        //_wallet.MoneyChanged += SaveGameData;
-        //_choiceMap.CountStarsChenged += SaveGameData;
-        //_parametersPlayer.SavedData += SaveGameData;
-        //_abillityShop.SaveGameData += SaveGameData;
-        //_skeenShop.SaveGameData += SaveGameData;
     }
 
     private void OnDisable()
