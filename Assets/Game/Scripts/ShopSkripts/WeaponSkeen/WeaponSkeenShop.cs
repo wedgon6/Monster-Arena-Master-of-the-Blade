@@ -15,7 +15,6 @@ public class WeaponSkeenShop : MonoBehaviour
     private GameObject _worckshopConteiner;
     private int _currentSkeenIndex;
 
-    public List<WeaponSkeenData> WeaponSkeensData => _weaponSkeensData;
     public List<WeaponSkeenView> WeaponSkeens => _weaponSkeens;
     public int CurrentSkeenIndex => _currentSkeenIndex;
 
@@ -36,18 +35,16 @@ public class WeaponSkeenShop : MonoBehaviour
         {
             _currentSkeen = _weaponSkeens[0];
             _currentSkeen.SetData(true, true);
-            _skeenViewConteiner.RenderChoiceSkeen(0, _currentSkeen);
+            _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
             _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
         }
-
-        SaveGameData?.Invoke();
     }
 
     public void Initialize(GameObject conteiner, GameInfo gameInfo)
     {
         _worckshopConteiner = conteiner;
 
-        for (int i = 0; i < _weaponSkeens.Count; i++)
+        for (int i = 0; i < _weaponSkeensData.Count; i++)
         {
             AddItem(_weaponSkeensData[i], i, out WeaponSkeenView view);
             view.SetData(gameInfo.UnloocedSkeens[i], gameInfo.SelectedSkeens[i]);
@@ -55,17 +52,15 @@ public class WeaponSkeenShop : MonoBehaviour
 
             if (_currentSkeen == null)
             {
-                if (_weaponSkeens[i].IsSelect)
+                if (view.IsSelect)
                 {
-                    _currentSkeen = _weaponSkeens[i];
+                    _currentSkeen = view;
                     _currentSkeenIndex = i;
-                    _skeenViewConteiner.RenderChoiceSkeen(i, _currentSkeen);
+                    _skeenViewConteiner.RenderChoiceSkeen(_currentSkeen);
                     _parametersPlayer.SelectWeaponSkeen(_currentSkeen.Blade);
                 }
             }
         }
-
-        SaveGameData?.Invoke();
     }
 
     private void OnEnable()
@@ -89,7 +84,7 @@ public class WeaponSkeenShop : MonoBehaviour
 
     private void OnButtonClick(WeaponSkeenData weapon, int indexSkeen, WeaponSkeenView weaponSkeenView)
     {
-        _skeenViewConteiner.RenderChoiceSkeen(indexSkeen, weaponSkeenView);
+        _skeenViewConteiner.RenderChoiceSkeen(weaponSkeenView);
     }
 
     private void TrySellSkeen(WeaponSkeenView item)

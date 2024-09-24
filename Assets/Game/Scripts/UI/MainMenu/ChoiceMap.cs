@@ -44,7 +44,7 @@ public class ChoiceMap : MonoBehaviour
             Instantiate(_starsViewPrefab, _starsConteiner.transform);
         }
 
-        CountStarsChenged?.Invoke();
+        //CountStarsChenged?.Invoke();
     }
 
     private void SetNextMap()

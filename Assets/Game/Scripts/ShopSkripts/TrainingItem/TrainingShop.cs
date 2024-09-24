@@ -17,7 +17,6 @@ public class TrainingShop : MonoBehaviour
 
     public void InitializeShop(GameObject conteinr)
     {
-        Debug.Log(conteinr == null);
         _abillityConteiner = conteinr;
 
         for (int i = 0; i < _playerAbillities.Count; i++)

@@ -1,4 +1,5 @@
 using Lean.Localization;
+using System;
 using UnityEngine;
 
 public class EntryPointMainMenu : MonoBehaviour
@@ -12,27 +13,20 @@ public class EntryPointMainMenu : MonoBehaviour
     [SerializeField] private LeanLocalization _localizate;
     [SerializeField] private SaveAndLoadSytem _saveAndLoad;
 
-    private ChoiceMap _choiceMap;
+    [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _trainingShop;
     [SerializeField] private WeaponSkeenShop _worckshop;
+
+    public event Action SaveData;
 
     private void Awake()
     {
         _canvasManager.Init();
-
-        if (Agava.WebUtility.Device.IsMobile)
-        {
-            _choiceMap = _canvasManager.ModileCanvas.ChoiceMap;
-        }
-        else
-        {
-            _choiceMap = _canvasManager.DekstopCanvas.ChoiceMap;
-        }
-
-        _saveAndLoad.Init(_choiceMap, _worckshop);
+        _saveAndLoad.Init();
         LoadData();
         Services.GameReadyService.GameReady();
         _soundButton.Initialize();
+        SaveData?.Invoke();
     }
 
     private void LoadData()
@@ -56,7 +50,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         _trainingShop.InitializeShop(gameInfo, _canvasManager.TrainingShopConteiner);
         _parameters.Initialize(gameInfo);
-        _worckshop.Initialize(_canvasManager.WeaponShopConteiner);
+        _worckshop.Initialize(_canvasManager.WeaponShopConteiner, gameInfo);
     }
 
     private void InitializeNewData()

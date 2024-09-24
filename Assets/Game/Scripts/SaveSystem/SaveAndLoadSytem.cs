@@ -5,21 +5,21 @@ public class SaveAndLoadSytem : MonoBehaviour
     [SerializeField] private CanvasManager _canvasManager;
     [SerializeField] private PlayerWallet _wallet;
     [SerializeField] private ParametersPlayer _parametersPlayer;
-    
-    private ChoiceMap _choiceMap;
+
+    [SerializeField] private ChoiceMap _choiceMap;
     [SerializeField] private TrainingShop _abillityShop;
-    private WeaponSkeenShop _skeenShop;
+    [SerializeField] private WeaponSkeenShop _skeenShop;
 
-    public void Init(ChoiceMap choiceMap, WeaponSkeenShop worckshop)
+    [SerializeField] private EntryPointMainMenu _entry;
+
+    public void Init()
     {
-        _choiceMap = choiceMap;
-        _skeenShop = worckshop;
-
         _wallet.MoneyChanged += SaveGameData;
         _choiceMap.CountStarsChenged += SaveGameData;
         _parametersPlayer.SavedData += SaveGameData;
         _abillityShop.SaveGameData += SaveGameData;
         _skeenShop.SaveGameData += SaveGameData;
+        _entry.SaveData += SaveGameData;
     }
 
     private void OnDisable()
@@ -29,6 +29,7 @@ public class SaveAndLoadSytem : MonoBehaviour
         _parametersPlayer.SavedData -= SaveGameData;
         _abillityShop.SaveGameData -= SaveGameData;
         _skeenShop.SaveGameData -= SaveGameData;
+        _entry.SaveData -= SaveGameData;
     }
 
     private void SaveGameData() => Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer, _abillityShop, _skeenShop);

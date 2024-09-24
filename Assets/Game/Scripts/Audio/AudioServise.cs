@@ -3,8 +3,8 @@ using UnityEngine;
 public class AudioServise : IAudioServise
 {
     private static bool _canPlayAudio = true;
-    private bool _isCloseAds = true;
-    private bool _isUnMuteAudio = true;
+    private static bool _isCloseAds = true;
+    private static bool _isUnMuteAudio = true;
 
     public void ChengeAdsAudio(bool isClose)
     {

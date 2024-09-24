@@ -50,11 +50,14 @@ public class WeaponSkeenView : MonoBehaviour
 
     public void SetData(bool isUnlock, bool isSelect)
     {
-        if (isUnlock)
+        _isUnlock = isUnlock;
+        _isSelect = isSelect;
+
+        if (_isUnlock)
         {
             _unlockStatus.sprite = _unlockImage;
 
-            if (isSelect)
+            if (_isSelect)
             {
                 _unlockStatus.sprite = _selectImage;
             }

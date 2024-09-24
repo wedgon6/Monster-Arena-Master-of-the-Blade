@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private TMP_Text _lable;
     [SerializeField] private Image _icon;
     [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private Player _player;
 
     private bool _isContinueDialog = false;
     private Coroutine _corontine;
@@ -31,6 +32,7 @@ public class Tutorial : MonoBehaviour
     {
         Services.GameReadyService.GameReady();
 
+        _player.StopMovment(false);
         _enemySpawner.PutEnemyToPool();
 
         if (_corontine != null)
@@ -56,6 +58,7 @@ public class Tutorial : MonoBehaviour
 
     private void EndDialogue()
     {
+        _player.StopMovment(true);
         _enemySpawner.RestSpawner(0, 0);
         gameObject.SetActive(false);
     }

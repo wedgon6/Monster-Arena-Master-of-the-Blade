@@ -34,6 +34,12 @@ public class TrainingShopView : MonoBehaviour
         _price.text = currentPrice.ToString();
     }
 
+    public void Buy()
+    {
+        _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
+        _price.text = _currentPrice.ToString();
+    }
+
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
@@ -42,12 +48,6 @@ public class TrainingShopView : MonoBehaviour
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
-    }
-
-    public void Buy()
-    {
-        _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
-        _price.text = _currentPrice.ToString();
     }
 
     private void OnButtonClick()

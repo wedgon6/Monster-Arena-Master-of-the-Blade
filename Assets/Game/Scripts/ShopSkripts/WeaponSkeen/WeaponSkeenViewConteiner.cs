@@ -3,7 +3,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class WeaponSkeenViewConteiner : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class WeaponSkeenViewConteiner : MonoBehaviour
     public event Action<WeaponSkeenView> ClickBuyButton;
     public event Action<WeaponSkeenView, int> ClickSelectSkeenButton;
 
-    public void RenderChoiceSkeen(int indexSkeen, WeaponSkeenView item)
+    public void RenderChoiceSkeen(WeaponSkeenView item)
     {
         SetNewItem();
 

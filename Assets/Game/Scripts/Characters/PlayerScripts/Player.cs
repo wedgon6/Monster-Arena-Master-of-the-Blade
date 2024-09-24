@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     private float _maxHealth = 1000;
     private float _health;
     private int _earnedScore = 0;
-    private bool _isMobile;
+    private bool _canMove;
     private float _moveSpeed;
 
     private Gold _gold = new Gold(0);
@@ -30,31 +30,31 @@ public class Player : MonoBehaviour, IDamageable
     {
         PlayerStandartParametrs standartParametrs = new PlayerStandartParametrs();
 
-        _isMobile = isMoving;
+        _canMove = isMoving;
         _maxHealth = standartParametrs.StartHealth;
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
         _moveSpeed = standartParametrs.StartMoveSpeed;
-        _movment.Initialize(_moveSpeed, _isMobile);
+        _movment.Initialize(_moveSpeed, _canMove);
         _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
     }
 
     public void Initialize(GameInfo gameInfo, bool isMoving)
     {
         _gameInfo = gameInfo;
-        _isMobile = isMoving;
+        _canMove = isMoving;
         _maxHealth = _gameInfo.MaxPlayerHealth;
         _health = _maxHealth;
         ChangeHealth?.Invoke(_health, _maxHealth);
         _moveSpeed = _gameInfo.PlayerMoveSpeed;
-        _movment.Initialize(_moveSpeed, _isMobile);
+        _movment.Initialize(_moveSpeed, _canMove);
         _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
     }
 
     public void VictoryDance()
     {
         Wined?.Invoke();
-        _movment.Initialize(0, _isMobile);
+        _movment.Initialize(0, _canMove);
         _bladeSpawner.TurnOffActive();
     }
 
@@ -67,10 +67,17 @@ public class Player : MonoBehaviour, IDamageable
     public void Resurrect()
     {
         _health = _maxHealth;
-        _movment.Initialize(_moveSpeed, _isMobile);
-        Debug.Log("Воскресил игрока");
+        _movment.Initialize(_moveSpeed, _canMove);
         ChangeHealth?.Invoke(_health, _maxHealth);
         Resurred?.Invoke();
+    }
+
+    public void StopMovment(bool canMove)
+    {
+        if (canMove)
+            _movment.Initialize(_moveSpeed, _canMove);
+        else
+            _movment.Initialize(0, _canMove);
     }
 
     public void TakeDamage(float damage)
@@ -100,7 +107,7 @@ public class Player : MonoBehaviour, IDamageable
     private void LoseGame()
     {
         Died?.Invoke(transform);
-        _movment.Initialize(0, _isMobile);
+        _movment.Initialize(0, _canMove);
         _bladeSpawner.TurnOffActive();
     }
 }

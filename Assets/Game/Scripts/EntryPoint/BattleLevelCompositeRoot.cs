@@ -34,7 +34,10 @@ public class BattleLevelCompositeRoot : MonoBehaviour
             _enemySpawner.RestSpawner(0, 0);
             _trapSpawner.Initialize(0, 0);
         }
+    }
 
+    private void Start()
+    {
         _soundButton.Initialize();
     }
 
