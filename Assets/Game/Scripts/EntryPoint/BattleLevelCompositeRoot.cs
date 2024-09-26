@@ -44,13 +44,9 @@ public class BattleLevelCompositeRoot : MonoBehaviour
     private void OnEnable()
     {
         if (Agava.WebUtility.Device.IsMobile)
-        {
             _screenStick.gameObject.SetActive(true);
-        }
         else
-        {
             _screenStick.gameObject.SetActive(false);
-        }
 
         _enemyCounter.AllEnemyDied += OnWinGame;
         _player.Died += OnLooseGame;
@@ -67,12 +63,14 @@ public class BattleLevelCompositeRoot : MonoBehaviour
 
     private void OnWinGame()
     {
+        Services.AdvertisemintService.ShowInterstitialAd();
         CorountineStart(WinGame());
         _player.VictoryDance();
     }
 
     private void OnLooseGame(Transform transform)
     {
+        Services.AdvertisemintService.ShowInterstitialAd();
         CorountineStart(LooseGame());
     }
 

@@ -8,8 +8,8 @@ public class WeaponSkeenShop : MonoBehaviour
     [SerializeField] private WeaponSkeenView _shopView;
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ParametersPlayer _parametersPlayer;
-    [SerializeField] private WeaponSkeenViewConteiner _skeenViewConteiner;
 
+    private WeaponSkeenViewConteiner _skeenViewConteiner;
     private List<WeaponSkeenView> _weaponSkeens = new List<WeaponSkeenView>();
     private WeaponSkeenView _currentSkeen;
     private GameObject _worckshopConteiner;
@@ -20,9 +20,12 @@ public class WeaponSkeenShop : MonoBehaviour
 
     public event Action SaveGameData;
 
-    public void Initialize(GameObject conteiner)
+    public void Initialize(GameObject conteiner, WeaponSkeenViewConteiner viewConteiner)
     {
         _worckshopConteiner = conteiner;
+        _skeenViewConteiner = viewConteiner;
+        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
+        _skeenViewConteiner.ClickSelectSkeenButton += SetSkeen;
 
         for (int i = 0; i < _weaponSkeensData.Count; i++)
         {
@@ -40,9 +43,12 @@ public class WeaponSkeenShop : MonoBehaviour
         }
     }
 
-    public void Initialize(GameObject conteiner, GameInfo gameInfo)
+    public void Initialize(GameObject conteiner, GameInfo gameInfo, WeaponSkeenViewConteiner viewConteiner)
     {
         _worckshopConteiner = conteiner;
+        _skeenViewConteiner = viewConteiner;
+        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
+        _skeenViewConteiner.ClickSelectSkeenButton += SetSkeen;
 
         for (int i = 0; i < _weaponSkeensData.Count; i++)
         {
@@ -61,12 +67,6 @@ public class WeaponSkeenShop : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        _skeenViewConteiner.ClickBuyButton += TrySellSkeen;
-        _skeenViewConteiner.ClickSelectSkeenButton += SetSkeen;
     }
 
     private void OnDisable()

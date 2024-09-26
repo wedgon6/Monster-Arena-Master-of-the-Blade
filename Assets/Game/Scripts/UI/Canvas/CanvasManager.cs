@@ -13,11 +13,13 @@ public class CanvasManager : MonoBehaviour
 
     private GameObject _trainingShopConteiner;
     private GameObject _weaponShopConteiner;
+    private WeaponSkeenViewConteiner _viewConteiner;
 
     public GameObject TrainingShopConteiner => _trainingShopConteiner;
     public GameObject WeaponShopConteiner => _weaponShopConteiner;
     public DekstopCanvas DekstopCanvas => _dekstopCanvas;
     public ModileCanvas ModileCanvas => _modileCanvas;
+    public WeaponSkeenViewConteiner ViewConteiner => _viewConteiner;
 
     public void Init()
     {
@@ -27,22 +29,19 @@ public class CanvasManager : MonoBehaviour
         {
             _trainingShopConteiner = _modileCanvas.TrainingShopConteiner;
             _weaponShopConteiner = _modileCanvas.WeaponShopConteiner;
+            _viewConteiner = _modileCanvas.ViewConteiner;
             _boardButton.Initialize(_modileCanvas.LeaderboardPanel);
-            _trainingButton.Initialaize(_modileCanvas.TrainingShopConteiner.gameObject);
+            _trainingButton.Initialaize(_modileCanvas.TrainingShopPanel.gameObject);
             _weaponWorshopButton.Initialaize(_modileCanvas.Worckshop.gameObject);
         }
         else
         {
-            //_trainingShopConteiner = _dekstopCanvas.TrainingShopConteiner;
-            //_weaponShopConteiner = _dekstopCanvas.WeaponShopConteiner;
-            //_boardButton.Initialize(_dekstopCanvas.LeaderboardPanel);
-            //_trainingButton.Initialaize(_dekstopCanvas.TrainingShopPanel.gameObject);
-            //_weaponWorshopButton.Initialaize(_dekstopCanvas.Worckshop.gameObject);
-            _trainingShopConteiner = _modileCanvas.TrainingShopConteiner;
-            _weaponShopConteiner = _modileCanvas.WeaponShopConteiner;
-            _boardButton.Initialize(_modileCanvas.LeaderboardPanel);
-            _trainingButton.Initialaize(_modileCanvas.TrainingShopConteiner.gameObject);
-            _weaponWorshopButton.Initialaize(_modileCanvas.Worckshop.gameObject);
+            _trainingShopConteiner = _dekstopCanvas.TrainingShopConteiner;
+            _weaponShopConteiner = _dekstopCanvas.WeaponShopConteiner;
+            _viewConteiner = _dekstopCanvas.ViewConteiner;
+            _boardButton.Initialize(_dekstopCanvas.LeaderboardPanel);
+            _trainingButton.Initialaize(_dekstopCanvas.TrainingShopPanel.gameObject);
+            _weaponWorshopButton.Initialaize(_dekstopCanvas.Worckshop.gameObject);
         }
     }
 }

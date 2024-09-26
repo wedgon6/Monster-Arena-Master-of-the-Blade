@@ -23,6 +23,7 @@ public class OpenButton : MonoBehaviour
 
     private void OpenPanel()
     {
+        Services.AdvertisemintService.ShowInterstitialAd();
         _pabel.gameObject.SetActive(true);
     }
 }

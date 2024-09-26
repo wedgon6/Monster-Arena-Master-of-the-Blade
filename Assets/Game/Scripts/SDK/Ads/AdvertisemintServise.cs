@@ -71,10 +71,10 @@ public class AdvertisemintServise : IAdvertisemintServise
 
     private void OnCloseCallBack()
     {
+        _isCloseAds = true;
         Services.AudioService.TurnSound();
         Services.AudioService.ChengeAdsAudio(true);
         Services.GameStopControl.ChangetGameStop(false);
-        _isCloseAds = true;
     }
 
     private void OnCloseResurrecrAd()

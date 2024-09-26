@@ -18,8 +18,6 @@ public class MovmentTransition : Transition
         float distance = directionToTarget.magnitude;
 
         if (distance > _distance)
-        {
             NeedTransit = true;
-        }
     }
 }

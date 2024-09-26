@@ -16,9 +16,7 @@ public class RangeAttackState : AttackState
         transform.LookAt(Target.transform.position);
 
         if (Attack())
-        {
             AttackEvent();
-        }
     }
 
     private void LaunchBullet()

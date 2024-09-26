@@ -64,17 +64,13 @@ public class Blade : PoolObject
             _direction = Vector3.zero;
 
             if (_rigidbody.velocity.y < 0f)
-            {
                 _rigidbody.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
-            }
 
             Vector3 horizontalVelocity = _rigidbody.velocity;
             horizontalVelocity.y = 0;
 
             if (horizontalVelocity.sqrMagnitude > _bladeMoveSpeed * _bladeMoveSpeed)
-            {
                 _rigidbody.velocity = horizontalVelocity.normalized * _bladeMoveSpeed + Vector3.up * _rigidbody.velocity.y;
-            }
         }
     }
 

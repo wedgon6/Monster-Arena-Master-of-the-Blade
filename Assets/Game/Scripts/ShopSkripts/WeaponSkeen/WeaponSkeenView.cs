@@ -58,9 +58,7 @@ public class WeaponSkeenView : MonoBehaviour
             _unlockStatus.sprite = _unlockImage;
 
             if (_isSelect)
-            {
                 _unlockStatus.sprite = _selectImage;
-            }
         }
         else
         {
@@ -94,21 +92,13 @@ public class WeaponSkeenView : MonoBehaviour
     private void OnEnable()
     {
         if (_item != null)
-        {
             _actionButton.onClick.AddListener(ClickButton);
-            //_item.UnlockedSkeen += OnBuySkeen;
-            //_item.SelectedSkeen += OnSelectedSkeen;
-        }
     }
 
     private void OnDisable()
     {
         if (_item != null)
-        {
             _actionButton.onClick.RemoveListener(ClickButton);
-            //_item.UnlockedSkeen -= OnBuySkeen;
-            //_item.SelectedSkeen -= OnSelectedSkeen;
-        }
     }
 
     private void ClickButton()
@@ -119,21 +109,6 @@ public class WeaponSkeenView : MonoBehaviour
     private void SetUnlockImage()
     {
         if (_unlockStatus.sprite != null && _unlockImage != null)
-        {
             _unlockStatus.sprite = _unlockImage;
-        }
     }
-
-    //private void OnBuySkeen()
-    //{
-    //    if (_unlockStatus.sprite != null && _unlockImage != null)
-    //    {
-    //        _unlockStatus.sprite = _unlockImage;
-    //    }
-    //}
-
-    //private void OnSelectedSkeen()
-    //{
-    //    _unlockStatus.sprite = _selectImage;
-    //}
 }

@@ -32,7 +32,6 @@ public class ParametersPlayer : MonoBehaviour
         _damage = _standartParametrs.StartDamage;
         _rangeThrow = _standartParametrs.StartRangeThrow;
         _score = _standartParametrs.StartScore;
-        //SavedData?.Invoke();
     }
 
     public void Initialize(GameInfo data)
@@ -42,7 +41,6 @@ public class ParametersPlayer : MonoBehaviour
         _damage = data.Damage;
         _rangeThrow = data.RangeThrow;
         _score = data.PlayerScore;
-        //SavedData?.Invoke();
     }
 
     public void AddMaxHealth()

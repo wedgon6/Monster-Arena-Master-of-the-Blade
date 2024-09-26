@@ -8,6 +8,7 @@ public class CanvasType : MonoBehaviour
     [SerializeField] private GameObject _worckshopPanel;
     [SerializeField] private GameObject _weaponShopConteiner;
     [SerializeField] private GameObject _leaderboardPanel;
+    [SerializeField] private WeaponSkeenViewConteiner _viewConteiner;
 
     public GameObject TrainingShopPanel => _trainingShopPanel;
     public GameObject TrainingShopConteiner => _trainingShopConteiner;
@@ -15,4 +16,5 @@ public class CanvasType : MonoBehaviour
     public ViewLeaderboard LeaderboardView => _leaderboardView;
     public GameObject Worckshop => _worckshopPanel;
     public GameObject LeaderboardPanel => _leaderboardPanel;
+    public WeaponSkeenViewConteiner ViewConteiner => _viewConteiner;
 }

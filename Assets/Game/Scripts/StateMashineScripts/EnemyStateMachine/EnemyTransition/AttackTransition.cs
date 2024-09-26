@@ -18,8 +18,6 @@ public class AttackTransition : Transition
         float distance = directionToTarget.magnitude;
 
         if (distance <= _transitionRange)
-        {
             NeedTransit = true;
-        }
     }
 }

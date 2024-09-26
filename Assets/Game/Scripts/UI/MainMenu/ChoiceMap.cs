@@ -43,8 +43,6 @@ public class ChoiceMap : MonoBehaviour
         {
             Instantiate(_starsViewPrefab, _starsConteiner.transform);
         }
-
-        //CountStarsChenged?.Invoke();
     }
 
     private void SetNextMap()
@@ -94,7 +92,6 @@ public class ChoiceMap : MonoBehaviour
 
     private void OnClickPlayButton()
     {
-        Services.AdvertisemintService.ShowInterstitialAd();
         _loadPanel.OpenLoadPanel(_currentLevel.LoadScene);
     }
 }

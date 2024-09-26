@@ -32,13 +32,9 @@ public class EntryPointMainMenu : MonoBehaviour
     private void LoadData()
     {
         if (Services.SaveService.TryGetData(out GameInfo gameInfo))
-        {
             InitializeScene(gameInfo);
-        }
         else
-        {
             InitializeNewData();
-        }
 
         _leaderboard.SetPlayer(_parameters.Score);
     }
@@ -50,7 +46,7 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(gameInfo.CurrentMapIndex, gameInfo.CurrentStatrsCount, gameInfo.CurrentCircle);
         _trainingShop.InitializeShop(gameInfo, _canvasManager.TrainingShopConteiner);
         _parameters.Initialize(gameInfo);
-        _worckshop.Initialize(_canvasManager.WeaponShopConteiner, gameInfo);
+        _worckshop.Initialize(_canvasManager.WeaponShopConteiner, gameInfo, _canvasManager.ViewConteiner);
     }
 
     private void InitializeNewData()
@@ -60,6 +56,6 @@ public class EntryPointMainMenu : MonoBehaviour
         _choiceMap.Initialize(0, 0, 0);
         _trainingShop.InitializeShop(_canvasManager.TrainingShopConteiner);
         _parameters.Initialize();
-        _worckshop.Initialize(_canvasManager.WeaponShopConteiner);
+        _worckshop.Initialize(_canvasManager.WeaponShopConteiner, _canvasManager.ViewConteiner);
     }
 }

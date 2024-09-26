@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using UnityEngine;
 
 public class GameReadyService : IGameReadyService
 {
@@ -7,7 +6,6 @@ public class GameReadyService : IGameReadyService
     {
 #if !UNITY_EDITOR
         YandexGamesSdk.GameReady();
-        Debug.Log("GAME READY");
 #endif
     }
 }

@@ -44,7 +44,7 @@ public class AudioServise : IAudioServise
 
     public void TurnSound()
     {
-        if (_canPlayAudio == true)
+        if (_canPlayAudio == true || _isUnMuteAudio == false)
             return;
 
         AudioListener.volume = 1f;
@@ -53,7 +53,7 @@ public class AudioServise : IAudioServise
 
     public bool TryTurnSound()
     {
-        if (_isCloseAds == false || _isUnMuteAudio == false)
+        if (_isCloseAds == false || _isUnMuteAudio == false || _canPlayAudio == false)
             return false;
         else
             return true;

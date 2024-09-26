@@ -37,9 +37,7 @@ public class State : MonoBehaviour
         foreach (var transition in _transitions)
         {
             if (transition.NeedTransit)
-            {
                 return transition.TargetState;
-            }
         }
 
         return null;
