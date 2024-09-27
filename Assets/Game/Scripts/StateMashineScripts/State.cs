@@ -1,52 +1,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] protected List<Transition> _transitions;
-
-    public virtual void Enter()
+    public class State : MonoBehaviour
     {
-        if (enabled == false)
-        {
-            enabled = true;
-            OnEnter();
+        [SerializeField] protected List<Transition> _transitions;
 
-            foreach (var transition in _transitions)
+        public virtual void Enter()
+        {
+            if (enabled == false)
             {
-                transition.enabled = true;
+                enabled = true;
+                OnEnter();
+
+                foreach (var transition in _transitions)
+                {
+                    transition.enabled = true;
+                }
             }
         }
-    }
 
-    public virtual void Exit()
-    {
-        if (enabled == true)
+        public virtual void Exit()
+        {
+            if (enabled == true)
+            {
+                foreach (var transition in _transitions)
+                {
+                    transition.enabled = false;
+                }
+
+                enabled = false;
+            }
+        }
+
+        public State GetNextState()
         {
             foreach (var transition in _transitions)
             {
-                transition.enabled = false;
+                if (transition.NeedTransit)
+                    return transition.TargetState;
             }
 
+            return null;
+        }
+
+        protected virtual void OnEnter() { }
+
+        private void Awake()
+        {
             enabled = false;
         }
-    }
-
-    public State GetNextState()
-    {
-        foreach (var transition in _transitions)
-        {
-            if (transition.NeedTransit)
-                return transition.TargetState;
-        }
-
-        return null;
-    }
-
-    protected virtual void OnEnter() { }
-
-    private void Awake()
-    {
-        enabled = false;
     }
 }

@@ -2,37 +2,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonAudioSourse : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.Audio
 {
-    [SerializeField] private List<Button> _buttons;
-    [SerializeField] private List<AudioSource> _clickSounds;
-
-    private int _indexSound = 0;
-
-    private void OnEnable()
+    public class ButtonAudioSourse : MonoBehaviour
     {
-        foreach (var button in _buttons)
+        [SerializeField] private List<Button> _buttons;
+        [SerializeField] private List<AudioSource> _clickSounds;
+
+        private int _indexSound = 0;
+
+        private void OnEnable()
         {
-            if (button != null)
-                button.onClick.AddListener(OnPlayClickSound);
+            foreach (var button in _buttons)
+            {
+                if (button != null)
+                    button.onClick.AddListener(OnPlayClickSound);
+            }
         }
-    }
 
-    private void OnDisable()
-    {
-        foreach (var button in _buttons)
+        private void OnDisable()
         {
-            if (button != null)
-                button.onClick.RemoveListener(OnPlayClickSound);
+            foreach (var button in _buttons)
+            {
+                if (button != null)
+                    button.onClick.RemoveListener(OnPlayClickSound);
+            }
         }
-    }
 
-    private void OnPlayClickSound()
-    {
-        _clickSounds[_indexSound].Play();
-        _indexSound++;
+        private void OnPlayClickSound()
+        {
+            _clickSounds[_indexSound].Play();
+            _indexSound++;
 
-        if (_indexSound >= _clickSounds.Count)
-            _indexSound = 0;
+            if (_indexSound >= _clickSounds.Count)
+                _indexSound = 0;
+        }
     }
 }

@@ -1,61 +1,67 @@
+using MonsterArenaMasterOfTheBlade.Characters;
+using MonsterArenaMasterOfTheBlade.MoneyScripts;
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainingShop : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    [SerializeField] private List<TrainingItemData> _playerAbillities;
-    [SerializeField] private PlayerWallet _playerWallet;
-    [SerializeField] private TrainingShopView _shopView;
-    [SerializeField] private ParametersPlayer _parametersPlayer;
-
-    private List<TrainingShopView> _itemsShop = new List<TrainingShopView>();
-    private GameObject _abillityConteiner;
-
-    public List<TrainingShopView> PlayerAbillities => _itemsShop;
-    public event Action SaveGameData;
-
-    public void InitializeShop(GameObject conteinr)
+    public class TrainingShop : MonoBehaviour
     {
-        _abillityConteiner = conteinr;
+        [SerializeField] private List<TrainingItemData> _playerAbillities;
+        [SerializeField] private PlayerWallet _playerWallet;
+        [SerializeField] private TrainingShopView _shopView;
+        [SerializeField] private ParametersPlayer _parametersPlayer;
 
-        for (int i = 0; i < _playerAbillities.Count; i++)
+        private List<TrainingShopView> _itemsShop = new List<TrainingShopView>();
+        private GameObject _abillityConteiner;
+
+        public List<TrainingShopView> PlayerAbillities => _itemsShop;
+        public event Action SaveGameData;
+
+        public void InitializeShop(GameObject conteinr)
         {
-            AddItem(_playerAbillities[i], out TrainingShopView view);
-            _itemsShop.Add(view);
+            _abillityConteiner = conteinr;
+
+            for (int i = 0; i < _playerAbillities.Count; i++)
+            {
+                AddItem(_playerAbillities[i], out TrainingShopView view);
+                _itemsShop.Add(view);
+            }
         }
-    }
 
-    public void InitializeShop(GameInfo gameInfo, GameObject conteiner)
-    {
-        _abillityConteiner = conteiner;
-
-        for (int i = 0; i < _playerAbillities.Count; i++)
+        public void InitializeShop(GameInfo gameInfo, GameObject conteiner)
         {
-            AddItem(_playerAbillities[i], out TrainingShopView view);
-            view.GetCloudData(gameInfo.AbilitiesPrise[i]);
-            _itemsShop.Add(view);
+            _abillityConteiner = conteiner;
+
+            for (int i = 0; i < _playerAbillities.Count; i++)
+            {
+                AddItem(_playerAbillities[i], out TrainingShopView view);
+                view.GetCloudData(gameInfo.AbilitiesPrise[i]);
+                _itemsShop.Add(view);
+            }
         }
-    }
 
-    private void AddItem(TrainingItemData abillity, out TrainingShopView view)
-    {
-        view = Instantiate(_shopView, _abillityConteiner.transform);
-        view.SellButtonClicked += OnSellButtonClick;
-        view.Render(abillity);
-    }
-
-    private void OnSellButtonClick(TrainingItemData abillity, TrainingShopView shopView)
-    {
-        if (shopView.CurrentPrice > _playerWallet.CurrentGold)
-            return;
-
-        if (shopView.CurrentPrice <= _playerWallet.CurrentGold)
+        private void AddItem(TrainingItemData abillity, out TrainingShopView view)
         {
-            _playerWallet.ReduceMoney(new Gold(shopView.CurrentPrice));
-            abillity.BuffPlayer(_parametersPlayer);
-            shopView.Buy();
-            SaveGameData?.Invoke();
+            view = Instantiate(_shopView, _abillityConteiner.transform);
+            view.SellButtonClicked += OnSellButtonClick;
+            view.Render(abillity);
+        }
+
+        private void OnSellButtonClick(TrainingItemData abillity, TrainingShopView shopView)
+        {
+            if (shopView.CurrentPrice > _playerWallet.CurrentGold)
+                return;
+
+            if (shopView.CurrentPrice <= _playerWallet.CurrentGold)
+            {
+                _playerWallet.ReduceMoney(new Gold(shopView.CurrentPrice));
+                abillity.BuffPlayer(_parametersPlayer);
+                shopView.Buy();
+                SaveGameData?.Invoke();
+            }
         }
     }
 }

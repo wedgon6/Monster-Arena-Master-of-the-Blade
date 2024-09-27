@@ -1,17 +1,20 @@
-public class EnemyStateMachine : StateMashine
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    public void ResetStete()
+    public class EnemyStateMachine : StateMashine
     {
-        EnterState(_firstState);
-    }
+        public void ResetStete()
+        {
+            EnterState(_firstState);
+        }
 
-    private void Start()
-    {
-        EnterState(_firstState);
-    }
+        private void Start()
+        {
+            EnterState(_firstState);
+        }
 
-    private void Update()
-    {
-        UpdateStateStatus();
+        private void Update()
+        {
+            UpdateStateStatus();
+        }
     }
 }

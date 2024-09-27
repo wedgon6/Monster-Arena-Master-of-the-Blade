@@ -1,15 +1,20 @@
-public class DyingTransition : Transition
+using MonsterArenaMasterOfTheBlade.Characters;
+
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    private Enemy _enemy;
-
-    private void Start()
+    public class DyingTransition : Transition
     {
-        _enemy = GetComponent<Enemy>();
-    }
+        private Enemy _enemy;
 
-    private void Update()
-    {
-        if (_enemy.CurrentHealth == 0)
-            NeedTransit = true;
+        private void Start()
+        {
+            _enemy = GetComponent<Enemy>();
+        }
+
+        private void Update()
+        {
+            if (_enemy.CurrentHealth == 0)
+                NeedTransit = true;
+        }
     }
 }

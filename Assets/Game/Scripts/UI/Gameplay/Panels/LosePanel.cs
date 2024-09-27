@@ -1,13 +1,18 @@
-public class LosePanel : ResultsPanel
-{
-    protected override void OnAdsButtonClick()
-    {
-        Services.AdvertisemintService.ShowResurrectAd(_player, this);
-        _adsActionButton.gameObject.SetActive(false);
-    }
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 
-    protected override void RelocateEarnedData()
+namespace MonsterArenaMasterOfTheBlade.UI
+{
+    public class LosePanel : ResultsPanel
     {
-        Services.SaveService.RelocateData(_player.PlayerWallet, 0, _player.EarnedScore);
+        protected override void OnAdsButtonClick()
+        {
+            Services.AdvertisemintService.ShowResurrectAd(_player, this);
+            _adsActionButton.gameObject.SetActive(false);
+        }
+
+        protected override void RelocateEarnedData()
+        {
+            Services.SaveService.RelocateData(_player.PlayerWallet, 0, _player.EarnedScore);
+        }
     }
 }

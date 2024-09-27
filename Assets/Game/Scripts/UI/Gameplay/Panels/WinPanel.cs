@@ -1,13 +1,18 @@
-public class WinPanel : ResultsPanel
-{
-    protected override void RelocateEarnedData() 
-    {
-        Services.SaveService.RelocateData(_player.PlayerWallet, 1, _player.EarnedScore);
-    }
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 
-    protected override void OnAdsButtonClick() 
+namespace MonsterArenaMasterOfTheBlade.UI
+{
+    public class WinPanel : ResultsPanel
     {
-        Services.AdvertisemintService.ShowMultiplayAd(_player.PlayerWallet);
-        _adsActionButton.gameObject.SetActive(false);
+        protected override void RelocateEarnedData()
+        {
+            Services.SaveService.RelocateData(_player.PlayerWallet, 1, _player.EarnedScore);
+        }
+
+        protected override void OnAdsButtonClick()
+        {
+            Services.AdvertisemintService.ShowMultiplayAd(_player.PlayerWallet);
+            _adsActionButton.gameObject.SetActive(false);
+        }
     }
 }

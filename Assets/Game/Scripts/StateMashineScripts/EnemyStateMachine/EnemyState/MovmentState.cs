@@ -1,38 +1,41 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MovmentState : EnemyState
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] private float _moveSpeed = 0.5f;
-    [SerializeField] private float _maxSpeed = 4f;
-
-    private NavMeshAgent _agent;
-
-    public override void Enter()
+    public class MovmentState : EnemyState
     {
-        base.Enter();
-        _agent.speed = _moveSpeed;
-        MoveEvent();
-    }
+        [SerializeField] private float _moveSpeed = 0.5f;
+        [SerializeField] private float _maxSpeed = 4f;
 
-    public override void Exit()
-    {
-        _agent.speed = 0;
-        base.Exit();
-    }
+        private NavMeshAgent _agent;
 
-    private void Awake()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-    }
+        public override void Enter()
+        {
+            base.Enter();
+            _agent.speed = _moveSpeed;
+            MoveEvent();
+        }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+        public override void Exit()
+        {
+            _agent.speed = 0;
+            base.Exit();
+        }
 
-    private void Move()
-    {
-        _agent.SetDestination(Vector3.forward + Target.transform.position);
+        private void Awake()
+        {
+            _agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void FixedUpdate()
+        {
+            Move();
+        }
+
+        private void Move()
+        {
+            _agent.SetDestination(Vector3.forward + Target.transform.position);
+        }
     }
 }

@@ -1,113 +1,119 @@
+using MonsterArenaMasterOfTheBlade.MoneyScripts;
+using MonsterArenaMasterOfTheBlade.SaveSystem;
+using MonsterArenaMasterOfTheBlade.Weapon;
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
-    [SerializeField] private PlayerWallet _wallet;
-    [SerializeField] private BladeSpawner _bladeSpawner;
-    [SerializeField] private Movment _movment;
-    
-    private float _maxHealth = 1000;
-    private float _health;
-    private int _earnedScore = 0;
-    private bool _canMove;
-    private float _moveSpeed;
-
-    private Gold _gold = new Gold(0);
-    private Daimond _daimond = new Daimond(0);
-    private GameInfo _gameInfo;
-
-    public PlayerWallet PlayerWallet => _wallet;
-    public int EarnedScore => _earnedScore;
-
-    public event Action<float, float> ChangeHealth;
-    public event Action<float> TakedDamage;
-    public event Action<Transform> Died;
-    public event Action Wined;
-    public event Action Resurred;
-
-    public void Initialize(bool isMoving)
+    public class Player : MonoBehaviour, IDamageable
     {
-        PlayerStandartParametrs standartParametrs = new PlayerStandartParametrs();
+        [SerializeField] private PlayerWallet _wallet;
+        [SerializeField] private BladeSpawner _bladeSpawner;
+        [SerializeField] private Movment _movment;
 
-        _canMove = isMoving;
-        _maxHealth = standartParametrs.StartHealth;
-        _health = _maxHealth;
-        ChangeHealth?.Invoke(_health, _maxHealth);
-        _moveSpeed = standartParametrs.StartMoveSpeed;
-        _movment.Initialize(_moveSpeed, _canMove);
-        _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
-    }
+        private float _maxHealth = 1000;
+        private float _health;
+        private int _earnedScore = 0;
+        private bool _canMove;
+        private float _moveSpeed;
 
-    public void Initialize(GameInfo gameInfo, bool isMoving)
-    {
-        _gameInfo = gameInfo;
-        _canMove = isMoving;
-        _maxHealth = _gameInfo.MaxPlayerHealth;
-        _health = _maxHealth;
-        ChangeHealth?.Invoke(_health, _maxHealth);
-        _moveSpeed = _gameInfo.PlayerMoveSpeed;
-        _movment.Initialize(_moveSpeed, _canMove);
-        _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
-    }
+        private Gold _gold = new Gold(0);
+        private Daimond _daimond = new Daimond(0);
+        private GameInfo _gameInfo;
 
-    public void VictoryDance()
-    {
-        Wined?.Invoke();
-        _movment.Initialize(0, _canMove);
-        _bladeSpawner.TurnOffActive();
-    }
+        public PlayerWallet PlayerWallet => _wallet;
+        public int EarnedScore => _earnedScore;
 
-    public void AddScore() => _earnedScore++;
+        public event Action<float, float> ChangeHealth;
+        public event Action<float> TakedDamage;
+        public event Action<Transform> Died;
+        public event Action Wined;
+        public event Action Resurred;
 
-    public float GetCurrentHealth() => _health;
-
-    public float GetMaxHealth() => _maxHealth;
-
-    public void Resurrect()
-    {
-        _health = _maxHealth;
-        _movment.Initialize(_moveSpeed, _canMove);
-        ChangeHealth?.Invoke(_health, _maxHealth);
-        Resurred?.Invoke();
-    }
-
-    public void StopMovment(bool canMove)
-    {
-        if (canMove)
-            _movment.Initialize(_moveSpeed, _canMove);
-        else
-            _movment.Initialize(0, _canMove);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        if (damage < 0)
-            return;
-
-        if (_health <= 0)
-            return;
-
-        _health -= damage;
-        TakedDamage?.Invoke(damage);
-        ChangeHealth?.Invoke(_health, _maxHealth);
-
-        if (_health <= 0)
+        public void Initialize(bool isMoving)
         {
-            _health = 0;
-            LoseGame();
+            PlayerStandartParametrs standartParametrs = new PlayerStandartParametrs();
+
+            _canMove = isMoving;
+            _maxHealth = standartParametrs.StartHealth;
+            _health = _maxHealth;
+            ChangeHealth?.Invoke(_health, _maxHealth);
+            _moveSpeed = standartParametrs.StartMoveSpeed;
+            _movment.Initialize(_moveSpeed, _canMove);
+            _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
         }
-    }
 
-    private void Awake()
-    {
-        _wallet.Initialize(_gold.Value, _daimond.Value);
-    }
+        public void Initialize(GameInfo gameInfo, bool isMoving)
+        {
+            _gameInfo = gameInfo;
+            _canMove = isMoving;
+            _maxHealth = _gameInfo.MaxPlayerHealth;
+            _health = _maxHealth;
+            ChangeHealth?.Invoke(_health, _maxHealth);
+            _moveSpeed = _gameInfo.PlayerMoveSpeed;
+            _movment.Initialize(_moveSpeed, _canMove);
+            _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
+        }
 
-    private void LoseGame()
-    {
-        Died?.Invoke(transform);
-        _movment.Initialize(0, _canMove);
-        _bladeSpawner.TurnOffActive();
+        public void VictoryDance()
+        {
+            Wined?.Invoke();
+            _movment.Initialize(0, _canMove);
+            _bladeSpawner.TurnOffActive();
+        }
+
+        public void AddScore() => _earnedScore++;
+
+        public float GetCurrentHealth() => _health;
+
+        public float GetMaxHealth() => _maxHealth;
+
+        public void Resurrect()
+        {
+            _health = _maxHealth;
+            _movment.Initialize(_moveSpeed, _canMove);
+            ChangeHealth?.Invoke(_health, _maxHealth);
+            Resurred?.Invoke();
+        }
+
+        public void StopMovment(bool canMove)
+        {
+            if (canMove)
+                _movment.Initialize(_moveSpeed, _canMove);
+            else
+                _movment.Initialize(0, _canMove);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (damage < 0)
+                return;
+
+            if (_health <= 0)
+                return;
+
+            _health -= damage;
+            TakedDamage?.Invoke(damage);
+            ChangeHealth?.Invoke(_health, _maxHealth);
+
+            if (_health <= 0)
+            {
+                _health = 0;
+                LoseGame();
+            }
+        }
+
+        private void Awake()
+        {
+            _wallet.Initialize(_gold.Value, _daimond.Value);
+        }
+
+        private void LoseGame()
+        {
+            Died?.Invoke(transform);
+            _movment.Initialize(0, _canMove);
+            _bladeSpawner.TurnOffActive();
+        }
     }
 }

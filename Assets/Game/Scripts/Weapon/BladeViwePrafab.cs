@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class BladeViwePrafab : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.Weapon
 {
+    public class BladeViwePrafab : MonoBehaviour
+    {
+    }
 }

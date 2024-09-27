@@ -1,13 +1,17 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using UnityEngine;
 
-public class Mine : Trap
+namespace MonsterArenaMasterOfTheBlade.TrapScripts
 {
-    [SerializeField] private GameObject _explosionEffect;
-
-    protected override void ApplyDamage(IDamageable damageable)
+    public class Mine : Trap
     {
-        damageable.TakeDamage(_damage);
-        Instantiate(_explosionEffect, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        gameObject.SetActive(false);
+        [SerializeField] private GameObject _explosionEffect;
+
+        protected override void ApplyDamage(IDamageable damageable)
+        {
+            damageable.TakeDamage(_damage);
+            Instantiate(_explosionEffect, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            gameObject.SetActive(false);
+        }
     }
 }

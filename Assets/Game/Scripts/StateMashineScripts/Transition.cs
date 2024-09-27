@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class Transition : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] private State _targetState;
-
-    public State TargetState => _targetState;
-    public bool NeedTransit { get; protected set; }
-
-    private void OnEnable()
+    public class Transition : MonoBehaviour
     {
-        NeedTransit = false;
+        [SerializeField] private State _targetState;
+
+        public State TargetState => _targetState;
+        public bool NeedTransit { get; protected set; }
+
+        private void OnEnable()
+        {
+            NeedTransit = false;
+        }
     }
 }

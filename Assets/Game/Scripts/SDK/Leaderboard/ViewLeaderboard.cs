@@ -1,32 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewLeaderboard : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    [SerializeField] private Transform _containet;
-    [SerializeField] private ElementPlayer _leaderboardElementPrefab;
-
-    private List<ElementPlayer> _spawnedElements = new List<ElementPlayer>();
-
-    public void ConstructLeaderboard(List<DataPlayer> leaderboardPlayer)
+    public class ViewLeaderboard : MonoBehaviour
     {
-        ClearLeaderboard();
+        [SerializeField] private Transform _containet;
+        [SerializeField] private ElementPlayer _leaderboardElementPrefab;
 
-        foreach (DataPlayer player in leaderboardPlayer)
-        {
-            ElementPlayer elementPlayerInstance = Instantiate(_leaderboardElementPrefab, _containet);
-            elementPlayerInstance.Initialize(player.Name, player.Rank, player.Score);
-            _spawnedElements.Add(elementPlayerInstance);
-        }
-    }
+        private List<ElementPlayer> _spawnedElements = new List<ElementPlayer>();
 
-    private void ClearLeaderboard()
-    {
-        foreach (var element in _spawnedElements)
+        public void ConstructLeaderboard(List<DataPlayer> leaderboardPlayer)
         {
-            Destroy(element.gameObject);
+            ClearLeaderboard();
+
+            foreach (DataPlayer player in leaderboardPlayer)
+            {
+                ElementPlayer elementPlayerInstance = Instantiate(_leaderboardElementPrefab, _containet);
+                elementPlayerInstance.Initialize(player.Name, player.Rank, player.Score);
+                _spawnedElements.Add(elementPlayerInstance);
+            }
         }
 
-        _spawnedElements = new List<ElementPlayer>();
+        private void ClearLeaderboard()
+        {
+            foreach (var element in _spawnedElements)
+            {
+                Destroy(element.gameObject);
+            }
+
+            _spawnedElements = new List<ElementPlayer>();
+        }
     }
 }

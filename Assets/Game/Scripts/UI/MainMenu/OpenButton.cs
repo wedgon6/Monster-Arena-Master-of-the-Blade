@@ -1,29 +1,33 @@
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OpenButton : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.UI
 {
-    [SerializeField] private GameObject _pabel;
-    [SerializeField] private Button _openButton;
-
-    public void Initialaize(GameObject panel)
+    public class OpenButton : MonoBehaviour
     {
-        _pabel = panel;
-    }
+        [SerializeField] private GameObject _pabel;
+        [SerializeField] private Button _openButton;
 
-    private void OnEnable()
-    {
-        _openButton.onClick.AddListener(OpenPanel);
-    }
+        public void Initialaize(GameObject panel)
+        {
+            _pabel = panel;
+        }
 
-    private void OnDisable()
-    {
-        _openButton.onClick.RemoveListener(OpenPanel);
-    }
+        private void OnEnable()
+        {
+            _openButton.onClick.AddListener(OpenPanel);
+        }
 
-    private void OpenPanel()
-    {
-        Services.AdvertisemintService.ShowInterstitialAd();
-        _pabel.gameObject.SetActive(true);
+        private void OnDisable()
+        {
+            _openButton.onClick.RemoveListener(OpenPanel);
+        }
+
+        private void OpenPanel()
+        {
+            Services.AdvertisemintService.ShowInterstitialAd();
+            _pabel.gameObject.SetActive(true);
+        }
     }
 }

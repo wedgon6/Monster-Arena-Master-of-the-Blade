@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class Wall : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
+    public class Wall : MonoBehaviour
+    {
+    }
 }

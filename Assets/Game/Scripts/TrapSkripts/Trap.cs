@@ -1,14 +1,18 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using UnityEngine;
 
-public abstract class Trap : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.TrapScripts
 {
-    [SerializeField] protected float _damage;
-
-    protected abstract void ApplyDamage(IDamageable damageable);
-
-    private void OnCollisionEnter(Collision collision)
+    public abstract class Trap : MonoBehaviour
     {
-        if (collision.collider.TryGetComponent(out IDamageable damageable))
-           ApplyDamage(damageable);
+        [SerializeField] protected float _damage;
+
+        protected abstract void ApplyDamage(IDamageable damageable);
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.TryGetComponent(out IDamageable damageable))
+                ApplyDamage(damageable);
+        }
     }
 }

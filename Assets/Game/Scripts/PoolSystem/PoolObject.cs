@@ -1,18 +1,21 @@
 using System;
 using UnityEngine;
 
-public class PoolObject : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.PoolSystem
 {
-    public event Action<PoolObject> PoolReturned;
-
-    public void ReturObjectPool()
+    public class PoolObject : MonoBehaviour
     {
-        ReturnToPool();
-    }
+        public event Action<PoolObject> PoolReturned;
 
-    protected virtual void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-        PoolReturned?.Invoke(this);
+        public void ReturObjectPool()
+        {
+            ReturnToPool();
+        }
+
+        protected virtual void ReturnToPool()
+        {
+            gameObject.SetActive(false);
+            PoolReturned?.Invoke(this);
+        }
     }
 }

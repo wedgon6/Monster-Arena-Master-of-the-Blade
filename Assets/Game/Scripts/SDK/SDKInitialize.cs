@@ -1,18 +1,21 @@
 using Agava.YandexGames;
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 using System.Collections;
 using UnityEngine;
 
-public class SDKInitialize : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    [SerializeField] private LoadingPlayScene _loadindScene;
+    public class SDKInitialize : MonoBehaviour
+    {
+        [SerializeField] private LoadingPlayScene _loadindScene;
 
 #if UNITY_EDITOR
-    private void Start()
-    {
-        Services.Init();
-        Services.LocalizationService.ChangeLanguage();
-        _loadindScene.StartLoadScene();
-    }
+        private void Start()
+        {
+            Services.Init();
+            Services.LocalizationService.ChangeLanguage();
+            _loadindScene.StartLoadScene();
+        }
 #else
     private void Awake()
     {
@@ -52,4 +55,5 @@ public class SDKInitialize : MonoBehaviour
         _loadindScene.StartLoadScene();
     }
 #endif
+    }
 }

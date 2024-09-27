@@ -1,38 +1,41 @@
 using UnityEngine;
 
-public class StateMashine : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] protected State _firstState;
-
-    private State _currentState;
-
-    protected virtual void UpdateStateStatus()
+    public class StateMashine : MonoBehaviour
     {
-        if (_currentState == null)
-            return;
+        [SerializeField] protected State _firstState;
 
-        var nextState = _currentState.GetNextState();
+        private State _currentState;
 
-        if (nextState != null)
-            Transit(nextState);
-    }
+        protected virtual void UpdateStateStatus()
+        {
+            if (_currentState == null)
+                return;
 
-    protected void EnterState(State state)
-    {
-        _currentState = state;
+            var nextState = _currentState.GetNextState();
 
-        if (_currentState != null)
-            _currentState.Enter();
-    }
+            if (nextState != null)
+                Transit(nextState);
+        }
 
-    private void Transit(State nextState)
-    {
-        if (_currentState != null)
-            _currentState.Exit();
+        protected void EnterState(State state)
+        {
+            _currentState = state;
 
-        _currentState = nextState;
+            if (_currentState != null)
+                _currentState.Enter();
+        }
 
-        if (_currentState != null)
-            _currentState.Enter();
+        private void Transit(State nextState)
+        {
+            if (_currentState != null)
+                _currentState.Exit();
+
+            _currentState = nextState;
+
+            if (_currentState != null)
+                _currentState.Enter();
+        }
     }
 }

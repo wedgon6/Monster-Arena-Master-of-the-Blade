@@ -1,29 +1,32 @@
 ﻿using Agava.YandexGames;
+using MonsterArenaMasterOfTheBlade.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leaderboard : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    private const string EnglishCode = "en";
-    private const string RussianCode = "ru";
-    private const string TurkishCode = "tr";
-    private const string AnonymousRu = "Анонимный";
-    private const string AnonymousEn = "Anonymous";
-    private const string AnonymousTr = "Anonim";
-    private const string LeaderboardName = "Leaderboard";
-
-    [SerializeField] private CanvasManager _canvasManager;
-
-    private ViewLeaderboard _leaderboardView;
-    private List<DataPlayer> _leaderboardPlayers = new List<DataPlayer>();
-    private string AnonymousName;
-
-    private void Awake()
+    public class Leaderboard : MonoBehaviour
     {
-        if (Agava.WebUtility.Device.IsMobile)
-            _leaderboardView = _canvasManager.ModileCanvas.LeaderboardView;
-        else
-            _leaderboardView = _canvasManager.DekstopCanvas.LeaderboardView;
+        private const string EnglishCode = "en";
+        private const string RussianCode = "ru";
+        private const string TurkishCode = "tr";
+        private const string AnonymousRu = "Анонимный";
+        private const string AnonymousEn = "Anonymous";
+        private const string AnonymousTr = "Anonim";
+        private const string LeaderboardName = "Leaderboard";
+
+        [SerializeField] private CanvasManager _canvasManager;
+
+        private ViewLeaderboard _leaderboardView;
+        private List<DataPlayer> _leaderboardPlayers = new List<DataPlayer>();
+        private string AnonymousName;
+
+        private void Awake()
+        {
+            if (Agava.WebUtility.Device.IsMobile)
+                _leaderboardView = _canvasManager.ModileCanvas.LeaderboardView;
+            else
+                _leaderboardView = _canvasManager.DekstopCanvas.LeaderboardView;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         string languageCode = YandexGamesSdk.Environment.i18n.lang;
@@ -44,10 +47,10 @@ public class Leaderboard : MonoBehaviour
                 break;
         }
 #endif
-    }
+        }
 
-    public void SetPlayer(int score)
-    {
+        public void SetPlayer(int score)
+        {
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (PlayerAccount.IsAuthorized == false) 
             return;
@@ -61,30 +64,31 @@ public class Leaderboard : MonoBehaviour
                 Agava.YandexGames.Leaderboard.SetScore(LeaderboardName, score);
         });
 #endif
-    }
+        }
 
-    public void Fill()
-    {
-        _leaderboardPlayers.Clear();
-
-        if (PlayerAccount.IsAuthorized == false)
-            return;
-
-        Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result =>
+        public void Fill()
         {
-            foreach (var entry in result.entries)
+            _leaderboardPlayers.Clear();
+
+            if (PlayerAccount.IsAuthorized == false)
+                return;
+
+            Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result =>
             {
-                var name = entry.player.publicName;
-                var rank = entry.rank;
-                var score = entry.score;
+                foreach (var entry in result.entries)
+                {
+                    var name = entry.player.publicName;
+                    var rank = entry.rank;
+                    var score = entry.score;
 
-                if (string.IsNullOrEmpty(name))
-                    name = AnonymousName;
+                    if (string.IsNullOrEmpty(name))
+                        name = AnonymousName;
 
-                _leaderboardPlayers.Add(new DataPlayer(name, rank, score));
-            }
+                    _leaderboardPlayers.Add(new DataPlayer(name, rank, score));
+                }
 
-            _leaderboardView.ConstructLeaderboard(_leaderboardPlayers);
-        });
+                _leaderboardView.ConstructLeaderboard(_leaderboardPlayers);
+            });
+        }
     }
 }

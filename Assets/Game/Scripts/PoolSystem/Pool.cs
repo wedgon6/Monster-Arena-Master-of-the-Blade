@@ -2,35 +2,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public class Pool : MonoBehaviour
+
+namespace MonsterArenaMasterOfTheBlade.PoolSystem
 {
-    private List<PoolObject> _poolObjects = new List<PoolObject>();
-
-    public event Action GetPoolObject;
-
-    public void InstantiatePoolObject(PoolObject poolObject)
+    public class Pool : MonoBehaviour
     {
-        poolObject.PoolReturned += PoolObject;
-    }
+        private List<PoolObject> _poolObjects = new List<PoolObject>();
 
-    public void PoolObject(PoolObject poolObject)
-    {
-        _poolObjects.Add(poolObject);
-        GetPoolObject?.Invoke();
-    }
+        public event Action GetPoolObject;
 
-    public bool TryPoolObject(out PoolObject bullet)
-    {
-        bullet = _poolObjects.FirstOrDefault(p => p.gameObject.activeSelf == false);
-
-        return bullet != null;
-    }
-
-    private void OnDisable()
-    {
-        foreach (var pollObject in _poolObjects)
+        public void InstantiatePoolObject(PoolObject poolObject)
         {
-            pollObject.PoolReturned -= PoolObject;
+            poolObject.PoolReturned += PoolObject;
+        }
+
+        public void PoolObject(PoolObject poolObject)
+        {
+            _poolObjects.Add(poolObject);
+            GetPoolObject?.Invoke();
+        }
+
+        public bool TryPoolObject(out PoolObject bullet)
+        {
+            bullet = _poolObjects.FirstOrDefault(p => p.gameObject.activeSelf == false);
+
+            return bullet != null;
+        }
+
+        private void OnDisable()
+        {
+            foreach (var pollObject in _poolObjects)
+            {
+                pollObject.PoolReturned -= PoolObject;
+            }
         }
     }
 }

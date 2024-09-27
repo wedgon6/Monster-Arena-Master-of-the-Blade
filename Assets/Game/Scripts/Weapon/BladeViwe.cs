@@ -1,67 +1,71 @@
 using DG.Tweening;
+using MonsterArenaMasterOfTheBlade.Characters;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BladeViwe : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.Weapon
 {
-    private const float Fullangle = 360f;
-
-    [SerializeField] private Movment _player;
-    [SerializeField] private float _insideRadius = 1;
-
-    private int _countBlade;
-    private BladeViwePrafab _viwePrafab;
-    private List<BladeViwePrafab> _bladeViwePrafabs = new List<BladeViwePrafab>();
-    private float _stepSize;
-    private float _currentStep;
-
-    public void Initialize(int countBlade, Blade blade)
+    public class BladeViwe : MonoBehaviour
     {
-        _countBlade = countBlade;
-        _viwePrafab = blade.BladeViwePrafab;
-        _stepSize = Fullangle / _countBlade;
+        private const float Fullangle = 360f;
 
-        for (int i = 0; i < _countBlade; i++)
+        [SerializeField] private Movment _player;
+        [SerializeField] private float _insideRadius = 1;
+
+        private int _countBlade;
+        private BladeViwePrafab _viwePrafab;
+        private List<BladeViwePrafab> _bladeViwePrafabs = new List<BladeViwePrafab>();
+        private float _stepSize;
+        private float _currentStep;
+
+        public void Initialize(int countBlade, Blade blade)
         {
-            var angle = _currentStep * Mathf.Deg2Rad;
-            var distance = _insideRadius;
-            var x = distance * Mathf.Sin(angle);
-            var z = distance * Mathf.Cos(angle);
-            var position = _player.transform.position + new Vector3(x, transform.position.y, z);
-            _currentStep += _stepSize;
+            _countBlade = countBlade;
+            _viwePrafab = blade.BladeViwePrafab;
+            _stepSize = Fullangle / _countBlade;
 
-            _bladeViwePrafabs.Add(Instantiate(_viwePrafab, position, _viwePrafab.transform.rotation, transform));
+            for (int i = 0; i < _countBlade; i++)
+            {
+                var angle = _currentStep * Mathf.Deg2Rad;
+                var distance = _insideRadius;
+                var x = distance * Mathf.Sin(angle);
+                var z = distance * Mathf.Cos(angle);
+                var position = _player.transform.position + new Vector3(x, transform.position.y, z);
+                _currentStep += _stepSize;
+
+                _bladeViwePrafabs.Add(Instantiate(_viwePrafab, position, _viwePrafab.transform.rotation, transform));
+            }
         }
-    }
 
-    public bool ThryThrow()
-    {
-        BladeViwePrafab enebleBlade = _bladeViwePrafabs.FirstOrDefault(p => p.gameObject.activeSelf == true);
-
-        if (enebleBlade == null)
+        public bool ThryThrow()
         {
-            return false;
+            BladeViwePrafab enebleBlade = _bladeViwePrafabs.FirstOrDefault(p => p.gameObject.activeSelf == true);
+
+            if (enebleBlade == null)
+            {
+                return false;
+            }
+            else
+            {
+                enebleBlade.gameObject.SetActive(false);
+                return true;
+            }
         }
-        else
+
+        public void GetBackBlade()
         {
-            enebleBlade.gameObject.SetActive(false);
-            return true;
+            BladeViwePrafab enebleBlade = _bladeViwePrafabs.FirstOrDefault(p => p.gameObject.activeSelf == false);
+
+            if (enebleBlade == null)
+                return;
+            else
+                enebleBlade.gameObject.SetActive(true);
         }
-    }
 
-    public void GetBackBlade()
-    {
-        BladeViwePrafab enebleBlade = _bladeViwePrafabs.FirstOrDefault(p => p.gameObject.activeSelf == false);
-
-        if (enebleBlade == null)
-            return;
-        else
-            enebleBlade.gameObject.SetActive(true);
-    }
-
-    private void OnEnable()
-    {
-        transform.DORotate(new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        private void OnEnable()
+        {
+            transform.DORotate(new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        }
     }
 }

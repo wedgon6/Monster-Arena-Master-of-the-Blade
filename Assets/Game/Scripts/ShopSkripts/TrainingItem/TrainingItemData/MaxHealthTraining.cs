@@ -1,10 +1,14 @@
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MaxHealth", menuName = "ScriptableObjects/TrainigItem/MaxHealth")]
-public class MaxHealthTraining : TrainingItemData
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    public override void BuffPlayer(ParametersPlayer parametersPlayer)
+    [CreateAssetMenu(fileName = "MaxHealth", menuName = "ScriptableObjects/TrainigItem/MaxHealth")]
+    public class MaxHealthTraining : TrainingItemData
     {
-        parametersPlayer.AddMaxHealth();
+        public override void BuffPlayer(ParametersPlayer parametersPlayer)
+        {
+            parametersPlayer.AddMaxHealth();
+        }
     }
 }

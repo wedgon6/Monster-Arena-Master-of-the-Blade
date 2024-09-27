@@ -1,18 +1,22 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class WinTransition : Transition
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    private Enemy _enemy;
-
-    private void OnEnable()
+    [RequireComponent(typeof(Enemy))]
+    public class WinTransition : Transition
     {
-        NeedTransit = false;
-        _enemy = GetComponent<Enemy>();
-        _enemy.ÑelebratedWin += TransitWinState;
+        private Enemy _enemy;
+
+        private void OnEnable()
+        {
+            NeedTransit = false;
+            _enemy = GetComponent<Enemy>();
+            _enemy.ÑelebratedWin += TransitWinState;
+        }
+
+        private void OnDisable() => _enemy.ÑelebratedWin -= TransitWinState;
+
+        private void TransitWinState() => NeedTransit = true;
     }
-
-    private void OnDisable() => _enemy.ÑelebratedWin -= TransitWinState;
-
-    private void TransitWinState() => NeedTransit = true;
 }

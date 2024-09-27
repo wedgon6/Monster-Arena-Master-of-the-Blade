@@ -2,40 +2,43 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AuthorizationPanel : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    [SerializeField] private Button _authorizationButton;
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private Leaderboard _leaderboard;
-
-    private void OnEnable()
+    public class AuthorizationPanel : MonoBehaviour
     {
-        _authorizationButton.onClick.AddListener(OnAuthorization);
-        _closeButton.onClick.AddListener(OnClose);
-    }
+        [SerializeField] private Button _authorizationButton;
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private Leaderboard _leaderboard;
 
-    private void OnDisable()
-    {
-        _authorizationButton.onClick.RemoveListener(OnAuthorization);
-        _closeButton.onClick.RemoveListener(OnClose);
-    }
+        private void OnEnable()
+        {
+            _authorizationButton.onClick.AddListener(OnAuthorization);
+            _closeButton.onClick.AddListener(OnClose);
+        }
 
-    private void OnAuthorization()
-    {
-        PlayerAccount.Authorize(OnRequestDataPermission);
-    }
+        private void OnDisable()
+        {
+            _authorizationButton.onClick.RemoveListener(OnAuthorization);
+            _closeButton.onClick.RemoveListener(OnClose);
+        }
 
-    private void OnClose()
-    {
-        gameObject.SetActive(false);
-    }
+        private void OnAuthorization()
+        {
+            PlayerAccount.Authorize(OnRequestDataPermission);
+        }
 
-    private void OnRequestDataPermission()
-    {
-        if (PlayerAccount.IsAuthorized)
-            PlayerAccount.RequestPersonalProfileDataPermission();
+        private void OnClose()
+        {
+            gameObject.SetActive(false);
+        }
 
-        _leaderboard.Fill();
-        gameObject.SetActive(false);
+        private void OnRequestDataPermission()
+        {
+            if (PlayerAccount.IsAuthorized)
+                PlayerAccount.RequestPersonalProfileDataPermission();
+
+            _leaderboard.Fill();
+            gameObject.SetActive(false);
+        }
     }
 }

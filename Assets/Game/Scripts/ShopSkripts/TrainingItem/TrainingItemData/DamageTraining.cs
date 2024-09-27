@@ -1,10 +1,14 @@
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Damage", menuName = "ScriptableObjects/TrainigItem/Damage")]
-public class DamageTraining : TrainingItemData
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    public override void BuffPlayer(ParametersPlayer parametersPlayer)
+    [CreateAssetMenu(fileName = "Damage", menuName = "ScriptableObjects/TrainigItem/Damage")]
+    public class DamageTraining : TrainingItemData
     {
-        parametersPlayer.AddDamage();
+        public override void BuffPlayer(ParametersPlayer parametersPlayer)
+        {
+            parametersPlayer.AddDamage();
+        }
     }
 }

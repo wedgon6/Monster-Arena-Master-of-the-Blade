@@ -1,15 +1,18 @@
-public class DyingState : EnemyState
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    private void Update()
+    public class DyingState : EnemyState
     {
-        if (Enemy.IsDead)
-            Die();
-    }
+        private void Update()
+        {
+            if (Enemy.IsDead)
+                Die();
+        }
 
-    private void Die()
-    {
-        Enemy.Dead();
-        Target.PlayerWallet.AddMoney(Enemy.Gold, Enemy.Daimond);
-        Target.AddScore();
+        private void Die()
+        {
+            Enemy.Dead();
+            Target.PlayerWallet.AddMoney(Enemy.Gold, Enemy.Daimond);
+            Target.AddScore();
+        }
     }
 }

@@ -1,59 +1,63 @@
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class SoundButton : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.UI
 {
-    [SerializeField] private Image _controlButton;
-    [SerializeField] private Sprite _onAudioIcon;
-    [SerializeField] private Sprite _offAudioIcon;
-
-    private Button _button;
-    private bool _isAudioPlay = true;
-
-    public void Initialize()
+    [RequireComponent(typeof(Button))]
+    public class SoundButton : MonoBehaviour
     {
-        _isAudioPlay = Services.AudioService.GetAudioModStatus();
+        [SerializeField] private Image _controlButton;
+        [SerializeField] private Sprite _onAudioIcon;
+        [SerializeField] private Sprite _offAudioIcon;
 
-        if (_isAudioPlay == true)
+        private Button _button;
+        private bool _isAudioPlay = true;
+
+        public void Initialize()
         {
-            AudioListener.volume = 1f;
-            _controlButton.sprite = _onAudioIcon;
+            _isAudioPlay = Services.AudioService.GetAudioModStatus();
+
+            if (_isAudioPlay == true)
+            {
+                AudioListener.volume = 1f;
+                _controlButton.sprite = _onAudioIcon;
+            }
+
+            if (_isAudioPlay == false)
+            {
+                AudioListener.volume = 0f;
+                _controlButton.sprite = _offAudioIcon;
+            }
         }
 
-        if (_isAudioPlay == false)
+        private void OnEnable()
         {
-            AudioListener.volume = 0f;
-            _controlButton.sprite = _offAudioIcon;
-        }
-    }
-
-    private void OnEnable()
-    {
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(ChangeSoundMode);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(ChangeSoundMode);
-    }
-
-    private void ChangeSoundMode()
-    {
-        Services.AudioService.ChengeAudioStatus();
-        _isAudioPlay = Services.AudioService.GetAudioModStatus();
-
-        if (_isAudioPlay == true)
-        {
-            AudioListener.volume = 1f;
-            _controlButton.sprite = _onAudioIcon;
+            _button = GetComponent<Button>();
+            _button.onClick.AddListener(ChangeSoundMode);
         }
 
-        if (_isAudioPlay == false)
+        private void OnDisable()
         {
-            AudioListener.volume = 0f;
-            _controlButton.sprite = _offAudioIcon;
+            _button.onClick.RemoveListener(ChangeSoundMode);
+        }
+
+        private void ChangeSoundMode()
+        {
+            Services.AudioService.ChengeAudioStatus();
+            _isAudioPlay = Services.AudioService.GetAudioModStatus();
+
+            if (_isAudioPlay == true)
+            {
+                AudioListener.volume = 1f;
+                _controlButton.sprite = _onAudioIcon;
+            }
+
+            if (_isAudioPlay == false)
+            {
+                AudioListener.volume = 0f;
+                _controlButton.sprite = _offAudioIcon;
+            }
         }
     }
 }

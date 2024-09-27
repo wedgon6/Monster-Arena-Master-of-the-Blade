@@ -1,4 +1,7 @@
-public interface ILocalizationServise 
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    public void ChangeLanguage();
+    public interface ILocalizationServise
+    {
+        public void ChangeLanguage();
+    }
 }

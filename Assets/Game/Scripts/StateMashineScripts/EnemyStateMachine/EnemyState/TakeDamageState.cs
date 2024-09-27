@@ -1,33 +1,34 @@
-using UnityEngine;
-
-public class TakeDamageState : EnemyState
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    public override void Enter()
+    public class TakeDamageState : EnemyState
     {
-        if (enabled == false)
+        public override void Enter()
         {
-            enabled = true;
-            OnEnter();
+            if (enabled == false)
+            {
+                enabled = true;
+                OnEnter();
+            }
+
+            TakeDamage();
         }
 
-        TakeDamage();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
-    private void TakeDamage()
-    {
-        TakeDamageEvent();
-    }
-
-    private void EnebleTransition()
-    {
-        foreach (var transition in _transitions)
+        public override void Exit()
         {
-            transition.enabled = true;
+            base.Exit();
+        }
+
+        private void TakeDamage()
+        {
+            TakeDamageEvent();
+        }
+
+        private void EnebleTransition()
+        {
+            foreach (var transition in _transitions)
+            {
+                transition.enabled = true;
+            }
         }
     }
 }

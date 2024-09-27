@@ -1,6 +1,9 @@
-internal enum TypeEnemy
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
-    Small,
-    Range,
-    Big
+    internal enum TypeEnemy
+    {
+        Small,
+        Range,
+        Big
+    }
 }

@@ -1,23 +1,27 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class MovmentTransition : Transition
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] private float _distance = 3f;
-
-    private Enemy _enemy;
-
-    private void Awake()
+    [RequireComponent(typeof(Enemy))]
+    public class MovmentTransition : Transition
     {
-        _enemy = GetComponent<Enemy>();
-    }
+        [SerializeField] private float _distance = 3f;
 
-    private void Update()
-    {
-        Vector3 directionToTarget = transform.position - _enemy.Target.transform.position;
-        float distance = directionToTarget.magnitude;
+        private Enemy _enemy;
 
-        if (distance > _distance)
-            NeedTransit = true;
+        private void Awake()
+        {
+            _enemy = GetComponent<Enemy>();
+        }
+
+        private void Update()
+        {
+            Vector3 directionToTarget = transform.position - _enemy.Target.transform.position;
+            float distance = directionToTarget.magnitude;
+
+            if (distance > _distance)
+                NeedTransit = true;
+        }
     }
 }

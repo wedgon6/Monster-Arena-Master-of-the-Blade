@@ -1,4 +1,7 @@
-public interface IGameReadyService
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    public void GameReady();
+    public interface IGameReadyService
+    {
+        public void GameReady();
+    }
 }

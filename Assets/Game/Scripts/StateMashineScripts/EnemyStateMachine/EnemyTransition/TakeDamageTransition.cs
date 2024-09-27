@@ -1,28 +1,32 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class TakeDamageTransition : Transition
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    private Enemy _enemy;
-
-    private void Awake()
+    [RequireComponent(typeof(Enemy))]
+    public class TakeDamageTransition : Transition
     {
-        _enemy = GetComponent<Enemy>();
-    }
+        private Enemy _enemy;
 
-    private void OnEnable()
-    {
-        NeedTransit = false;
-        _enemy.GotHit += OnTakeDamage;
-    }
+        private void Awake()
+        {
+            _enemy = GetComponent<Enemy>();
+        }
 
-    private void OnDisable()
-    {
-        _enemy.GotHit -= OnTakeDamage;
-    }
+        private void OnEnable()
+        {
+            NeedTransit = false;
+            _enemy.GotHit += OnTakeDamage;
+        }
 
-    private void OnTakeDamage()
-    {
-        NeedTransit = true;
+        private void OnDisable()
+        {
+            _enemy.GotHit -= OnTakeDamage;
+        }
+
+        private void OnTakeDamage()
+        {
+            NeedTransit = true;
+        }
     }
 }

@@ -1,37 +1,41 @@
+using MonsterArenaMasterOfTheBlade.Characters;
 using System;
 using TMPro;
 using UnityEngine;
 
-public class EnemyCounter : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.UI
 {
-    [SerializeField] private EnemySpawner _spawner;
-    [SerializeField] private TMP_Text _countText;
-
-    private int _currentCountEnemy;
-
-    public event Action AllEnemyDied;
-
-    private void Start()
+    public class EnemyCounter : MonoBehaviour
     {
-        _spawner.EnemyDead += SetEnemyCount;
-        _currentCountEnemy = _spawner.GetEnemyCount();
-        _countText.text = _currentCountEnemy.ToString();
-    }
+        [SerializeField] private EnemySpawner _spawner;
+        [SerializeField] private TMP_Text _countText;
 
-    private void OnDisable()
-    {
-        _spawner.EnemyDead -= SetEnemyCount;
-    }
+        private int _currentCountEnemy;
 
-    private void SetEnemyCount()
-    {
-        if (_currentCountEnemy <= 0)
-            return;
+        public event Action AllEnemyDied;
 
-        _currentCountEnemy--;
-        _countText.text = _currentCountEnemy.ToString();
+        private void Start()
+        {
+            _spawner.EnemyDead += SetEnemyCount;
+            _currentCountEnemy = _spawner.GetEnemyCount();
+            _countText.text = _currentCountEnemy.ToString();
+        }
 
-        if (_currentCountEnemy <= 0)
-            AllEnemyDied?.Invoke();
+        private void OnDisable()
+        {
+            _spawner.EnemyDead -= SetEnemyCount;
+        }
+
+        private void SetEnemyCount()
+        {
+            if (_currentCountEnemy <= 0)
+                return;
+
+            _currentCountEnemy--;
+            _countText.text = _currentCountEnemy.ToString();
+
+            if (_currentCountEnemy <= 0)
+                AllEnemyDied?.Invoke();
+        }
     }
 }

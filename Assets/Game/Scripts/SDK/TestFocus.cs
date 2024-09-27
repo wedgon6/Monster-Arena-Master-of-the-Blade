@@ -1,59 +1,59 @@
 using Agava.WebUtility;
+using MonsterArenaMasterOfTheBlade.ServicesScripts;
 using UnityEngine;
 
-public class TestFocus : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    private void OnEnable()
+    public class TestFocus : MonoBehaviour
     {
-        Application.focusChanged += OnInBackgroundChangeApp;
-        WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWed;
-    }
-
-    private void OnDisable()
-    {
-        Application.focusChanged -= OnInBackgroundChangeApp;
-        WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWed;
-    }
-
-    private void OnInBackgroundChangeApp(bool inApp)
-    {
-        MuteAudio(!inApp);
-        PauseGame(!inApp);
-    }
-
-    private void OnInBackgroundChangeWed(bool isBackground)
-    {
-        MuteAudio(isBackground);
-        PauseGame(isBackground);
-    }
-
-    private void MuteAudio(bool value)
-    {
-        if (!value)
+        private void OnEnable()
         {
-            if (Services.AudioService.TryTurnSound())
+            Application.focusChanged += OnInBackgroundChangeApp;
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWed;
+        }
+
+        private void OnDisable()
+        {
+            Application.focusChanged -= OnInBackgroundChangeApp;
+            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWed;
+        }
+
+        private void OnInBackgroundChangeApp(bool inApp)
+        {
+            MuteAudio(!inApp);
+            PauseGame(!inApp);
+        }
+
+        private void OnInBackgroundChangeWed(bool isBackground)
+        {
+            MuteAudio(isBackground);
+            PauseGame(isBackground);
+        }
+
+        private void MuteAudio(bool value)
+        {
+            if (!value)
             {
-                Services.AudioService.TurnSound();
+                if (Services.AudioService.TryTurnSound())
+                    Services.AudioService.TurnSound();
+            }
+            else
+            {
+                Services.AudioService.MuteSound();
             }
         }
-        else
-        {
-            Services.AudioService.MuteSound();
-        }
-    }
 
-    private void PauseGame(bool value)
-    {
-        if (!value)
+        private void PauseGame(bool value)
         {
-            if (Services.GameStopControl.TryChangetGameStop() == true && Services.AdvertisemintService.IsCloseAds == true)
+            if (!value)
             {
-                Services.GameStopControl.ChangetGameStop(false);
+                if (Services.GameStopControl.TryChangetGameStop() == true && Services.AdvertisemintService.IsCloseAds == true)
+                    Services.GameStopControl.ChangetGameStop(false);
             }
-        }
-        else
-        {
-            Services.GameStopControl.ChangetGameStop(true);
+            else
+            {
+                Services.GameStopControl.ChangetGameStop(true);
+            }
         }
     }
 }

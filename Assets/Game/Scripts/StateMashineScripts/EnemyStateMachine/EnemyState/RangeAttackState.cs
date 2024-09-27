@@ -1,57 +1,62 @@
+using MonsterArenaMasterOfTheBlade.Characters;
+using MonsterArenaMasterOfTheBlade.PoolSystem;
 using UnityEngine;
 
-public class RangeAttackState : AttackState
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    [SerializeField] private EnemyBullet _bullet;
-    [SerializeField] private Pool _pool;
-    [SerializeField] protected Transform _shootPoint;
-
-    public override void Enter()
+    public class RangeAttackState : AttackState
     {
-        base.Enter();
-    }
+        [SerializeField] private EnemyBullet _bullet;
+        [SerializeField] private Pool _pool;
+        [SerializeField] protected Transform _shootPoint;
 
-    private void Update()
-    {
-        transform.LookAt(Target.transform.position);
-
-        if (Attack())
-            AttackEvent();
-    }
-
-    private void LaunchBullet()
-    {
-        foreach (var transition in _transitions)
+        public override void Enter()
         {
-            transition.enabled = false;
+            base.Enter();
         }
 
-        EnemyBullet bullet;
+        private void Update()
+        {
+            transform.LookAt(Target.transform.position);
 
-        if (_pool.TryPoolObject(out PoolObject pollBullet))
-        {
-            bullet = pollBullet as EnemyBullet;
-            bullet.transform.position = _shootPoint.transform.position;
-            bullet.transform.rotation = _shootPoint.transform.rotation;
-            bullet.gameObject.SetActive(true);
-        }
-        else
-        {
-            bullet = Instantiate(_bullet, _shootPoint.transform.position, _shootPoint.transform.rotation);
-            _pool.InstantiatePoolObject(bullet);
+            if (Attack())
+                AttackEvent();
         }
 
-        bullet.Initialaze(_damage);
-        bullet.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 5f, ForceMode.Impulse);
-        
-        TransitionEneble();
-    }
-
-    private void TransitionEneble()
-    {
-        foreach (var transition in _transitions)
+        private void LaunchBullet()
         {
-            transition.enabled = true;
+            foreach (var transition in _transitions)
+            {
+                transition.enabled = false;
+            }
+
+            EnemyBullet bullet;
+
+            if (_pool.TryPoolObject(out PoolObject pollBullet))
+            {
+                bullet = pollBullet as EnemyBullet;
+                bullet.transform.position = _shootPoint.transform.position;
+                bullet.transform.rotation = _shootPoint.transform.rotation;
+                bullet.gameObject.SetActive(true);
+            }
+            else
+            {
+                bullet = Instantiate(_bullet, _shootPoint.transform.position, _shootPoint.transform.rotation);
+                _pool.InstantiatePoolObject(bullet);
+            }
+
+            bullet.Initialaze(_damage);
+            bullet.GetComponent<Rigidbody>().AddForce(_shootPoint.forward * 5f, ForceMode.Impulse);
+
+            TransitionEneble();
+        }
+
+        private void TransitionEneble()
+        {
+            foreach (var transition in _transitions)
+            {
+                transition.enabled = true;
+            }
         }
     }
 }

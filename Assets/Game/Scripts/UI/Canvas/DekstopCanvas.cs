@@ -1,3 +1,6 @@
-public class DekstopCanvas : CanvasType
-{  
+namespace MonsterArenaMasterOfTheBlade.UI
+{
+    public class DekstopCanvas : CanvasType
+    {
+    }
 }

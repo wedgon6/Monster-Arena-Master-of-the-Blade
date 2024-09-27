@@ -1,10 +1,14 @@
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RangeThrow", menuName = "ScriptableObjects/TrainigItem/RangeThrow")]
-public class RangeThrowTraining : TrainingItemData
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    public override void BuffPlayer(ParametersPlayer parametersPlayer)
+    [CreateAssetMenu(fileName = "RangeThrow", menuName = "ScriptableObjects/TrainigItem/RangeThrow")]
+    public class RangeThrowTraining : TrainingItemData
     {
-        parametersPlayer.AddRangeThrow();
+        public override void BuffPlayer(ParametersPlayer parametersPlayer)
+        {
+            parametersPlayer.AddRangeThrow();
+        }
     }
 }

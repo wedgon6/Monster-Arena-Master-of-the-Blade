@@ -1,28 +1,31 @@
 using System.Collections.Generic;
 
-[System.Serializable]
-public class EnemyWave
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
-    private List<Enemy> _template;
-    private int _currentIndex = -1;
-
-    public EnemyWave(List<Enemy> template)
+    [System.Serializable]
+    public class EnemyWave
     {
-        _template = template;
-    }
+        private List<Enemy> _template;
+        private int _currentIndex = -1;
 
-    public List<Enemy> Template => _template;
+        public EnemyWave(List<Enemy> template)
+        {
+            _template = template;
+        }
 
-    public Enemy GetNextEnemy()
-    {
-        if (_template == null)
-            return null;
+        public List<Enemy> Template => _template;
 
-        _currentIndex++;
+        public Enemy GetNextEnemy()
+        {
+            if (_template == null)
+                return null;
 
-        if (_currentIndex > _template.Count - 1)
-            return null;
+            _currentIndex++;
 
-        return _template[_currentIndex];
+            if (_currentIndex > _template.Count - 1)
+                return null;
+
+            return _template[_currentIndex];
+        }
     }
 }

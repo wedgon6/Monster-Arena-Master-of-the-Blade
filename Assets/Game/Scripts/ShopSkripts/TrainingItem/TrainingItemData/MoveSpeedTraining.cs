@@ -1,10 +1,14 @@
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MoveSpeed", menuName = "ScriptableObjects/TrainigItem/MoveSpeed")]
-public class MoveSpeedTraining : TrainingItemData
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    public override void BuffPlayer(ParametersPlayer parametersPlayer)
+    [CreateAssetMenu(fileName = "MoveSpeed", menuName = "ScriptableObjects/TrainigItem/MoveSpeed")]
+    public class MoveSpeedTraining : TrainingItemData
     {
-        parametersPlayer.AddMoveSpeed();
+        public override void BuffPlayer(ParametersPlayer parametersPlayer)
+        {
+            parametersPlayer.AddMoveSpeed();
+        }
     }
 }

@@ -4,54 +4,57 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingShopView : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.ShopScripts
 {
-    [SerializeField] private TMP_Text _lable;
-    [SerializeField] private TMP_Text _price;
-    [SerializeField] private Image _icon;
-    [SerializeField] private Button _sellButton;
-    [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
-
-    private int _currentPrice;
-    private TrainingItemData _abillity;
-
-    public int CurrentPrice => _currentPrice;
-
-    public event Action<TrainingItemData, TrainingShopView> SellButtonClicked;
-
-    public void Render(TrainingItemData item)
+    public class TrainingShopView : MonoBehaviour
     {
-        _abillity = item;
-        _currentPrice = _abillity.StartPrice;
-        _price.text = _abillity.StartPrice.ToString();
-        _icon.sprite = _abillity.Icon;
-        _leanLocalizedTextMeshPro.TranslationName = _abillity.LocalizateKey;
-    }
+        [SerializeField] private TMP_Text _lable;
+        [SerializeField] private TMP_Text _price;
+        [SerializeField] private Image _icon;
+        [SerializeField] private Button _sellButton;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalizedTextMeshPro;
 
-    public void GetCloudData(int currentPrice)
-    {
-        _currentPrice = currentPrice;
-        _price.text = currentPrice.ToString();
-    }
+        private int _currentPrice;
+        private TrainingItemData _abillity;
 
-    public void Buy()
-    {
-        _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
-        _price.text = _currentPrice.ToString();
-    }
+        public int CurrentPrice => _currentPrice;
 
-    private void OnEnable()
-    {
-        _sellButton.onClick.AddListener(OnButtonClick);
-    }
+        public event Action<TrainingItemData, TrainingShopView> SellButtonClicked;
 
-    private void OnDisable()
-    {
-        _sellButton.onClick.RemoveListener(OnButtonClick);
-    }
+        public void Render(TrainingItemData item)
+        {
+            _abillity = item;
+            _currentPrice = _abillity.StartPrice;
+            _price.text = _abillity.StartPrice.ToString();
+            _icon.sprite = _abillity.Icon;
+            _leanLocalizedTextMeshPro.TranslationName = _abillity.LocalizateKey;
+        }
 
-    private void OnButtonClick()
-    {
-        SellButtonClicked?.Invoke(_abillity, this);
+        public void GetCloudData(int currentPrice)
+        {
+            _currentPrice = currentPrice;
+            _price.text = currentPrice.ToString();
+        }
+
+        public void Buy()
+        {
+            _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
+            _price.text = _currentPrice.ToString();
+        }
+
+        private void OnEnable()
+        {
+            _sellButton.onClick.AddListener(OnButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            _sellButton.onClick.RemoveListener(OnButtonClick);
+        }
+
+        private void OnButtonClick()
+        {
+            SellButtonClicked?.Invoke(_abillity, this);
+        }
     }
 }

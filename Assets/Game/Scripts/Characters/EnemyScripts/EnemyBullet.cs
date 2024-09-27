@@ -1,25 +1,29 @@
+using MonsterArenaMasterOfTheBlade.PoolSystem;
 using UnityEngine;
 
-public class EnemyBullet : PoolObject
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
-    private int _damage = 15;
-
-    public void Initialaze(int damage)
+    public class EnemyBullet : PoolObject
     {
-        _damage = damage;
-    }
+        private int _damage = 15;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.TryGetComponent(out Player player))
+        public void Initialaze(int damage)
         {
-            player.TakeDamage(_damage);
-            ReturObjectPool();
+            _damage = damage;
         }
 
-        if (collision.collider.TryGetComponent(out Wall wall))
+        private void OnCollisionEnter(Collision collision)
         {
-            ReturObjectPool();
+            if (collision.collider.TryGetComponent(out Player player))
+            {
+                player.TakeDamage(_damage);
+                ReturObjectPool();
+            }
+
+            if (collision.collider.TryGetComponent(out Wall wall))
+            {
+                ReturObjectPool();
+            }
         }
     }
 }

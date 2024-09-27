@@ -1,7 +1,12 @@
-public class DamageZone : Trap
+using MonsterArenaMasterOfTheBlade.Characters;
+
+namespace MonsterArenaMasterOfTheBlade.TrapScripts
 {
-    protected override void ApplyDamage(IDamageable damageable)
+    public class DamageZone : Trap
     {
-        damageable.TakeDamage(_damage);
+        protected override void ApplyDamage(IDamageable damageable)
+        {
+            damageable.TakeDamage(_damage);
+        }
     }
 }

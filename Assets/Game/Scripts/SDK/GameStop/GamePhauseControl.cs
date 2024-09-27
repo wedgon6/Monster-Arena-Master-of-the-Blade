@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class GamePhauseControl : IGamePhauseControl
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    private static bool _canGame = true;
-
-    public void ChangetGameStop(bool value)
+    public class GamePhauseControl : IGamePhauseControl
     {
-        _canGame = value;
-        Time.timeScale = value ? 0 : 1;
-    }
+        private static bool _canGame = true;
 
-    public bool TryChangetGameStop()
-    {
-        return _canGame;
+        public void ChangetGameStop(bool value)
+        {
+            _canGame = value;
+            Time.timeScale = value ? 0 : 1;
+        }
+
+        public bool TryChangetGameStop()
+        {
+            return _canGame;
+        }
     }
 }

@@ -1,13 +1,16 @@
-public class DataPlayer
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    public DataPlayer(string name, int rank, int score)
+    public class DataPlayer
     {
-        Name = name;
-        Rank = rank;
-        Score = score;
-    }
+        public DataPlayer(string name, int rank, int score)
+        {
+            Name = name;
+            Rank = rank;
+            Score = score;
+        }
 
-    public string Name { get; private set; }
-    public int Rank { get; private set; }
-    public int Score { get; private set; }
+        public string Name { get; private set; }
+        public int Rank { get; private set; }
+        public int Score { get; private set; }
+    }
 }

@@ -1,23 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CloseButton : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.UI
 {
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private GameObject _panel;
-
-    private void OnEnable()
+    public class CloseButton : MonoBehaviour
     {
-        _closeButton.onClick.AddListener(ClosePanel);
-    }
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private GameObject _panel;
 
-    private void OnDisable()
-    {
-        _closeButton.onClick.RemoveListener(ClosePanel);
-    }
+        private void OnEnable()
+        {
+            _closeButton.onClick.AddListener(ClosePanel);
+        }
 
-    private void ClosePanel()
-    {
-        _panel.SetActive(false);
+        private void OnDisable()
+        {
+            _closeButton.onClick.RemoveListener(ClosePanel);
+        }
+
+        private void ClosePanel()
+        {
+            _panel.SetActive(false);
+        }
     }
 }

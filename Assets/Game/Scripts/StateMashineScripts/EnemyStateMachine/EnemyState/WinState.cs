@@ -1,8 +1,11 @@
-public class WinState : EnemyState
+namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 {
-    protected override void OnEnter()
+    public class WinState : EnemyState
     {
-        base.OnEnter();
-        EnemyWinEvent();
+        protected override void OnEnter()
+        {
+            base.OnEnter();
+            EnemyWinEvent();
+        }
     }
 }

@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class HealthBarLookAt : MonoBehaviour
+namespace MonsterArenaMasterOfTheBlade.UI
 {
-    private Camera _camera;
-
-    private void Start()
+    public class HealthBarLookAt : MonoBehaviour
     {
-        _camera = Camera.main;
-    }
+        private Camera _camera;
 
-    private void Update()
-    {
-        transform.LookAt(_camera.transform);
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
+
+        private void Update()
+        {
+            transform.LookAt(_camera.transform);
+        }
     }
 }

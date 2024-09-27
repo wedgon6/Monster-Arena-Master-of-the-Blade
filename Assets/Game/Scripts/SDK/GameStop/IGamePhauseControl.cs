@@ -1,5 +1,8 @@
-public interface IGamePhauseControl
+namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    public void ChangetGameStop(bool value);
-    public bool TryChangetGameStop(); 
+    public interface IGamePhauseControl
+    {
+        public void ChangetGameStop(bool value);
+        public bool TryChangetGameStop();
+    }
 }
