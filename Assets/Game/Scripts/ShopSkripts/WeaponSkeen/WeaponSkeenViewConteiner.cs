@@ -23,6 +23,24 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
         public event Action<WeaponSkeenView> ClickBuyButton;
         public event Action<WeaponSkeenView, int> ClickSelectSkeenButton;
 
+        private void OnEnable()
+        {
+            if (_item != null)
+            {
+                _item.UnlockedSkeen += OnSkeenBuy;
+                _item.SelectedSkeen += OnSkeenSelect;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_item != null)
+            {
+                _item.UnlockedSkeen -= OnSkeenBuy;
+                _item.SelectedSkeen -= OnSkeenSelect;
+            }
+        }
+
         public void RenderChoiceSkeen(WeaponSkeenView item)
         {
             SetNewItem();
@@ -59,24 +77,6 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
             }
 
             _actionButton.onClick.AddListener(OnClickBuySkeen);
-        }
-
-        private void OnEnable()
-        {
-            if (_item != null)
-            {
-                _item.UnlockedSkeen += OnSkeenBuy;
-                _item.SelectedSkeen += OnSkeenSelect;
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (_item != null)
-            {
-                _item.UnlockedSkeen -= OnSkeenBuy;
-                _item.SelectedSkeen -= OnSkeenSelect;
-            }
         }
 
         private void SetNewItem()

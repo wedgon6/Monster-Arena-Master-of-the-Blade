@@ -25,32 +25,6 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
 
         public BladeViwePrafab BladeViwePrafab => _bladeViwe;
 
-        public void Initialaze(BladeSpawner bladeSpawner, float damage, float moveSpeedBoost)
-        {
-            _bladeSpawner = bladeSpawner;
-            _damage = damage;
-            _moveSpeedBoost = moveSpeedBoost;
-            CorountineStart(Throw());
-        }
-
-        public bool TryRebound()
-        {
-            if (_currentCountRebound <= 0)
-            {
-                _isReturn = true;
-                return false;
-            }
-
-            if (_countRebound >= 1)
-            {
-                _currentCountRebound -= 1;
-                _isReturn = false;
-                return true;
-            }
-
-            return false;
-        }
-
         private void OnEnable()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -76,6 +50,43 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
                 if (horizontalVelocity.sqrMagnitude > _bladeMoveSpeed * _bladeMoveSpeed)
                     _rigidbody.velocity = horizontalVelocity.normalized * _bladeMoveSpeed + Vector3.up * _rigidbody.velocity.y;
             }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.TryGetComponent(out Enemy enemy))
+            {
+                enemy.TakeDamage(_damage);
+                Vector3 direction = (enemy.transform.position - transform.position) * 5;
+
+                CorountineStart(BackToPlayer());
+            }
+        }
+
+        public void Initialaze(BladeSpawner bladeSpawner, float damage, float moveSpeedBoost)
+        {
+            _bladeSpawner = bladeSpawner;
+            _damage = damage;
+            _moveSpeedBoost = moveSpeedBoost;
+            CorountineStart(Throw());
+        }
+
+        public bool TryRebound()
+        {
+            if (_currentCountRebound <= 0)
+            {
+                _isReturn = true;
+                return false;
+            }
+
+            if (_countRebound >= 1)
+            {
+                _currentCountRebound -= 1;
+                _isReturn = false;
+                return true;
+            }
+
+            return false;
         }
 
         private IEnumerator Throw()
@@ -110,17 +121,6 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(corontine);
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.collider.TryGetComponent(out Enemy enemy))
-            {
-                enemy.TakeDamage(_damage);
-                Vector3 direction = (enemy.transform.position - transform.position) * 5;
-
-                CorountineStart(BackToPlayer());
-            }
         }
     }
 }

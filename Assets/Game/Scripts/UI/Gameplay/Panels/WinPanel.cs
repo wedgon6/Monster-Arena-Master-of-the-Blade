@@ -1,3 +1,4 @@
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using MonsterArenaMasterOfTheBlade.ServicesScripts;
 
 namespace MonsterArenaMasterOfTheBlade.UI
@@ -6,7 +7,14 @@ namespace MonsterArenaMasterOfTheBlade.UI
     {
         protected override void RelocateEarnedData()
         {
-            Services.SaveService.RelocateData(_player.PlayerWallet, 1, _player.EarnedScore);
+            int earnedStars;
+
+            if (Services.SaveService.TryGetData(out GameInfo gameInfo))
+                earnedStars = 1;
+            else
+                earnedStars = 0;
+
+            Services.SaveService.RelocateData(_player.PlayerWallet, earnedStars, _player.EarnedScore);
         }
 
         protected override void OnAdsButtonClick()

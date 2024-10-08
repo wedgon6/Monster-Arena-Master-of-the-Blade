@@ -21,6 +21,16 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
 
         public event Action<TrainingItemData, TrainingShopView> SellButtonClicked;
 
+        private void OnEnable()
+        {
+            _sellButton.onClick.AddListener(OnButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            _sellButton.onClick.RemoveListener(OnButtonClick);
+        }
+
         public void Render(TrainingItemData item)
         {
             _abillity = item;
@@ -40,16 +50,6 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
         {
             _currentPrice = (int)Math.Round(CurrentPrice * _abillity.Multiplier, 0);
             _price.text = _currentPrice.ToString();
-        }
-
-        private void OnEnable()
-        {
-            _sellButton.onClick.AddListener(OnButtonClick);
-        }
-
-        private void OnDisable()
-        {
-            _sellButton.onClick.RemoveListener(OnButtonClick);
         }
 
         private void OnButtonClick()

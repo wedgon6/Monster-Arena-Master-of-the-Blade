@@ -35,7 +35,6 @@ namespace MonsterArenaMasterOfTheBlade.EntryPoint
             Services.GameReadyService.GameReady();
             _soundButton.Initialize();
             SaveData?.Invoke();
-            Services.AdvertisemintService.ShowInterstitialAd();
         }
 
         private void LoadData()

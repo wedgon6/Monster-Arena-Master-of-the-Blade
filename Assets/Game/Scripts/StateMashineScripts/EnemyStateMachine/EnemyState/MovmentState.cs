@@ -10,6 +10,16 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 
         private NavMeshAgent _agent;
 
+        private void Awake()
+        {
+            _agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void FixedUpdate()
+        {
+            Move();
+        }
+
         public override void Enter()
         {
             base.Enter();
@@ -21,16 +31,6 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
         {
             _agent.speed = 0;
             base.Exit();
-        }
-
-        private void Awake()
-        {
-            _agent = GetComponent<NavMeshAgent>();
-        }
-
-        private void FixedUpdate()
-        {
-            Move();
         }
 
         private void Move()

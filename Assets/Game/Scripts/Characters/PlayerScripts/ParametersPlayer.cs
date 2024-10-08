@@ -1,9 +1,9 @@
-using MonsterArenaMasterOfTheBlade.Characters;
+using MonsterArenaMasterOfTheBlade.SaveSystem;
 using MonsterArenaMasterOfTheBlade.Weapon;
 using System;
 using UnityEngine;
 
-namespace MonsterArenaMasterOfTheBlade.SaveSystem
+namespace MonsterArenaMasterOfTheBlade.Characters
 {
     public class ParametersPlayer : MonoBehaviour
     {

@@ -19,16 +19,6 @@ namespace MonsterArenaMasterOfTheBlade.SaveSystem
 
         [SerializeField] private EntryPointMainMenu _entry;
 
-        public void Init()
-        {
-            _wallet.MoneyChanged += SaveGameData;
-            _choiceMap.CountStarsChenged += SaveGameData;
-            _parametersPlayer.SavedData += SaveGameData;
-            _abillityShop.SaveGameData += SaveGameData;
-            _skeenShop.SaveGameData += SaveGameData;
-            _entry.SaveData += SaveGameData;
-        }
-
         private void OnDisable()
         {
             _wallet.MoneyChanged -= SaveGameData;
@@ -37,6 +27,16 @@ namespace MonsterArenaMasterOfTheBlade.SaveSystem
             _abillityShop.SaveGameData -= SaveGameData;
             _skeenShop.SaveGameData -= SaveGameData;
             _entry.SaveData -= SaveGameData;
+        }
+
+        public void Init()
+        {
+            _wallet.MoneyChanged += SaveGameData;
+            _choiceMap.CountStarsChenged += SaveGameData;
+            _parametersPlayer.SavedData += SaveGameData;
+            _abillityShop.SaveGameData += SaveGameData;
+            _skeenShop.SaveGameData += SaveGameData;
+            _entry.SaveData += SaveGameData;
         }
 
         private void SaveGameData() => Services.SaveService.SaveData(_wallet, _choiceMap, _parametersPlayer, _abillityShop, _skeenShop);

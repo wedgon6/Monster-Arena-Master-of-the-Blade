@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MonsterArenaMasterOfTheBlade.UI
 {
-    public class CanvasType : MonoBehaviour
+    public class CanvasData : MonoBehaviour
     {
         [SerializeField] private GameObject _trainingShopPanel;
         [SerializeField] private GameObject _trainingShopConteiner;

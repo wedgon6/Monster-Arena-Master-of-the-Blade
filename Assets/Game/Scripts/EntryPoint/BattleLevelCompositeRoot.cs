@@ -50,14 +50,12 @@ namespace MonsterArenaMasterOfTheBlade.EntryPoint
 
         private void OnEnable()
         {
-            if (Agava.WebUtility.Device.IsMobile)
-                _screenStick.gameObject.SetActive(true);
-            else
-                _screenStick.gameObject.SetActive(false);
+            _screenStick.gameObject.SetActive(Agava.WebUtility.Device.IsMobile);
 
             _enemyCounter.AllEnemyDied += OnWinGame;
             _player.Died += OnLooseGame;
             _player.Resurred += OnPlayerResurrected;
+
             _moneyView.Initialize(0, 0);
         }
 

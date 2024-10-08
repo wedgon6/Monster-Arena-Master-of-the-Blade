@@ -10,17 +10,17 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
         [SerializeField] private Pool _pool;
         [SerializeField] protected Transform _shootPoint;
 
-        public override void Enter()
-        {
-            base.Enter();
-        }
-
         private void Update()
         {
             transform.LookAt(Target.transform.position);
 
             if (Attack())
                 AttackEvent();
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
         }
 
         private void LaunchBullet()

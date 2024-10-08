@@ -30,6 +30,16 @@ namespace MonsterArenaMasterOfTheBlade.UI
 
         public event Action CountStarsChenged;
 
+        private void OnEnable()
+        {
+            ShowLevel(_currentLevel);
+        }
+
+        private void OnDisable()
+        {
+            _playButton.onClick.RemoveListener(OnClickPlayButton);
+        }
+
         public void Initialize(int currentMapIndex, int currentCountStats, int countCircle)
         {
             _currentLevelIndex = currentMapIndex;
@@ -75,16 +85,6 @@ namespace MonsterArenaMasterOfTheBlade.UI
             _proUGUI.UpdateTranslation(LeanLocalization.GetTranslation(_proUGUI.TranslationName));
 
             EneblePlayButton();
-        }
-
-        private void OnEnable()
-        {
-            ShowLevel(_currentLevel);
-        }
-
-        private void OnDisable()
-        {
-            _playButton.onClick.RemoveListener(OnClickPlayButton);
         }
 
         private void EneblePlayButton()

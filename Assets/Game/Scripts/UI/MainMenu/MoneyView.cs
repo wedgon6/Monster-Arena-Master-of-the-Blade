@@ -15,6 +15,14 @@ namespace MonsterArenaMasterOfTheBlade.UI
         [SerializeField] private TMP_Text _condGoldRevardLable;
         [SerializeField] private TMP_Text _condDaimondRevardLable;
 
+        private void OnDisable()
+        {
+            _wallet.MoneyChanged -= OnPlayerMoneyChenget;
+
+            if (_revardVideoButton != null)
+                _revardVideoButton.onClick.RemoveListener(ShowRevardVideo);
+        }
+
         public void Initialize(int countGold, int countDaimond)
         {
             _wallet.MoneyChanged += OnPlayerMoneyChenget;
@@ -27,14 +35,6 @@ namespace MonsterArenaMasterOfTheBlade.UI
                 _condGoldRevardLable.text = "+" + Services.AdvertisemintService.GoldRevard.ToString();
                 _condDaimondRevardLable.text = "+" + Services.AdvertisemintService.DaimondRevard.ToString();
             }
-        }
-
-        private void OnDisable()
-        {
-            _wallet.MoneyChanged -= OnPlayerMoneyChenget;
-
-            if (_revardVideoButton != null)
-                _revardVideoButton.onClick.RemoveListener(ShowRevardVideo);
         }
 
         private void OnPlayerMoneyChenget()

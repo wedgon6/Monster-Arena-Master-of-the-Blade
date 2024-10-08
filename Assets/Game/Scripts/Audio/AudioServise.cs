@@ -4,61 +4,62 @@ namespace MonsterArenaMasterOfTheBlade.Audio
 {
     public class AudioServise : IAudioServise
     {
-        private static bool _canPlayAudio = true;
-        private static bool _isCloseAds = true;
-        private static bool _isUnMuteAudio = true;
+        private static bool s_canPlayAudio = true;
+        private static bool s_isCloseAds = true;
+        private static bool s_isUnMuteAudio = true;
+
+        public bool IsUnMuteAudio { get => s_isUnMuteAudio; set => throw new System.NotImplementedException(); }
 
         public void ChengeAdsAudio(bool isClose)
         {
-            _isCloseAds = isClose;
+            s_isCloseAds = isClose;
         }
 
         public bool GetAudioModStatus()
         {
-            return _canPlayAudio;
+            return s_canPlayAudio;
         }
 
         public void ChengeAudioStatus()
         {
-            _canPlayAudio = !_canPlayAudio;
+            s_canPlayAudio = !s_canPlayAudio;
 
-            if (_canPlayAudio == false)
+            if (s_canPlayAudio == false)
             {
                 AudioListener.volume = 0f;
-                _isUnMuteAudio = false;
+                s_isUnMuteAudio = false;
             }
 
-            if (_canPlayAudio)
+            if (s_canPlayAudio)
             {
                 AudioListener.volume = 1f;
-                _isUnMuteAudio = true;
+                s_isUnMuteAudio = true;
             }
         }
 
         public void MuteSound()
         {
-            if (_canPlayAudio == false)
+            if (s_canPlayAudio == false)
                 return;
 
             AudioListener.volume = 0f;
-            _canPlayAudio = false;
+            s_canPlayAudio = false;
         }
 
         public void TurnSound()
         {
-            if (_canPlayAudio == true || _isUnMuteAudio == false)
+            if (s_canPlayAudio == true || s_isUnMuteAudio == false)
                 return;
 
             AudioListener.volume = 1f;
-            _canPlayAudio = true;
+            s_canPlayAudio = true;
         }
 
-        public bool TryTurnSound()
+        public bool CanTurnSound()
         {
-            if (_isCloseAds == false || _isUnMuteAudio == false || _canPlayAudio == false)
-                return false;
-            else
-                return true;
+            bool canTurn = s_isCloseAds == false || s_isUnMuteAudio == false || s_canPlayAudio == false;
+
+            return !canTurn;
         }
     }
 }

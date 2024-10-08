@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8190268, g: 0.7405983, b: 0.64912575, a: 1}
+  m_IndirectSpecularColor: {r: 0.8201056, g: 0.74077475, b: 0.64868623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -504,11 +504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016246803
+      value: 0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005665764
+      value: -0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -952,7 +952,7 @@ PrefabInstance:
     - target: {fileID: 4054781239415726963, guid: f00ff96fe669ab74c9f54bef34601a4c, type: 3}
       propertyPath: _variableJoystick
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1667527828}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

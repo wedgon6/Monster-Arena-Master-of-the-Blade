@@ -18,7 +18,8 @@ namespace MonsterArenaMasterOfTheBlade.UI
             _sceneName = sceneName;
             _asyncOperation = SceneManager.LoadSceneAsync(_sceneName);
 
-            _loadingWheel.transform.DORotate(new Vector3(0, 0, 360f), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+            _loadingWheel.transform.DORotate(new Vector3(0, 0, 360f), 1f, RotateMode.FastBeyond360).
+                SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
         }
     }
 }

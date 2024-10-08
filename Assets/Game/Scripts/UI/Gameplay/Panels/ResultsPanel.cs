@@ -16,18 +16,6 @@ namespace MonsterArenaMasterOfTheBlade.UI
         private PlayerWallet _playerWallet;
         protected Player _player;
 
-        public virtual void Initialize(Player player)
-        {
-            _player = player;
-            _playerWallet = _player.PlayerWallet;
-            _playerWallet.MoneyChanged += OnPlayerMoneyChenged;
-            _goldCount.text = _playerWallet.CurrentGold.ToString();
-            _daimondCount.text = _playerWallet.CurrentDaimond.ToString();
-        }
-
-        protected virtual void RelocateEarnedData() { }
-        protected virtual void OnAdsButtonClick() { }
-
         private void OnEnable()
         {
             if (_adsActionButton != null)
@@ -45,9 +33,22 @@ namespace MonsterArenaMasterOfTheBlade.UI
             _playerWallet.MoneyChanged -= OnPlayerMoneyChenged;
         }
 
+        public virtual void Initialize(Player player)
+        {
+            _player = player;
+            _playerWallet = _player.PlayerWallet;
+            _playerWallet.MoneyChanged += OnPlayerMoneyChenged;
+            _goldCount.text = _playerWallet.CurrentGold.ToString();
+            _daimondCount.text = _playerWallet.CurrentDaimond.ToString();
+        }
+
+        protected virtual void RelocateEarnedData() { }
+        protected virtual void OnAdsButtonClick() { }
+
         private void BackMenuScene()
         {
             RelocateEarnedData();
+            ServicesScripts.Services.AdvertisemintService.ShowInterstitialAd();
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("1_MenuScene");
         }
 

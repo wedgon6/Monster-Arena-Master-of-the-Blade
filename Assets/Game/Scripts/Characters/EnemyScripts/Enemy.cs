@@ -31,17 +31,22 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         public Rigidbody Rigidbody => _rigidbody;
         public string TypeEnemy => _typeEnemy.ToString();
 
-        public event Action<float, float> ChangeHealth;
+        public event Action<float, float> HealthChanged;
         public event Action<float> TakedDamage;
         public event Action GotHit;
         public event Action<Transform> Died;
         public event Action ÑelebratedWin;
-        public event Action ResetStateMashine;
+        public event Action StateMashineReseted;
+
+        private void OnDisable()
+        {
+            _spawner.PlayerLose -= OnÑelebratDance;
+        }
 
         public void ResetState()
         {
             _stateMachine.ResetStete();
-            ResetStateMashine?.Invoke();
+            StateMashineReseted?.Invoke();
         }
 
         public float GetCurrentHealth()
@@ -61,8 +66,8 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _health = _maxHealth;
             _target = player;
             _spawner = spawner;
-            ChangeHealth?.Invoke(_health, _maxHealth);
-            _spawner.PlayerLose += WinGameState;
+            HealthChanged?.Invoke(_health, _maxHealth);
+            _spawner.PlayerLose += OnÑelebratDance;
         }
 
         public void TakeDamage(float damage)
@@ -76,7 +81,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _health -= damage;
             GotHit?.Invoke();
             TakedDamage?.Invoke(damage); ;
-            ChangeHealth?.Invoke(_health, _maxHealth);
+            HealthChanged?.Invoke(_health, _maxHealth);
 
             if (_health <= 0)
             {
@@ -85,7 +90,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             }
         }
 
-        public void Dead()
+        public void Die()
         {
             ReturnToPool();
             Died?.Invoke(transform);
@@ -98,12 +103,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _health = _maxHealth;
         }
 
-        private void OnDisable()
-        {
-            _spawner.PlayerLose -= WinGameState;
-        }
-
-        private void WinGameState()
+        private void OnÑelebratDance()
         {
             ÑelebratedWin?.Invoke();
         }

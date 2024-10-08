@@ -10,7 +10,7 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 
         private void Die()
         {
-            Enemy.Dead();
+            Enemy.Die();
             Target.PlayerWallet.AddMoney(Enemy.Gold, Enemy.Daimond);
             Target.AddScore();
         }

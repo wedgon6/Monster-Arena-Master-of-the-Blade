@@ -9,11 +9,6 @@ namespace MonsterArenaMasterOfTheBlade.UI
         [SerializeField] private GameObject _pabel;
         [SerializeField] private Button _openButton;
 
-        public void Initialaize(GameObject panel)
-        {
-            _pabel = panel;
-        }
-
         private void OnEnable()
         {
             _openButton.onClick.AddListener(OpenPanel);
@@ -24,9 +19,13 @@ namespace MonsterArenaMasterOfTheBlade.UI
             _openButton.onClick.RemoveListener(OpenPanel);
         }
 
+        public void Initialaize(GameObject panel)
+        {
+            _pabel = panel;
+        }
+
         private void OpenPanel()
         {
-            Services.AdvertisemintService.ShowInterstitialAd();
             _pabel.gameObject.SetActive(true);
         }
     }

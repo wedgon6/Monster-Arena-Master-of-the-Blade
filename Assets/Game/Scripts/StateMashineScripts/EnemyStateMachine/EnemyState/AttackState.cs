@@ -10,6 +10,14 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 
         private float _lastAttackTime = 0;
 
+        private void Update()
+        {
+            if (Attack())
+            {
+                AttackEvent();
+            }
+        }
+
         public override void Enter()
         {
             base.Enter();
@@ -37,14 +45,6 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
 
             _lastAttackTime -= Time.deltaTime;
             return false;
-        }
-
-        private void Update()
-        {
-            if (Attack())
-            {
-                AttackEvent();
-            }
         }
 
         private void ApplyDamage()

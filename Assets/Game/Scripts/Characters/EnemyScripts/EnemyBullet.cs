@@ -21,9 +21,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             }
 
             if (collision.collider.TryGetComponent(out Wall wall))
-            {
                 ReturObjectPool();
-            }
         }
     }
 }

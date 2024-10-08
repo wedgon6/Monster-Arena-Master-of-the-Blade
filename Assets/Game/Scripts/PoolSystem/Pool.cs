@@ -11,6 +11,14 @@ namespace MonsterArenaMasterOfTheBlade.PoolSystem
 
         public event Action GetPoolObject;
 
+        private void OnDisable()
+        {
+            foreach (var pollObject in _poolObjects)
+            {
+                pollObject.PoolReturned -= PoolObject;
+            }
+        }
+
         public void InstantiatePoolObject(PoolObject poolObject)
         {
             poolObject.PoolReturned += PoolObject;
@@ -27,14 +35,6 @@ namespace MonsterArenaMasterOfTheBlade.PoolSystem
             bullet = _poolObjects.FirstOrDefault(p => p.gameObject.activeSelf == false);
 
             return bullet != null;
-        }
-
-        private void OnDisable()
-        {
-            foreach (var pollObject in _poolObjects)
-            {
-                pollObject.PoolReturned -= PoolObject;
-            }
         }
     }
 }

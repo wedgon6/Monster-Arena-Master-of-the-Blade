@@ -14,23 +14,6 @@ namespace MonsterArenaMasterOfTheBlade.UI
         private Button _button;
         private bool _isAudioPlay = true;
 
-        public void Initialize()
-        {
-            _isAudioPlay = Services.AudioService.GetAudioModStatus();
-
-            if (_isAudioPlay == true)
-            {
-                AudioListener.volume = 1f;
-                _controlButton.sprite = _onAudioIcon;
-            }
-
-            if (_isAudioPlay == false)
-            {
-                AudioListener.volume = 0f;
-                _controlButton.sprite = _offAudioIcon;
-            }
-        }
-
         private void OnEnable()
         {
             _button = GetComponent<Button>();
@@ -42,6 +25,31 @@ namespace MonsterArenaMasterOfTheBlade.UI
             _button.onClick.RemoveListener(ChangeSoundMode);
         }
 
+        public void Initialize()
+        {
+            _isAudioPlay = Services.AudioService.GetAudioModStatus();
+
+            if (_isAudioPlay == true)
+            {
+                _controlButton.sprite = _onAudioIcon;
+            }
+
+            if (_isAudioPlay == true && Services.AudioService.IsUnMuteAudio)
+            {
+                _controlButton.sprite = _onAudioIcon;
+            }
+
+            if (_isAudioPlay == false && Services.AdvertisemintService.IsCloseAds == false)
+            {
+                _controlButton.sprite = _offAudioIcon;
+            }
+
+            if (_isAudioPlay == false && Services.AdvertisemintService.IsCloseAds == true)
+            {
+                _controlButton.sprite = _onAudioIcon;
+            }
+        }
+
         private void ChangeSoundMode()
         {
             Services.AudioService.ChengeAudioStatus();
@@ -49,13 +57,11 @@ namespace MonsterArenaMasterOfTheBlade.UI
 
             if (_isAudioPlay == true)
             {
-                AudioListener.volume = 1f;
                 _controlButton.sprite = _onAudioIcon;
             }
 
             if (_isAudioPlay == false)
             {
-                AudioListener.volume = 0f;
                 _controlButton.sprite = _offAudioIcon;
             }
         }

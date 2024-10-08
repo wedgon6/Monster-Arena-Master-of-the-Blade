@@ -34,8 +34,8 @@ namespace MonsterArenaMasterOfTheBlade.SaveSystem
         private TrainingShop _adbillityShop;
         private WeaponSkeenShop _skeensShop;
 
-        private static int _earnedGaold = 0;
-        private static int _earnedDaimond = 0;
+        private static int s_earnedGaold = 0;
+        private static int s_earnedDaimond = 0;
 
         public GameInfo(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parameters, TrainingShop shop, WeaponSkeenShop worckshop)
         {
@@ -45,8 +45,8 @@ namespace MonsterArenaMasterOfTheBlade.SaveSystem
             _adbillityShop = shop;
             _skeensShop = worckshop;
 
-            PlayerGold += _earnedGaold;
-            PlayerDaimond += _earnedDaimond;
+            PlayerGold += s_earnedGaold;
+            PlayerDaimond += s_earnedDaimond;
             GetData();
         }
 

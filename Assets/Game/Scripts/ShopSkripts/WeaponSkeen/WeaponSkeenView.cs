@@ -36,6 +36,18 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
         public event Action UnlockedSkeen;
         public event Action SelectedSkeen;
 
+        private void OnEnable()
+        {
+            if (_item != null)
+                _actionButton.onClick.AddListener(ClickButton);
+        }
+
+        private void OnDisable()
+        {
+            if (_item != null)
+                _actionButton.onClick.RemoveListener(ClickButton);
+        }
+
         public void Render(WeaponSkeenData item, int index)
         {
             _item = item;
@@ -90,18 +102,6 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
             _isSelect = true;
             _unlockStatus.sprite = _selectImage;
             SelectedSkeen?.Invoke();
-        }
-
-        private void OnEnable()
-        {
-            if (_item != null)
-                _actionButton.onClick.AddListener(ClickButton);
-        }
-
-        private void OnDisable()
-        {
-            if (_item != null)
-                _actionButton.onClick.RemoveListener(ClickButton);
         }
 
         private void ClickButton()

@@ -1,9 +1,10 @@
 using DG.Tweening;
+using MonsterArenaMasterOfTheBlade.Characters;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MonsterArenaMasterOfTheBlade.Characters
+namespace MonsterArenaMasterOfTheBlade.UI
 {
     [RequireComponent(typeof(IDamageable))]
     public class HealthBarView : MonoBehaviour
@@ -32,14 +33,14 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         private void OnEnable()
         {
             _helth = GetComponent<IDamageable>();
-            _helth.ChangeHealth += OnChangeHealthValue;
+            _helth.HealthChanged += OnChangeHealthValue;
             _helth.TakedDamage += OnTakeDamage;
             OnChangeHealthValue(_helth.GetCurrentHealth(), _helth.GetMaxHealth());
         }
 
         private void OnDisable()
         {
-            _helth.ChangeHealth -= OnChangeHealthValue;
+            _helth.HealthChanged -= OnChangeHealthValue;
             _helth.TakedDamage -= OnTakeDamage;
         }
 

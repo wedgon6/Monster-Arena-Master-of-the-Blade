@@ -12,7 +12,8 @@ namespace MonsterArenaMasterOfTheBlade.TrapScripts
 
         private void OnEnable()
         {
-            transform.DOMove(new Vector3(_xAxisDirection, _yAxisDirection, _zAxisDirection), _moveSpeed, false).SetLoops(-1, LoopType.Yoyo).SetRelative().SetEase(Ease.Linear);
+            transform.DOMove(new Vector3(_xAxisDirection, _yAxisDirection, _zAxisDirection), _moveSpeed, false).
+                SetLoops(-1, LoopType.Yoyo).SetRelative().SetEase(Ease.Linear);
         }
     }
 }

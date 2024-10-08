@@ -22,7 +22,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
 
         private void OnEnable()
         {
-            _enemy.ResetStateMashine += OnMove;
+            _enemy.StateMashineReseted += OnMove;
 
             foreach (var events in _enemyStates)
             {
@@ -35,7 +35,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
 
         private void OnDisable()
         {
-            _enemy.ResetStateMashine -= OnMove;
+            _enemy.StateMashineReseted -= OnMove;
 
             foreach (var events in _enemyStates)
             {

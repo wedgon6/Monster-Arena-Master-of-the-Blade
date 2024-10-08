@@ -25,6 +25,12 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
 
         public event Action SaveGameData;
 
+        private void OnDisable()
+        {
+            _skeenViewConteiner.ClickBuyButton -= TrySellSkeen;
+            _skeenViewConteiner.ClickSelectSkeenButton -= SetSkeen;
+        }
+
         public void Initialize(GameObject conteiner, WeaponSkeenViewConteiner viewConteiner)
         {
             _worckshopConteiner = conteiner;
@@ -72,12 +78,6 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
                     }
                 }
             }
-        }
-
-        private void OnDisable()
-        {
-            _skeenViewConteiner.ClickBuyButton -= TrySellSkeen;
-            _skeenViewConteiner.ClickSelectSkeenButton -= SetSkeen;
         }
 
         private void AddItem(WeaponSkeenData weapon, int index, out WeaponSkeenView view)

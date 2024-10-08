@@ -7,6 +7,11 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
     {
         [SerializeField] protected List<Transition> _transitions;
 
+        private void Awake()
+        {
+            enabled = false;
+        }
+
         public virtual void Enter()
         {
             if (enabled == false)
@@ -46,10 +51,5 @@ namespace MonsterArenaMasterOfTheBlade.StateMashineScripts
         }
 
         protected virtual void OnEnter() { }
-
-        private void Awake()
-        {
-            enabled = false;
-        }
     }
 }

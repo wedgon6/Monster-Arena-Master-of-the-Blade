@@ -6,8 +6,8 @@ namespace MonsterArenaMasterOfTheBlade.UI
 {
     public class CanvasManager : MonoBehaviour
     {
-        [SerializeField] private ModileCanvas _modileCanvas;
-        [SerializeField] private DekstopCanvas _dekstopCanvas;
+        [SerializeField] private CanvasData _modileCanvas;
+        [SerializeField] private CanvasData _dekstopCanvas;
         [SerializeField] private ChoiceMap _choiceMap;
 
         [SerializeField] private LeaderBoardButton _boardButton;
@@ -21,8 +21,8 @@ namespace MonsterArenaMasterOfTheBlade.UI
 
         public GameObject TrainingShopConteiner => _trainingShopConteiner;
         public GameObject WeaponShopConteiner => _weaponShopConteiner;
-        public DekstopCanvas DekstopCanvas => _dekstopCanvas;
-        public ModileCanvas ModileCanvas => _modileCanvas;
+        public CanvasData DekstopCanvas => _dekstopCanvas;
+        public CanvasData ModileCanvas => _modileCanvas;
         public WeaponSkeenViewConteiner ViewConteiner => _viewConteiner;
 
         public void Init()

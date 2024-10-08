@@ -897,6 +897,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1991130790}
+    - target: {fileID: 4054781239415726963, guid: f00ff96fe669ab74c9f54bef34601a4c, type: 3}
+      propertyPath: _variableJoystick
+      value: 
+      objectReference: {fileID: 1673053011}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1071,11 +1075,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016246803
+      value: 0.000000016246803
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005665764
+      value: -0.000000005665764
       objectReference: {fileID: 0}
     - target: {fileID: 202543977381796769, guid: 1db2efa739ccf8f419d5797c2c39b47c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

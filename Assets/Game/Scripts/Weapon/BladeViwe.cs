@@ -19,6 +19,11 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
         private float _stepSize;
         private float _currentStep;
 
+        private void OnEnable()
+        {
+            transform.DORotate(new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
+        }
+
         public void Initialize(int countBlade, Blade blade)
         {
             _countBlade = countBlade;
@@ -61,11 +66,6 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
                 return;
             else
                 enebleBlade.gameObject.SetActive(true);
-        }
-
-        private void OnEnable()
-        {
-            transform.DORotate(new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetRelative().SetEase(Ease.Linear);
         }
     }
 }

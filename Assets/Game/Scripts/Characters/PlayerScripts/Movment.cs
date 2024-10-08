@@ -8,8 +8,8 @@ namespace MonsterArenaMasterOfTheBlade.Characters
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private VariableJoystick _variableJoystick;
-
         [SerializeField] private float _moveSpeed;
+
         private float _maxMoveSpeed;
         private PlayerInput _playerInputSystem;
         private Vector3 _direction;
@@ -20,40 +20,9 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         public float MaxMoveSpeed => _maxMoveSpeed;
         public Rigidbody PlayerRigidbody => _rigidbody;
 
-        public void Initialize(float speed, bool isMoving)
-        {
-            _isModile = isMoving;
-
-            if (isMoving)
-                _moveSpeed = speed * 12.7f;
-            else
-                _moveSpeed = speed;
-
-            _maxMoveSpeed = speed * 2;
-        }
-
         private void Awake()
         {
-            if (Agava.WebUtility.Device.IsMobile)
-            {
-                _isModile = true;
-            }
-            else
-            {
-                _isModile = false;
-                _playerInputSystem = new PlayerInput();
-            }
-
             _rigidbody = GetComponent<Rigidbody>();
-        }
-
-        private void OnEnable()
-        {
-            if (_isModile == false)
-            {
-                _playerInputSystem.Enable();
-                _move = _playerInputSystem.Player.Move;
-            }
         }
 
         private void OnDisable()
@@ -73,6 +42,29 @@ namespace MonsterArenaMasterOfTheBlade.Characters
                 DekstopMove();
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
             }
+        }
+
+        public void Initialize(float speed, bool isMoving)
+        {
+            _isModile = isMoving;
+
+            if (_isModile)
+            {
+                _moveSpeed = speed * 12.7f;
+            }
+            else
+            {
+                if(_playerInputSystem == null)
+                {
+                    _playerInputSystem = new PlayerInput();
+                    _playerInputSystem.Enable();
+                }
+
+                _move = _playerInputSystem.Player.Move;
+                _moveSpeed = speed;
+            }
+
+            _maxMoveSpeed = speed * 2;
         }
 
         private void DekstopMove()

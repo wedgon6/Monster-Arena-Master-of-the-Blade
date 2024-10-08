@@ -885,7 +885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 108302420}
-  - component: {fileID: 108302421}
+  - component: {fileID: 108302422}
   m_Layer: 5
   m_Name: Mobile
   m_TagString: Untagged
@@ -915,7 +915,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &108302421
+--- !u!114 &108302422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 108302419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fbc04225233ef44a8e8b07c1d3420ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c14bbb0c2093ac4ab18846a0fd84268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _trainingShopPanel: {fileID: 836257891}
@@ -10105,8 +10105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d962f30ccc18e0446b0c1dd2682e8f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modileCanvas: {fileID: 108302421}
-  _dekstopCanvas: {fileID: 1944827497}
+  _modileCanvas: {fileID: 108302422}
+  _dekstopCanvas: {fileID: 1944827498}
   _choiceMap: {fileID: 1859678819}
   _boardButton: {fileID: 400226492}
   _battleButton: {fileID: 2031527573}
@@ -13599,7 +13599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944827496}
-  - component: {fileID: 1944827497}
+  - component: {fileID: 1944827498}
   m_Layer: 5
   m_Name: Dekstop
   m_TagString: Untagged
@@ -13629,7 +13629,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1944827497
+--- !u!114 &1944827498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13638,7 +13638,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1944827495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17b2f8e40434824aab896af5fe56379, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c14bbb0c2093ac4ab18846a0fd84268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _trainingShopPanel: {fileID: 469411283}

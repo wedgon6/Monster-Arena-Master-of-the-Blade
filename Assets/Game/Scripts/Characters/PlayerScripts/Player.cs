@@ -25,11 +25,16 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         public PlayerWallet PlayerWallet => _wallet;
         public int EarnedScore => _earnedScore;
 
-        public event Action<float, float> ChangeHealth;
+        public event Action<float, float> HealthChanged;
         public event Action<float> TakedDamage;
         public event Action<Transform> Died;
         public event Action Wined;
         public event Action Resurred;
+
+        private void Awake()
+        {
+            _wallet.Initialize(_gold.Value, _daimond.Value);
+        }
 
         public void Initialize(bool isMoving)
         {
@@ -38,7 +43,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _canMove = isMoving;
             _maxHealth = standartParametrs.StartHealth;
             _health = _maxHealth;
-            ChangeHealth?.Invoke(_health, _maxHealth);
+            HealthChanged?.Invoke(_health, _maxHealth);
             _moveSpeed = standartParametrs.StartMoveSpeed;
             _movment.Initialize(_moveSpeed, _canMove);
             _bladeSpawner.Initialize(0, standartParametrs.StartDamage, standartParametrs.StartRangeThrow, standartParametrs.StartMoveSpeed);
@@ -50,7 +55,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _canMove = isMoving;
             _maxHealth = _gameInfo.MaxPlayerHealth;
             _health = _maxHealth;
-            ChangeHealth?.Invoke(_health, _maxHealth);
+            HealthChanged?.Invoke(_health, _maxHealth);
             _moveSpeed = _gameInfo.PlayerMoveSpeed;
             _movment.Initialize(_moveSpeed, _canMove);
             _bladeSpawner.Initialize(_gameInfo.CurrentBladeIndex, _gameInfo.Damage, _gameInfo.RangeThrow, _gameInfo.PlayerMoveSpeed);
@@ -73,7 +78,7 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         {
             _health = _maxHealth;
             _movment.Initialize(_moveSpeed, _canMove);
-            ChangeHealth?.Invoke(_health, _maxHealth);
+            HealthChanged?.Invoke(_health, _maxHealth);
             Resurred?.Invoke();
         }
 
@@ -95,18 +100,13 @@ namespace MonsterArenaMasterOfTheBlade.Characters
 
             _health -= damage;
             TakedDamage?.Invoke(damage);
-            ChangeHealth?.Invoke(_health, _maxHealth);
+            HealthChanged?.Invoke(_health, _maxHealth);
 
             if (_health <= 0)
             {
                 _health = 0;
                 LoseGame();
             }
-        }
-
-        private void Awake()
-        {
-            _wallet.Initialize(_gold.Value, _daimond.Value);
         }
 
         private void LoseGame()

@@ -34,6 +34,47 @@ namespace MonsterArenaMasterOfTheBlade.Characters
         public event Action<int, int> SetedWaves;
         public event Action PlayerLose;
 
+        private void OnEnable()
+        {
+            _player.Died += OnPlayerDead;
+        }
+
+        private void OnDisable()
+        {
+            _player.Died -= OnPlayerDead;
+
+            foreach (var enemy in _createdEnemies)
+            {
+                enemy.Died -= OnEnemyDead;
+            }
+        }
+
+        private void Update()
+        {
+            if (_currentWave == null)
+                return;
+
+            _timeAfterLastSpawn += Time.deltaTime;
+
+            if (_timeAfterLastSpawn >= _delay)
+            {
+                InitializeEnemy();
+                _spawned++;
+                _timeAfterLastSpawn = 0;
+            }
+
+            if (_currentWave.Template == null)
+                return;
+
+            if (_currentWave.Template.Count <= _spawned)
+            {
+                _currentWave = null;
+
+                if (_enemyWaves.Count > _currentWaveNumber + 1)
+                    CorountineStart(StartNextWave());
+            }
+        }
+
         public void RestSpawner(int statsCount, int coutnCircle)
         {
             _enemyWaves.Clear();
@@ -76,47 +117,6 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             }
 
             return enemyCount;
-        }
-
-        private void OnEnable()
-        {
-            _player.Died += OnPlayerDead;
-        }
-
-        private void OnDisable()
-        {
-            _player.Died -= OnPlayerDead;
-
-            foreach (var enemy in _createdEnemies)
-            {
-                enemy.Died -= OnEnemyDead;
-            }
-        }
-
-        private void Update()
-        {
-            if (_currentWave == null)
-                return;
-
-            _timeAfterLastSpawn += Time.deltaTime;
-
-            if (_timeAfterLastSpawn >= _delay)
-            {
-                InitializeEnemy();
-                _spawned++;
-                _timeAfterLastSpawn = 0;
-            }
-
-            if (_currentWave.Template == null)
-                return;
-
-            if (_currentWave.Template.Count <= _spawned)
-            {
-                _currentWave = null;
-
-                if (_enemyWaves.Count > _currentWaveNumber + 1)
-                    CorountineStart(StartNextWave());
-            }
         }
 
         private void InitializeEnemy()

@@ -10,7 +10,8 @@ namespace MonsterArenaMasterOfTheBlade.SaveSystem
         public int RelocateDaimond { get; set; }
 
         public bool TryGetData(out GameInfo data);
-        public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer, TrainingShop abillityShop, WeaponSkeenShop skeenShop);
+        public void SaveData(PlayerWallet playerWallet, ChoiceMap choiceMap, ParametersPlayer parametersPlayer,
+            TrainingShop abillityShop, WeaponSkeenShop skeenShop);
         public void RelocateData(PlayerWallet playerWallet, int countStars, int earnedScore);
     }
 }

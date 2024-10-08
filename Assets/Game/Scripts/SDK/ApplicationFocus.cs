@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MonsterArenaMasterOfTheBlade.SDK
 {
-    public class TestFocus : MonoBehaviour
+    public class ApplicationFocus : MonoBehaviour
     {
         private void OnEnable()
         {
@@ -34,7 +34,7 @@ namespace MonsterArenaMasterOfTheBlade.SDK
         {
             if (!value)
             {
-                if (Services.AudioService.TryTurnSound())
+                if (Services.AudioService.CanTurnSound())
                     Services.AudioService.TurnSound();
             }
             else

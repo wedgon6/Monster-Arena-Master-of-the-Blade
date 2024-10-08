@@ -29,21 +29,6 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
 
         public event Action ThrowingBlade;
 
-        public void Initialize(int indexBlade, float damage, float rangeThrow, float bladeMoveSpeedBoost)
-        {
-            _bladePrefab = _blades[indexBlade];
-
-            _damage = damage;
-            _rangeThrow = rangeThrow;
-            _bladeMoveSpeedBoost = bladeMoveSpeedBoost;
-            _bladeViwe.Initialize(_bladeCount, _bladePrefab);
-        }
-
-        public void TurnOffActive()
-        {
-            _isActive = false;
-        }
-
         private void OnEnable()
         {
             _bladePool.GetPoolObject += GetBackBlade;
@@ -74,6 +59,21 @@ namespace MonsterArenaMasterOfTheBlade.Weapon
                 _isActive = true;
 
             _currentTime -= Time.deltaTime;
+        }
+
+        public void Initialize(int indexBlade, float damage, float rangeThrow, float bladeMoveSpeedBoost)
+        {
+            _bladePrefab = _blades[indexBlade];
+
+            _damage = damage;
+            _rangeThrow = rangeThrow;
+            _bladeMoveSpeedBoost = bladeMoveSpeedBoost;
+            _bladeViwe.Initialize(_bladeCount, _bladePrefab);
+        }
+
+        public void TurnOffActive()
+        {
+            _isActive = false;
         }
 
         private void GetBackBlade()
