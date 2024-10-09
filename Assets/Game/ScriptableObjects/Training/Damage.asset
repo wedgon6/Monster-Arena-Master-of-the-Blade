@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e43449f30eb86d4aa9e2b5f9b0b9565, type: 3}
+  m_Script: {fileID: 11500000, guid: b71078d34c6e74541ace27feb6322b19, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
   _lable: Damage
   _icon: {fileID: 1651445179, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
   _multiplier: 1.2
-  _startPrice: 2500
+  _startPrice: 2000
   _localizedKey: Damage
+  _typeStats: 0

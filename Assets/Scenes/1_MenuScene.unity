@@ -2160,7 +2160,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e128f3774341f4d4995069e86ffd854d, type: 2}
   - {fileID: 11400000, guid: 9f3060a0d5b186340a2f5b0b167721bf, type: 2}
   - {fileID: 11400000, guid: 3d2abb03ef2fdd743923c2c8118b67ec, type: 2}
-  - {fileID: 11400000, guid: 90d18126c0f52804c8fbc827f12fb64d, type: 2}
+  - {fileID: 11400000, guid: f5085ec66eeee6044b03967844eb71ea, type: 2}
   _playerWallet: {fileID: 1962134351}
   _shopView: {fileID: 7875075927070579099, guid: ac4542295278c334e9e2fc704d20729e, type: 3}
   _parametersPlayer: {fileID: 696690437}

@@ -1,4 +1,5 @@
 using MonsterArenaMasterOfTheBlade.SaveSystem;
+using MonsterArenaMasterOfTheBlade.ShopScripts;
 using MonsterArenaMasterOfTheBlade.Weapon;
 using System;
 using UnityEngine;
@@ -46,33 +47,26 @@ namespace MonsterArenaMasterOfTheBlade.Characters
             _score = data.PlayerScore;
         }
 
-        public void AddMaxHealth()
-        {
-            _maxPlayerHealth += _healthStep;
-            SavedData?.Invoke();
-        }
-
-        public void AddMoveSpeed()
-        {
-            _playerMoveSpeed += _moveSpeedStep;
-            SavedData?.Invoke();
-        }
-
-        public void AddDamage()
-        {
-            _damage += _damageStep;
-            SavedData?.Invoke();
-        }
-
-        public void AddRangeThrow()
-        {
-            _rangeThrow += _rangeThrowStep;
-            SavedData?.Invoke();
-        }
-
         public void SelectWeaponSkeen(Blade blade)
         {
             _blade = blade;
+        }
+
+        public void AddStats(TrainingItemData trainingItemData)
+        {
+            if (trainingItemData.TypePlayerStats == TypePlayerStats.Damage.ToString())
+                _damage += _damageStep;
+
+            if (trainingItemData.TypePlayerStats == TypePlayerStats.MaxHealth.ToString())
+                _maxPlayerHealth += _healthStep;
+
+            if (trainingItemData.TypePlayerStats == TypePlayerStats.MoveSpeed.ToString())
+                _playerMoveSpeed += _moveSpeedStep;
+
+            if (trainingItemData.TypePlayerStats == TypePlayerStats.RangeThrow.ToString())
+                _rangeThrow += _rangeThrowStep;
+
+            SavedData?.Invoke();
         }
     }
 }

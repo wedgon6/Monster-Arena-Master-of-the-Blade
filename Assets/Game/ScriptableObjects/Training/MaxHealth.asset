@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6838e1e4536c1f4c888d307288bc7e1, type: 3}
+  m_Script: {fileID: 11500000, guid: b71078d34c6e74541ace27feb6322b19, type: 3}
   m_Name: MaxHealth
   m_EditorClassIdentifier: 
-  _lable: Max Health
+  _lable: MaxHealth
   _icon: {fileID: 894501080, guid: 04577b2ea646c9f4b9e196b0eec2007d, type: 3}
-  _multiplier: 1.25
-  _startPrice: 2000
+  _multiplier: 1.3
+  _startPrice: 2500
   _localizedKey: MaxHealth
+  _typeStats: 1

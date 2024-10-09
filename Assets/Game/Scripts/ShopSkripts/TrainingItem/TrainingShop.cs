@@ -58,7 +58,7 @@ namespace MonsterArenaMasterOfTheBlade.ShopScripts
             if (shopView.CurrentPrice <= _playerWallet.CurrentGold)
             {
                 _playerWallet.ReduceMoney(new Gold(shopView.CurrentPrice));
-                abillity.BuffPlayer(_parametersPlayer);
+                _parametersPlayer.AddStats(abillity);
                 shopView.Buy();
                 SaveGameData?.Invoke();
             }
